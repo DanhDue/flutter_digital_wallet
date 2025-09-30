@@ -1,0 +1,16 @@
+{
+  "appName": "Wallet",
+  "close": "Close",
+  "titleDialog": "Warning",
+  "commonErrorMessage": "An error occurred. Please try again later!",
+  "skip": "Skip",
+  "bimometricTitle": "Verify your identity",
+  "bimometricDescription": "Use biometrics to verify your identity",
+  "biometricAuthIsNotSupportedMessage": "This device does not support biometric authentication.",
+  "oops": "Oops",
+  "noDataMessage": "There is no data to display.",
+  "loadDataErrorMessage": "Error while loading data, tap to try again",
+  "processing": "Processing...",
+  "digitalWallet": "Digital Wallet",
+  "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
+}

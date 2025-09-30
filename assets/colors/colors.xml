@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="main_green">#148D4F</color>
+    <color name="red">#E51F37</color>
+    <color name="text_color">#111111</color>
+    <color name="text_light_grey">#C5C4C4</color>
+    <color name="bg_gray">#F1F1F1</color>
+    <color name="text_grey">#757575</color>
+    <color name="semi_grey">#515151</color>
+
+    <color name="sub_yellow">#EAD87A</color>
+    <color name="light_silver">#D9D9D9</color>
+    <color name="honeydew">#F1FFE7</color>
+
+    <color name="dark_green">#0A7746</color>
+    <color name="second_green">#55A845</color>
+    <color name="cyan">#00B0C3</color>
+
+    <color name="smoky_black">#042702</color>
+    <color name="palm_leaf">#639C38</color>
+    <color name="cultured">#F4F4F4</color>
+    <color name="black">#000000</color>
+    <color name="dartmouth_green">#097442</color>
+    <color name="apple">#62B345</color>
+    <color name="smoky_white">#15000000</color>
+    <color name="chinese_silver">#CCCCCC</color>
+    <color name="anti_flash_white">#F2F6F3</color>
+
+    <color name="dutch_white">#EFDCBB</color>
+    <color name="champagne_pink">#EDDAD3</color>
+    <color name="chinese_black">#101010</color>
+    <color name="wild_sand">#F5F5F5</color>
+    <color name="alabaster">#F8F8F8</color>
+    <color name="orange">#F2994A</color>
+    <color name="true_blue">#037DD6</color>
+    <color name="ankees_blue">#1E293B</color>
+    <color name="shiny_shamrock">#60B582</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="ink_0">#F7F9FF</color>
+    <color name="ink_40">#8F9ABF</color>
+    <color name="ink_5">#F0F3FC</color>
+    <color name="ink_60">#636F99</color>
+    <color name="ink_80">#202740</color>
+    <color name="ink_100">#0B1020</color>
+    <color name="ink_10">#CFD4E5</color>
+    <color name="green_100">#00CB51</color>
+    <color name="ink_20">#B8BFD9</color>
+    <color name="green_0">#F0FFF5</color>
+    <color name="green_10">#F0FFF5</color>
+    <color name="red_100">#FD3549</color>
+    <color name="red_0">#FFF2F4</color>
+    <color name="blue_0">#D9E2FF</color>
+    <color name="blue_5">#BFCFFF</color>
+    <color name="blue_10">#91A9F2</color>
+    <color name="blue_15">#91A9F2</color>
+    <color name="blue_20">#7997F2</color>
+    <color name="blue_40">#6185F2</color>
+    <color name="blue_60">#4973F2</color>
+    <color name="blue_80">#2E5DE8</color>
+    <color name="blue_100">#1348E8</color>
+    <color name="yellow_100">#F99F01</color>
+    <color name="yellow_5">#FFFBF2</color>
+    <color name="orange_100">#F36034</color>
+
+    <color name="EOF">#FA0606</color>
+</resources>

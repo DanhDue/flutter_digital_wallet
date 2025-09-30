@@ -1,0 +1,16 @@
+{
+  "appName": "Wallet",
+  "close": "Đóng",
+  "titleDialog": "Thông báo",
+  "commonErrorMessage": "Đã có lỗi xảy ra. Vui lòng thử lại sau!",
+  "skip": "Bỏ qua",
+  "bimometricTitle": "Xác thực danh tính của bạn",
+  "bimometricDescription": "Sử dụng sinh trắc học để xác thực danh tính của bạn",
+  "biometricAuthIsNotSupportedMessage": "Thiết bị này không hỗ trợ xác thực sinh trắc học.",
+  "oops": "Oops",
+  "noDataMessage": "Chưa có dữ liệu để hiển thị.",
+  "loadDataErrorMessage": "Có lỗi trong khi tải dữ liệu, chạm để thử lại.",
+  "processing": "Đang xử lý...",
+  "digitalWallet": "Digital Wallet",
+  "eof": "Kết thúc tập tin. Vui lòng thêm văn bản mới phía trên mục này để tránh xung đột. Cảm ơn!"
+}

@@ -1,0 +1,99 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Assistant(devDebug)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define-from-file",
+        "secureFiles/dev/environment-configs.json",
+        "--flavor",
+        "dev",
+        "--debug"
+      ]
+    },
+    {
+      "name": "Assistant(devProfile)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define-from-file",
+        "secureFiles/dev/environment-configs.json",
+        "--flavor",
+        "dev",
+        "--profile"
+      ]
+    },
+    {
+      "name": "Assistant(devProd)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define-from-file",
+        "secureFiles/dev/environment-configs.json",
+        "--flavor",
+        "dev",
+        "--release"
+      ]
+    },
+    {
+      "name": "Assistant(stgDebug)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define-from-file",
+        "secureFiles/stg/environment-configs.json",
+        "--flavor",
+        "stg",
+        "--debug"
+      ]
+    },
+    {
+      "name": "Assistant(stgRelease)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define-from-file",
+        "secureFiles/stg/environment-configs.json",
+        "--flavor",
+        "stg",
+        "--release"
+      ]
+    },
+    {
+      "name": "Assistant(prdDebug)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define-from-file",
+        "secureFiles/prd/environment-configs.json",
+        "--flavor",
+        "prd",
+        "--debug"
+      ]
+    },
+    {
+      "name": "Assistant(prdRelease)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define-from-file",
+        "secureFiles/prd/environment-configs.json",
+        "--flavor",
+        "prd",
+        "--release"
+      ]
+    }
+  ]
+}

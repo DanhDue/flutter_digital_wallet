@@ -1,0 +1,217 @@
+name: shueisha
+
+packages:
+  - lib/utils/**
+
+command:
+  bootstrap:
+    runPubGetInParallel: false
+
+scripts:
+  genAlls:
+    run: bash ./scripts/genAlls.sh
+    description: gen locales & trigger build_runner
+
+  build_runner:
+    run: bash ./scripts/build_runner.sh
+    description: build freezed models.
+
+  flutterClean:
+    run: bash ./scripts/clean.sh
+    description: flutter clean for main project.
+
+  pubGet:
+    run: bash ./scripts/pub_get.sh
+    description: pub get for main project.
+
+  analyze: dart analyze
+
+  dartfmt: 
+    run: bash ./scripts/dartfmt.sh
+    description: format the source code.
+
+  useAndroidLocalhost:
+    run: adb reverse tcp:3000 tcp:3000
+
+  unit:test:
+    run: melos exec -- dart test
+
+  fvmUse:
+    run: fvm use 3.29.3
+    description: sync the Flutter SDK version for all modules.
+
+  testWithCoverage:
+    run: bash ./scripts/testWithCoverage.sh
+    description: install lcov and convert the lcov.info file to HTML pages.
+
+  combineTestCoverages: bash ./scripts/combine_coverage.sh
+
+  install_lcov:
+    run: brew install lcov
+    description: install lcov and convert the lcov.info file to HTML pages.
+
+  lcovToHtmls:
+    run: bash ./scripts/lcovToHtmls.sh
+    description: convert the lcov.info file to HTML pages.
+
+  setNanoEditorForGit:
+    run: bash ./scripts/set_nano_editor_for_git.sh
+    description: setup global editor for git is Nano.
+
+  # Additional cleanup lifecycle script, executed when `melos clean` is run.
+  postClean: >
+    melos exec -c 6 -- "flutter clean"
+
+  add-header-ignore-flags:
+    # If you add here another --ignore flag, add it also to
+    # "add-license-header" and "check-license-header".
+    run: |
+      addlicense -f ignore_flags.txt \
+        --ignore ".dart_tool/**" \
+        --ignore "build/**" \
+        --ignore "builds/**" \
+        --ignore "android/**" \
+        --ignore "ios/**" \
+        --ignore "test/**" \
+        --ignore "**/*.yml" \
+        --ignore "**/*.yaml" \
+        --ignore "**/*.xml" \
+        --ignore "**/*.g.dart" \
+        --ignore "**/*.gen.dart" \
+        --ignore "**/*.freezed.dart" \
+        --ignore "**/*.tailor.dart" \
+        --ignore "**/*.mocks.dart" \
+        --ignore "**/generated/**" \
+        --ignore "**/*_controller.dart" \
+        --ignore "**/*_repository_impl.dart" \
+        --ignore "**/*_repository.dart" \
+        --ignore "**/*.sh" \
+        --ignore "**/*.html" \
+        --ignore "**/*.js" \
+        --ignore "**/*.ts" \
+        --ignore "**/*.g.h" \
+        --ignore "**/*.g.m" \
+        --ignore "**/*.rb" \
+        --ignore "**/*.txt" \
+        --ignore "**/*.cmake" \
+        --ignore "**/Runner/AppDelegate.swift" \
+        --ignore "**/Runner/MainFlutterWindow.swift" \
+        --ignore "**/Runner/Runner-Bridging-Header.h" \
+        --ignore "**/Runner/AppDelegate.h" \
+        --ignore "**/Runner/AppDelegate.m" \
+        --ignore "**/Runner/main.m" \
+        --ignore "**/MainActivity.kt" \
+        --ignore "**/MainActivity.java" \
+        --ignore "**/FlutterMultiDexApplication.java" \
+        --ignore "**/GeneratedPluginRegistrant.swift" \
+        --ignore "**/Pods/**" \
+        .
+    description: |
+      Add header ignore_flags.txt to all necessary files.
+      - Requires: Run this one before header license adding.
+
+  add-license-header:
+    # If you add here another --ignore flag, add it also to
+    # "check-license-header" and "add-header-ignore-flags".
+    run: |
+      addlicense -f header_template.txt \
+        --ignore ".dart_tool/**" \
+        --ignore "build/**" \
+        --ignore "builds/**" \
+        --ignore "android/**" \
+        --ignore "ios/**" \
+        --ignore "**/*.yml" \
+        --ignore "**/*.yaml" \
+        --ignore "**/*.xml" \
+        --ignore "**/*.g.dart" \
+        --ignore "**/*.gen.dart" \
+        --ignore "**/*.freezed.dart" \
+        --ignore "**/*.tailor.dart" \
+        --ignore "**/*.mocks.dart" \
+        --ignore "**/generated/**" \
+        --ignore "**/*.sh" \
+        --ignore "**/*.html" \
+        --ignore "**/*.js" \
+        --ignore "**/*.ts" \
+        --ignore "**/*.g.h" \
+        --ignore "**/*.g.m" \
+        --ignore "**/*.rb" \
+        --ignore "**/*.txt" \
+        --ignore "**/*.cmake" \
+        --ignore "**/Runner/AppDelegate.swift" \
+        --ignore "**/Runner/MainFlutterWindow.swift" \
+        --ignore "**/Runner/Runner-Bridging-Header.h" \
+        --ignore "**/Runner/AppDelegate.h" \
+        --ignore "**/Runner/AppDelegate.m" \
+        --ignore "**/Runner/main.m" \
+        --ignore "**/MainActivity.kt" \
+        --ignore "**/MainActivity.java" \
+        --ignore "**/FlutterMultiDexApplication.java" \
+        --ignore "**/GeneratedPluginRegistrant.swift" \
+        --ignore "**/Pods/**" \
+        .
+    description: |
+      Add a license header to all necessary files.
+      - Requires: Run add-header-ignore-flags to add necessary ignore flags first.
+
+  check-license-header:
+    # If you add here another --ignore flag, add it also to
+    # "add-license-header" and "add-header-ignore-flags".
+    run: |
+      addlicense -f header_template.txt \
+        --check \
+        --ignore ".dart_tool/**" \
+        --ignore "build/**" \
+        --ignore "builds/**" \
+        --ignore "android/**" \
+        --ignore "ios/**" \
+        --ignore "test/**" \
+        --ignore "**/*.yml" \
+        --ignore "**/*.yaml" \
+        --ignore "**/*.xml" \
+        --ignore "**/*.g.dart" \
+        --ignore "**/*.gen.dart" \
+        --ignore "**/*.freezed.dart" \
+        --ignore "**/*.tailor.dart" \
+        --ignore "**/*.mocks.dart" \
+        --ignore "**/generated/**" \
+        --ignore "**/*.sh" \
+        --ignore "**/*.html" \
+        --ignore "**/*.js" \
+        --ignore "**/*.ts" \
+        --ignore "**/*.g.h" \
+        --ignore "**/*.g.m" \
+        --ignore "**/*.rb" \
+        --ignore "**/*.txt" \
+        --ignore "**/*.cmake" \
+        --ignore "**/Runner/AppDelegate.swift" \
+        --ignore "**/Runner/MainFlutterWindow.swift" \
+        --ignore "**/Runner/Runner-Bridging-Header.h" \
+        --ignore "**/Runner/AppDelegate.h" \
+        --ignore "**/Runner/AppDelegate.m" \
+        --ignore "**/Runner/main.m" \
+        --ignore "**/MainActivity.kt" \
+        --ignore "**/MainActivity.java" \
+        --ignore "**/FlutterMultiDexApplication.java" \
+        --ignore "**/GeneratedPluginRegistrant.swift" \
+        --ignore "**/Pods/**" \
+        .
+    description: check the license header in all necessary files.
+
+  clearGitCached: bash ./scripts/clearGitCachedFiles.sh
+
+  buildApk:
+    run: bash ./scripts/buildApk.sh
+    description: build the app bundle release.
+
+  buildIPA:
+    run: bash ./scripts/buildIPA.sh
+    description: build the app ipa release.
+
+  buildBundle:
+    run: bash ./scripts/buildBundle.sh
+    description: build the app ipa release.
+
+  installGitTools:
+    run: bash ./scripts/install_git_tools.sh
+    description: install git hooks.
