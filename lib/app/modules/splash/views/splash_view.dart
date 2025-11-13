@@ -1,12 +1,9 @@
-// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
-
-// coverage:ignore-file
-
 import 'package:animated_visibility/animated_visibility.dart';
 import 'package:d3_wallet/base/base_view.dart';
 import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
+import 'package:d3_wallet/widgets/blink_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
@@ -50,6 +47,12 @@ class SplashView extends BaseView<SplashController> {
                     type: AnimationType.letter,
                     slideType: SlideAnimationType.leftRight,
                     textStyle: context.appThemes.bold24,
+                  ),
+                  BlinkText(
+                    "Please wait 2 minutes for start Zeno service! @@",
+                    style: context.appThemes.bold14,
+                    beginColor: context.appThemes.silver,
+                    endColor: context.appThemes.red100,
                   ),
                   SizedBox(height: 136),
                 ],

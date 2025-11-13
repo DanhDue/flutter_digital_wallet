@@ -14,12 +14,22 @@ class AppUri {
   static const int connectionTimeout = 30000;
 
   static const String users = 'users';
-  static const String wallet = 'wallets';
+  static const String wallets = 'wallets';
+  static const String tokens = 'tokens';
 }
 
 class UriPaths {
   static const String api = "api";
   static const String apiVersion = "v1";
   static const String mnemonics = "/mnemonics";
-  static const String validation = "/{address}/validation";
+  static const String address = "/{address}";
+  static const String airdrop = "/airdrop";
+  static const String account = "/account";
+  static const String accounts = "/accounts";
+  static const String transfer = "/transfer";
+  static const String token_mint = "/{mint_address}";
+}
+
+class UriPathParameters {
+  static const String address = "/{address}";
 }

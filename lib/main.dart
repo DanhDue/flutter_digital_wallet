@@ -80,15 +80,6 @@ void main() async {
           initialBinding: AppGlobalBindings(),
           initialRoute: AppPages.INITIAL,
           getPages: AppPages.routes,
-          // builder: EasyLoading.init(
-          //   builder: (context, widget) {
-          //     EasyLoading.init();
-          //     return MediaQuery(
-          //       data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)),
-          //       child: widget!,
-          //     );
-          //   },
-          // ),
           builder: FlutterSmartDialog.init(
             loadingBuilder: (String msg) => CustomLoadingWidget(msg: msg),
           ),

@@ -5,13 +5,16 @@
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
 import 'package:d3_wallet/data/remote/app_uri.dart';
 import 'package:d3_wallet/data/remote/dio_factory.dart';
+import 'package:d3_wallet/data/remote/token_client/token_client.dart';
 import 'package:d3_wallet/data/remote/wallet_client/wallet_client.dart';
 import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
 import 'package:d3_wallet/data/repositories/impl/app_configs_repository_impl.dart';
 import 'package:d3_wallet/data/repositories/impl/secure_storage_repository_impl.dart';
+import 'package:d3_wallet/data/repositories/impl/token_repository_impl.dart';
 import 'package:d3_wallet/data/repositories/impl/wallet_repository_impl.dart';
 import 'package:d3_wallet/data/repositories/secure_keys.dart';
 import 'package:d3_wallet/data/repositories/secure_storage_repository.dart';
+import 'package:d3_wallet/data/repositories/token_repository.dart';
 import 'package:d3_wallet/data/repositories/wallet_repository.dart';
 import 'package:d3_wallet/utils/biometric_auth/biometric_authenticator.dart';
 import 'package:d3_wallet/utils/biometric_auth/impl/biometric_authenticator_impl.dart';
@@ -32,7 +35,12 @@ class AppGlobalBindings extends Bindings {
     Get.lazyPut<AppConfigsRepository>(() => AppConfigurationsRepositoryImpl(), fenix: true);
     Get.lazyPut<LocalAuthentication>(() => LocalAuthentication(), fenix: true);
     Get.lazyPut<BiometricAuthenticator>(() => BiometricAuthenticatorImpl(), fenix: true);
-    Get.lazyPut(() => WalletClient(Get.find(), baseUrl: AppUri.wallet.buildAppUri()), fenix: true);
+    Get.lazyPut(
+      () => WalletClient(Get.find(), baseUrl: AppUri.wallets.buildAppUri()),
+      fenix: true,
+    );
     Get.lazyPut<WalletRepository>(() => WalletRepositoryImpl(), fenix: true);
+    Get.lazyPut(() => TokenClient(Get.find(), baseUrl: AppUri.tokens.buildAppUri()), fenix: true);
+    Get.lazyPut<TokenRepository>(() => TokenRepositoryImpl(), fenix: true);
   }
 }
