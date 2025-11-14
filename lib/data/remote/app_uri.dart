@@ -16,6 +16,7 @@ class AppUri {
   static const String users = 'users';
   static const String wallets = 'wallets';
   static const String tokens = 'tokens';
+  static const String healthz = 'healthz';
 }
 
 class UriPaths {

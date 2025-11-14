@@ -53,10 +53,13 @@ class SplashView extends BaseView<SplashController> {
                     textStyle: context.appThemes.bold24,
                   ),
                   BlinkText(
-                    "Please wait 2 minutes for start Zeno service! @@",
+                    controller.showRestartServiceWarning.value
+                        ? LocaleKeys.restartServiceWarning.tr
+                        : LocaleKeys.serviceHealthChecking.tr,
                     style: context.appThemes.bold14,
                     beginColor: context.appThemes.silver,
                     endColor: context.appThemes.red100,
+                    textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 136),
                 ],

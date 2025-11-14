@@ -125,6 +125,7 @@ extension StringExt on String? {
       return null;
     }
     try {
+      if (this?.contains(AppUri.healthz) == true) return Uri.parse(this!).toString();
       final uri = Uri.parse("${UriPaths.api}/${UriPaths.apiVersion}/$this");
       return uri.toString();
     } on Exception catch (e) {
