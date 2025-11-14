@@ -14,16 +14,13 @@ abstract class TokenAccountObject with _$TokenAccountObject {
   const factory TokenAccountObject({
     @JsonKey(name: 'address') String? address,
     @JsonKey(name: 'owner') String? owner,
-    @JsonKey(name: 'amount') int? amount,
+    @JsonKey(name: 'amount') double? amount,
     @JsonKey(name: 'mint_token') MintTokenObject? mintToken,
     @JsonKey(name: 'account_owner') String? accountOwner,
   }) = _TokenAccountObject;
 
   factory TokenAccountObject.fromJson(Map<String, Object?> json) =>
       _$TokenAccountObjectFromJson(json);
-
-  // @override
-  // Map<String, dynamic> toJson() => _$TokenAccountObjectToJson(this as _TokenAccountObject);
 }
 
 TokenAccountObject? jsonToNullableUserObject(Object? json) =>

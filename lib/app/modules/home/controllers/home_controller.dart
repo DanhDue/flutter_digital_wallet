@@ -52,6 +52,8 @@ class HomeController extends BaseController {
       TokenTransferCreationRequestObject(
         ownerBs58PrivateKey:
             "4yxDiGDbW7MKUy6PN628ZDsSDT51zrys3vWWSkh58twVrSkqnxQ93EW2wLEaw2hVR1Rw7c72B5nLkCbkMpwQ3E6X",
+        payerBs58PrivateKey:
+            "bqoPDmymK4nn7tJWeFRoVt78v7s1t2NnUUsQobMfv1jLGaYYnZF1sVrusz3djjt415GooSFaVHpGAWXDC5Mpq9V",
         recipient: "CRG9hpv6WpMHhiNZKF9XSjTnfS9SavtTJqhTRc3xG4GZ",
         amount: 111,
         mintAddress: "DttvtPZ92yZrzUTeF8jqtDXaQLDGVHVx5acNhEtLVH2w",

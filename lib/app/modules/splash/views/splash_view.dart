@@ -1,3 +1,7 @@
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+// coverage:ignore-file
+
 import 'package:animated_visibility/animated_visibility.dart';
 import 'package:d3_wallet/base/base_view.dart';
 import 'package:d3_wallet/generated/assets.gen.dart';
