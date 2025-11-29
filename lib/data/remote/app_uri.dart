@@ -16,6 +16,7 @@ class AppUri {
   static const String users = 'users';
   static const String wallets = 'wallets';
   static const String tokens = 'tokens';
+  static const String transactions = 'transactions';
   static const String healthz = 'healthz';
 }
 
@@ -33,4 +34,5 @@ class UriPaths {
 
 class UriPathParameters {
   static const String address = "/{address}";
+  static const String signature = "/{signature}";
 }

@@ -10,6 +10,7 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:talker_dio_logger/talker_dio_logger.dart';
 import 'package:talker_flutter/talker_flutter.dart';
+
 class DioFactory {
   Duration _connectTimeout = const Duration(milliseconds: AppUri.connectionTimeout);
   Duration _receiveTimeout = const Duration(milliseconds: AppUri.receiveTimeout);
