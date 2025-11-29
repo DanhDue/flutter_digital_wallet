@@ -10,21 +10,42 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:talker_dio_logger/talker_dio_logger.dart';
 import 'package:talker_flutter/talker_flutter.dart';
-
 class DioFactory {
-  final Dio dio;
-  DioFactory._internal()
-    : dio = Dio(
-        BaseOptions(
-          baseUrl: EnvironmentConfig.BASE_URL,
-          connectTimeout: const Duration(milliseconds: AppUri.connectionTimeout),
-          receiveTimeout: const Duration(milliseconds: AppUri.receiveTimeout),
-          contentType: Headers.jsonContentType,
-          responseType: ResponseType.json,
-        ),
-      ) {
+  Duration _connectTimeout = const Duration(milliseconds: AppUri.connectionTimeout);
+  Duration _receiveTimeout = const Duration(milliseconds: AppUri.receiveTimeout);
+
+  DioFactory withConnectTimeout(Duration timeout) {
+    _connectTimeout = timeout;
+    return this;
+  }
+
+  DioFactory withReceiveTimeout(Duration timeout) {
+    _receiveTimeout = timeout;
+    return this;
+  }
+
+  Dio? _dio;
+
+  Dio get dio {
+    _dio ??= _createDio();
+    return _dio!;
+  }
+
+  DioFactory._internal();
+
+  Dio _createDio() {
+    final dioInstance = Dio(
+      BaseOptions(
+        baseUrl: EnvironmentConfig.BASE_URL,
+        connectTimeout: _connectTimeout,
+        receiveTimeout: _receiveTimeout,
+        contentType: Headers.jsonContentType,
+        responseType: ResponseType.json,
+      ),
+    );
+
     if (!kReleaseMode || EnvironmentConfig.USE_TALKER) {
-      dio.interceptors.add(
+      dioInstance.interceptors.add(
         TalkerDioLogger(
           talker: Get.find<Talker>(),
           settings: const TalkerDioLoggerSettings(
@@ -36,7 +57,7 @@ class DioFactory {
         ),
       );
     }
-    dio.interceptors.add(
+    dioInstance.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           // Add bearer token if user is logged in
@@ -51,6 +72,7 @@ class DioFactory {
         },
       ),
     );
+    return dioInstance;
   }
 
   static final DioFactory _singleton = DioFactory._internal();
