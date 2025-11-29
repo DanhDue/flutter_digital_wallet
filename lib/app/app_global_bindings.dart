@@ -35,7 +35,10 @@ class AppGlobalBindings extends Bindings {
     Get.lazyPut<SecureStorageRepository>(() => SecureStorageRepositoryImpl(), fenix: true);
     Get.lazyPut<SecureKeys>(() => SecureKeys(), fenix: true);
     Hive.registerAdapter(AppConfigurationsAdapter());
-    Get.lazyPut(() => DioFactory().dio, fenix: true);
+    Get.lazyPut(
+      () => DioFactory().withReceiveTimeout(const Duration(seconds: 6)).dio,
+      fenix: true,
+    );
     Get.lazyPut(
       () => HealthCheckClient(Get.find(), baseUrl: AppUri.healthz.buildAppUri()),
       fenix: true,

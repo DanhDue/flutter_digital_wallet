@@ -3,6 +3,7 @@
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/data/bean/request/token_transfer_creation_request_object/token_transfer_creation_request_object.dart';
 import 'package:d3_wallet/data/repositories/token_repository.dart';
+import 'package:d3_wallet/data/repositories/transaction_repository.dart';
 import 'package:d3_wallet/data/result.dart';
 import 'package:dart_helper_utils/dart_helper_utils.dart';
 import 'package:fimber/fimber.dart';
@@ -12,7 +13,7 @@ class HomeController extends BaseController {
   final liveChatBotIsShown = false.obs;
   final liveChatBotIsDancing = false.obs;
 
-  final tokenRepo = Get.find<TokenRepository>();
+  final transactionRepo = Get.find<TransactionRepository>();
 
   @override
   void onInit() {
@@ -48,24 +49,37 @@ class HomeController extends BaseController {
     //   "DttvtPZ92yZrzUTeF8jqtDXaQLDGVHVx5acNhEtLVH2w",
     // );
 
-    final walletResponse = await tokenRepo.transfer(
-      TokenTransferCreationRequestObject(
-        ownerBs58PrivateKey:
-            "4yxDiGDbW7MKUy6PN628ZDsSDT51zrys3vWWSkh58twVrSkqnxQ93EW2wLEaw2hVR1Rw7c72B5nLkCbkMpwQ3E6X",
-        payerBs58PrivateKey:
-            "bqoPDmymK4nn7tJWeFRoVt78v7s1t2NnUUsQobMfv1jLGaYYnZF1sVrusz3djjt415GooSFaVHpGAWXDC5Mpq9V",
-        recipient: "CRG9hpv6WpMHhiNZKF9XSjTnfS9SavtTJqhTRc3xG4GZ",
-        amount: 111,
-        mintAddress: "DttvtPZ92yZrzUTeF8jqtDXaQLDGVHVx5acNhEtLVH2w",
-        symbol: "ZEO",
-        name: "Zeno",
-        decimals: 9,
-        isPreview: true,
-        payForPatnerTokenAccountCreation: false,
-      ),
+    // final walletResponse = await tokenRepo.transfer(
+    //   TokenTransferCreationRequestObject(
+    //     ownerBs58PrivateKey:
+    //         "4yxDiGDbW7MKUy6PN628ZDsSDT51zrys3vWWSkh58twVrSkqnxQ93EW2wLEaw2hVR1Rw7c72B5nLkCbkMpwQ3E6X",
+    //     payerBs58PrivateKey:
+    //         "bqoPDmymK4nn7tJWeFRoVt78v7s1t2NnUUsQobMfv1jLGaYYnZF1sVrusz3djjt415GooSFaVHpGAWXDC5Mpq9V",
+    //     recipient: "CRG9hpv6WpMHhiNZKF9XSjTnfS9SavtTJqhTRc3xG4GZ",
+    //     amount: 111,
+    //     mintAddress: "DttvtPZ92yZrzUTeF8jqtDXaQLDGVHVx5acNhEtLVH2w",
+    //     symbol: "ZEO",
+    //     name: "Zeno",
+    //     decimals: 9,
+    //     isPreview: true,
+    //     payForPatnerTokenAccountCreation: false,
+    //   ),
+    // );
+
+    final transactionResponse = await transactionRepo.getTransactionBySignature(
+      "3vmjmE6q3rj7WkCe1baig7tzrbV3nzW5BS8KzKkX8dDQvYd329fTKkSLazeU7k2cvFzA2AtRHus7vNNwjaarTiKx",
+      parsedJson: true,
+      owners: [
+        "CRG9hpv6WpMHhiNZKF9XSjTnfS9SavtTJqhTRc3xG4GZ",
+        "5Vvc61qF3hzatbifr9x4dvUZrGAZ3UhWSuqNU5EBdgG4",
+      ],
     );
 
-    switch (walletResponse) {
+    // final transactionResponse = await transactionRepo.getTransactionByOwner(
+    //   "CRG9hpv6WpMHhiNZKF9XSjTnfS9SavtTJqhTRc3xG4GZ",
+    // );
+
+    switch (transactionResponse) {
       case Success(data: final response):
         Fimber.d("wallet: ${response?.data?.toJson().encodedJsonString}");
         isLoading.value = false;

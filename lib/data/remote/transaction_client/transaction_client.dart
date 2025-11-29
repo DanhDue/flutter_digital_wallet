@@ -24,7 +24,7 @@ abstract class TransactionClient {
 
   @GET("")
   Future<BaseResponseObject<List<TransactionResponseObject?>?>?> getTransactionByOwner(
-    @Path("owner") String owner,
+    @Query("owner") String owner,
     @Query("limit") int? limit,
     @Query("before") String? before,
     @Query("until") String? until,
