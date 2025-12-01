@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Assistant(devDebug)",
+      "name": "Zeno(devDebug)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "name": "Assistant(devProfile)",
+      "name": "Zeno(devProfile)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "name": "Assistant(devProd)",
+      "name": "Zeno(devProd)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "name": "Assistant(stgDebug)",
+      "name": "Zeno(stgDebug)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "name": "Assistant(stgRelease)",
+      "name": "Zeno(stgRelease)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
@@ -70,7 +70,7 @@
       ]
     },
     {
-      "name": "Assistant(prdDebug)",
+      "name": "Zeno(prdDebug)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "name": "Assistant(prdRelease)",
+      "name": "Zeno(prdRelease)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",

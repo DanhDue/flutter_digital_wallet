@@ -1,8 +1,6 @@
 // Copyright (c) 2025, one of the DanhDue ExOICTIF projects. All rights reserved.
 
 import 'package:d3_wallet/base/base_controller.dart';
-import 'package:d3_wallet/data/bean/request/token_transfer_creation_request_object/token_transfer_creation_request_object.dart';
-import 'package:d3_wallet/data/repositories/token_repository.dart';
 import 'package:d3_wallet/data/repositories/transaction_repository.dart';
 import 'package:d3_wallet/data/result.dart';
 import 'package:dart_helper_utils/dart_helper_utils.dart';
