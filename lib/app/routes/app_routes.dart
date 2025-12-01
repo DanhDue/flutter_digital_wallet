@@ -11,6 +11,8 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const TALKER = _Paths.TALKER;
   static const SPLASH = _Paths.SPLASH;
+  static const START = _Paths.INTRO + _Paths.START;
+  static const INTRO = _Paths.INTRO;
 }
 
 abstract class _Paths {
@@ -19,4 +21,6 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const TALKER = '/talker';
   static const SPLASH = '/splash';
+  static const START = '/start';
+  static const INTRO = '/intro';
 }
