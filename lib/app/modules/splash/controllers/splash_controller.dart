@@ -14,6 +14,10 @@ class SplashController extends BaseController {
   final liveChatBotIsDancing = false.obs;
   final showRestartServiceWarning = false.obs;
 
+  static int get HEALTH_CHECK_RETRY_INTERVAL => 6;
+  static int get START_ZENO_SERVICE_INTERVAL => 38;
+  static int get START_SPLASH_ANIMATION_INTERVAL => 850;
+
   @override
   void onInit() {
     super.onInit();
@@ -25,30 +29,45 @@ class SplashController extends BaseController {
     super.onReady();
     Fimber.d("onReady()");
     liveChatBotIsShown.value = true;
-    Future.delayed(const Duration(milliseconds: 850), () {
+    Future.delayed(Duration(milliseconds: START_SPLASH_ANIMATION_INTERVAL), () {
       liveChatBotIsDancing.value = true;
     });
     final serviceIsLive = await healthz();
-    final delayTime = serviceIsLive ? 6 : 38;
+    final delayTime = serviceIsLive ? HEALTH_CHECK_RETRY_INTERVAL : START_ZENO_SERVICE_INTERVAL;
     Future.delayed(Duration(seconds: delayTime), () {
-      Get.toNamed(Routes.HOME);
+      if (serviceIsLive) {
+        Get.offAllNamed(Routes.HOME);
+      } else {
+        healthz(isLoop: true);
+      }
     });
   }
 
-  Future<bool> healthz() async {
+  Future<bool> healthz({bool isLoop = false}) async {
     try {
       final healthzResponse = await appConfigsRepository.healthz();
       switch (healthzResponse) {
         case Success(data: final response):
           showRestartServiceWarning.value = false;
+          if (isLoop) Get.offAllNamed(Routes.HOME);
           return response?.success == true;
         case Failure(:final error):
           error.printError();
           showRestartServiceWarning.value = true;
+          if (isLoop) {
+            Future.delayed(Duration(seconds: HEALTH_CHECK_RETRY_INTERVAL), () {
+              healthz(isLoop: true);
+            });
+          }
           return false;
       }
     } catch (exception) {
       exception.printError();
+      if (isLoop) {
+        Future.delayed(Duration(seconds: HEALTH_CHECK_RETRY_INTERVAL), () {
+          healthz(isLoop: true);
+        });
+      }
       return false;
     }
   }
