@@ -37,7 +37,7 @@ dependencies:
   animated_bottom_navigation_bar: ^1.4.0
   bip39: ^1.0.6
   equatable: ^2.0.7
-  jiffy: ^6.4.3
+  # jiffy: 6.4.4
   hive_flutter: ^1.1.0
   flutter_secure_storage: ^9.2.4
   pretty_qr_code: ^3.4.0

@@ -5,28 +5,34 @@
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
 
-class AssistantUnfilledButton extends StatelessWidget {
-  const AssistantUnfilledButton({
+class CustomUnfilledButton extends StatelessWidget {
+  const CustomUnfilledButton({
     super.key,
     this.onPressed,
     this.text,
     this.backgroundColor,
     this.borderColor,
+    this.borderRadius,
     this.textColor,
     this.horizontalPadding,
     this.horizontalTextPadding,
     this.subText,
     this.startIcon,
     this.endIcon,
+    this.verticalPadding,
+    this.verticalTextPadding,
   });
 
   final VoidCallback? onPressed;
   final String? text;
   final Color? backgroundColor;
   final Color? borderColor;
+  final double? borderRadius;
   final Color? textColor;
   final double? horizontalPadding;
+  final double? verticalPadding;
   final double? horizontalTextPadding;
+  final double? verticalTextPadding;
   final String? subText;
   final Widget? startIcon;
   final Widget? endIcon;
@@ -35,7 +41,10 @@ class AssistantUnfilledButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsetsGeometry.symmetric(horizontal: horizontalPadding ?? 16),
+      padding: EdgeInsetsGeometry.symmetric(
+        horizontal: horizontalPadding ?? 0,
+        vertical: verticalPadding ?? 0,
+      ),
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
@@ -45,7 +54,7 @@ class AssistantUnfilledButton extends StatelessWidget {
           ),
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(borderRadius ?? 6),
               side: BorderSide(
                 width: borderColor != null ? 1 : 0,
                 color: borderColor ?? context.appThemes.transparent,
@@ -55,7 +64,8 @@ class AssistantUnfilledButton extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: (horizontalPadding == 0) ? (horizontalTextPadding ?? 8) : 0,
+            horizontal: horizontalTextPadding ?? 8,
+            vertical: verticalTextPadding ?? 8,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -79,7 +89,7 @@ class AssistantUnfilledButton extends StatelessWidget {
                   children: [
                     Text(
                       text ?? "",
-                      style: context.appThemes.medium14.copyWith(
+                      style: context.appThemes.medium16.copyWith(
                         color: textColor ?? context.appThemes.blue100,
                       ),
                       textAlign: TextAlign.center,
@@ -88,7 +98,7 @@ class AssistantUnfilledButton extends StatelessWidget {
                       visible: subText?.isNotEmpty == true,
                       child: Text(
                         subText ?? "",
-                        style: context.appThemes.medium14.copyWith(color: context.appThemes.ink60),
+                        style: context.appThemes.medium16.copyWith(color: context.appThemes.ink60),
                       ),
                     ),
                   ],

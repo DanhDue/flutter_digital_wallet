@@ -18,5 +18,14 @@
   "swipeToGetStarted": "Swipe to get started",
   "secureCryptoWalletTitle": "The Most\nSecure & Easiest\nCrypto Wallet",
   "manageDigitalAssets": "Manage all your digital assets in one secure place.",
+  "gettingStarted": "Let's go",
+  "createANewWallet": "Create a new wallet",
+  "alreadyHaveAWallet": "I already have a wallet",
+  "welcomeToZenoWallet": "Welcome to ZenoWallet",
+  "firstIntroDescription": "Trusted by millions, ZenoWallet is a secure wallet making the world of crypto accessible to all.",
+  "secondIntroTitle": "Manage your digital assets",
+  "secondIntroDescription": "Store, spend and send digital assets like tokens, bitcoins, solana, ethereum, unique collectibles and more...",
+  "thirdIntroTitle": "Your gateway to crypto",
+  "thirdIntroDescription": "Login with ZenoWallet and make all transactions to invest, earn, play games, sell and more!",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

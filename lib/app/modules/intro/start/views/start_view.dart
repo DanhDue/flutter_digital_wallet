@@ -2,6 +2,7 @@
 
 // coverage:ignore-file
 
+import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/base/base_view.dart';
 import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
@@ -89,6 +90,7 @@ class StartView extends BaseView<StartController> {
             ),
             SliderButton(
               action: () async {
+                Get.toNamed(Routes.INTRO);
                 return false;
               },
               label: Text(

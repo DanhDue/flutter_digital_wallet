@@ -18,5 +18,14 @@
   "swipeToGetStarted": "Vuốt để bắt đầu",
   "secureCryptoWalletTitle": "Ví Tiền Điện Tử\nAn Toàn &\nDễ Sử Dụng nhất",
   "manageDigitalAssets": "Quản lý tất cả tài sản kỹ thuật số của bạn ở một nơi an toàn.",
+  "gettingStarted": "Bắt đầu ngay",
+  "createANewWallet": "Tạo một ví mới",
+  "alreadyHaveAWallet": "Tôi đã có sẵn một ví",
+  "welcomeToZenoWallet": "Chào mừng đến với ZenoWallet",
+  "firstIntroDescription": "Được hàng triệu người tin tưởng, ZenoWallet là ví an toàn giúp thế giới crypto có thể tiếp cận một cách dễ dàng và an toàn cho tất cả mọi người.",
+  "secondIntroTitle": "Quản lý tài sản kỹ thuật số của bạn",
+  "secondIntroDescription": "Lưu trữ, chi tiêu và gửi tài sản kỹ thuật số như tokens, bitcoins, solana, ethereum và các bộ sưu tập độc đáo.",
+  "thirdIntroTitle": "Cánh cửa vào thế giới crypto",
+  "thirdIntroDescription": "Đăng nhập với ZenoWallet và thực hiện tất cả giao dịch để đầu tư, kiếm tiền, chơi game, bán hàng và hơn thế nữa!",
   "eof": "Kết thúc tập tin. Vui lòng thêm văn bản mới phía trên mục này để tránh xung đột. Cảm ơn!"
 }
