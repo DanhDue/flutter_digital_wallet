@@ -43,7 +43,6 @@ void main() async {
   await Hive.initFlutter(appDocumentDir.path);
 
   PreAppInitializationBindings().dependencies();
-  final talker = Get.find<Talker>();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -83,7 +82,10 @@ void main() async {
           builder: FlutterSmartDialog.init(
             loadingBuilder: (String msg) => CustomLoadingWidget(msg: msg),
           ),
-          navigatorObservers: [FlutterSmartDialog.observer, TalkerRouteObserver(talker)],
+          navigatorObservers: [
+            FlutterSmartDialog.observer,
+            TalkerRouteObserver(Get.find<Talker>()),
+          ],
         ),
       ),
     );

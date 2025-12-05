@@ -26,27 +26,13 @@ class AppPages {
 
   static final routes = [
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
-    GetPage(
-        name: _Paths.LOGIN,
-        page: () => const LoginView(),
-        binding: LoginBinding()),
+    GetPage(name: _Paths.LOGIN, page: () => const LoginView(), binding: LoginBinding()),
     GetPage(
       name: _Paths.TALKER,
       page: () => TalkerScreen(talker: Get.find<Talker>(), theme: talkerTheme),
     ),
-    GetPage(
-        name: _Paths.SPLASH,
-        page: () => SplashView(),
-        binding: SplashBinding()),
-    GetPage(
-      name: _Paths.START,
-      page: () => const StartView(),
-      binding: StartBinding(),
-    ),
-    GetPage(
-      name: _Paths.INTRO,
-      page: () => const IntroView(),
-      binding: IntroBinding(),
-    ),
+    GetPage(name: _Paths.SPLASH, page: () => SplashView(), binding: SplashBinding()),
+    GetPage(name: _Paths.START, page: () => const StartView(), binding: StartBinding()),
+    GetPage(name: _Paths.INTRO, page: () => const IntroView(), binding: IntroBinding()),
   ];
 }

@@ -1,3 +1,7 @@
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+// coverage:ignore-file
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -9,16 +13,8 @@ class IntroView extends GetView<IntroController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('IntroView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'IntroView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      appBar: AppBar(title: const Text('IntroView'), centerTitle: true),
+      body: const Center(child: Text('IntroView is working', style: TextStyle(fontSize: 20))),
     );
   }
 }

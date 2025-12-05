@@ -36,7 +36,7 @@ class AppGlobalBindings extends Bindings {
     Get.lazyPut<SecureKeys>(() => SecureKeys(), fenix: true);
     Hive.registerAdapter(AppConfigurationsAdapter());
     Get.lazyPut(
-      () => DioFactory().withReceiveTimeout(const Duration(seconds: 6)).dio,
+      () => DioFactory().withReceiveTimeout(const Duration(seconds: 8)).dio,
       fenix: true,
     );
     Get.lazyPut(

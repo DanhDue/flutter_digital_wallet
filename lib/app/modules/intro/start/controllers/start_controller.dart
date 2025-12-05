@@ -1,3 +1,5 @@
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
 import 'package:get/get.dart';
 
 class StartController extends GetxController {

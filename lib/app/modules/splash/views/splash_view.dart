@@ -9,8 +9,7 @@ import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:d3_wallet/widgets/blink_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_utils/src/extensions/export.dart';
+import 'package:get/get.dart';
 import 'package:pretty_animated_text/pretty_animated_text.dart';
 
 import '../controllers/splash_controller.dart';
