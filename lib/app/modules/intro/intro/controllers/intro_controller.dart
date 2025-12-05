@@ -1,11 +1,8 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
-import 'package:get/get.dart';
+import 'package:d3_wallet/base/base_controller.dart';
 
-class IntroController extends GetxController {
-  //TODO: Implement IntroController
-
-  final count = 0.obs;
+class IntroController extends BaseController {
   @override
   void onInit() {
     super.onInit();
@@ -20,6 +17,4 @@ class IntroController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
