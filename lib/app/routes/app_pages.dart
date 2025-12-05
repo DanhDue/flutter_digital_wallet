@@ -32,7 +32,7 @@ class AppPages {
       page: () => TalkerScreen(talker: Get.find<Talker>(), theme: talkerTheme),
     ),
     GetPage(name: _Paths.SPLASH, page: () => SplashView(), binding: SplashBinding()),
-    GetPage(name: _Paths.START, page: () => const StartView(), binding: StartBinding()),
-    GetPage(name: _Paths.INTRO, page: () => const IntroView(), binding: IntroBinding()),
+    GetPage(name: _Paths.START, page: () => StartView(), binding: StartBinding()),
+    GetPage(name: _Paths.INTRO, page: () => IntroView(), binding: IntroBinding()),
   ];
 }

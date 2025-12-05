@@ -2,16 +2,16 @@
 
 // coverage:ignore-file
 
+import 'package:d3_wallet/base/base_view.dart';
 import 'package:flutter/material.dart';
-
-import 'package:get/get.dart';
 
 import '../controllers/start_controller.dart';
 
-class StartView extends GetView<StartController> {
-  const StartView({super.key});
+class StartView extends BaseView<StartController> {
+  StartView({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget? onCreateViews(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('StartView'), centerTitle: true),
       body: const Center(child: Text('StartView is working', style: TextStyle(fontSize: 20))),
