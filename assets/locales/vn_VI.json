@@ -14,5 +14,9 @@
   "digitalWallet": "Digital Wallet",
   "serviceHealthChecking": "Đang kiểm tra Zeno Service...",
   "restartServiceWarning": "Đang khởi động lại Zeno service. Vui lòng đợi trong giây lát! @@",
+  "zenoWallet": "Zeno Wallet",
+  "swipeToGetStarted": "Vuốt để bắt đầu",
+  "secureCryptoWalletTitle": "Ví Tiền Điện Tử\nAn Toàn &\nDễ Sử Dụng nhất",
+  "manageDigitalAssets": "Quản lý tất cả tài sản kỹ thuật số của bạn ở một nơi an toàn.",
   "eof": "Kết thúc tập tin. Vui lòng thêm văn bản mới phía trên mục này để tránh xung đột. Cảm ơn!"
 }
