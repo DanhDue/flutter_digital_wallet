@@ -38,7 +38,7 @@ class ThirdIntroPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 46),
-          Assets.images.icThirdIntro.svg(fit: BoxFit.cover),
+          Assets.images.icThirdIntro.image(fit: BoxFit.cover),
         ],
       ),
     );
