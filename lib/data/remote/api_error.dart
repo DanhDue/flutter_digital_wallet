@@ -20,6 +20,16 @@ class ApiError extends DioException {
     this.data,
   });
 
+  /// Creates an ApiError from a BaseResponseObject error message.
+  /// Used when the API returns success=false in the response body.
+  factory ApiError.fromBaseResponseError(String message) {
+    return ApiError(
+      requestOptions: RequestOptions(path: ''),
+      errorType: ApiExceptionType.badResponse,
+      message: message,
+    );
+  }
+
   factory ApiError.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.connectionTimeout:

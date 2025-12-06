@@ -48,7 +48,7 @@ class SplashController extends BaseController {
     });
     final serviceIsLive = await healthz();
     if (serviceIsLive) {
-      _checkLogin();
+      checkLogin();
     } else {
       Future.delayed(Duration(milliseconds: START_ZENO_SERVICE_INTERVAL), () {
         healthz(isLoop: true);
@@ -70,7 +70,8 @@ class SplashController extends BaseController {
         await appConfigsRepository.retrieveAppConfigurations() ?? AppConfigurations();
   }
 
-  _checkLogin() async {
+  @visibleForTesting
+  checkLogin() async {
     final appConfigurations = await appConfigsRepository.retrieveAppConfigurations();
     Fimber.d("App configurations: $appConfigurations");
     if (appConfigurations == null) {
@@ -114,13 +115,14 @@ class SplashController extends BaseController {
     }
   }
 
+  @visibleForTesting
   Future<bool> healthz({bool isLoop = false}) async {
     try {
       final healthzResponse = await appConfigsRepository.healthz();
       switch (healthzResponse) {
         case Success(data: final response):
           showRestartServiceWarning.value = false;
-          if (isLoop) _checkLogin();
+          if (isLoop) checkLogin();
           return response?.success == true;
         case Failure(:final error):
           error.printError();

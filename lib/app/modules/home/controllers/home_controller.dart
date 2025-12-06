@@ -1,13 +1,13 @@
 // Copyright (c) 2025, one of the DanhDue ExOICTIF projects. All rights reserved.
 
 import 'package:d3_wallet/base/base_controller.dart';
+import 'package:d3_wallet/base/base_networking_mixin.dart';
 import 'package:d3_wallet/data/repositories/transaction_repository.dart';
-import 'package:d3_wallet/data/result.dart';
 import 'package:dart_helper_utils/dart_helper_utils.dart';
 import 'package:fimber/fimber.dart';
 import 'package:get/get.dart';
 
-class HomeController extends BaseController {
+class HomeController extends BaseController with BaseNetworkingMixin {
   final liveChatBotIsShown = false.obs;
   final liveChatBotIsDancing = false.obs;
 
@@ -64,29 +64,23 @@ class HomeController extends BaseController {
     //   ),
     // );
 
-    final transactionResponse = await transactionRepo.getTransactionBySignature(
-      "3vmjmE6q3rj7WkCe1baig7tzrbV3nzW5BS8KzKkX8dDQvYd329fTKkSLazeU7k2cvFzA2AtRHus7vNNwjaarTiKx",
-      parsedJson: true,
-      owners: [
-        "CRG9hpv6WpMHhiNZKF9XSjTnfS9SavtTJqhTRc3xG4GZ",
-        "5Vvc61qF3hzatbifr9x4dvUZrGAZ3UhWSuqNU5EBdgG4",
-      ],
-    );
-
-    // final transactionResponse = await transactionRepo.getTransactionByOwner(
-    //   "CRG9hpv6WpMHhiNZKF9XSjTnfS9SavtTJqhTRc3xG4GZ",
-    // );
-
-    switch (transactionResponse) {
-      case Success(data: final response):
+    callApi(
+      transactionRepo.getTransactionBySignature(
+        "3vmjmE6q3rj7WkCe1baig7tzrbV3nzW5BS8KzKkX8dDQvYd329fTKkSLazeU7k2cvFzA2AtRHus7vNNwjaarTiKx",
+        parsedJson: true,
+        owners: [
+          "CRG9hpv6WpMHhiNZKF9XSjTnfS9SavtTJqhTRc3xG4GZ",
+          "5Vvc61qF3hzatbifr9x4dvUZrGAZ3UhWSuqNU5EBdgG4",
+        ],
+      ),
+      onSuccess: (response) {
         Fimber.d("wallet: ${response?.data?.toJson().encodedJsonString}");
-        isLoading.value = false;
-        break;
-      case Failure(:final error):
+      },
+      onError: (error) {
         Fimber.e(error.toString());
-        isLoading.value = false;
-        break;
-    }
+      },
+      showLoading: false,
+    );
   }
 
   @override

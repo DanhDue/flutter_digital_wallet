@@ -20,7 +20,7 @@ class BaseResponseObject<T> extends Equatable {
 
   const BaseResponseObject({this.success, this.code, this.message, this.data});
 
-  bool isSuccess() => code == successStatus;
+  bool isSuccess() => code == null || code == successStatus;
 
   factory BaseResponseObject.fromJson(
     Map<String, dynamic> json,

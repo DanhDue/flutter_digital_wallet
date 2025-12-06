@@ -4,18 +4,27 @@
 
 import 'package:animated_visibility/animated_visibility.dart';
 import 'package:d3_wallet/app/routes/app_pages.dart';
-import 'package:d3_wallet/base/base_view.dart';
+import 'package:d3_wallet/base/base_networking_view.dart';
 import 'package:d3_wallet/generated/assets.gen.dart';
+import 'package:d3_wallet/styles/app_themes.dart';
+import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends BaseView<HomeController> {
+class HomeView extends BaseNetworkingView<HomeController> {
   HomeView({super.key});
 
+  // @override
+  // Widget? buildLoading(BuildContext context) => Container(
+  //   color: Colors.amber,
+  //   child: const Center(child: CircularProgressIndicator(color: Colors.white)),
+  // );
+
   @override
-  Widget? onCreateViews(BuildContext context) {
+  Widget buildBody(BuildContext context, dynamic state) {
+    Fimber.d("buildBody(state: $state)");
     return Scaffold(
       backgroundColor: Colors.amber,
       body: SizedBox(

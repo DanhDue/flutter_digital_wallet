@@ -1,28 +1,16 @@
 // Copyright (c) 2025, one of the DanhDue ExOICTIF projects. All rights reserved.
 
-import 'package:d3_wallet/data/remote/api_error.dart';
-import 'package:d3_wallet/data/result.dart';
-import 'package:get/get.dart';
-
 import 'base_controller.dart';
+import 'base_networking_mixin.dart';
 
-abstract class BaseNetworkingController<T> extends BaseController<T> {
-  Future<void> callApi<D>(
-    Future<Result<D, ApiError>> apiCall, {
-    required void Function(D data) onSuccess,
-    void Function(ApiError error)? onError,
-  }) async {
-    change(null, status: RxStatus.loading());
-    final result = await apiCall;
-    switch (result) {
-      case Success(data: final data):
-        onSuccess(data);
-        change(state, status: RxStatus.success());
-      case Failure(error: final error):
-        if (onError != null) {
-          onError(error);
-        }
-        change(null, status: RxStatus.error(error.message));
-    }
-  }
-}
+/// A base controller with networking capabilities.
+///
+/// This class combines [BaseController] with [BaseNetworkingMixin] for
+/// controllers that need to make API calls.
+///
+/// For more flexibility, you can also apply [BaseNetworkingMixin] directly
+/// to your controller:
+/// ```dart
+/// class MyController extends BaseController<MyState> with BaseNetworkingMixin<MyState> { }
+/// ```
+abstract class BaseNetworkingController<T> extends BaseController<T> with BaseNetworkingMixin<T> {}

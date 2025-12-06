@@ -23,9 +23,8 @@ abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> 
   Widget buildBody(BuildContext context, dynamic state);
 
   @protected
-  Widget buildLoading(BuildContext context) {
-    return const Center(child: CircularProgressIndicator());
-  }
+  Widget? buildLoading(BuildContext context) =>
+      Container(color: Theme.of(context).scaffoldBackgroundColor, child: const SizedBox.shrink());
 
   @protected
   Widget buildError(BuildContext context, String? error) {
