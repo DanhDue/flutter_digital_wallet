@@ -1,5 +1,7 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
@@ -23,9 +25,10 @@ class SplashController extends BaseController {
   final liveChatBotIsDancing = false.obs;
   final showRestartServiceWarning = false.obs;
 
-  static int get HEALTH_CHECK_RETRY_INTERVAL => 6;
-  static int get START_ZENO_SERVICE_INTERVAL => 38;
-  static int get START_SPLASH_ANIMATION_INTERVAL => 850;
+  static int get HEALTH_CHECK_RETRY_INTERVAL => 4000; // 4 seconds
+  static int get START_ZENO_SERVICE_INTERVAL => 46000; // 46 seconds
+  static int get START_SPLASH_ANIMATION_INTERVAL => 850; // 850 milliseconds
+  late int startTime;
 
   @override
   void onInit() {
@@ -37,19 +40,27 @@ class SplashController extends BaseController {
   void onReady() async {
     super.onReady();
     Fimber.d("onReady()");
+    startTime = DateTime.now().millisecondsSinceEpoch;
     _loadAppConfig();
     liveChatBotIsShown.value = true;
     Future.delayed(Duration(milliseconds: START_SPLASH_ANIMATION_INTERVAL), () {
       liveChatBotIsDancing.value = true;
     });
     final serviceIsLive = await healthz();
-    final delayTime = serviceIsLive ? HEALTH_CHECK_RETRY_INTERVAL : START_ZENO_SERVICE_INTERVAL;
-    Future.delayed(Duration(seconds: delayTime), () {
-      if (serviceIsLive) {
-        _checkLogin();
-      } else {
+    if (serviceIsLive) {
+      _checkLogin();
+    } else {
+      Future.delayed(Duration(milliseconds: START_ZENO_SERVICE_INTERVAL), () {
         healthz(isLoop: true);
-      }
+      });
+    }
+  }
+
+  _pendingNavigation(String route) {
+    final checkingTime = DateTime.now().millisecondsSinceEpoch - startTime;
+    Fimber.d("_pendingNavigation() =>Checking time: $checkingTime");
+    Future.delayed(Duration(milliseconds: HEALTH_CHECK_RETRY_INTERVAL - checkingTime), () {
+      Get.offAllNamed(route);
     });
   }
 
@@ -65,7 +76,7 @@ class SplashController extends BaseController {
     if (appConfigurations == null) {
       Future.delayed(ToastDuration.LENGTH_SHORT, () {
         isLoading.value = false;
-        Get.offAllNamed(Routes.START);
+        _pendingNavigation(Routes.START);
       });
     } else {
       // check biometric logging.
@@ -75,7 +86,7 @@ class SplashController extends BaseController {
         handleBiometricLogin();
       } else {
         isLoading.value = false;
-        Get.offAllNamed(Routes.LOGIN);
+        _pendingNavigation(Routes.LOGIN);
       }
     }
   }
@@ -91,15 +102,15 @@ class SplashController extends BaseController {
       );
       if (authenticated) {
         if (yourWallets?.isNotEmpty == true) {
-          Get.offAllNamed(Routes.HOME);
+          _pendingNavigation(Routes.HOME);
         } else {
-          Get.offAllNamed(Routes.WALLET_CREATION);
+          _pendingNavigation(Routes.WALLET_CREATION);
         }
       } else {
-        Get.offAllNamed(Routes.LOGIN);
+        _pendingNavigation(Routes.LOGIN);
       }
     } else {
-      Get.offAllNamed(Routes.LOGIN);
+      _pendingNavigation(Routes.LOGIN);
     }
   }
 

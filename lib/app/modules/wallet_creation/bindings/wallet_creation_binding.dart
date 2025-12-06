@@ -9,8 +9,6 @@ import '../controllers/wallet_creation_controller.dart';
 class WalletCreationBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<WalletCreationController>(
-      () => WalletCreationController(),
-    );
+    Get.lazyPut<WalletCreationController>(() => WalletCreationController());
   }
 }

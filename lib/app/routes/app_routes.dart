@@ -14,6 +14,7 @@ abstract class Routes {
   static const START = _Paths.START;
   static const INTRO = _Paths.INTRO;
   static const WALLET_CREATION = _Paths.WALLET_CREATION;
+  static const PASSWORD_CREATION = _Paths.PASSWORD_CREATION;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const START = '/start';
   static const INTRO = '/intro';
   static const WALLET_CREATION = '/wallet-creation';
+  static const PASSWORD_CREATION = '/password-creation';
 }

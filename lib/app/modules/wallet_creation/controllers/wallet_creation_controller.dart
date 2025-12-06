@@ -2,19 +2,4 @@
 
 import 'package:d3_wallet/base/base_controller.dart';
 
-class WalletCreationController extends BaseController {
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-}
+class WalletCreationController extends BaseController {}

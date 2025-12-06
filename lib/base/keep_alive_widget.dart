@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 class KeepAliveWidget extends StatefulWidget {
   const KeepAliveWidget({
     super.key,
-    @required this.child,
+    this.child,
     this.safeAreaLeft = false,
     this.safeAreaTop = false,
     this.safeAreaRight = false,

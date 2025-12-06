@@ -31,7 +31,6 @@ class StartView extends BaseView<StartController> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
-                SizedBox(height: 30),
                 Center(
                   child: Text(
                     LocaleKeys.zenoWallet.tr.toUpperCase(),
@@ -90,7 +89,7 @@ class StartView extends BaseView<StartController> {
             ),
             SliderButton(
               action: () async {
-                Get.toNamed(Routes.INTRO);
+                Get.offNamed(Routes.INTRO);
                 return false;
               },
               label: Text(

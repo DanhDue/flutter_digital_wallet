@@ -59,7 +59,7 @@ class _IntroViewState extends State<IntroView> with TickerProviderStateMixin {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            SizedBox(height: 48),
+            SizedBox(height: 6),
             InkWell(
               onTap:
                   () => {
