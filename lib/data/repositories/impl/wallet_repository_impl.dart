@@ -40,4 +40,9 @@ class WalletRepositoryImpl extends WalletRepository with SafeCallApiMixin {
   Future<Result<BaseResponseObject<WalletResponseObject>?, ApiError>> airdrop(
     WalletAirdropRequestObject request,
   ) => safeApiCall(() => walletClient.airdrop(request));
+
+  @override
+  Future<List<WalletResponseObject?>?> retrieveYourWallets() async {
+    return <WalletResponseObject?>[];
+  }
 }
