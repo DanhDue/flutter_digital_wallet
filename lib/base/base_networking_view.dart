@@ -12,9 +12,20 @@ abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> 
   @override
   Widget onCreateViews(BuildContext context) {
     return controller.obx(
-      (state) => buildBody(context, state),
-      onLoading: buildLoading(context),
-      onError: (error) => buildError(context, error),
+      (state) {
+        onLoadingStatusChange(false);
+        return buildBody(context, state);
+      },
+      onLoading: Builder(
+        builder: (context) {
+          onLoadingStatusChange(true);
+          return Scaffold(body: buildLoading(context));
+        },
+      ),
+      onError: (error) {
+        onLoadingStatusChange(false);
+        return buildError(context, error);
+      },
       onEmpty: buildEmpty(context),
     );
   }
@@ -22,9 +33,15 @@ abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> 
   @protected
   Widget buildBody(BuildContext context, dynamic state);
 
+  /// Called when the loading layouts is created.
+  ///
+  /// Sample to show the CircularProgressIndicator:
+  /// ```dart
+  /// @override
+  /// Widget? buildLoading(BuildContext context) => const Center(child: CircularProgressIndicator());
+  /// ```
   @protected
-  Widget? buildLoading(BuildContext context) =>
-      Container(color: Theme.of(context).scaffoldBackgroundColor, child: const SizedBox.shrink());
+  Widget? buildLoading(BuildContext context) => const SizedBox.shrink();
 
   @protected
   Widget buildError(BuildContext context, String? error) {
@@ -36,5 +53,43 @@ abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> 
   @protected
   Widget buildEmpty(BuildContext context) {
     return const Center(child: Text('No data available'));
+  }
+
+  /// Called when the loading status changes.
+  /// Override this method to show/hide SmartDialog or other loading indicators.
+  ///
+  /// [isLoading] - true when loading starts, false when loading ends
+  ///
+  /// Sample to show the SmartDialog:
+  /// ```dart
+  /// 1. Create a boolean variable to track the loading state
+  /// bool isLoadingShown = false;
+  ///
+  /// 2. Override the onLoadingStatusChange method
+  /// @override
+  /// void onLoadingStatusChange(bool isLoading) {
+  ///   WidgetsBinding.instance.addPostFrameCallback((duration) {
+  ///     if (isLoading) {
+  ///       if (!isLoadingShown) {
+  ///         isLoadingShown = true;
+  ///         Future.delayed(Duration(milliseconds: duration.inMilliseconds), () {
+  ///           Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
+  ///           SmartDialog.showLoading(msg: "");
+  ///         });
+  ///       }
+  ///     } else {
+  ///       isLoadingShown = false;
+  ///       Future.delayed(Duration(milliseconds: duration.inMilliseconds), () {
+  ///         Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
+  ///         SmartDialog.dismiss();
+  ///       });
+  ///     }
+  ///   });
+  /// }
+  /// ```
+  @protected
+  void onLoadingStatusChange(bool isLoading) {
+    // Default implementation does nothing
+    // Override in subclass to call SmartDialog.showLoading() / SmartDialog.dismiss()
   }
 }
