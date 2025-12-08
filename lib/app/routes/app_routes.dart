@@ -16,7 +16,10 @@ abstract class Routes {
   static const WALLET_CREATION = _Paths.WALLET_CREATION;
   static const PASSWORD_CREATION = _Paths.PASSWORD_CREATION;
   static const ONBOARD = _Paths.ONBOARD;
-  static const WALLET_IMPORT = _Paths.WALLET_CREATION + _Paths.WALLET_IMPORT;
+  static const WALLET_IMPORT = _Paths.WALLET_IMPORT;
+  static const SAMPLE = _Paths.SAMPLE;
+  static const API_TESTING = _Paths.API_TESTING;
+  static const NETWORKING_SAMPLE = _Paths.NETWORKING_SAMPLE;
 }
 
 abstract class _Paths {
@@ -31,4 +34,7 @@ abstract class _Paths {
   static const PASSWORD_CREATION = '/password-creation';
   static const ONBOARD = '/onboard';
   static const WALLET_IMPORT = '/wallet-import';
+  static const SAMPLE = '/sample';
+  static const API_TESTING = '/api-testing';
+  static const NETWORKING_SAMPLE = '/networking-sample';
 }

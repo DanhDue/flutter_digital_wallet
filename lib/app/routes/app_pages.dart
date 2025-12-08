@@ -18,16 +18,16 @@ import '../modules/onboard/bindings/onboard_binding.dart';
 import '../modules/onboard/views/onboard_view.dart';
 import '../modules/password_creation/bindings/password_creation_binding.dart';
 import '../modules/password_creation/views/password_creation_view.dart';
+import '../modules/sample/api_testing/bindings/api_testing_binding.dart';
+import '../modules/sample/api_testing/views/api_testing_view.dart';
+import '../modules/sample/networking_sample/bindings/networking_sample_binding.dart';
+import '../modules/sample/networking_sample/views/networking_sample_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/wallet_creation/wallet_creation/bindings/wallet_creation_binding.dart';
 import '../modules/wallet_creation/wallet_creation/views/wallet_creation_view.dart';
 import '../modules/wallet_creation/wallet_import/bindings/wallet_import_binding.dart';
 import '../modules/wallet_creation/wallet_import/views/wallet_import_view.dart';
-
-// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
-
-// coverage:ignore-file
 
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
@@ -51,21 +51,14 @@ class AppPages {
     GetPage(name: _Paths.START, page: () => StartView(), binding: StartBinding()),
     GetPage(name: _Paths.INTRO, page: () => IntroView(), binding: IntroBinding()),
     GetPage(
+      name: _Paths.WALLET_IMPORT,
+      page: () => WalletImportView(),
+      binding: WalletImportBinding(),
+    ),
+    GetPage(
       name: _Paths.WALLET_CREATION,
       page: () => WalletCreationView(),
       binding: WalletCreationBinding(),
-      children: [
-        GetPage(
-          name: _Paths.WALLET_IMPORT,
-          page: () => WalletImportView(),
-          binding: WalletImportBinding(),
-        ),
-        GetPage(
-          name: _Paths.WALLET_CREATION,
-          page: () => WalletCreationView(),
-          binding: WalletCreationBinding(),
-        ),
-      ],
     ),
     GetPage(
       name: _Paths.PASSWORD_CREATION,
@@ -73,5 +66,11 @@ class AppPages {
       binding: PasswordCreationBinding(),
     ),
     GetPage(name: _Paths.ONBOARD, page: () => OnboardView(), binding: OnboardBinding()),
+    GetPage(name: _Paths.API_TESTING, page: () => ApiTestingView(), binding: ApiTestingBinding()),
+    GetPage(
+      name: _Paths.NETWORKING_SAMPLE,
+      page: () => NetworkingSampleView(),
+      binding: NetworkingSampleBinding(),
+    ),
   ];
 }
