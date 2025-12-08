@@ -30,7 +30,7 @@ class NetworkingSampleController extends BaseController with NetworkingMixin {
       if (isClosed) return;
       liveChatBotIsDancing.value = true;
     });
-    retrieveTransactionBySignature();
+    retrieveMintToken();
   }
 
   retrieveMintToken() async {
@@ -42,6 +42,7 @@ class NetworkingSampleController extends BaseController with NetworkingMixin {
       onError: (error) {
         Fimber.e(error.toString());
       },
+      loadingType: LoadingType.overlay,
     );
   }
 
@@ -61,6 +62,7 @@ class NetworkingSampleController extends BaseController with NetworkingMixin {
       onError: (error) {
         Fimber.e(error.toString());
       },
+      loadingType: LoadingType.overlay,
     );
   }
 

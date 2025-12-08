@@ -19,7 +19,10 @@ abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> 
       onLoading: Builder(
         builder: (context) {
           onLoadingStatusChange(true);
-          return Scaffold(body: buildLoading(context));
+          return Container(
+            color: Colors.white,
+            child: buildLoading(context) ?? const SizedBox.shrink(),
+          );
         },
       ),
       onError: (error) {
@@ -68,21 +71,17 @@ abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> 
   /// 2. Override the onLoadingStatusChange method
   /// @override
   /// void onLoadingStatusChange(bool isLoading) {
-  ///   WidgetsBinding.instance.addPostFrameCallback((duration) {
+  ///   WidgetsBinding.instance.addPostFrameCallback((_) {
   ///     if (isLoading) {
   ///       if (!isLoadingShown) {
   ///         isLoadingShown = true;
-  ///         Future.delayed(Duration(milliseconds: duration.inMilliseconds), () {
-  ///           Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
-  ///           SmartDialog.showLoading(msg: "");
-  ///         });
+  ///         Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
+  ///         SmartDialog.showLoading(msg: "");
   ///       }
   ///     } else {
   ///       isLoadingShown = false;
-  ///       Future.delayed(Duration(milliseconds: duration.inMilliseconds), () {
-  ///         Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
-  ///         SmartDialog.dismiss();
-  ///       });
+  ///       Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
+  ///       SmartDialog.dismiss();
   ///     }
   ///   });
   /// }

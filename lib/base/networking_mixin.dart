@@ -1,5 +1,6 @@
 // Copyright (c) 2025, one of the DanhDue ExOICTIF projects. All rights reserved.
 
+import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/data/base_response_object.dart';
 import 'package:d3_wallet/data/remote/api_error.dart';
 import 'package:d3_wallet/data/result.dart';
@@ -17,6 +18,8 @@ class _ParsedError extends _ParsedResponse {
   final String message;
   _ParsedError(this.message);
 }
+
+enum LoadingType { full, overlay, none }
 
 /// A mixin that provides networking capabilities to any controller
 /// that uses [StateMixin].
@@ -37,7 +40,7 @@ class _ParsedError extends _ParsedResponse {
 ///   }
 /// }
 /// ```
-mixin NetworkingMixin<T> on StateMixin<T> {
+mixin NetworkingMixin<T> on BaseController<T> {
   /// Parses [BaseResponseObject] and extracts the `data` field.
   /// If [BaseResponseObject.success] is false, returns an error result.
   /// If the input is not a [BaseResponseObject], returns it as-is.
@@ -56,7 +59,7 @@ mixin NetworkingMixin<T> on StateMixin<T> {
   /// [apiCall] - The Future that performs the API request
   /// [onSuccess] - Callback invoked with the data when the API call succeeds
   /// [onError] - Optional callback invoked with the error when the API call fails
-  /// [showLoading] - Whether to show loading state (default: true)
+  /// [loadingType] - Type of loading indicator to show (default: LoadingType.full)
   ///
   /// Note: If the response is a [BaseResponseObject], the `data` field is
   /// automatically extracted and passed to the state. If [BaseResponseObject.success]
@@ -65,13 +68,19 @@ mixin NetworkingMixin<T> on StateMixin<T> {
     Future<Result<D, ApiError>> apiCall, {
     required void Function(D data) onSuccess,
     void Function(ApiError error)? onError,
-    bool showLoading = true,
+    LoadingType loadingType = LoadingType.full,
   }) async {
-    if (showLoading) {
+    if (loadingType == LoadingType.full) {
       change(null, status: RxStatus.loading());
+    } else if (loadingType == LoadingType.overlay) {
+      isLoading.value = true;
     }
 
     final result = await apiCall;
+
+    if (loadingType == LoadingType.overlay) {
+      isLoading.value = false;
+    }
 
     switch (result) {
       case Success(data: final data):
@@ -106,10 +115,12 @@ mixin NetworkingMixin<T> on StateMixin<T> {
     List<Future<Result<D, ApiError>>> apiCalls, {
     required void Function(List<D> data) onAllSuccess,
     void Function(ApiError error)? onAnyError,
-    bool showLoading = true,
+    LoadingType loadingType = LoadingType.full,
   }) async {
-    if (showLoading) {
+    if (loadingType == LoadingType.full) {
       change(null, status: RxStatus.loading());
+    } else if (loadingType == LoadingType.overlay) {
+      isLoading.value = true;
     }
 
     final results = await Future.wait(apiCalls);
@@ -123,6 +134,10 @@ mixin NetworkingMixin<T> on StateMixin<T> {
         case Failure(error: final error):
           firstError ??= error;
       }
+    }
+
+    if (loadingType == LoadingType.overlay) {
+      isLoading.value = false;
     }
 
     if (firstError != null) {

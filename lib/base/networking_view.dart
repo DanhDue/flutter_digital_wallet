@@ -34,11 +34,6 @@ abstract class NetworkingView<C extends BaseController> extends BaseNetworkingVi
   @protected
   String get loadingMessage => '';
 
-  /// Override this to customize the loading widget.
-  /// Returns null by default to use SmartDialog's default loading widget.
-  @protected
-  Widget? get customLoadingWidget => null;
-
   /// Override this to control whether the loading can be dismissed by tapping the mask.
   @protected
   bool get clickMaskDismiss => false;
@@ -51,22 +46,18 @@ abstract class NetworkingView<C extends BaseController> extends BaseNetworkingVi
   @override
   void onLoadingStatusChange(bool isLoading) {
     if (!shouldBeShowLoadingDialog) return;
-    WidgetsBinding.instance.addPostFrameCallback((duration) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (isLoading) {
         if (!_isLoadingShown) {
           _isLoadingShown = true;
-          Future.delayed(Duration(milliseconds: duration.inMilliseconds), () {
-            Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
-            SmartDialog.showLoading(msg: "");
-          });
+          Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
+          SmartDialog.showLoading(msg: loadingMessage, clickMaskDismiss: clickMaskDismiss);
         }
       } else {
         if (_isLoadingShown) {
           _isLoadingShown = false;
-          Future.delayed(Duration(milliseconds: duration.inMilliseconds), () {
-            Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
-            SmartDialog.dismiss();
-          });
+          Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
+          SmartDialog.dismiss();
         }
       }
     });

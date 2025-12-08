@@ -38,7 +38,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.NETWORKING_SAMPLE;
 
   static final routes = [
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),

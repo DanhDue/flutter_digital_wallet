@@ -2,11 +2,11 @@
 
 // coverage:ignore-file
 
+import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CustomLoadingWidget extends StatelessWidget {
   const CustomLoadingWidget({super.key, this.msg});
@@ -30,7 +30,14 @@ class CustomLoadingWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                LoadingAnimationWidget.waveDots(color: context.appThemes.ink40, size: 40),
+                Assets.lotties.sandyLoading.lottie(
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                  animate: true,
+                  repeat: true,
+                  backgroundLoading: true,
+                ),
                 Visibility(
                   visible: msg != null && msg!.isNotEmpty,
                   child: Column(

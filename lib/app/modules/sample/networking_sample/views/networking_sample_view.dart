@@ -18,8 +18,9 @@ class NetworkingSampleView extends NetworkingView<NetworkingSampleController> {
     Fimber.d("buildBody(state: $state)");
     return Scaffold(
       backgroundColor: Colors.amber,
-      body: SizedBox(
-        height: double.infinity,
+      body: SafeArea(
+        top: true,
+        bottom: false,
         child: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
           child: Column(
@@ -28,7 +29,7 @@ class NetworkingSampleView extends NetworkingView<NetworkingSampleController> {
             mainAxisSize: MainAxisSize.max,
             children: [
               InkWell(
-                onTap: () => controller.retrieveMintToken(),
+                onTap: () => controller.retrieveTransactionBySignature(),
                 child: Container(
                   alignment: Alignment.center,
                   child: const Text('View Logs', style: TextStyle(fontSize: 20)),
@@ -115,6 +116,13 @@ class NetworkingSampleView extends NetworkingView<NetworkingSampleController> {
                 animate: true,
                 repeat: true,
                 backgroundLoading: true,
+              ),
+              InkWell(
+                onTap: () => controller.retrieveTransactionBySignature(),
+                child: Container(
+                  alignment: Alignment.center,
+                  child: const Text('View Logs', style: TextStyle(fontSize: 20)),
+                ),
               ),
               Assets.lotties.sandyLoading.lottie(
                 width: 120,
