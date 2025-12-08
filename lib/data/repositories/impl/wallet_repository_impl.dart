@@ -4,6 +4,9 @@ import 'package:d3_wallet/data/base_response_object.dart';
 import 'package:d3_wallet/data/bean/request/wallet_airdrop_request_object/wallet_airdrop_request_object.dart';
 import 'package:d3_wallet/data/bean/request/wallet_creation_request_object/wallet_creation_request_object.dart';
 import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
+import 'package:d3_wallet/data/local/selected_account_storage.dart';
+import 'package:d3_wallet/data/local/token_account_storage.dart';
+import 'package:d3_wallet/data/local/wallets_storage.dart';
 import 'package:d3_wallet/data/remote/api_error.dart';
 import 'package:d3_wallet/data/remote/wallet_client/wallet_client.dart';
 import 'package:d3_wallet/data/repositories/safe_call_api_mixin.dart';
@@ -12,6 +15,9 @@ import 'package:d3_wallet/data/result.dart';
 import 'package:get/get.dart';
 
 class WalletRepositoryImpl extends WalletRepository with SafeCallApiMixin {
+  final _selectedAccountStorage = Get.find<SelectedAccountStorage>();
+  final _walletsStorage = Get.find<WalletsStorage>();
+  final _tokenAccountStorage = Get.find<TokenAccountStorage>();
   final walletClient = Get.find<WalletClient>();
 
   @override
@@ -44,5 +50,15 @@ class WalletRepositoryImpl extends WalletRepository with SafeCallApiMixin {
   @override
   Future<List<WalletResponseObject?>?> retrieveYourWallets() async {
     return <WalletResponseObject?>[];
+  }
+
+  @override
+  Future<void> clear() async {
+    await _selectedAccountStorage.clear();
+    final wallets = await _walletsStorage.retrieveYourWallets();
+    wallets?.forEach((item) async {
+      await _tokenAccountStorage.clear(item?.address ?? "");
+    });
+    await _walletsStorage.clearYourWallets();
   }
 }

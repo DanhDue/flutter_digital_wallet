@@ -16,10 +16,8 @@ class HomeView extends BaseNetworkingView<HomeController> {
   HomeView({super.key});
 
   @override
-  Widget? buildLoading(BuildContext context) => Container(
-    color: Colors.amber,
-    child: const Center(child: CircularProgressIndicator(color: Colors.white)),
-  );
+  Widget? buildLoading(BuildContext context) =>
+      const Center(child: CircularProgressIndicator(color: Colors.amber));
 
   @override
   Widget buildBody(BuildContext context, dynamic state) {

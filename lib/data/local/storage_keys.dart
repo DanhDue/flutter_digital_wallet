@@ -12,4 +12,14 @@ class StorageKeys {
   static const walletHiveTypeId = 1;
   static const walletBoxName = 'walletBoxName';
   static const walletKey = "walletKey";
+
+  static const tokenAccountHiveTypeId = 2;
+  static const tokenAccountBoxName = 'tokenAccountBoxName';
+  static const tokenAccountKey = "tokenAccountKey";
+
+  static const yourWalletsBoxName = 'yourWalletsBoxName';
+  static const yourWalletsKey = 'yourWalletsKey';
+
+  static const selectedWalletBoxName = 'selectedWalletBoxName';
+  static const selectedWalletKey = 'selectedWalletKey';
 }

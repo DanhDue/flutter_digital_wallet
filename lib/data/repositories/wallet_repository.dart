@@ -23,4 +23,6 @@ abstract class WalletRepository {
   Future<Result<BaseResponseObject<WalletResponseObject>?, ApiError>> airdrop(
     WalletAirdropRequestObject request,
   );
+
+  Future<void> clear();
 }

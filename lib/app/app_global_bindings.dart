@@ -3,6 +3,12 @@
 // coverage:ignore-file
 
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
+import 'package:d3_wallet/data/local/impl/selected_account_storage_impl.dart';
+import 'package:d3_wallet/data/local/impl/token_account_storage_impl.dart';
+import 'package:d3_wallet/data/local/impl/wallets_storage_impl.dart';
+import 'package:d3_wallet/data/local/selected_account_storage.dart';
+import 'package:d3_wallet/data/local/token_account_storage.dart';
+import 'package:d3_wallet/data/local/wallets_storage.dart';
 import 'package:d3_wallet/data/remote/app_client/health_check_client.dart';
 import 'package:d3_wallet/data/remote/app_uri.dart';
 import 'package:d3_wallet/data/remote/dio_factory.dart';
@@ -34,6 +40,9 @@ class AppGlobalBindings extends Bindings {
     Get.lazyPut(() => FlutterSecureStorage(), fenix: true);
     Get.lazyPut<SecureStorageRepository>(() => SecureStorageRepositoryImpl(), fenix: true);
     Get.lazyPut<SecureKeys>(() => SecureKeys(), fenix: true);
+    Get.lazyPut<SelectedAccountStorage>(() => SelectedAccountStorageImpl(), fenix: true);
+    Get.lazyPut<WalletsStorage>(() => WalletsStorageImpl(), fenix: true);
+    Get.lazyPut<TokenAccountStorage>(() => TokenAccountStorageImpl(), fenix: true);
     Hive.registerAdapter(AppConfigurationsAdapter());
     Get.lazyPut(
       () => DioFactory().withReceiveTimeout(const Duration(seconds: 8)).dio,
