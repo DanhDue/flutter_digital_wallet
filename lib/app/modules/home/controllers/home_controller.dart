@@ -1,13 +1,13 @@
 // Copyright (c) 2025, one of the DanhDue ExOICTIF projects. All rights reserved.
 
 import 'package:d3_wallet/base/base_controller.dart';
-import 'package:d3_wallet/base/base_networking_mixin.dart';
+import 'package:d3_wallet/base/networking_mixin.dart';
 import 'package:d3_wallet/data/repositories/transaction_repository.dart';
 import 'package:dart_helper_utils/dart_helper_utils.dart';
 import 'package:fimber/fimber.dart';
 import 'package:get/get.dart';
 
-class HomeController extends BaseController with BaseNetworkingMixin {
+class HomeController extends BaseController with NetworkingMixin {
   final liveChatBotIsShown = false.obs;
   final liveChatBotIsDancing = false.obs;
 

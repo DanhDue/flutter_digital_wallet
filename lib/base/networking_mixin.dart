@@ -37,7 +37,7 @@ class _ParsedError extends _ParsedResponse {
 ///   }
 /// }
 /// ```
-mixin BaseNetworkingMixin<T> on StateMixin<T> {
+mixin NetworkingMixin<T> on StateMixin<T> {
   /// Parses [BaseResponseObject] and extracts the `data` field.
   /// If [BaseResponseObject.success] is false, returns an error result.
   /// If the input is not a [BaseResponseObject], returns it as-is.

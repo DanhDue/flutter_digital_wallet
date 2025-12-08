@@ -26,7 +26,8 @@ class SplashController extends BaseController {
   final showRestartServiceWarning = false.obs;
 
   static int get HEALTH_CHECK_RETRY_INTERVAL => 4000; // 4 seconds
-  static int get START_ZENO_SERVICE_INTERVAL => 46000; // 46 seconds
+  // static int get START_ZENO_SERVICE_INTERVAL => 46000; // 46 seconds
+  static int get START_ZENO_SERVICE_INTERVAL => 16000; // 46 seconds
   static int get START_SPLASH_ANIMATION_INTERVAL => 850; // 850 milliseconds
   late int startTime;
 

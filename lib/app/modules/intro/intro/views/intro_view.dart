@@ -112,7 +112,7 @@ class _IntroViewState extends State<IntroView> with TickerProviderStateMixin {
                 CustomFilledButton(
                   onPressed: () {
                     Fimber.d("create a new wallet");
-                    // controller.createNewWallet();
+                    controller.createNewWallet();
                   },
                   horizontalPadding: 16,
                   borderRadius: 30,
