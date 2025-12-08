@@ -44,20 +44,20 @@ abstract class NetworkingView<C extends BaseController> extends BaseNetworkingVi
   bool get shouldBeShowLoadingDialog => true;
 
   @override
-  void onLoadingStatusChange(bool isLoading) {
+  Future<void> onLoadingStatusChange(bool isLoading) async {
     if (!shouldBeShowLoadingDialog) return;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (isLoading) {
         if (!_isLoadingShown) {
           _isLoadingShown = true;
           Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
-          SmartDialog.showLoading(msg: loadingMessage, clickMaskDismiss: clickMaskDismiss);
+          await SmartDialog.showLoading(msg: loadingMessage, clickMaskDismiss: clickMaskDismiss);
         }
       } else {
         if (_isLoadingShown) {
           _isLoadingShown = false;
           Fimber.d("onLoadingStatusChange(isLoading: $isLoading)");
-          SmartDialog.dismiss();
+          await SmartDialog.dismiss(status: SmartStatus.loading);
         }
       }
     });

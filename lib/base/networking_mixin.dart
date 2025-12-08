@@ -71,7 +71,7 @@ mixin NetworkingMixin<T> on BaseController<T> {
     LoadingType loadingType = LoadingType.full,
   }) async {
     if (loadingType == LoadingType.full) {
-      change(null, status: RxStatus.loading());
+      change(state, status: RxStatus.loading());
     } else if (loadingType == LoadingType.overlay) {
       isLoading.value = true;
     }
@@ -93,13 +93,13 @@ mixin NetworkingMixin<T> on BaseController<T> {
             if (onError != null) {
               onError(ApiError.fromBaseResponseError(message));
             }
-            change(null, status: RxStatus.error(message));
+            change(state, status: RxStatus.error(message));
         }
       case Failure(error: final error):
         if (onError != null) {
           onError(error);
         }
-        change(null, status: RxStatus.error(error.message));
+        change(state, status: RxStatus.error(error.message));
     }
   }
 
@@ -118,7 +118,7 @@ mixin NetworkingMixin<T> on BaseController<T> {
     LoadingType loadingType = LoadingType.full,
   }) async {
     if (loadingType == LoadingType.full) {
-      change(null, status: RxStatus.loading());
+      change(state, status: RxStatus.loading());
     } else if (loadingType == LoadingType.overlay) {
       isLoading.value = true;
     }
@@ -144,7 +144,7 @@ mixin NetworkingMixin<T> on BaseController<T> {
       if (onAnyError != null) {
         onAnyError(firstError);
       }
-      change(null, status: RxStatus.error(firstError.message));
+      change(state, status: RxStatus.error(firstError.message));
     } else {
       onAllSuccess(successData);
       // Parse each item if it's a BaseResponseObject

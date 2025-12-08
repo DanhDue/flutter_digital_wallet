@@ -9,8 +9,6 @@ import '../controllers/networking_sample_controller.dart';
 class NetworkingSampleBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<NetworkingSampleController>(
-      () => NetworkingSampleController(),
-    );
+    Get.lazyPut<NetworkingSampleController>(() => NetworkingSampleController());
   }
 }

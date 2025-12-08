@@ -109,3 +109,22 @@ void configLoading() {
       displayTime: const Duration(milliseconds: 2000),
     );
 }
+
+class CustomToastWidget extends StatelessWidget {
+  const CustomToastWidget({super.key, required this.msg});
+
+  final String msg;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+        decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(20)),
+        child: Text('$msg', style: TextStyle(color: Colors.white)),
+      ),
+    );
+  }
+}

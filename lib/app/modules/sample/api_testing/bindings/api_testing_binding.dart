@@ -9,8 +9,6 @@ import '../controllers/api_testing_controller.dart';
 class ApiTestingBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<ApiTestingController>(
-      () => ApiTestingController(),
-    );
+    Get.lazyPut<ApiTestingController>(() => ApiTestingController());
   }
 }

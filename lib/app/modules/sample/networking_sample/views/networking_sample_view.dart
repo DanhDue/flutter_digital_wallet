@@ -8,6 +8,7 @@ import 'package:d3_wallet/base/networking_view.dart';
 import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 class NetworkingSampleView extends NetworkingView<NetworkingSampleController> {

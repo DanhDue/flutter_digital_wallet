@@ -1,6 +1,7 @@
 // Copyright (c) 2025, one of the DanhDue ExOICTIF projects. All rights reserved.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 import 'base_controller.dart';
@@ -27,7 +28,14 @@ abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> 
       ),
       onError: (error) {
         onLoadingStatusChange(false);
-        return buildError(context, error);
+        if (controller.state != null) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            SmartDialog.showToast(error ?? '');
+          });
+          return buildBody(context, controller.state);
+        } else {
+          return buildError(context, error);
+        }
       },
       onEmpty: buildEmpty(context),
     );
@@ -87,7 +95,7 @@ abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> 
   /// }
   /// ```
   @protected
-  void onLoadingStatusChange(bool isLoading) {
+  Future<void> onLoadingStatusChange(bool isLoading) async {
     // Default implementation does nothing
     // Override in subclass to call SmartDialog.showLoading() / SmartDialog.dismiss()
   }
