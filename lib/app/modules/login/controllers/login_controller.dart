@@ -149,7 +149,6 @@ class LoginController extends BaseController {
     } else {
       showBiometricLogin.value = false;
     }
-    showBiometricLogin.value = true;
   }
 
   handleBiometricLogin() async {
