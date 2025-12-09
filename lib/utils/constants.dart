@@ -38,6 +38,11 @@ class ExternalLinks {
       "https://support.metamask.io/start/learn/what-is-a-secret-recovery-phrase-and-how-to-keep-your-crypto-wallet-secure/";
 }
 
+class DependencyInjections {
+  static const String HEALTHZ = "healthz";
+  static const int HEALTHZ_TIMEOUT = 8; // in seconds
+}
+
 class AppLocales {
   static const Locale vnVI = Locale("vn", "VI");
   static const Locale enUS = Locale("en", "US");

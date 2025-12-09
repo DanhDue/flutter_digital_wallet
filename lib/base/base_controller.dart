@@ -18,6 +18,13 @@ abstract class BaseController<T> extends GetxController with StateMixin<T> {
     Fimber.d('BaseController disposed');
   }
 
+  // change state to null if you want to show init state.
+  @override
+  void onInit() {
+    super.onInit();
+    change(null, status: RxStatus.success());
+  }
+
   void showAlertDialog(String title, String message, Function onAction) {
     Get.dialog(
       AlertDialog(

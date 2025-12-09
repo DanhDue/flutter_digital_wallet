@@ -32,7 +32,7 @@ class DioFactory {
     return _dio!;
   }
 
-  DioFactory._internal();
+  DioFactory();
 
   Dio _createDio() {
     final dioInstance = Dio(
@@ -74,10 +74,5 @@ class DioFactory {
       ),
     );
     return dioInstance;
-  }
-
-  static final DioFactory _singleton = DioFactory._internal();
-  factory DioFactory() {
-    return _singleton;
   }
 }

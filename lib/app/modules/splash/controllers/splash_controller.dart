@@ -6,6 +6,7 @@ import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
 import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
+import 'package:d3_wallet/data/repositories/service_checking_repository.dart';
 import 'package:d3_wallet/data/repositories/wallet_repository.dart';
 import 'package:d3_wallet/data/result.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
@@ -17,6 +18,7 @@ import 'package:get/get.dart';
 
 class SplashController extends BaseController {
   final appConfigsRepository = Get.find<AppConfigsRepository>();
+  final serviceCheckingRepo = Get.find<ServiceCheckingRepository>();
   late AppConfigurations? appConfigurations;
   final BiometricAuthenticator biometricAuthenticator = Get.find();
   final walletRepo = Get.find<WalletRepository>();
@@ -119,7 +121,7 @@ class SplashController extends BaseController {
   @visibleForTesting
   Future<bool> healthz({bool isLoop = false}) async {
     try {
-      final healthzResponse = await appConfigsRepository.healthz();
+      final healthzResponse = await serviceCheckingRepo.healthz();
       switch (healthzResponse) {
         case Success(data: final response):
           showRestartServiceWarning.value = false;

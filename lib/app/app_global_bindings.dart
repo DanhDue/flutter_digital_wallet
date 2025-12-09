@@ -9,7 +9,6 @@ import 'package:d3_wallet/data/local/impl/wallets_storage_impl.dart';
 import 'package:d3_wallet/data/local/selected_account_storage.dart';
 import 'package:d3_wallet/data/local/token_account_storage.dart';
 import 'package:d3_wallet/data/local/wallets_storage.dart';
-import 'package:d3_wallet/data/remote/app_client/health_check_client.dart';
 import 'package:d3_wallet/data/remote/app_uri.dart';
 import 'package:d3_wallet/data/remote/dio_factory.dart';
 import 'package:d3_wallet/data/remote/token_client/token_client.dart';
@@ -44,14 +43,7 @@ class AppGlobalBindings extends Bindings {
     Get.lazyPut<WalletsStorage>(() => WalletsStorageImpl(), fenix: true);
     Get.lazyPut<TokenAccountStorage>(() => TokenAccountStorageImpl(), fenix: true);
     Hive.registerAdapter(AppConfigurationsAdapter());
-    Get.lazyPut(
-      () => DioFactory().withReceiveTimeout(const Duration(seconds: 8)).dio,
-      fenix: true,
-    );
-    Get.lazyPut(
-      () => HealthCheckClient(Get.find(), baseUrl: AppUri.healthz.buildAppUri()),
-      fenix: true,
-    );
+    Get.lazyPut(() => DioFactory().dio, fenix: true);
     Get.lazyPut<AppConfigsRepository>(() => AppConfigurationsRepositoryImpl(), fenix: true);
     Get.lazyPut<LocalAuthentication>(() => LocalAuthentication(), fenix: true);
     Get.lazyPut<BiometricAuthenticator>(() => BiometricAuthenticatorImpl(), fenix: true);

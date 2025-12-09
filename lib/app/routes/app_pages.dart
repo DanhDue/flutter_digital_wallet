@@ -29,16 +29,12 @@ import '../modules/wallet_creation/wallet_creation/views/wallet_creation_view.da
 import '../modules/wallet_creation/wallet_import/bindings/wallet_import_binding.dart';
 import '../modules/wallet_creation/wallet_import/views/wallet_import_view.dart';
 
-// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
-
-// coverage:ignore-file
-
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.NETWORKING_SAMPLE;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
