@@ -99,6 +99,7 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.trueBlue,
     required this.cyan,
     required this.ankeesBlue,
+    required this.techBlue,
 
     // Red Series
     required this.red0,
@@ -472,6 +473,8 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   final Color cyan;
   @override
   final Color ankeesBlue;
+  @override
+  final Color techBlue;
 
   // Red Series
   @override
@@ -585,6 +588,7 @@ final lightAppThemes = AppThemes(
   trueBlue: AppColors.trueBlue,
   cyan: AppColors.cyan,
   ankeesBlue: AppColors.ankeesBlue,
+  techBlue: AppColors.techBlue,
 
   // Red Series
   red0: AppColors.red0,
@@ -688,6 +692,7 @@ final darkAppThemes = AppThemes(
   trueBlue: AppColors.trueBlue,
   cyan: AppColors.cyan,
   ankeesBlue: AppColors.ankeesBlue,
+  techBlue: AppColors.techBlue,
 
   // Red Series
   red0: AppColors.red0,

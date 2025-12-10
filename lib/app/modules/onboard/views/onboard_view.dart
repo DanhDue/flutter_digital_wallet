@@ -226,10 +226,11 @@ class _OnboardViewState extends State<OnboardView> {
             padding: const EdgeInsets.only(top: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Expanded(flex: 1, child: Container()),
+                SizedBox(width: 16),
                 Expanded(
                   flex: 2,
                   child: Obx(
@@ -237,11 +238,12 @@ class _OnboardViewState extends State<OnboardView> {
                       height: 1,
                       color:
                           controller.passwordIsCreated.value
-                              ? context.appThemes.green100
+                              ? context.appThemes.techBlue
                               : context.appThemes.ink40,
                     ),
                   ),
                 ),
+                SizedBox(width: 16),
                 Expanded(
                   flex: 2,
                   child: Obx(
@@ -249,11 +251,12 @@ class _OnboardViewState extends State<OnboardView> {
                       height: 1,
                       color:
                           controller.mnemonicIsShown.value
-                              ? context.appThemes.green100
+                              ? context.appThemes.techBlue
                               : context.appThemes.ink40,
                     ),
                   ),
                 ),
+                SizedBox(width: 16),
                 Expanded(flex: 1, child: Container()),
               ],
             ),
@@ -271,20 +274,24 @@ class _OnboardViewState extends State<OnboardView> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       controller.passwordIsCreated.value
-                          ? Assets.images.icStepSuccessed.svg(
-                            width: 16,
-                            height: 16,
+                          ? Assets.images.icStepOneIsDone.svg(
+                            width: 20,
+                            height: 20,
                             fit: BoxFit.cover,
                           )
-                          : Assets.images.icStepOne.svg(width: 16, height: 16, fit: BoxFit.cover),
+                          : Assets.images.icStepOneIsRuning.svg(
+                            width: 20,
+                            height: 20,
+                            fit: BoxFit.cover,
+                          ),
                       SizedBox(height: 4),
                       Text(
                         LocaleKeys.createPassword.tr,
                         style: context.appThemes.regular10.copyWith(
                           color:
                               controller.passwordIsCreated.value
-                                  ? context.appThemes.green100
-                                  : context.appThemes.blue60,
+                                  ? context.appThemes.techBlue
+                                  : context.appThemes.ink60,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -300,21 +307,21 @@ class _OnboardViewState extends State<OnboardView> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       controller.mnemonicIsShown.value
-                          ? Assets.images.icStepSuccessed.svg(
-                            width: 16,
-                            height: 16,
+                          ? Assets.images.icStepTwoIsDone.svg(
+                            width: 20,
+                            height: 20,
                             fit: BoxFit.cover,
                           )
                           : ((controller.currentPage.value == secureWalletPageIndex ||
                                   controller.currentPage.value == mnemonicDescriptionPageIndex)
-                              ? Assets.images.icStepTwo.image(
-                                width: 16,
-                                height: 16,
+                              ? Assets.images.icStepTwoIsRuning.svg(
+                                width: 20,
+                                height: 20,
                                 fit: BoxFit.cover,
                               )
-                              : Assets.images.icDisableStepTwo.svg(
-                                width: 16,
-                                height: 16,
+                              : Assets.images.icStepTwoIsWaiting.svg(
+                                width: 20,
+                                height: 20,
                                 fit: BoxFit.cover,
                               )),
                       SizedBox(height: 4),
@@ -323,8 +330,8 @@ class _OnboardViewState extends State<OnboardView> {
                         style: context.appThemes.regular10.copyWith(
                           color:
                               controller.mnemonicIsShown.value
-                                  ? context.appThemes.green100
-                                  : context.appThemes.blue60,
+                                  ? context.appThemes.techBlue
+                                  : context.appThemes.ink60,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -341,19 +348,19 @@ class _OnboardViewState extends State<OnboardView> {
                     children: [
                       controller.mnemonicIsVerified.value
                           ? Assets.images.icStepSuccessed.svg(
-                            width: 16,
-                            height: 16,
+                            width: 20,
+                            height: 20,
                             fit: BoxFit.cover,
                           )
                           : (controller.currentPage.value == mnemonicVerificationPageIndex
                               ? Assets.images.icStepThree.image(
-                                width: 16,
-                                height: 16,
+                                width: 20,
+                                height: 20,
                                 fit: BoxFit.cover,
                               )
                               : Assets.images.icDisableStepThree.svg(
-                                width: 16,
-                                height: 16,
+                                width: 20,
+                                height: 20,
                                 fit: BoxFit.cover,
                               )),
                       SizedBox(height: 4),
@@ -362,8 +369,8 @@ class _OnboardViewState extends State<OnboardView> {
                         style: context.appThemes.regular10.copyWith(
                           color:
                               controller.mnemonicIsVerified.value
-                                  ? context.appThemes.green100
-                                  : context.appThemes.blue60,
+                                  ? context.appThemes.techBlue
+                                  : context.appThemes.ink60,
                         ),
                         textAlign: TextAlign.center,
                       ),

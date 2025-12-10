@@ -84,6 +84,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get trueBlue;
   Color get cyan;
   Color get ankeesBlue;
+  Color get techBlue;
   Color get red0;
   Color get red100;
   Color get red;
@@ -171,6 +172,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? trueBlue,
     Color? cyan,
     Color? ankeesBlue,
+    Color? techBlue,
     Color? red0,
     Color? red100,
     Color? red,
@@ -257,6 +259,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       trueBlue: trueBlue ?? this.trueBlue,
       cyan: cyan ?? this.cyan,
       ankeesBlue: ankeesBlue ?? this.ankeesBlue,
+      techBlue: techBlue ?? this.techBlue,
       red0: red0 ?? this.red0,
       red100: red100 ?? this.red100,
       red: red ?? this.red,
@@ -348,6 +351,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       trueBlue: Color.lerp(trueBlue, other.trueBlue, t)!,
       cyan: Color.lerp(cyan, other.cyan, t)!,
       ankeesBlue: Color.lerp(ankeesBlue, other.ankeesBlue, t)!,
+      techBlue: Color.lerp(techBlue, other.techBlue, t)!,
       red0: Color.lerp(red0, other.red0, t)!,
       red100: Color.lerp(red100, other.red100, t)!,
       red: Color.lerp(red, other.red, t)!,
@@ -440,6 +444,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(trueBlue, other.trueBlue) &&
             const DeepCollectionEquality().equals(cyan, other.cyan) &&
             const DeepCollectionEquality().equals(ankeesBlue, other.ankeesBlue) &&
+            const DeepCollectionEquality().equals(techBlue, other.techBlue) &&
             const DeepCollectionEquality().equals(red0, other.red0) &&
             const DeepCollectionEquality().equals(red100, other.red100) &&
             const DeepCollectionEquality().equals(red, other.red) &&
@@ -530,6 +535,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(trueBlue),
       const DeepCollectionEquality().hash(cyan),
       const DeepCollectionEquality().hash(ankeesBlue),
+      const DeepCollectionEquality().hash(techBlue),
       const DeepCollectionEquality().hash(red0),
       const DeepCollectionEquality().hash(red100),
       const DeepCollectionEquality().hash(red),
