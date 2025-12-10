@@ -25,7 +25,7 @@ class Constants {
   static const solanoPrice = 170.63;
   static const snaptixPrice = 2.68;
   static const secretKeyBytesLength = 64;
-  static const zephexTokenMint = "AnFUAXRbcFrdoV66ixD7GMnwJeExs3iMUrdmbKDovrY7";
+  static const tempTokenMint = "AnFUAXRbcFrdoV66ixD7GMnwJeExs3iMUrdmbKDovrY7";
   static const defaultSlippage = 2;
   static const solMintToken = "So11111111111111111111111111111111111111112";
   static const oneMillion = 1_000_000;

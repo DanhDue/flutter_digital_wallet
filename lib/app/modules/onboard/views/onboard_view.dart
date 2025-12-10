@@ -12,6 +12,8 @@ class OnboardView extends BaseNetworkingView<OnboardController> {
 
   @override
   Widget buildBody(BuildContext context, state) {
-    return const Center(child: Text('OnboardView is working', style: TextStyle(fontSize: 20)));
+    return const Scaffold(
+      body: Center(child: Text('OnboardView is working', style: TextStyle(fontSize: 20))),
+    );
   }
 }
