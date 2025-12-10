@@ -233,11 +233,11 @@ class _OnboardViewState extends State<OnboardView> {
                   flex: 2,
                   child: Obx(
                     () => Container(
-                      height: 1,
+                      height: 1.5,
                       color:
                           controller.passwordIsCreated.value
                               ? context.appThemes.techBlue
-                              : context.appThemes.ink40,
+                              : context.appThemes.ink10,
                     ),
                   ),
                 ),
@@ -246,11 +246,11 @@ class _OnboardViewState extends State<OnboardView> {
                   flex: 2,
                   child: Obx(
                     () => Container(
-                      height: 1,
+                      height: 1.5,
                       color:
                           controller.shouldBeConfirmMnemonic.value
                               ? context.appThemes.techBlue
-                              : context.appThemes.ink40,
+                              : context.appThemes.ink10,
                     ),
                   ),
                 ),

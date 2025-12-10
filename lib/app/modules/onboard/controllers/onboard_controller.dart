@@ -1,5 +1,6 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
+import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/base/networking_mixin.dart';
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
@@ -7,9 +8,9 @@ import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_respo
 import 'package:d3_wallet/data/repositories/wallet_repository.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/route_manager.dart';
 
 class OnboardController extends BaseController with NetworkingMixin {
   late AppConfigurations? appConfigurations;
@@ -59,7 +60,11 @@ class OnboardController extends BaseController with NetworkingMixin {
       walletRepo.createOrRestoreWallet(),
       onSuccess: (result) {
         wallet.value = result?.data;
-        jumpToPage(OnboardPageIndex.mnemonicCreationPageIndex);
+        if (toHome == true) {
+          Get.offAllNamed(Routes.HOME);
+        } else {
+          jumpToPage(OnboardPageIndex.mnemonicCreationPageIndex);
+        }
       },
       onError: (error) {
         Fimber.e(error.toString());
