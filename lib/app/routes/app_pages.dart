@@ -15,6 +15,16 @@ import '../modules/intro/start/views/start_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/onboard/bindings/onboard_binding.dart';
+import '../modules/onboard/mnemonic_confirmation/bindings/mnemonic_confirmation_binding.dart';
+import '../modules/onboard/mnemonic_confirmation/views/mnemonic_confirmation_view.dart';
+import '../modules/onboard/mnemonic_creation/bindings/mnemonic_creation_binding.dart';
+import '../modules/onboard/mnemonic_creation/views/mnemonic_creation_view.dart';
+import '../modules/onboard/mnemonic_description/bindings/mnemonic_description_binding.dart';
+import '../modules/onboard/mnemonic_description/views/mnemonic_description_view.dart';
+import '../modules/onboard/mnemonic_warning/bindings/mnemonic_warning_binding.dart';
+import '../modules/onboard/mnemonic_warning/views/mnemonic_warning_view.dart';
+import '../modules/onboard/s_r_p_description/bindings/s_r_p_description_binding.dart';
+import '../modules/onboard/s_r_p_description/views/s_r_p_description_view.dart';
 import '../modules/onboard/views/onboard_view.dart';
 import '../modules/password_creation/bindings/password_creation_binding.dart';
 import '../modules/password_creation/views/password_creation_view.dart';
@@ -28,13 +38,15 @@ import '../modules/wallet_creation/wallet_creation/bindings/wallet_creation_bind
 import '../modules/wallet_creation/wallet_creation/views/wallet_creation_view.dart';
 import '../modules/wallet_creation/wallet_import/bindings/wallet_import_binding.dart';
 import '../modules/wallet_creation/wallet_import/views/wallet_import_view.dart';
+import '../modules/wallet_creation_successfully/bindings/wallet_creation_successfully_binding.dart';
+import '../modules/wallet_creation_successfully/views/wallet_creation_successfully_view.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.ONBOARD;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
@@ -67,6 +79,37 @@ class AppPages {
       name: _Paths.NETWORKING_SAMPLE,
       page: () => NetworkingSampleView(),
       binding: NetworkingSampleBinding(),
+      children: [
+        GetPage(
+          name: _Paths.MNEMONIC_DESCRIPTION,
+          page: () => MnemonicDescriptionView(),
+          binding: MnemonicDescriptionBinding(),
+        ),
+        GetPage(
+          name: _Paths.MNEMONIC_CREATION,
+          page: () => const MnemonicCreationView(),
+          binding: MnemonicCreationBinding(),
+        ),
+        GetPage(
+          name: _Paths.MNEMONIC_CONFIRMATION,
+          page: () => const MnemonicConfirmationView(),
+          binding: MnemonicConfirmationBinding(),
+        ),
+        GetPage(
+          name: _Paths.S_R_P_DESCRIPTION,
+          page: () => SRPDescriptionView(bindingCreator: () => SRPDescriptionBinding()),
+        ),
+        GetPage(
+          name: _Paths.MNEMONIC_WARNING,
+          page: () => MnemonicWarningView(),
+          binding: MnemonicWarningBinding(),
+        ),
+      ],
+    ),
+    GetPage(
+      name: _Paths.WALLET_CREATION_SUCCESSFULLY,
+      page: () => const WalletCreationSuccessfullyView(),
+      binding: WalletCreationSuccessfullyBinding(),
     ),
   ];
 }

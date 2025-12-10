@@ -11,176 +11,115 @@ import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 part 'app_themes.tailor.dart';
 
 @TailorMixin(themeGetter: ThemeGetter.onBuildContext)
-@TailorMixin(themeGetter: ThemeGetter.onBuildContext)
 class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   AppThemes({
-    required this.bold12,
-    required this.bold16,
-    required this.regular16,
-    required this.bold24,
-    required this.medium24,
-    required this.medium32,
-    required this.medium16,
-    required this.regular14,
-    required this.regular20,
-    required this.bold20,
-    required this.regular10,
-    required this.regular12,
-    required this.medium14,
+    // TextStyles
     required this.headline,
     required this.h1,
     required this.h2,
     required this.h3,
     required this.paragraph,
+    required this.paragraphSemiBold,
     required this.subText,
     required this.subTexMedium,
     required this.smallTex,
-    required this.paragraphSemiBold,
+
+    // Legacy TextStyles (Weight/Size)
+    required this.bold24,
+    required this.bold20,
+    required this.bold18,
+    required this.bold16,
+    required this.bold14,
+    required this.bold12,
+    required this.medium32,
+    required this.medium24,
+    required this.medium16,
+    required this.medium14,
+    required this.regular20,
+    required this.regular18,
+    required this.regular16,
+    required this.regular14,
+    required this.regular12,
+    required this.regular10,
+
+    // Colors
+    // Neutrals
     required this.background,
     required this.appBar,
-    required this.mainGreen,
-    required this.smokyBlack,
-    required this.palmLeaf,
-    required this.apple,
-    required this.dartmouthGreen,
-    required this.textLightGrey,
-    required this.textGrey,
+    required this.white,
     required this.black,
     required this.transparent,
     required this.textColor,
-    required this.trueBlue,
-    required this.white,
+    required this.textGrey,
+    required this.textLightGrey,
+    required this.smokyBlack,
     required this.cultured,
-    required this.ankeesBlue,
-    required this.shinyShamrock,
     required this.silver,
-    required this.red,
+
+    // Ink Series
     required this.ink0,
-    required this.ink40,
     required this.ink5,
-    required this.blue15,
-    required this.ink60,
-    required this.ink100,
-    required this.ink80,
-    required this.green100,
-    required this.ink20,
-    required this.green10,
     required this.ink10,
-    required this.bold14,
-    required this.red100,
-    required this.red0,
+    required this.ink20,
+    required this.ink40,
+    required this.ink60,
+    required this.ink80,
+    required this.ink100,
+
+    // Green Series
+    required this.green0,
+    required this.green5,
+    required this.green10,
+    required this.green15,
+    required this.green20,
+    required this.green40,
+    required this.green60,
+    required this.green80,
+    required this.green100,
+    required this.mainGreen,
+    required this.darkGreen,
+    required this.secondGreen,
+    required this.palmLeaf,
+    required this.dartmouthGreen,
+    required this.apple,
+    required this.shinyShamrock,
+    required this.honeydew,
+    required this.antiFlashWhite,
+
+    // Blue Series
     required this.blue0,
     required this.blue5,
     required this.blue10,
+    required this.blue15,
     required this.blue20,
     required this.blue40,
     required this.blue60,
     required this.blue80,
     required this.blue100,
+    required this.trueBlue,
+    required this.cyan,
+    required this.ankeesBlue,
+
+    // Red Series
+    required this.red0,
+    required this.red100,
+    required this.red,
+    required this.champagnePink,
+
+    // Yellow / Orange Series
     required this.yellow5,
     required this.yellow100,
+    required this.subYellow,
+    required this.dutchWhite,
+    required this.orange,
     required this.orange100,
-    required this.green0,
   });
 
-  static const bold14TextStyle = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w700,
-    height: 1.4,
-    decoration: TextDecoration.none,
-  );
+  // ===========================================================================
+  // Text Styles
+  // ===========================================================================
 
-  static const bold12TextStyle = TextStyle(
-    fontSize: 12,
-    fontWeight: FontWeight.w600,
-    height: 1.33,
-    decoration: TextDecoration.none,
-  );
-
-  static const bold16TextStyle = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w600,
-    height: 1.25,
-    decoration: TextDecoration.none,
-  );
-
-  static const regular14TextStyle = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w400,
-    height: 1.4,
-    decoration: TextDecoration.none,
-  );
-
-  static const regular16TextStyle = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    height: 1.25,
-    decoration: TextDecoration.none,
-  );
-
-  static const medium14TextStyle = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
-    height: 1.7,
-    decoration: TextDecoration.none,
-  );
-
-  static const medium24TextStyle = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w500,
-    height: 1.33,
-    decoration: TextDecoration.none,
-  );
-
-  static const medium32TextStyle = TextStyle(
-    fontSize: 32,
-    fontWeight: FontWeight.w500,
-    height: 1.25,
-    decoration: TextDecoration.none,
-  );
-
-  static const medium16TextStyle = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-    height: 1.25,
-    decoration: TextDecoration.none,
-  );
-
-  static const bold20TextStyle = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w700,
-    height: 1.4,
-    decoration: TextDecoration.none,
-  );
-
-  static const bold24TextStyle = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w700,
-    height: 1.34,
-    decoration: TextDecoration.none,
-  );
-
-  static const regular20TextStyle = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w400,
-    height: 1.4,
-    decoration: TextDecoration.none,
-  );
-
-  static const regular12TextStyle = TextStyle(
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    height: 1.3,
-    decoration: TextDecoration.none,
-  );
-
-  static const regular10TextStyle = TextStyle(
-    fontSize: 10,
-    fontWeight: FontWeight.w400,
-    height: 1.4,
-    decoration: TextDecoration.none,
-  );
-
+  // Headlines
   static const headLineTextStyle = TextStyle(
     fontSize: 30,
     fontWeight: FontWeight.w700,
@@ -213,9 +152,18 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     decoration: TextDecoration.none,
   );
 
+  // Body Text
   static const paragraphTextStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
+    height: 1.3,
+    letterSpacing: 1.0,
+    decoration: TextDecoration.none,
+  );
+
+  static const paragraphSemiBoldTextStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
     height: 1.3,
     letterSpacing: 1.0,
     decoration: TextDecoration.none,
@@ -245,42 +193,127 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     decoration: TextDecoration.none,
   );
 
-  static const paragraphSemiBoldTextStyle = TextStyle(
-    fontSize: 16,
+  // Legacy Styles (Grouped by Weight & Size)
+  // Bold
+  static const bold24TextStyle = TextStyle(
+    fontSize: 24,
     fontWeight: FontWeight.w700,
-    height: 1.3,
-    letterSpacing: 1.0,
+    height: 1.34,
     decoration: TextDecoration.none,
   );
 
-  @override
-  final TextStyle regular16;
-  @override
-  final TextStyle bold24;
-  @override
-  final TextStyle medium24;
-  @override
-  final TextStyle medium32;
-  @override
-  final TextStyle medium16;
-  @override
-  final TextStyle bold14;
-  @override
-  final TextStyle bold16;
-  @override
-  final TextStyle bold12;
-  @override
-  final TextStyle regular14;
-  @override
-  final TextStyle regular20;
-  @override
-  final TextStyle bold20;
-  @override
-  final TextStyle regular10;
-  @override
-  final TextStyle regular12;
-  @override
-  final TextStyle medium14;
+  static const bold20TextStyle = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    height: 1.4,
+    decoration: TextDecoration.none,
+  );
+
+  static const bold18TextStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    height: 1.4,
+    decoration: TextDecoration.none,
+  );
+
+  static const bold16TextStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    height: 1.25,
+    decoration: TextDecoration.none,
+  );
+
+  static const bold14TextStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    height: 1.4,
+    decoration: TextDecoration.none,
+  );
+
+  static const bold12TextStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    height: 1.33,
+    decoration: TextDecoration.none,
+  );
+
+  // Medium
+  static const medium32TextStyle = TextStyle(
+    fontSize: 32,
+    fontWeight: FontWeight.w500,
+    height: 1.25,
+    decoration: TextDecoration.none,
+  );
+
+  static const medium24TextStyle = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w500,
+    height: 1.33,
+    decoration: TextDecoration.none,
+  );
+
+  static const medium16TextStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    height: 1.25,
+    decoration: TextDecoration.none,
+  );
+
+  static const medium14TextStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    height: 1.7,
+    decoration: TextDecoration.none,
+  );
+
+  // Regular
+  static const regular20TextStyle = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    decoration: TextDecoration.none,
+  );
+
+  static const regular18TextStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    decoration: TextDecoration.none,
+  );
+
+  static const regular16TextStyle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    height: 1.25,
+    decoration: TextDecoration.none,
+  );
+
+  static const regular14TextStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    decoration: TextDecoration.none,
+  );
+
+  static const regular12TextStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    height: 1.3,
+    decoration: TextDecoration.none,
+  );
+
+  static const regular10TextStyle = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    height: 1.4,
+    decoration: TextDecoration.none,
+  );
+
+  // ===========================================================================
+  // Fields
+  // ===========================================================================
+
+  // TextStyles
   @override
   final TextStyle headline;
   @override
@@ -292,31 +325,55 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   @override
   final TextStyle paragraph;
   @override
+  final TextStyle paragraphSemiBold;
+  @override
   final TextStyle subText;
   @override
   final TextStyle subTexMedium;
   @override
   final TextStyle smallTex;
+
   @override
-  final TextStyle paragraphSemiBold;
+  final TextStyle bold24;
+  @override
+  final TextStyle bold20;
+  @override
+  final TextStyle bold18;
+  @override
+  final TextStyle bold16;
+  @override
+  final TextStyle bold14;
+  @override
+  final TextStyle bold12;
+  @override
+  final TextStyle medium32;
+  @override
+  final TextStyle medium24;
+  @override
+  final TextStyle medium16;
+  @override
+  final TextStyle medium14;
+  @override
+  final TextStyle regular20;
+  @override
+  final TextStyle regular18;
+  @override
+  final TextStyle regular16;
+  @override
+  final TextStyle regular14;
+  @override
+  final TextStyle regular12;
+  @override
+  final TextStyle regular10;
+
+  // Colors
+  // Neutrals
   @override
   final Color background;
   @override
   final Color appBar;
   @override
-  final Color mainGreen;
-  @override
-  final Color smokyBlack;
-  @override
-  final Color palmLeaf;
-  @override
-  final Color apple;
-  @override
-  final Color dartmouthGreen;
-  @override
-  final Color textLightGrey;
-  @override
-  final Color textGrey;
+  final Color white;
   @override
   final Color black;
   @override
@@ -324,43 +381,73 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   @override
   final Color textColor;
   @override
-  final Color trueBlue;
+  final Color textGrey;
   @override
-  final Color white;
+  final Color textLightGrey;
+  @override
+  final Color smokyBlack;
   @override
   final Color cultured;
   @override
-  final Color ankeesBlue;
-  @override
-  final Color shinyShamrock;
-  @override
   final Color silver;
-  @override
-  final Color red;
+
+  // Ink Series
   @override
   final Color ink0;
   @override
-  final Color ink40;
-  @override
   final Color ink5;
-  @override
-  final Color ink60;
-  @override
-  final Color ink100;
-  @override
-  final Color ink80;
-  @override
-  final Color green100;
-  @override
-  final Color ink20;
-  @override
-  final Color green10;
   @override
   final Color ink10;
   @override
-  final Color red100;
+  final Color ink20;
   @override
-  final Color red0;
+  final Color ink40;
+  @override
+  final Color ink60;
+  @override
+  final Color ink80;
+  @override
+  final Color ink100;
+
+  // Green Series
+  @override
+  final Color green0;
+  @override
+  final Color green5;
+  @override
+  final Color green10;
+  @override
+  final Color green15;
+  @override
+  final Color green20;
+  @override
+  final Color green40;
+  @override
+  final Color green60;
+  @override
+  final Color green80;
+  @override
+  final Color green100;
+  @override
+  final Color mainGreen;
+  @override
+  final Color darkGreen;
+  @override
+  final Color secondGreen;
+  @override
+  final Color palmLeaf;
+  @override
+  final Color dartmouthGreen;
+  @override
+  final Color apple;
+  @override
+  final Color shinyShamrock;
+  @override
+  final Color honeydew;
+  @override
+  final Color antiFlashWhite;
+
+  // Blue Series
   @override
   final Color blue0;
   @override
@@ -380,70 +467,112 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   @override
   final Color blue100;
   @override
+  final Color trueBlue;
+  @override
+  final Color cyan;
+  @override
+  final Color ankeesBlue;
+
+  // Red Series
+  @override
+  final Color red0;
+  @override
+  final Color red100;
+  @override
+  final Color red;
+  @override
+  final Color champagnePink;
+
+  // Yellow / Orange Series
+  @override
   final Color yellow5;
   @override
   final Color yellow100;
   @override
-  final Color orange100;
+  final Color subYellow;
   @override
-  final Color green0;
+  final Color dutchWhite;
+  @override
+  final Color orange;
+  @override
+  final Color orange100;
 }
 
 final lightAppThemes = AppThemes(
-  regular16: AppThemes.regular16TextStyle,
-  bold24: AppThemes.bold24TextStyle,
-  medium24: AppThemes.medium24TextStyle,
-  medium32: AppThemes.medium32TextStyle,
-  medium16: AppThemes.medium16TextStyle,
-  bold14: AppThemes.bold14TextStyle,
-  bold16: AppThemes.bold16TextStyle,
-  bold12: AppThemes.bold12TextStyle,
-  regular14: AppThemes.regular14TextStyle,
-  regular20: AppThemes.regular20TextStyle,
-  bold20: AppThemes.bold20TextStyle,
-  regular12: AppThemes.regular12TextStyle,
-  regular10: AppThemes.regular10TextStyle,
-  medium14: AppThemes.medium14TextStyle,
-  background: AppColors.white,
-  appBar: AppColors.black,
+  // TextStyles
   headline: AppThemes.headLineTextStyle,
   h1: AppThemes.h1TextStyle,
   h2: AppThemes.h2TextStyle,
   h3: AppThemes.h3TextStyle,
   paragraph: AppThemes.paragraphTextStyle,
+  paragraphSemiBold: AppThemes.paragraphSemiBoldTextStyle,
   subText: AppThemes.subTexTextStyle,
   subTexMedium: AppThemes.subTexMediumTextStyle,
   smallTex: AppThemes.smallTexTextStyle,
-  paragraphSemiBold: AppThemes.paragraphSemiBoldTextStyle,
-  mainGreen: AppColors.mainGreen,
-  smokyBlack: AppColors.smokyBlack,
-  palmLeaf: AppColors.palmLeaf,
-  apple: AppColors.apple,
-  dartmouthGreen: AppColors.dartmouthGreen,
-  textLightGrey: AppColors.textLightGrey,
-  textGrey: AppColors.textGrey,
+
+  // Legacy TextStyles
+  bold24: AppThemes.bold24TextStyle,
+  bold20: AppThemes.bold20TextStyle,
+  bold18: AppThemes.bold18TextStyle,
+  bold16: AppThemes.bold16TextStyle,
+  bold14: AppThemes.bold14TextStyle,
+  bold12: AppThemes.bold12TextStyle,
+  medium32: AppThemes.medium32TextStyle,
+  medium24: AppThemes.medium24TextStyle,
+  medium16: AppThemes.medium16TextStyle,
+  medium14: AppThemes.medium14TextStyle,
+  regular20: AppThemes.regular20TextStyle,
+  regular18: AppThemes.regular18TextStyle,
+  regular16: AppThemes.regular16TextStyle,
+  regular14: AppThemes.regular14TextStyle,
+  regular12: AppThemes.regular12TextStyle,
+  regular10: AppThemes.regular10TextStyle,
+
+  // Colors
+  // Neutrals
+  background: AppColors.white,
+  appBar: AppColors.black,
+  white: AppColors.white,
   black: AppColors.black,
   transparent: AppColors.transparent,
   textColor: AppColors.black,
-  trueBlue: AppColors.trueBlue,
-  white: AppColors.white,
+  textGrey: AppColors.textGrey,
+  textLightGrey: AppColors.textLightGrey,
+  smokyBlack: AppColors.smokyBlack,
   cultured: AppColors.cultured,
-  ankeesBlue: AppColors.ankeesBlue,
-  shinyShamrock: AppColors.shinyShamrock,
   silver: AppColors.silver,
-  red: AppColors.red,
+
+  // Ink Series
   ink0: AppColors.ink0,
-  ink40: AppColors.ink40,
   ink5: AppColors.ink5,
-  ink60: AppColors.ink60,
-  ink100: AppColors.ink100,
-  ink80: AppColors.ink80,
-  green100: AppColors.green100,
-  ink20: AppColors.ink20,
-  green10: AppColors.green10,
   ink10: AppColors.ink10,
-  red100: AppColors.red100,
-  red0: AppColors.red0,
+  ink20: AppColors.ink20,
+  ink40: AppColors.ink40,
+  ink60: AppColors.ink60,
+  ink80: AppColors.ink80,
+  ink100: AppColors.ink100,
+
+  // Green Series
+  green0: AppColors.green0,
+  green5: AppColors.green5,
+  green10: AppColors.green10,
+  green15: AppColors.green15,
+  green20: AppColors.green20,
+  green40: AppColors.green40,
+  green60: AppColors.green60,
+  green80: AppColors.green80,
+  green100: AppColors.green100,
+  mainGreen: AppColors.mainGreen,
+  darkGreen: AppColors.darkGreen,
+  secondGreen: AppColors.secondGreen,
+  palmLeaf: AppColors.palmLeaf,
+  dartmouthGreen: AppColors.dartmouthGreen,
+  apple: AppColors.apple,
+  shinyShamrock: AppColors.shinyShamrock,
+  honeydew: AppColors.honeydew,
+  antiFlashWhite: AppColors.antiFlashWhite,
+
+  // Blue Series
   blue0: AppColors.blue0,
   blue5: AppColors.blue5,
   blue10: AppColors.blue10,
@@ -453,67 +582,100 @@ final lightAppThemes = AppThemes(
   blue60: AppColors.blue60,
   blue80: AppColors.blue80,
   blue100: AppColors.blue100,
+  trueBlue: AppColors.trueBlue,
+  cyan: AppColors.cyan,
+  ankeesBlue: AppColors.ankeesBlue,
+
+  // Red Series
+  red0: AppColors.red0,
+  red100: AppColors.red100,
+  red: AppColors.red,
+  champagnePink: AppColors.champagnePink,
+
+  // Yellow / Orange Series
   yellow5: AppColors.yellow5,
   yellow100: AppColors.yellow100,
+  subYellow: AppColors.subYellow,
+  dutchWhite: AppColors.dutchWhite,
+  orange: AppColors.orange,
   orange100: AppColors.orange100,
-  green0: AppColors.green0,
 );
 
 final darkAppThemes = AppThemes(
-  regular16: AppThemes.regular16TextStyle,
-  bold24: AppThemes.bold24TextStyle,
-  medium24: AppThemes.medium24TextStyle,
-  medium32: AppThemes.medium32TextStyle,
-  medium16: AppThemes.medium16TextStyle,
-  bold14: AppThemes.bold14TextStyle,
-  bold16: AppThemes.bold16TextStyle,
-  bold12: AppThemes.bold12TextStyle,
-  regular14: AppThemes.regular14TextStyle,
-  regular20: AppThemes.regular20TextStyle,
-  bold20: AppThemes.bold20TextStyle,
-  regular12: AppThemes.regular12TextStyle,
-  regular10: AppThemes.regular10TextStyle,
-  medium14: AppThemes.medium14TextStyle,
-  background: AppColors.black,
-  appBar: AppColors.white,
+  // TextStyles
   headline: AppThemes.headLineTextStyle,
   h1: AppThemes.h1TextStyle,
   h2: AppThemes.h2TextStyle,
   h3: AppThemes.h3TextStyle,
   paragraph: AppThemes.paragraphTextStyle,
+  paragraphSemiBold: AppThemes.paragraphSemiBoldTextStyle,
   subText: AppThemes.subTexTextStyle,
   subTexMedium: AppThemes.subTexMediumTextStyle,
   smallTex: AppThemes.smallTexTextStyle,
-  paragraphSemiBold: AppThemes.paragraphSemiBoldTextStyle,
-  mainGreen: AppColors.mainGreen,
-  smokyBlack: AppColors.smokyBlack,
-  palmLeaf: AppColors.palmLeaf,
-  apple: AppColors.apple,
-  dartmouthGreen: AppColors.dartmouthGreen,
-  textLightGrey: AppColors.textLightGrey,
-  textGrey: AppColors.textGrey,
+
+  // Legacy TextStyles
+  bold24: AppThemes.bold24TextStyle,
+  bold20: AppThemes.bold20TextStyle,
+  bold18: AppThemes.bold18TextStyle,
+  bold16: AppThemes.bold16TextStyle,
+  bold14: AppThemes.bold14TextStyle,
+  bold12: AppThemes.bold12TextStyle,
+  medium32: AppThemes.medium32TextStyle,
+  medium24: AppThemes.medium24TextStyle,
+  medium16: AppThemes.medium16TextStyle,
+  medium14: AppThemes.medium14TextStyle,
+  regular20: AppThemes.regular20TextStyle,
+  regular18: AppThemes.regular18TextStyle,
+  regular16: AppThemes.regular16TextStyle,
+  regular14: AppThemes.regular14TextStyle,
+  regular12: AppThemes.regular12TextStyle,
+  regular10: AppThemes.regular10TextStyle,
+
+  // Colors
+  // Neutrals
+  background: AppColors.black,
+  appBar: AppColors.white,
+  white: AppColors.black, // Inverted for Dark Mode
   black: AppColors.black,
   transparent: AppColors.transparent,
   textColor: AppColors.white,
-  trueBlue: AppColors.trueBlue,
-  white: AppColors.black,
+  textGrey: AppColors.textGrey,
+  textLightGrey: AppColors.textLightGrey,
+  smokyBlack: AppColors.smokyBlack,
   cultured: AppColors.cultured,
-  ankeesBlue: AppColors.ankeesBlue,
-  shinyShamrock: AppColors.shinyShamrock,
   silver: AppColors.silver,
-  red: AppColors.red,
+
+  // Ink Series
   ink0: AppColors.ink0,
-  ink40: AppColors.ink40,
   ink5: AppColors.ink5,
-  ink60: AppColors.ink60,
-  ink100: AppColors.ink100,
-  ink80: AppColors.ink80,
-  green100: AppColors.green100,
-  ink20: AppColors.ink20,
-  green10: AppColors.green10,
   ink10: AppColors.ink10,
-  red100: AppColors.red100,
-  red0: AppColors.red0,
+  ink20: AppColors.ink20,
+  ink40: AppColors.ink40,
+  ink60: AppColors.ink60,
+  ink80: AppColors.ink80,
+  ink100: AppColors.ink100,
+
+  // Green Series
+  green0: AppColors.green0,
+  green5: AppColors.green5,
+  green10: AppColors.green10,
+  green15: AppColors.green15,
+  green20: AppColors.green20,
+  green40: AppColors.green40,
+  green60: AppColors.green60,
+  green80: AppColors.green80,
+  green100: AppColors.green100,
+  mainGreen: AppColors.mainGreen,
+  darkGreen: AppColors.darkGreen,
+  secondGreen: AppColors.secondGreen,
+  palmLeaf: AppColors.palmLeaf,
+  dartmouthGreen: AppColors.dartmouthGreen,
+  apple: AppColors.apple,
+  shinyShamrock: AppColors.shinyShamrock,
+  honeydew: AppColors.honeydew,
+  antiFlashWhite: AppColors.antiFlashWhite,
+
+  // Blue Series
   blue0: AppColors.blue0,
   blue5: AppColors.blue5,
   blue10: AppColors.blue10,
@@ -523,10 +685,23 @@ final darkAppThemes = AppThemes(
   blue60: AppColors.blue60,
   blue80: AppColors.blue80,
   blue100: AppColors.blue100,
+  trueBlue: AppColors.trueBlue,
+  cyan: AppColors.cyan,
+  ankeesBlue: AppColors.ankeesBlue,
+
+  // Red Series
+  red0: AppColors.red0,
+  red100: AppColors.red100,
+  red: AppColors.red,
+  champagnePink: AppColors.champagnePink,
+
+  // Yellow / Orange Series
   yellow5: AppColors.yellow5,
   yellow100: AppColors.yellow100,
+  subYellow: AppColors.subYellow,
+  dutchWhite: AppColors.dutchWhite,
+  orange: AppColors.orange,
   orange100: AppColors.orange100,
-  green0: AppColors.green0,
 );
 
 final talkerTheme = TalkerScreenTheme(logColors: {GoodLog.getKey: const Color(0xff4CAF50)});

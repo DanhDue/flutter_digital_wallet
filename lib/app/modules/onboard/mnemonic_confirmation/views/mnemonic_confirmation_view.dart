@@ -1,0 +1,39 @@
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+// coverage:ignore-file
+
+import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
+import 'package:flutter/material.dart';
+
+class MnemonicConfirmationView extends StatefulWidget {
+  const MnemonicConfirmationView({
+    super.key,
+    this.createdWallet,
+    this.mnemonicIsVerified,
+    this.finish,
+  });
+
+  final WalletResponseObject? createdWallet;
+
+  final ValueChanged<bool?>? mnemonicIsVerified;
+
+  final VoidCallback? finish;
+
+  @override
+  State<MnemonicConfirmationView> createState() => _MnemonicConfirmationViewState();
+}
+
+class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        top: true,
+        bottom: true,
+        child: Center(
+          child: Text('MnemonicConfirmationView is working', style: TextStyle(fontSize: 20)),
+        ),
+      ),
+    );
+  }
+}

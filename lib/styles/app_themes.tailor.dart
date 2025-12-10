@@ -10,60 +10,68 @@ part of 'app_themes.dart';
 // **************************************************************************
 
 mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
-  TextStyle get regular16;
-  TextStyle get bold24;
-  TextStyle get medium24;
-  TextStyle get medium32;
-  TextStyle get medium16;
-  TextStyle get bold14;
-  TextStyle get bold16;
-  TextStyle get bold12;
-  TextStyle get regular14;
-  TextStyle get regular20;
-  TextStyle get bold20;
-  TextStyle get regular10;
-  TextStyle get regular12;
-  TextStyle get medium14;
   TextStyle get headline;
   TextStyle get h1;
   TextStyle get h2;
   TextStyle get h3;
   TextStyle get paragraph;
+  TextStyle get paragraphSemiBold;
   TextStyle get subText;
   TextStyle get subTexMedium;
   TextStyle get smallTex;
-  TextStyle get paragraphSemiBold;
+  TextStyle get bold24;
+  TextStyle get bold20;
+  TextStyle get bold18;
+  TextStyle get bold16;
+  TextStyle get bold14;
+  TextStyle get bold12;
+  TextStyle get medium32;
+  TextStyle get medium24;
+  TextStyle get medium16;
+  TextStyle get medium14;
+  TextStyle get regular20;
+  TextStyle get regular18;
+  TextStyle get regular16;
+  TextStyle get regular14;
+  TextStyle get regular12;
+  TextStyle get regular10;
   Color get background;
   Color get appBar;
-  Color get mainGreen;
-  Color get smokyBlack;
-  Color get palmLeaf;
-  Color get apple;
-  Color get dartmouthGreen;
-  Color get textLightGrey;
-  Color get textGrey;
+  Color get white;
   Color get black;
   Color get transparent;
   Color get textColor;
-  Color get trueBlue;
-  Color get white;
+  Color get textGrey;
+  Color get textLightGrey;
+  Color get smokyBlack;
   Color get cultured;
-  Color get ankeesBlue;
-  Color get shinyShamrock;
   Color get silver;
-  Color get red;
   Color get ink0;
-  Color get ink40;
   Color get ink5;
-  Color get ink60;
-  Color get ink100;
-  Color get ink80;
-  Color get green100;
-  Color get ink20;
-  Color get green10;
   Color get ink10;
-  Color get red100;
-  Color get red0;
+  Color get ink20;
+  Color get ink40;
+  Color get ink60;
+  Color get ink80;
+  Color get ink100;
+  Color get green0;
+  Color get green5;
+  Color get green10;
+  Color get green15;
+  Color get green20;
+  Color get green40;
+  Color get green60;
+  Color get green80;
+  Color get green100;
+  Color get mainGreen;
+  Color get darkGreen;
+  Color get secondGreen;
+  Color get palmLeaf;
+  Color get dartmouthGreen;
+  Color get apple;
+  Color get shinyShamrock;
+  Color get honeydew;
+  Color get antiFlashWhite;
   Color get blue0;
   Color get blue5;
   Color get blue10;
@@ -73,67 +81,84 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get blue60;
   Color get blue80;
   Color get blue100;
+  Color get trueBlue;
+  Color get cyan;
+  Color get ankeesBlue;
+  Color get red0;
+  Color get red100;
+  Color get red;
+  Color get champagnePink;
   Color get yellow5;
   Color get yellow100;
+  Color get subYellow;
+  Color get dutchWhite;
+  Color get orange;
   Color get orange100;
-  Color get green0;
 
   @override
   AppThemes copyWith({
-    TextStyle? regular16,
-    TextStyle? bold24,
-    TextStyle? medium24,
-    TextStyle? medium32,
-    TextStyle? medium16,
-    TextStyle? bold14,
-    TextStyle? bold16,
-    TextStyle? bold12,
-    TextStyle? regular14,
-    TextStyle? regular20,
-    TextStyle? bold20,
-    TextStyle? regular10,
-    TextStyle? regular12,
-    TextStyle? medium14,
     TextStyle? headline,
     TextStyle? h1,
     TextStyle? h2,
     TextStyle? h3,
     TextStyle? paragraph,
+    TextStyle? paragraphSemiBold,
     TextStyle? subText,
     TextStyle? subTexMedium,
     TextStyle? smallTex,
-    TextStyle? paragraphSemiBold,
+    TextStyle? bold24,
+    TextStyle? bold20,
+    TextStyle? bold18,
+    TextStyle? bold16,
+    TextStyle? bold14,
+    TextStyle? bold12,
+    TextStyle? medium32,
+    TextStyle? medium24,
+    TextStyle? medium16,
+    TextStyle? medium14,
+    TextStyle? regular20,
+    TextStyle? regular18,
+    TextStyle? regular16,
+    TextStyle? regular14,
+    TextStyle? regular12,
+    TextStyle? regular10,
     Color? background,
     Color? appBar,
-    Color? mainGreen,
-    Color? smokyBlack,
-    Color? palmLeaf,
-    Color? apple,
-    Color? dartmouthGreen,
-    Color? textLightGrey,
-    Color? textGrey,
+    Color? white,
     Color? black,
     Color? transparent,
     Color? textColor,
-    Color? trueBlue,
-    Color? white,
+    Color? textGrey,
+    Color? textLightGrey,
+    Color? smokyBlack,
     Color? cultured,
-    Color? ankeesBlue,
-    Color? shinyShamrock,
     Color? silver,
-    Color? red,
     Color? ink0,
-    Color? ink40,
     Color? ink5,
-    Color? ink60,
-    Color? ink100,
-    Color? ink80,
-    Color? green100,
-    Color? ink20,
-    Color? green10,
     Color? ink10,
-    Color? red100,
-    Color? red0,
+    Color? ink20,
+    Color? ink40,
+    Color? ink60,
+    Color? ink80,
+    Color? ink100,
+    Color? green0,
+    Color? green5,
+    Color? green10,
+    Color? green15,
+    Color? green20,
+    Color? green40,
+    Color? green60,
+    Color? green80,
+    Color? green100,
+    Color? mainGreen,
+    Color? darkGreen,
+    Color? secondGreen,
+    Color? palmLeaf,
+    Color? dartmouthGreen,
+    Color? apple,
+    Color? shinyShamrock,
+    Color? honeydew,
+    Color? antiFlashWhite,
     Color? blue0,
     Color? blue5,
     Color? blue10,
@@ -143,66 +168,83 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? blue60,
     Color? blue80,
     Color? blue100,
+    Color? trueBlue,
+    Color? cyan,
+    Color? ankeesBlue,
+    Color? red0,
+    Color? red100,
+    Color? red,
+    Color? champagnePink,
     Color? yellow5,
     Color? yellow100,
+    Color? subYellow,
+    Color? dutchWhite,
+    Color? orange,
     Color? orange100,
-    Color? green0,
   }) {
     return AppThemes(
-      regular16: regular16 ?? this.regular16,
-      bold24: bold24 ?? this.bold24,
-      medium24: medium24 ?? this.medium24,
-      medium32: medium32 ?? this.medium32,
-      medium16: medium16 ?? this.medium16,
-      bold14: bold14 ?? this.bold14,
-      bold16: bold16 ?? this.bold16,
-      bold12: bold12 ?? this.bold12,
-      regular14: regular14 ?? this.regular14,
-      regular20: regular20 ?? this.regular20,
-      bold20: bold20 ?? this.bold20,
-      regular10: regular10 ?? this.regular10,
-      regular12: regular12 ?? this.regular12,
-      medium14: medium14 ?? this.medium14,
       headline: headline ?? this.headline,
       h1: h1 ?? this.h1,
       h2: h2 ?? this.h2,
       h3: h3 ?? this.h3,
       paragraph: paragraph ?? this.paragraph,
+      paragraphSemiBold: paragraphSemiBold ?? this.paragraphSemiBold,
       subText: subText ?? this.subText,
       subTexMedium: subTexMedium ?? this.subTexMedium,
       smallTex: smallTex ?? this.smallTex,
-      paragraphSemiBold: paragraphSemiBold ?? this.paragraphSemiBold,
+      bold24: bold24 ?? this.bold24,
+      bold20: bold20 ?? this.bold20,
+      bold18: bold18 ?? this.bold18,
+      bold16: bold16 ?? this.bold16,
+      bold14: bold14 ?? this.bold14,
+      bold12: bold12 ?? this.bold12,
+      medium32: medium32 ?? this.medium32,
+      medium24: medium24 ?? this.medium24,
+      medium16: medium16 ?? this.medium16,
+      medium14: medium14 ?? this.medium14,
+      regular20: regular20 ?? this.regular20,
+      regular18: regular18 ?? this.regular18,
+      regular16: regular16 ?? this.regular16,
+      regular14: regular14 ?? this.regular14,
+      regular12: regular12 ?? this.regular12,
+      regular10: regular10 ?? this.regular10,
       background: background ?? this.background,
       appBar: appBar ?? this.appBar,
-      mainGreen: mainGreen ?? this.mainGreen,
-      smokyBlack: smokyBlack ?? this.smokyBlack,
-      palmLeaf: palmLeaf ?? this.palmLeaf,
-      apple: apple ?? this.apple,
-      dartmouthGreen: dartmouthGreen ?? this.dartmouthGreen,
-      textLightGrey: textLightGrey ?? this.textLightGrey,
-      textGrey: textGrey ?? this.textGrey,
+      white: white ?? this.white,
       black: black ?? this.black,
       transparent: transparent ?? this.transparent,
       textColor: textColor ?? this.textColor,
-      trueBlue: trueBlue ?? this.trueBlue,
-      white: white ?? this.white,
+      textGrey: textGrey ?? this.textGrey,
+      textLightGrey: textLightGrey ?? this.textLightGrey,
+      smokyBlack: smokyBlack ?? this.smokyBlack,
       cultured: cultured ?? this.cultured,
-      ankeesBlue: ankeesBlue ?? this.ankeesBlue,
-      shinyShamrock: shinyShamrock ?? this.shinyShamrock,
       silver: silver ?? this.silver,
-      red: red ?? this.red,
       ink0: ink0 ?? this.ink0,
-      ink40: ink40 ?? this.ink40,
       ink5: ink5 ?? this.ink5,
-      ink60: ink60 ?? this.ink60,
-      ink100: ink100 ?? this.ink100,
-      ink80: ink80 ?? this.ink80,
-      green100: green100 ?? this.green100,
-      ink20: ink20 ?? this.ink20,
-      green10: green10 ?? this.green10,
       ink10: ink10 ?? this.ink10,
-      red100: red100 ?? this.red100,
-      red0: red0 ?? this.red0,
+      ink20: ink20 ?? this.ink20,
+      ink40: ink40 ?? this.ink40,
+      ink60: ink60 ?? this.ink60,
+      ink80: ink80 ?? this.ink80,
+      ink100: ink100 ?? this.ink100,
+      green0: green0 ?? this.green0,
+      green5: green5 ?? this.green5,
+      green10: green10 ?? this.green10,
+      green15: green15 ?? this.green15,
+      green20: green20 ?? this.green20,
+      green40: green40 ?? this.green40,
+      green60: green60 ?? this.green60,
+      green80: green80 ?? this.green80,
+      green100: green100 ?? this.green100,
+      mainGreen: mainGreen ?? this.mainGreen,
+      darkGreen: darkGreen ?? this.darkGreen,
+      secondGreen: secondGreen ?? this.secondGreen,
+      palmLeaf: palmLeaf ?? this.palmLeaf,
+      dartmouthGreen: dartmouthGreen ?? this.dartmouthGreen,
+      apple: apple ?? this.apple,
+      shinyShamrock: shinyShamrock ?? this.shinyShamrock,
+      honeydew: honeydew ?? this.honeydew,
+      antiFlashWhite: antiFlashWhite ?? this.antiFlashWhite,
       blue0: blue0 ?? this.blue0,
       blue5: blue5 ?? this.blue5,
       blue10: blue10 ?? this.blue10,
@@ -212,10 +254,19 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       blue60: blue60 ?? this.blue60,
       blue80: blue80 ?? this.blue80,
       blue100: blue100 ?? this.blue100,
+      trueBlue: trueBlue ?? this.trueBlue,
+      cyan: cyan ?? this.cyan,
+      ankeesBlue: ankeesBlue ?? this.ankeesBlue,
+      red0: red0 ?? this.red0,
+      red100: red100 ?? this.red100,
+      red: red ?? this.red,
+      champagnePink: champagnePink ?? this.champagnePink,
       yellow5: yellow5 ?? this.yellow5,
       yellow100: yellow100 ?? this.yellow100,
+      subYellow: subYellow ?? this.subYellow,
+      dutchWhite: dutchWhite ?? this.dutchWhite,
+      orange: orange ?? this.orange,
       orange100: orange100 ?? this.orange100,
-      green0: green0 ?? this.green0,
     );
   }
 
@@ -223,60 +274,68 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   AppThemes lerp(covariant ThemeExtension<AppThemes>? other, double t) {
     if (other is! AppThemes) return this as AppThemes;
     return AppThemes(
-      regular16: TextStyle.lerp(regular16, other.regular16, t)!,
-      bold24: TextStyle.lerp(bold24, other.bold24, t)!,
-      medium24: TextStyle.lerp(medium24, other.medium24, t)!,
-      medium32: TextStyle.lerp(medium32, other.medium32, t)!,
-      medium16: TextStyle.lerp(medium16, other.medium16, t)!,
-      bold14: TextStyle.lerp(bold14, other.bold14, t)!,
-      bold16: TextStyle.lerp(bold16, other.bold16, t)!,
-      bold12: TextStyle.lerp(bold12, other.bold12, t)!,
-      regular14: TextStyle.lerp(regular14, other.regular14, t)!,
-      regular20: TextStyle.lerp(regular20, other.regular20, t)!,
-      bold20: TextStyle.lerp(bold20, other.bold20, t)!,
-      regular10: TextStyle.lerp(regular10, other.regular10, t)!,
-      regular12: TextStyle.lerp(regular12, other.regular12, t)!,
-      medium14: TextStyle.lerp(medium14, other.medium14, t)!,
       headline: TextStyle.lerp(headline, other.headline, t)!,
       h1: TextStyle.lerp(h1, other.h1, t)!,
       h2: TextStyle.lerp(h2, other.h2, t)!,
       h3: TextStyle.lerp(h3, other.h3, t)!,
       paragraph: TextStyle.lerp(paragraph, other.paragraph, t)!,
+      paragraphSemiBold: TextStyle.lerp(paragraphSemiBold, other.paragraphSemiBold, t)!,
       subText: TextStyle.lerp(subText, other.subText, t)!,
       subTexMedium: TextStyle.lerp(subTexMedium, other.subTexMedium, t)!,
       smallTex: TextStyle.lerp(smallTex, other.smallTex, t)!,
-      paragraphSemiBold: TextStyle.lerp(paragraphSemiBold, other.paragraphSemiBold, t)!,
+      bold24: TextStyle.lerp(bold24, other.bold24, t)!,
+      bold20: TextStyle.lerp(bold20, other.bold20, t)!,
+      bold18: TextStyle.lerp(bold18, other.bold18, t)!,
+      bold16: TextStyle.lerp(bold16, other.bold16, t)!,
+      bold14: TextStyle.lerp(bold14, other.bold14, t)!,
+      bold12: TextStyle.lerp(bold12, other.bold12, t)!,
+      medium32: TextStyle.lerp(medium32, other.medium32, t)!,
+      medium24: TextStyle.lerp(medium24, other.medium24, t)!,
+      medium16: TextStyle.lerp(medium16, other.medium16, t)!,
+      medium14: TextStyle.lerp(medium14, other.medium14, t)!,
+      regular20: TextStyle.lerp(regular20, other.regular20, t)!,
+      regular18: TextStyle.lerp(regular18, other.regular18, t)!,
+      regular16: TextStyle.lerp(regular16, other.regular16, t)!,
+      regular14: TextStyle.lerp(regular14, other.regular14, t)!,
+      regular12: TextStyle.lerp(regular12, other.regular12, t)!,
+      regular10: TextStyle.lerp(regular10, other.regular10, t)!,
       background: Color.lerp(background, other.background, t)!,
       appBar: Color.lerp(appBar, other.appBar, t)!,
-      mainGreen: Color.lerp(mainGreen, other.mainGreen, t)!,
-      smokyBlack: Color.lerp(smokyBlack, other.smokyBlack, t)!,
-      palmLeaf: Color.lerp(palmLeaf, other.palmLeaf, t)!,
-      apple: Color.lerp(apple, other.apple, t)!,
-      dartmouthGreen: Color.lerp(dartmouthGreen, other.dartmouthGreen, t)!,
-      textLightGrey: Color.lerp(textLightGrey, other.textLightGrey, t)!,
-      textGrey: Color.lerp(textGrey, other.textGrey, t)!,
+      white: Color.lerp(white, other.white, t)!,
       black: Color.lerp(black, other.black, t)!,
       transparent: Color.lerp(transparent, other.transparent, t)!,
       textColor: Color.lerp(textColor, other.textColor, t)!,
-      trueBlue: Color.lerp(trueBlue, other.trueBlue, t)!,
-      white: Color.lerp(white, other.white, t)!,
+      textGrey: Color.lerp(textGrey, other.textGrey, t)!,
+      textLightGrey: Color.lerp(textLightGrey, other.textLightGrey, t)!,
+      smokyBlack: Color.lerp(smokyBlack, other.smokyBlack, t)!,
       cultured: Color.lerp(cultured, other.cultured, t)!,
-      ankeesBlue: Color.lerp(ankeesBlue, other.ankeesBlue, t)!,
-      shinyShamrock: Color.lerp(shinyShamrock, other.shinyShamrock, t)!,
       silver: Color.lerp(silver, other.silver, t)!,
-      red: Color.lerp(red, other.red, t)!,
       ink0: Color.lerp(ink0, other.ink0, t)!,
-      ink40: Color.lerp(ink40, other.ink40, t)!,
       ink5: Color.lerp(ink5, other.ink5, t)!,
-      ink60: Color.lerp(ink60, other.ink60, t)!,
-      ink100: Color.lerp(ink100, other.ink100, t)!,
-      ink80: Color.lerp(ink80, other.ink80, t)!,
-      green100: Color.lerp(green100, other.green100, t)!,
-      ink20: Color.lerp(ink20, other.ink20, t)!,
-      green10: Color.lerp(green10, other.green10, t)!,
       ink10: Color.lerp(ink10, other.ink10, t)!,
-      red100: Color.lerp(red100, other.red100, t)!,
-      red0: Color.lerp(red0, other.red0, t)!,
+      ink20: Color.lerp(ink20, other.ink20, t)!,
+      ink40: Color.lerp(ink40, other.ink40, t)!,
+      ink60: Color.lerp(ink60, other.ink60, t)!,
+      ink80: Color.lerp(ink80, other.ink80, t)!,
+      ink100: Color.lerp(ink100, other.ink100, t)!,
+      green0: Color.lerp(green0, other.green0, t)!,
+      green5: Color.lerp(green5, other.green5, t)!,
+      green10: Color.lerp(green10, other.green10, t)!,
+      green15: Color.lerp(green15, other.green15, t)!,
+      green20: Color.lerp(green20, other.green20, t)!,
+      green40: Color.lerp(green40, other.green40, t)!,
+      green60: Color.lerp(green60, other.green60, t)!,
+      green80: Color.lerp(green80, other.green80, t)!,
+      green100: Color.lerp(green100, other.green100, t)!,
+      mainGreen: Color.lerp(mainGreen, other.mainGreen, t)!,
+      darkGreen: Color.lerp(darkGreen, other.darkGreen, t)!,
+      secondGreen: Color.lerp(secondGreen, other.secondGreen, t)!,
+      palmLeaf: Color.lerp(palmLeaf, other.palmLeaf, t)!,
+      dartmouthGreen: Color.lerp(dartmouthGreen, other.dartmouthGreen, t)!,
+      apple: Color.lerp(apple, other.apple, t)!,
+      shinyShamrock: Color.lerp(shinyShamrock, other.shinyShamrock, t)!,
+      honeydew: Color.lerp(honeydew, other.honeydew, t)!,
+      antiFlashWhite: Color.lerp(antiFlashWhite, other.antiFlashWhite, t)!,
       blue0: Color.lerp(blue0, other.blue0, t)!,
       blue5: Color.lerp(blue5, other.blue5, t)!,
       blue10: Color.lerp(blue10, other.blue10, t)!,
@@ -286,10 +345,19 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       blue60: Color.lerp(blue60, other.blue60, t)!,
       blue80: Color.lerp(blue80, other.blue80, t)!,
       blue100: Color.lerp(blue100, other.blue100, t)!,
+      trueBlue: Color.lerp(trueBlue, other.trueBlue, t)!,
+      cyan: Color.lerp(cyan, other.cyan, t)!,
+      ankeesBlue: Color.lerp(ankeesBlue, other.ankeesBlue, t)!,
+      red0: Color.lerp(red0, other.red0, t)!,
+      red100: Color.lerp(red100, other.red100, t)!,
+      red: Color.lerp(red, other.red, t)!,
+      champagnePink: Color.lerp(champagnePink, other.champagnePink, t)!,
       yellow5: Color.lerp(yellow5, other.yellow5, t)!,
       yellow100: Color.lerp(yellow100, other.yellow100, t)!,
+      subYellow: Color.lerp(subYellow, other.subYellow, t)!,
+      dutchWhite: Color.lerp(dutchWhite, other.dutchWhite, t)!,
+      orange: Color.lerp(orange, other.orange, t)!,
       orange100: Color.lerp(orange100, other.orange100, t)!,
-      green0: Color.lerp(green0, other.green0, t)!,
     );
   }
 
@@ -298,60 +366,68 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AppThemes &&
-            const DeepCollectionEquality().equals(regular16, other.regular16) &&
-            const DeepCollectionEquality().equals(bold24, other.bold24) &&
-            const DeepCollectionEquality().equals(medium24, other.medium24) &&
-            const DeepCollectionEquality().equals(medium32, other.medium32) &&
-            const DeepCollectionEquality().equals(medium16, other.medium16) &&
-            const DeepCollectionEquality().equals(bold14, other.bold14) &&
-            const DeepCollectionEquality().equals(bold16, other.bold16) &&
-            const DeepCollectionEquality().equals(bold12, other.bold12) &&
-            const DeepCollectionEquality().equals(regular14, other.regular14) &&
-            const DeepCollectionEquality().equals(regular20, other.regular20) &&
-            const DeepCollectionEquality().equals(bold20, other.bold20) &&
-            const DeepCollectionEquality().equals(regular10, other.regular10) &&
-            const DeepCollectionEquality().equals(regular12, other.regular12) &&
-            const DeepCollectionEquality().equals(medium14, other.medium14) &&
             const DeepCollectionEquality().equals(headline, other.headline) &&
             const DeepCollectionEquality().equals(h1, other.h1) &&
             const DeepCollectionEquality().equals(h2, other.h2) &&
             const DeepCollectionEquality().equals(h3, other.h3) &&
             const DeepCollectionEquality().equals(paragraph, other.paragraph) &&
+            const DeepCollectionEquality().equals(paragraphSemiBold, other.paragraphSemiBold) &&
             const DeepCollectionEquality().equals(subText, other.subText) &&
             const DeepCollectionEquality().equals(subTexMedium, other.subTexMedium) &&
             const DeepCollectionEquality().equals(smallTex, other.smallTex) &&
-            const DeepCollectionEquality().equals(paragraphSemiBold, other.paragraphSemiBold) &&
+            const DeepCollectionEquality().equals(bold24, other.bold24) &&
+            const DeepCollectionEquality().equals(bold20, other.bold20) &&
+            const DeepCollectionEquality().equals(bold18, other.bold18) &&
+            const DeepCollectionEquality().equals(bold16, other.bold16) &&
+            const DeepCollectionEquality().equals(bold14, other.bold14) &&
+            const DeepCollectionEquality().equals(bold12, other.bold12) &&
+            const DeepCollectionEquality().equals(medium32, other.medium32) &&
+            const DeepCollectionEquality().equals(medium24, other.medium24) &&
+            const DeepCollectionEquality().equals(medium16, other.medium16) &&
+            const DeepCollectionEquality().equals(medium14, other.medium14) &&
+            const DeepCollectionEquality().equals(regular20, other.regular20) &&
+            const DeepCollectionEquality().equals(regular18, other.regular18) &&
+            const DeepCollectionEquality().equals(regular16, other.regular16) &&
+            const DeepCollectionEquality().equals(regular14, other.regular14) &&
+            const DeepCollectionEquality().equals(regular12, other.regular12) &&
+            const DeepCollectionEquality().equals(regular10, other.regular10) &&
             const DeepCollectionEquality().equals(background, other.background) &&
             const DeepCollectionEquality().equals(appBar, other.appBar) &&
-            const DeepCollectionEquality().equals(mainGreen, other.mainGreen) &&
-            const DeepCollectionEquality().equals(smokyBlack, other.smokyBlack) &&
-            const DeepCollectionEquality().equals(palmLeaf, other.palmLeaf) &&
-            const DeepCollectionEquality().equals(apple, other.apple) &&
-            const DeepCollectionEquality().equals(dartmouthGreen, other.dartmouthGreen) &&
-            const DeepCollectionEquality().equals(textLightGrey, other.textLightGrey) &&
-            const DeepCollectionEquality().equals(textGrey, other.textGrey) &&
+            const DeepCollectionEquality().equals(white, other.white) &&
             const DeepCollectionEquality().equals(black, other.black) &&
             const DeepCollectionEquality().equals(transparent, other.transparent) &&
             const DeepCollectionEquality().equals(textColor, other.textColor) &&
-            const DeepCollectionEquality().equals(trueBlue, other.trueBlue) &&
-            const DeepCollectionEquality().equals(white, other.white) &&
+            const DeepCollectionEquality().equals(textGrey, other.textGrey) &&
+            const DeepCollectionEquality().equals(textLightGrey, other.textLightGrey) &&
+            const DeepCollectionEquality().equals(smokyBlack, other.smokyBlack) &&
             const DeepCollectionEquality().equals(cultured, other.cultured) &&
-            const DeepCollectionEquality().equals(ankeesBlue, other.ankeesBlue) &&
-            const DeepCollectionEquality().equals(shinyShamrock, other.shinyShamrock) &&
             const DeepCollectionEquality().equals(silver, other.silver) &&
-            const DeepCollectionEquality().equals(red, other.red) &&
             const DeepCollectionEquality().equals(ink0, other.ink0) &&
-            const DeepCollectionEquality().equals(ink40, other.ink40) &&
             const DeepCollectionEquality().equals(ink5, other.ink5) &&
-            const DeepCollectionEquality().equals(ink60, other.ink60) &&
-            const DeepCollectionEquality().equals(ink100, other.ink100) &&
-            const DeepCollectionEquality().equals(ink80, other.ink80) &&
-            const DeepCollectionEquality().equals(green100, other.green100) &&
-            const DeepCollectionEquality().equals(ink20, other.ink20) &&
-            const DeepCollectionEquality().equals(green10, other.green10) &&
             const DeepCollectionEquality().equals(ink10, other.ink10) &&
-            const DeepCollectionEquality().equals(red100, other.red100) &&
-            const DeepCollectionEquality().equals(red0, other.red0) &&
+            const DeepCollectionEquality().equals(ink20, other.ink20) &&
+            const DeepCollectionEquality().equals(ink40, other.ink40) &&
+            const DeepCollectionEquality().equals(ink60, other.ink60) &&
+            const DeepCollectionEquality().equals(ink80, other.ink80) &&
+            const DeepCollectionEquality().equals(ink100, other.ink100) &&
+            const DeepCollectionEquality().equals(green0, other.green0) &&
+            const DeepCollectionEquality().equals(green5, other.green5) &&
+            const DeepCollectionEquality().equals(green10, other.green10) &&
+            const DeepCollectionEquality().equals(green15, other.green15) &&
+            const DeepCollectionEquality().equals(green20, other.green20) &&
+            const DeepCollectionEquality().equals(green40, other.green40) &&
+            const DeepCollectionEquality().equals(green60, other.green60) &&
+            const DeepCollectionEquality().equals(green80, other.green80) &&
+            const DeepCollectionEquality().equals(green100, other.green100) &&
+            const DeepCollectionEquality().equals(mainGreen, other.mainGreen) &&
+            const DeepCollectionEquality().equals(darkGreen, other.darkGreen) &&
+            const DeepCollectionEquality().equals(secondGreen, other.secondGreen) &&
+            const DeepCollectionEquality().equals(palmLeaf, other.palmLeaf) &&
+            const DeepCollectionEquality().equals(dartmouthGreen, other.dartmouthGreen) &&
+            const DeepCollectionEquality().equals(apple, other.apple) &&
+            const DeepCollectionEquality().equals(shinyShamrock, other.shinyShamrock) &&
+            const DeepCollectionEquality().equals(honeydew, other.honeydew) &&
+            const DeepCollectionEquality().equals(antiFlashWhite, other.antiFlashWhite) &&
             const DeepCollectionEquality().equals(blue0, other.blue0) &&
             const DeepCollectionEquality().equals(blue5, other.blue5) &&
             const DeepCollectionEquality().equals(blue10, other.blue10) &&
@@ -361,70 +437,87 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(blue60, other.blue60) &&
             const DeepCollectionEquality().equals(blue80, other.blue80) &&
             const DeepCollectionEquality().equals(blue100, other.blue100) &&
+            const DeepCollectionEquality().equals(trueBlue, other.trueBlue) &&
+            const DeepCollectionEquality().equals(cyan, other.cyan) &&
+            const DeepCollectionEquality().equals(ankeesBlue, other.ankeesBlue) &&
+            const DeepCollectionEquality().equals(red0, other.red0) &&
+            const DeepCollectionEquality().equals(red100, other.red100) &&
+            const DeepCollectionEquality().equals(red, other.red) &&
+            const DeepCollectionEquality().equals(champagnePink, other.champagnePink) &&
             const DeepCollectionEquality().equals(yellow5, other.yellow5) &&
             const DeepCollectionEquality().equals(yellow100, other.yellow100) &&
-            const DeepCollectionEquality().equals(orange100, other.orange100) &&
-            const DeepCollectionEquality().equals(green0, other.green0));
+            const DeepCollectionEquality().equals(subYellow, other.subYellow) &&
+            const DeepCollectionEquality().equals(dutchWhite, other.dutchWhite) &&
+            const DeepCollectionEquality().equals(orange, other.orange) &&
+            const DeepCollectionEquality().equals(orange100, other.orange100));
   }
 
   @override
   int get hashCode {
     return Object.hashAll([
       runtimeType.hashCode,
-      const DeepCollectionEquality().hash(regular16),
-      const DeepCollectionEquality().hash(bold24),
-      const DeepCollectionEquality().hash(medium24),
-      const DeepCollectionEquality().hash(medium32),
-      const DeepCollectionEquality().hash(medium16),
-      const DeepCollectionEquality().hash(bold14),
-      const DeepCollectionEquality().hash(bold16),
-      const DeepCollectionEquality().hash(bold12),
-      const DeepCollectionEquality().hash(regular14),
-      const DeepCollectionEquality().hash(regular20),
-      const DeepCollectionEquality().hash(bold20),
-      const DeepCollectionEquality().hash(regular10),
-      const DeepCollectionEquality().hash(regular12),
-      const DeepCollectionEquality().hash(medium14),
       const DeepCollectionEquality().hash(headline),
       const DeepCollectionEquality().hash(h1),
       const DeepCollectionEquality().hash(h2),
       const DeepCollectionEquality().hash(h3),
       const DeepCollectionEquality().hash(paragraph),
+      const DeepCollectionEquality().hash(paragraphSemiBold),
       const DeepCollectionEquality().hash(subText),
       const DeepCollectionEquality().hash(subTexMedium),
       const DeepCollectionEquality().hash(smallTex),
-      const DeepCollectionEquality().hash(paragraphSemiBold),
+      const DeepCollectionEquality().hash(bold24),
+      const DeepCollectionEquality().hash(bold20),
+      const DeepCollectionEquality().hash(bold18),
+      const DeepCollectionEquality().hash(bold16),
+      const DeepCollectionEquality().hash(bold14),
+      const DeepCollectionEquality().hash(bold12),
+      const DeepCollectionEquality().hash(medium32),
+      const DeepCollectionEquality().hash(medium24),
+      const DeepCollectionEquality().hash(medium16),
+      const DeepCollectionEquality().hash(medium14),
+      const DeepCollectionEquality().hash(regular20),
+      const DeepCollectionEquality().hash(regular18),
+      const DeepCollectionEquality().hash(regular16),
+      const DeepCollectionEquality().hash(regular14),
+      const DeepCollectionEquality().hash(regular12),
+      const DeepCollectionEquality().hash(regular10),
       const DeepCollectionEquality().hash(background),
       const DeepCollectionEquality().hash(appBar),
-      const DeepCollectionEquality().hash(mainGreen),
-      const DeepCollectionEquality().hash(smokyBlack),
-      const DeepCollectionEquality().hash(palmLeaf),
-      const DeepCollectionEquality().hash(apple),
-      const DeepCollectionEquality().hash(dartmouthGreen),
-      const DeepCollectionEquality().hash(textLightGrey),
-      const DeepCollectionEquality().hash(textGrey),
+      const DeepCollectionEquality().hash(white),
       const DeepCollectionEquality().hash(black),
       const DeepCollectionEquality().hash(transparent),
       const DeepCollectionEquality().hash(textColor),
-      const DeepCollectionEquality().hash(trueBlue),
-      const DeepCollectionEquality().hash(white),
+      const DeepCollectionEquality().hash(textGrey),
+      const DeepCollectionEquality().hash(textLightGrey),
+      const DeepCollectionEquality().hash(smokyBlack),
       const DeepCollectionEquality().hash(cultured),
-      const DeepCollectionEquality().hash(ankeesBlue),
-      const DeepCollectionEquality().hash(shinyShamrock),
       const DeepCollectionEquality().hash(silver),
-      const DeepCollectionEquality().hash(red),
       const DeepCollectionEquality().hash(ink0),
-      const DeepCollectionEquality().hash(ink40),
       const DeepCollectionEquality().hash(ink5),
-      const DeepCollectionEquality().hash(ink60),
-      const DeepCollectionEquality().hash(ink100),
-      const DeepCollectionEquality().hash(ink80),
-      const DeepCollectionEquality().hash(green100),
-      const DeepCollectionEquality().hash(ink20),
-      const DeepCollectionEquality().hash(green10),
       const DeepCollectionEquality().hash(ink10),
-      const DeepCollectionEquality().hash(red100),
-      const DeepCollectionEquality().hash(red0),
+      const DeepCollectionEquality().hash(ink20),
+      const DeepCollectionEquality().hash(ink40),
+      const DeepCollectionEquality().hash(ink60),
+      const DeepCollectionEquality().hash(ink80),
+      const DeepCollectionEquality().hash(ink100),
+      const DeepCollectionEquality().hash(green0),
+      const DeepCollectionEquality().hash(green5),
+      const DeepCollectionEquality().hash(green10),
+      const DeepCollectionEquality().hash(green15),
+      const DeepCollectionEquality().hash(green20),
+      const DeepCollectionEquality().hash(green40),
+      const DeepCollectionEquality().hash(green60),
+      const DeepCollectionEquality().hash(green80),
+      const DeepCollectionEquality().hash(green100),
+      const DeepCollectionEquality().hash(mainGreen),
+      const DeepCollectionEquality().hash(darkGreen),
+      const DeepCollectionEquality().hash(secondGreen),
+      const DeepCollectionEquality().hash(palmLeaf),
+      const DeepCollectionEquality().hash(dartmouthGreen),
+      const DeepCollectionEquality().hash(apple),
+      const DeepCollectionEquality().hash(shinyShamrock),
+      const DeepCollectionEquality().hash(honeydew),
+      const DeepCollectionEquality().hash(antiFlashWhite),
       const DeepCollectionEquality().hash(blue0),
       const DeepCollectionEquality().hash(blue5),
       const DeepCollectionEquality().hash(blue10),
@@ -434,10 +527,19 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(blue60),
       const DeepCollectionEquality().hash(blue80),
       const DeepCollectionEquality().hash(blue100),
+      const DeepCollectionEquality().hash(trueBlue),
+      const DeepCollectionEquality().hash(cyan),
+      const DeepCollectionEquality().hash(ankeesBlue),
+      const DeepCollectionEquality().hash(red0),
+      const DeepCollectionEquality().hash(red100),
+      const DeepCollectionEquality().hash(red),
+      const DeepCollectionEquality().hash(champagnePink),
       const DeepCollectionEquality().hash(yellow5),
       const DeepCollectionEquality().hash(yellow100),
+      const DeepCollectionEquality().hash(subYellow),
+      const DeepCollectionEquality().hash(dutchWhite),
+      const DeepCollectionEquality().hash(orange),
       const DeepCollectionEquality().hash(orange100),
-      const DeepCollectionEquality().hash(green0),
     ]);
   }
 }
