@@ -90,7 +90,7 @@ class CustomUnfilledButton extends StatelessWidget {
                     Text(
                       text ?? "",
                       style: context.appThemes.medium16.copyWith(
-                        color: textColor ?? context.appThemes.blue100,
+                        color: textColor ?? context.appThemes.trueBlue100,
                       ),
                       textAlign: TextAlign.center,
                     ),

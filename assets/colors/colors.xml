@@ -61,6 +61,15 @@
     <color name="blue_60">#4973F2</color>
     <color name="blue_80">#2E5DE8</color>
     <color name="blue_100">#1348E8</color>
+    <color name="true_blue_0">#FAFDFF</color>
+    <color name="true_blue_5">#F2F9FD</color>
+    <color name="true_blue_10">#E6F2FB</color>
+    <color name="true_blue_15">#D9ECF9</color>
+    <color name="true_blue_20">#CDE5F7</color>
+    <color name="true_blue_40">#9ACBEF</color>
+    <color name="true_blue_60">#68B1E6</color>
+    <color name="true_blue_80">#3597DE</color>
+    <color name="true_blue_100">#037DD6</color>
     <color name="true_blue">#037DD6</color>
     <color name="cyan">#00B0C3</color>
     <color name="ankees_blue">#1E293B</color>

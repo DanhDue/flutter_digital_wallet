@@ -1,19 +1,26 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
 import 'package:d3_wallet/base/base_controller.dart';
+import 'package:d3_wallet/base/networking_mixin.dart';
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
 import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
+import 'package:d3_wallet/data/repositories/wallet_repository.dart';
 import 'package:fimber/fimber.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
-class OnboardController extends BaseController {
+class OnboardController extends BaseController with NetworkingMixin {
   late AppConfigurations? appConfigurations;
   final passwordIsCreated = false.obs;
-  final mnemonicIsShown = false.obs;
+  final shouldBeConfirmMnemonic = false.obs;
   final mnemonicIsVerified = false.obs;
   final currentPage = 0.obs;
 
   late final Rx<WalletResponseObject?> wallet = WalletResponseObject().obs;
+
+  final walletRepo = Get.find<WalletRepository>();
 
   final passwordAndWalletIsCreated = false.obs;
 
@@ -44,11 +51,22 @@ class OnboardController extends BaseController {
   }
 
   mnemonicIsGenereated() {
-    mnemonicIsShown.value = true;
+    shouldBeConfirmMnemonic.value = true;
   }
 
   createWalletAndSaveAppConfigurations({bool? toHome = false}) async {
-    isLoading.value = true;
+    callApi(
+      walletRepo.createOrRestoreWallet(),
+      onSuccess: (result) {
+        wallet.value = result?.data;
+        jumpToPage(OnboardPageIndex.mnemonicCreationPageIndex);
+      },
+      onError: (error) {
+        Fimber.e(error.toString());
+        SmartDialog.showToast(error.toString());
+      },
+      loadingType: LoadingType.overlay,
+    );
   }
 
   void updateMnemonicIsVerified(bool isVerified) {
@@ -58,4 +76,12 @@ class OnboardController extends BaseController {
   void jumpToPage(int i) {
     currentPage.value = i;
   }
+}
+
+class OnboardPageIndex {
+  static const int passwordCreationPageIndex = 0;
+  static const int secureWalletPageIndex = 1;
+  static const int mnemonicDescriptionPageIndex = 2;
+  static const int mnemonicCreationPageIndex = 3;
+  static const int mnemonicConfirmationPageIndex = 4;
 }

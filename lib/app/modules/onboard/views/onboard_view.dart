@@ -35,18 +35,11 @@ class OnboardView extends StatefulHookWidget {
 class _OnboardViewState extends State<OnboardView> {
   final controller = Get.put(OnboardController(), permanent: false);
 
-  static const int passwordCreationPageIndex = 0;
-  static const int secureWalletPageIndex = 1;
-  static const int mnemonicDescriptionPageIndex = 2;
-  static const int mnemonicWarningPageIndex = 3;
-  static const int mnemonicVerificationPageIndex = 4;
-  static const int mnemonicConfirmationPageIndex = 5;
-
   @override
   Widget build(BuildContext context) {
     final _pageController = usePageController(
       keepPage: true,
-      initialPage: passwordCreationPageIndex,
+      initialPage: OnboardPageIndex.passwordCreationPageIndex,
     );
 
     return Scaffold(
@@ -63,13 +56,17 @@ class _OnboardViewState extends State<OnboardView> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    (controller.currentPage.value == passwordCreationPageIndex ||
-                            controller.currentPage.value == mnemonicVerificationPageIndex)
+                    (controller.currentPage.value == OnboardPageIndex.passwordCreationPageIndex ||
+                            controller.currentPage.value ==
+                                OnboardPageIndex.mnemonicConfirmationPageIndex)
                         ? InkWell(
                           onTap: () {
-                            controller.currentPage.value == passwordCreationPageIndex
+                            controller.currentPage.value ==
+                                    OnboardPageIndex.passwordCreationPageIndex
                                 ? Get.back()
-                                : controller.jumpToPage(mnemonicDescriptionPageIndex);
+                                : controller.jumpToPage(
+                                  OnboardPageIndex.mnemonicDescriptionPageIndex,
+                                );
                           },
                           child: Assets.images.icBack.svg(
                             width: 36,
@@ -112,44 +109,47 @@ class _OnboardViewState extends State<OnboardView> {
                 physics: NeverScrollableScrollPhysics(),
                 children: [
                   AnimatedPage(
-                    index: passwordCreationPageIndex,
+                    index: OnboardPageIndex.passwordCreationPageIndex,
                     controller: _pageController,
                     effect: FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
                       child: OnboardingPasswordCreationView(
                         passwordAndWalletAreCreated: (data) {
                           controller.updateCreatedAppConfigurations(data.$1, data.$2);
-                          controller.jumpToPage(secureWalletPageIndex);
+                          controller.jumpToPage(OnboardPageIndex.secureWalletPageIndex);
                         },
                       ),
                       bindingCreator: () => PasswordCreationBinding(),
                     ),
                   ),
                   AnimatedPage(
-                    index: secureWalletPageIndex,
+                    index: OnboardPageIndex.secureWalletPageIndex,
                     controller: _pageController,
                     effect: FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
                       bindingCreator: () => MnemonicDescriptionBinding(),
                       child: MnemonicDescriptionView(
                         skip: () => controller.createWalletAndSaveAppConfigurations(toHome: true),
-                        getStarted: () => controller.jumpToPage(mnemonicDescriptionPageIndex),
+                        getStarted:
+                            () => controller.jumpToPage(
+                              OnboardPageIndex.mnemonicDescriptionPageIndex,
+                            ),
                       ),
                     ),
                   ),
                   AnimatedPage(
-                    index: mnemonicDescriptionPageIndex,
+                    index: OnboardPageIndex.mnemonicDescriptionPageIndex,
                     controller: _pageController,
                     effect: FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
                       bindingCreator: () => MnemonicWarningBinding(),
                       child: MnemonicWarningView(
-                        showMnemonic: () => controller.jumpToPage(mnemonicWarningPageIndex),
+                        showMnemonic: () => controller.createWalletAndSaveAppConfigurations(),
                       ),
                     ),
                   ),
                   AnimatedPage(
-                    index: mnemonicWarningPageIndex,
+                    index: OnboardPageIndex.mnemonicCreationPageIndex,
                     controller: _pageController,
                     effect: FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
@@ -159,14 +159,14 @@ class _OnboardViewState extends State<OnboardView> {
                           createdWallet: controller.wallet.value,
                           goToMnemonicConfirmation: () {
                             controller.mnemonicIsGenereated();
-                            controller.jumpToPage(mnemonicVerificationPageIndex);
+                            controller.jumpToPage(OnboardPageIndex.mnemonicConfirmationPageIndex);
                           },
                         ),
                       ),
                     ),
                   ),
                   AnimatedPage(
-                    index: mnemonicVerificationPageIndex,
+                    index: OnboardPageIndex.mnemonicConfirmationPageIndex,
                     controller: _pageController,
                     effect: FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
@@ -188,12 +188,10 @@ class _OnboardViewState extends State<OnboardView> {
             Obx(() {
               if (controller.isLoading.value == true) {
                 WidgetsBinding.instance.addPostFrameCallback((duration) {
-                  // EasyLoading.show(dismissOnTap: false);
                   SmartDialog.showLoading(msg: "");
                 });
               } else {
                 WidgetsBinding.instance.addPostFrameCallback((duration) {
-                  // EasyLoading.dismiss();
                   SmartDialog.dismiss();
                 });
               }
@@ -204,7 +202,7 @@ class _OnboardViewState extends State<OnboardView> {
               }
               if (controller.passwordAndWalletIsCreated.value) {
                 WidgetsBinding.instance.addPostFrameCallback((duration) {
-                  controller.jumpToPage(mnemonicDescriptionPageIndex);
+                  controller.jumpToPage(OnboardPageIndex.mnemonicDescriptionPageIndex);
                   controller.passwordAndWalletIsCreated.value = false;
                 });
               }
@@ -250,7 +248,7 @@ class _OnboardViewState extends State<OnboardView> {
                     () => Container(
                       height: 1,
                       color:
-                          controller.mnemonicIsShown.value
+                          controller.shouldBeConfirmMnemonic.value
                               ? context.appThemes.techBlue
                               : context.appThemes.ink40,
                     ),
@@ -279,7 +277,7 @@ class _OnboardViewState extends State<OnboardView> {
                             height: 20,
                             fit: BoxFit.cover,
                           )
-                          : Assets.images.icStepOneIsRuning.svg(
+                          : Assets.images.icStepOneIsRunning.svg(
                             width: 20,
                             height: 20,
                             fit: BoxFit.cover,
@@ -306,15 +304,19 @@ class _OnboardViewState extends State<OnboardView> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      controller.mnemonicIsShown.value
+                      controller.shouldBeConfirmMnemonic.value
                           ? Assets.images.icStepTwoIsDone.svg(
                             width: 20,
                             height: 20,
                             fit: BoxFit.cover,
                           )
-                          : ((controller.currentPage.value == secureWalletPageIndex ||
-                                  controller.currentPage.value == mnemonicDescriptionPageIndex)
-                              ? Assets.images.icStepTwoIsRuning.svg(
+                          : ((controller.currentPage.value ==
+                                      OnboardPageIndex.secureWalletPageIndex ||
+                                  controller.currentPage.value ==
+                                      OnboardPageIndex.mnemonicDescriptionPageIndex ||
+                                  controller.currentPage.value ==
+                                      OnboardPageIndex.mnemonicCreationPageIndex)
+                              ? Assets.images.icStepTwoIsRunning.svg(
                                 width: 20,
                                 height: 20,
                                 fit: BoxFit.cover,
@@ -329,7 +331,7 @@ class _OnboardViewState extends State<OnboardView> {
                         LocaleKeys.secureWalletStep.tr,
                         style: context.appThemes.regular10.copyWith(
                           color:
-                              controller.mnemonicIsShown.value
+                              controller.shouldBeConfirmMnemonic.value
                                   ? context.appThemes.techBlue
                                   : context.appThemes.ink60,
                         ),
@@ -347,18 +349,19 @@ class _OnboardViewState extends State<OnboardView> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       controller.mnemonicIsVerified.value
-                          ? Assets.images.icStepSuccessed.svg(
+                          ? Assets.images.icStepThreeIsDone.svg(
                             width: 20,
                             height: 20,
                             fit: BoxFit.cover,
                           )
-                          : (controller.currentPage.value == mnemonicVerificationPageIndex
-                              ? Assets.images.icStepThree.image(
+                          : (controller.currentPage.value ==
+                                  OnboardPageIndex.mnemonicConfirmationPageIndex
+                              ? Assets.images.icStepThreeIsRunning.svg(
                                 width: 20,
                                 height: 20,
                                 fit: BoxFit.cover,
                               )
-                              : Assets.images.icDisableStepThree.svg(
+                              : Assets.images.icStepThreeIsWaiting.svg(
                                 width: 20,
                                 height: 20,
                                 fit: BoxFit.cover,
@@ -368,7 +371,8 @@ class _OnboardViewState extends State<OnboardView> {
                         LocaleKeys.confirmSRPStep.tr,
                         style: context.appThemes.regular10.copyWith(
                           color:
-                              controller.mnemonicIsVerified.value
+                              controller.currentPage.value ==
+                                      OnboardPageIndex.mnemonicConfirmationPageIndex
                                   ? context.appThemes.techBlue
                                   : context.appThemes.ink60,
                         ),

@@ -96,6 +96,15 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.blue60,
     required this.blue80,
     required this.blue100,
+    required this.trueBlue0,
+    required this.trueBlue5,
+    required this.trueBlue10,
+    required this.trueBlue15,
+    required this.trueBlue20,
+    required this.trueBlue40,
+    required this.trueBlue60,
+    required this.trueBlue80,
+    required this.trueBlue100,
     required this.trueBlue,
     required this.cyan,
     required this.ankeesBlue,
@@ -468,6 +477,24 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   @override
   final Color blue100;
   @override
+  final Color trueBlue0;
+  @override
+  final Color trueBlue5;
+  @override
+  final Color trueBlue10;
+  @override
+  final Color trueBlue15;
+  @override
+  final Color trueBlue20;
+  @override
+  final Color trueBlue40;
+  @override
+  final Color trueBlue60;
+  @override
+  final Color trueBlue80;
+  @override
+  final Color trueBlue100;
+  @override
   final Color trueBlue;
   @override
   final Color cyan;
@@ -585,6 +612,15 @@ final lightAppThemes = AppThemes(
   blue60: AppColors.blue60,
   blue80: AppColors.blue80,
   blue100: AppColors.blue100,
+  trueBlue0: AppColors.trueBlue0,
+  trueBlue5: AppColors.trueBlue5,
+  trueBlue10: AppColors.trueBlue10,
+  trueBlue15: AppColors.trueBlue15,
+  trueBlue20: AppColors.trueBlue20,
+  trueBlue40: AppColors.trueBlue40,
+  trueBlue60: AppColors.trueBlue60,
+  trueBlue80: AppColors.trueBlue80,
+  trueBlue100: AppColors.trueBlue100,
   trueBlue: AppColors.trueBlue,
   cyan: AppColors.cyan,
   ankeesBlue: AppColors.ankeesBlue,
@@ -689,6 +725,15 @@ final darkAppThemes = AppThemes(
   blue60: AppColors.blue60,
   blue80: AppColors.blue80,
   blue100: AppColors.blue100,
+  trueBlue0: AppColors.trueBlue0,
+  trueBlue5: AppColors.trueBlue5,
+  trueBlue10: AppColors.trueBlue10,
+  trueBlue15: AppColors.trueBlue15,
+  trueBlue20: AppColors.trueBlue20,
+  trueBlue40: AppColors.trueBlue40,
+  trueBlue60: AppColors.trueBlue60,
+  trueBlue80: AppColors.trueBlue80,
+  trueBlue100: AppColors.trueBlue100,
   trueBlue: AppColors.trueBlue,
   cyan: AppColors.cyan,
   ankeesBlue: AppColors.ankeesBlue,

@@ -81,6 +81,15 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get blue60;
   Color get blue80;
   Color get blue100;
+  Color get trueBlue0;
+  Color get trueBlue5;
+  Color get trueBlue10;
+  Color get trueBlue15;
+  Color get trueBlue20;
+  Color get trueBlue40;
+  Color get trueBlue60;
+  Color get trueBlue80;
+  Color get trueBlue100;
   Color get trueBlue;
   Color get cyan;
   Color get ankeesBlue;
@@ -169,6 +178,15 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? blue60,
     Color? blue80,
     Color? blue100,
+    Color? trueBlue0,
+    Color? trueBlue5,
+    Color? trueBlue10,
+    Color? trueBlue15,
+    Color? trueBlue20,
+    Color? trueBlue40,
+    Color? trueBlue60,
+    Color? trueBlue80,
+    Color? trueBlue100,
     Color? trueBlue,
     Color? cyan,
     Color? ankeesBlue,
@@ -256,6 +274,15 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       blue60: blue60 ?? this.blue60,
       blue80: blue80 ?? this.blue80,
       blue100: blue100 ?? this.blue100,
+      trueBlue0: trueBlue0 ?? this.trueBlue0,
+      trueBlue5: trueBlue5 ?? this.trueBlue5,
+      trueBlue10: trueBlue10 ?? this.trueBlue10,
+      trueBlue15: trueBlue15 ?? this.trueBlue15,
+      trueBlue20: trueBlue20 ?? this.trueBlue20,
+      trueBlue40: trueBlue40 ?? this.trueBlue40,
+      trueBlue60: trueBlue60 ?? this.trueBlue60,
+      trueBlue80: trueBlue80 ?? this.trueBlue80,
+      trueBlue100: trueBlue100 ?? this.trueBlue100,
       trueBlue: trueBlue ?? this.trueBlue,
       cyan: cyan ?? this.cyan,
       ankeesBlue: ankeesBlue ?? this.ankeesBlue,
@@ -348,6 +375,15 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       blue60: Color.lerp(blue60, other.blue60, t)!,
       blue80: Color.lerp(blue80, other.blue80, t)!,
       blue100: Color.lerp(blue100, other.blue100, t)!,
+      trueBlue0: Color.lerp(trueBlue0, other.trueBlue0, t)!,
+      trueBlue5: Color.lerp(trueBlue5, other.trueBlue5, t)!,
+      trueBlue10: Color.lerp(trueBlue10, other.trueBlue10, t)!,
+      trueBlue15: Color.lerp(trueBlue15, other.trueBlue15, t)!,
+      trueBlue20: Color.lerp(trueBlue20, other.trueBlue20, t)!,
+      trueBlue40: Color.lerp(trueBlue40, other.trueBlue40, t)!,
+      trueBlue60: Color.lerp(trueBlue60, other.trueBlue60, t)!,
+      trueBlue80: Color.lerp(trueBlue80, other.trueBlue80, t)!,
+      trueBlue100: Color.lerp(trueBlue100, other.trueBlue100, t)!,
       trueBlue: Color.lerp(trueBlue, other.trueBlue, t)!,
       cyan: Color.lerp(cyan, other.cyan, t)!,
       ankeesBlue: Color.lerp(ankeesBlue, other.ankeesBlue, t)!,
@@ -441,6 +477,15 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(blue60, other.blue60) &&
             const DeepCollectionEquality().equals(blue80, other.blue80) &&
             const DeepCollectionEquality().equals(blue100, other.blue100) &&
+            const DeepCollectionEquality().equals(trueBlue0, other.trueBlue0) &&
+            const DeepCollectionEquality().equals(trueBlue5, other.trueBlue5) &&
+            const DeepCollectionEquality().equals(trueBlue10, other.trueBlue10) &&
+            const DeepCollectionEquality().equals(trueBlue15, other.trueBlue15) &&
+            const DeepCollectionEquality().equals(trueBlue20, other.trueBlue20) &&
+            const DeepCollectionEquality().equals(trueBlue40, other.trueBlue40) &&
+            const DeepCollectionEquality().equals(trueBlue60, other.trueBlue60) &&
+            const DeepCollectionEquality().equals(trueBlue80, other.trueBlue80) &&
+            const DeepCollectionEquality().equals(trueBlue100, other.trueBlue100) &&
             const DeepCollectionEquality().equals(trueBlue, other.trueBlue) &&
             const DeepCollectionEquality().equals(cyan, other.cyan) &&
             const DeepCollectionEquality().equals(ankeesBlue, other.ankeesBlue) &&
@@ -532,6 +577,15 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(blue60),
       const DeepCollectionEquality().hash(blue80),
       const DeepCollectionEquality().hash(blue100),
+      const DeepCollectionEquality().hash(trueBlue0),
+      const DeepCollectionEquality().hash(trueBlue5),
+      const DeepCollectionEquality().hash(trueBlue10),
+      const DeepCollectionEquality().hash(trueBlue15),
+      const DeepCollectionEquality().hash(trueBlue20),
+      const DeepCollectionEquality().hash(trueBlue40),
+      const DeepCollectionEquality().hash(trueBlue60),
+      const DeepCollectionEquality().hash(trueBlue80),
+      const DeepCollectionEquality().hash(trueBlue100),
       const DeepCollectionEquality().hash(trueBlue),
       const DeepCollectionEquality().hash(cyan),
       const DeepCollectionEquality().hash(ankeesBlue),

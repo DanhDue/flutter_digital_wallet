@@ -103,5 +103,12 @@
     "storeInBankVault": "Cất trong két sắt ngân hàng.",
     "storeInASafe": "Cất trong két sắt.",
     "storeInMultipleSecretPlaces": "Cất ở nhiều nơi bí mật.",
+    "copiedToClipboard": "Đã sao chép vào bộ nhớ tạm.",
+    "writeDownSecretRecoveryPhrase": "Viết lại Cụm từ khôi phục bí mật",
+    "secretRecoveryPhraseDescription": "Đây là Cụm từ khôi phục bí mật của bạn. Hãy viết nó ra giấy và cất giữ ở nơi an toàn. Bạn sẽ được yêu cầu nhập lại cụm từ này (theo đúng thứ tự) ở bước tiếp theo.",
+    "tapToRevealSecretRecoveryPhrase": "Chạm để xem Cụm từ khôi phục bí mật",
+    "securityAlertMessage": "Hãy đảm bảo rằng không có ai đang nhìn vào màn hình điện thoại của bạn",
+    "viewPhrase": "Xem Cụm từ",
+    "copyToClipboardAction": "Sao chép vào bộ nhớ đệm",
     "eof": "Kết thúc tập tin. Vui lòng thêm văn bản mới phía trên mục này để tránh xung đột. Cảm ơn!"
 }

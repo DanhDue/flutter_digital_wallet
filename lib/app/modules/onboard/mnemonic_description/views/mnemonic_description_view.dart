@@ -23,83 +23,89 @@ class MnemonicDescriptionView extends BaseView<MnemonicDescriptionController> {
   @override
   Widget? onCreateViews(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
-                child: Column(
-                  children: [
-                    SizedBox(height: 16),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Text(
-                        LocaleKeys.secureYourWallet.tr,
-                        style: context.appThemes.bold24.copyWith(color: context.appThemes.ink100),
+      body: SafeArea(
+        top: true,
+        bottom: true,
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 16),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          LocaleKeys.secureYourWallet.tr,
+                          style: context.appThemes.bold24.copyWith(
+                            color: context.appThemes.ink100,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Assets.images.icVault.svg(fit: BoxFit.cover),
+                      Text.rich(
+                        TextSpan(
+                          text: LocaleKeys.protectYourWalletDescriptionSegment1.tr,
+                          style: context.appThemes.regular18.copyWith(
+                            color: context.appThemes.ink60,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: LocaleKeys.srp.tr,
+                              style: context.appThemes.regular18.copyWith(
+                                color: context.appThemes.trueBlue100,
+                              ),
+                              recognizer:
+                                  TapGestureRecognizer()
+                                    ..onTap = () => _showSRPDescription(context),
+                            ),
+                            TextSpan(
+                              text: LocaleKeys.protectYourWalletDescriptionSegment2.tr,
+                              style: context.appThemes.regular18.copyWith(
+                                color: context.appThemes.ink60,
+                              ),
+                            ),
+                          ],
+                        ),
                         textAlign: TextAlign.center,
                       ),
-                    ),
-                    Assets.images.icVault.svg(fit: BoxFit.cover),
-                    Text.rich(
-                      TextSpan(
-                        text: LocaleKeys.protectYourWalletDescriptionSegment1.tr,
-                        style: context.appThemes.regular18.copyWith(
-                          color: context.appThemes.ink60,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: LocaleKeys.srp.tr,
-                            style: context.appThemes.regular18.copyWith(
-                              color: context.appThemes.blue100,
-                            ),
-                            recognizer:
-                                TapGestureRecognizer()..onTap = () => _showSRPDescription(context),
-                          ),
-                          TextSpan(
-                            text: LocaleKeys.protectYourWalletDescriptionSegment2.tr,
-                            style: context.appThemes.regular18.copyWith(
-                              color: context.appThemes.ink60,
-                            ),
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 16),
-                  ],
+                      SizedBox(height: 16),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(width: double.infinity, height: 1, color: context.appThemes.ink10),
-              SizedBox(height: 12),
-              IntrinsicHeight(
-                child: CustomFilledButton(
-                  horizontalPadding: 16,
-                  text: LocaleKeys.txtContinue.tr,
-                  onPressed: () => getStarted?.call(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(width: double.infinity, height: 1, color: context.appThemes.ink10),
+                SizedBox(height: 12),
+                IntrinsicHeight(
+                  child: CustomUnfilledButton(
+                    horizontalPadding: 16,
+                    text: LocaleKeys.remindMeLater.tr,
+                    subText: LocaleKeys.notRecommended.tr,
+                    onPressed: () => skip?.call(),
+                  ),
                 ),
-              ),
-              SizedBox(height: 8),
-              IntrinsicHeight(
-                child: CustomUnfilledButton(
-                  horizontalPadding: 16,
-                  text: LocaleKeys.remindMeLater.tr,
-                  subText: LocaleKeys.notRecommended.tr,
-                  onPressed: () => skip?.call(),
+                SizedBox(height: 8),
+                IntrinsicHeight(
+                  child: CustomFilledButton(
+                    horizontalPadding: 16,
+                    text: LocaleKeys.txtContinue.tr,
+                    onPressed: () => getStarted?.call(),
+                  ),
                 ),
-              ),
-              SizedBox(height: 8),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

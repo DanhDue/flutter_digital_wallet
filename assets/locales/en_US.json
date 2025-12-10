@@ -102,5 +102,12 @@
   "storeInBankVault": "Store in bank vault.",
   "storeInASafe": "Store in a safe.",
   "storeInMultipleSecretPlaces": "Store in multiple secret places.",
+  "copiedToClipboard": "Copied to Clipboard.",
+  "writeDownSecretRecoveryPhrase": "Write down your Secret Recovery Phrase",
+  "secretRecoveryPhraseDescription": "This is your Secret Recovery Phrase. Write it down on a paper and keep it in a safe place. You’ll be asked to re-enter this phrase (in order) on the next step.",
+  "tapToRevealSecretRecoveryPhrase": "Tap to reveal your Secret Recovery Phrase",
+  "securityAlertMessage": "Make sure no one is watching your screen.",
+  "viewPhrase": "View Phrase",
+  "copyToClipboardAction": "Copy to Clipboard",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

@@ -381,11 +381,19 @@ class _OnboardingPasswordCreationViewState extends State<OnboardingPasswordCreat
                                         width: 24,
                                         height: 24,
                                         fit: BoxFit.cover,
+                                        colorFilter: ColorFilter.mode(
+                                          context.appThemes.trueBlue100,
+                                          BlendMode.srcIn,
+                                        ),
                                       )
                                       : Assets.images.icUncheckedBox.svg(
                                         width: 24,
                                         height: 24,
                                         fit: BoxFit.cover,
+                                        colorFilter: ColorFilter.mode(
+                                          context.appThemes.trueBlue40,
+                                          BlendMode.srcIn,
+                                        ),
                                       ),
                             ),
                             SizedBox(width: 4),
@@ -400,7 +408,7 @@ class _OnboardingPasswordCreationViewState extends State<OnboardingPasswordCreat
                                     TextSpan(
                                       text: LocaleKeys.learnMore.tr,
                                       style: context.appThemes.regular14.copyWith(
-                                        color: context.appThemes.blue100,
+                                        color: context.appThemes.trueBlue100,
                                       ),
                                       recognizer:
                                           TapGestureRecognizer()
@@ -426,8 +434,8 @@ class _OnboardingPasswordCreationViewState extends State<OnboardingPasswordCreat
                   },
                   backgroundColor:
                       controller.enablePassCreationBut.value
-                          ? context.appThemes.blue100
-                          : context.appThemes.blue15,
+                          ? context.appThemes.trueBlue100
+                          : context.appThemes.trueBlue40,
                   text: LocaleKeys.createPassword.tr,
                 ),
               ),
