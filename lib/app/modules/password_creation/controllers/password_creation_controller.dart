@@ -1,11 +1,10 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
 import 'package:d3_wallet/app/routes/app_pages.dart';
+import 'package:d3_wallet/app/routes/navigation_arguments.dart';
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
-import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
 import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
-import 'package:d3_wallet/data/repositories/wallet_repository.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/utils/biometric_auth/biometric_authenticator.dart';
 import 'package:d3_wallet/utils/constants.dart';
@@ -29,21 +28,18 @@ class PasswordCreationController extends BaseController {
 
   final BiometricAuthenticator biometricAuthenticator = Get.find();
   late bool? biometricAuthIsNotSupported;
-  final biometricLoginIsEnable = false.obs;
   final showBiometricLogin = false.obs;
 
-  final keyboardIsVisible = false.obs;
-  late TextEditingController? passwordTextEditingController;
-  late FocusNode? passwordFocusNode;
+  late final TextEditingController passwordTextEditingController;
+  late final FocusNode passwordFocusNode;
   final passwordIsFocus = false.obs;
   String? password;
   final showPasswordClearIcon = false.obs;
   final obscurePassword = true.obs;
-  final count = 0.obs;
   final passError = "".obs;
 
-  late TextEditingController? confirmPasswordTextEditingController;
-  late FocusNode? confirmPasswordFocusNode;
+  late final TextEditingController confirmPasswordTextEditingController;
+  late final FocusNode confirmPasswordFocusNode;
   final confirmPasswordIsFocus = false.obs;
   String? confirmPassword;
   final showConfirmPasswordClearIcon = false.obs;
@@ -64,13 +60,14 @@ class PasswordCreationController extends BaseController {
   final keyboardIsDismiss = true.obs;
 
   final passwordAndWalletIsCreated = false.obs;
-  late String? fcmToken;
-
-  final walletRepo = Get.find<WalletRepository>();
-  late final Rx<WalletResponseObject?> wallet = WalletResponseObject().obs;
 
   static const int mediumStrengthPasswordLength = 8;
   static const int strongStrengthPasswordLength = 12;
+
+  // Regex patterns
+  static final _repeatedCharRegex = RegExp(r'^(\w)\1+$');
+  static final _sequentialCharRegex = RegExp(r'^(.)\1{2,}$');
+  static final _repeatingSequenceRegex = RegExp(r'(.)\1{2,}');
 
   @override
   void onInit() {
@@ -87,63 +84,62 @@ class PasswordCreationController extends BaseController {
     super.onReady();
     Fimber.d("onReady()");
     _loadAppConfig();
-    _handlePasswordTextFieldFocus();
-    _handleConfirmPasswordTextFieldFocus();
+    _handleFocusListener(
+      focusNode: passwordFocusNode,
+      isFocus: passwordIsFocus,
+      showClearIcon: showPasswordClearIcon,
+      otherFocusIsActive: confirmPasswordIsFocus,
+      textValue: () => password,
+      validate: _validatePassword,
+    );
+    _handleFocusListener(
+      focusNode: confirmPasswordFocusNode,
+      isFocus: confirmPasswordIsFocus,
+      showClearIcon: showConfirmPasswordClearIcon,
+      otherFocusIsActive: passwordIsFocus,
+      textValue: () => confirmPassword,
+      validate: _validatePassword,
+    );
   }
 
-  _loadAppConfig() async {
+  @override
+  void onClose() {
+    passwordTextEditingController.dispose();
+    passwordFocusNode.dispose();
+    confirmPasswordTextEditingController.dispose();
+    confirmPasswordFocusNode.dispose();
+    super.onClose();
+  }
+
+  Future<void> _loadAppConfig() async {
     Fimber.d("_loadAppConfig()");
     appConfigurations =
         await appConfigsRepository.retrieveAppConfigurations() ?? AppConfigurations();
     checkBiometricAuthentication();
   }
 
-  _handlePasswordTextFieldFocus() {
-    Fimber.d("_handlePasswordTextFieldFocus");
-    passwordFocusNode?.addListener(() {
-      if (passwordFocusNode?.hasFocus == true) {
-        passwordIsFocus.value = true;
-        if (keyboardIsShown.value != true || confirmPasswordIsFocus.value == true) {
-          keyboardIsShown.value = true;
-        }
-        if (password?.isNotEmpty == true) showPasswordClearIcon.value = true;
-      } else {
-        _validatePassword();
-        passwordIsFocus.value = false;
-        Future.delayed(Duration(milliseconds: Constants.keyboardDismissDuration), () {
-          if (confirmPasswordIsFocus.value != true) {
-            keyboardIsShown.value = false;
-          }
-        });
-        if (password?.isNotEmpty == true) {
-          showPasswordClearIcon.value = true;
-        } else {
-          showPasswordClearIcon.value = false;
-        }
-      }
-    });
-  }
-
-  _handleConfirmPasswordTextFieldFocus() {
-    Fimber.d("_handlePasswordTextFieldFocus");
-    confirmPasswordFocusNode?.addListener(() {
-      if (confirmPasswordFocusNode?.hasFocus == true) {
-        confirmPasswordIsFocus.value = true;
+  void _handleFocusListener({
+    required FocusNode focusNode,
+    required RxBool isFocus,
+    required RxBool showClearIcon,
+    required RxBool otherFocusIsActive,
+    required String? Function() textValue,
+    required VoidCallback validate,
+  }) {
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        isFocus.value = true;
         keyboardIsShown.value = true;
-        if (confirmPassword?.isNotEmpty == true) showConfirmPasswordClearIcon.value = true;
+        if (textValue()?.isNotEmpty == true) showClearIcon.value = true;
       } else {
-        _validatePassword();
-        confirmPasswordIsFocus.value = false;
+        validate();
+        isFocus.value = false;
         Future.delayed(Duration(milliseconds: Constants.keyboardDismissDuration), () {
-          if (passwordIsFocus.value != true) {
+          if (otherFocusIsActive.value != true) {
             keyboardIsShown.value = false;
           }
         });
-        if (confirmPassword?.isNotEmpty == true) {
-          showConfirmPasswordClearIcon.value = true;
-        } else {
-          showConfirmPasswordClearIcon.value = false;
-        }
+        showClearIcon.value = textValue()?.isNotEmpty == true;
       }
     });
   }
@@ -153,21 +149,15 @@ class PasswordCreationController extends BaseController {
     if (!visible) {
       if (StringExt(password)?.isNotBlank == true) {
         passError.value = "";
-        if (password == confirmPassword) {
-          passwordsAreNotSame.value = false;
-        } else {
-          passwordsAreNotSame.value = true;
-        }
-      } else {
-        if (StringExt(confirmPassword)?.isNotBlank == true) {
-          passError.value = "fail";
-        }
+        passwordsAreNotSame.value = password != confirmPassword;
+      } else if (StringExt(confirmPassword)?.isNotBlank == true) {
+        passError.value = "fail";
       }
       _validateInputForm();
     }
   }
 
-  passwordTextChanged(String? password) {
+  void passwordTextChanged(String? password) {
     Fimber.d("passwordTextChanged(String? $password)");
     this.password = password;
     showPasswordClearIcon.value = true;
@@ -179,39 +169,38 @@ class PasswordCreationController extends BaseController {
     _checkPassSpecialCharacter(password);
   }
 
-  _checkPassLength(String? password) {
-    if (password?.length.isGreaterThan(7) == true) {
-      passwordLengthIsError.value = PasswordStatus.pass;
-    } else {
-      passwordLengthIsError.value = PasswordStatus.fail;
-    }
+  void _checkPassLength(String? password) {
+    passwordLengthIsError.value =
+        (password?.length.isGreaterThan(7) == true) ? PasswordStatus.pass : PasswordStatus.fail;
   }
 
-  _checkPassSimpleCharacter(String? password) {
+  void _checkPassSimpleCharacter(String? password) {
     if (password?.isNullOrEmpty() == true) {
       passwordSimpleCharacterIsError.value = PasswordStatus.fail;
+      return;
     }
-    if (password.containsLowercase() == true && password.containsUppercase()) {
+    if (password!.containsLowercase() && password.containsUppercase()) {
       passwordSimpleCharacterIsError.value = PasswordStatus.pass;
     } else {
       passwordSimpleCharacterIsError.value = PasswordStatus.fail;
     }
   }
 
-  _checkPassSpecialCharacter(String? password) {
+  void _checkPassSpecialCharacter(String? password) {
     if (password?.isNullOrEmpty() == true) {
       passwordSpecialCharacterIsError.value = PasswordStatus.fail;
+      return;
     }
-    if (password.containsDigit() == true && password.containsSpecialCharacter() == true) {
+    if (password!.containsDigit() && password.containsSpecialCharacter()) {
       passwordSpecialCharacterIsError.value = PasswordStatus.pass;
     } else {
       passwordSpecialCharacterIsError.value = PasswordStatus.fail;
     }
   }
 
-  clearPassword() {
+  void clearPassword() {
     Fimber.d("clearPassword()");
-    passwordTextEditingController?.clear();
+    passwordTextEditingController.clear();
     password = '';
     showPasswordClearIcon.value = false;
     passError.value = "";
@@ -223,10 +212,10 @@ class PasswordCreationController extends BaseController {
     passwordSpecialCharacterIsError.value = PasswordStatus.none;
   }
 
-  clearConfirmPassword() {
+  void clearConfirmPassword() {
     Fimber.d("clearConfirmPassword()");
     enablePassCreationBut.value = false;
-    confirmPasswordTextEditingController?.clear();
+    confirmPasswordTextEditingController.clear();
     confirmPassword = '';
     showConfirmPasswordClearIcon.value = false;
   }
@@ -235,7 +224,7 @@ class PasswordCreationController extends BaseController {
     if (password == null || password.isEmpty) return PasswordStrength.none;
     if (password.length >= strongStrengthPasswordLength &&
         !_isSimplePassword(password) &&
-        password.containsSpecialCharacter() == true &&
+        password.containsSpecialCharacter() &&
         password.containsDigit() &&
         password.containsLowercase() &&
         password.containsUppercase()) {
@@ -251,11 +240,11 @@ class PasswordCreationController extends BaseController {
   bool _isSimplePassword(String? password) {
     if (password == null || password.isEmpty) return true;
     final lowerPassword = password.toLowerCase();
-    if (RegExp(r'^(\w)\1+$').hasMatch(lowerPassword)) return true; // e.g., "aaaaaa"
-    if (RegExp(r'^(.)\1{2,}$').hasMatch(lowerPassword)) return true; // e.g., "1111"
-    if (RegExp(r'(.)\1{2,}').hasMatch(lowerPassword)) return true; // e.g., "abc111def"
+    if (_repeatedCharRegex.hasMatch(lowerPassword)) return true; // e.g., "aaaaaa"
+    if (_sequentialCharRegex.hasMatch(lowerPassword)) return true; // e.g., "1111"
+    if (_repeatingSequenceRegex.hasMatch(lowerPassword)) return true; // e.g., "abc111def"
 
-    final sequential = [
+    const sequential = [
       'abcdefghijklmnopqrstuvwxyz',
       '0123456789',
       'qwertyuiop',
@@ -270,18 +259,18 @@ class PasswordCreationController extends BaseController {
     return false;
   }
 
-  _validatePassword() {
+  void _validatePassword() {
     Fimber.d("_validatePassword()");
   }
 
-  toggleBiometric(bool enable) async {
+  void toggleBiometric(bool enable) {
     Fimber.d("toggleBiometric(enable: $enable)");
     authWithBiometric.value = enable;
     appConfigurations = appConfigurations?.copyWith(isBiometricsLogin: enable);
     appConfigsRepository.saveAppConfigurations(appConfigurations);
   }
 
-  createPassword({bool fromOnboarding = false}) async {
+  void createPassword({bool fromOnboarding = false}) {
     Fimber.d("createPassword()");
     enablePassCreationBut.value = false;
     appConfigurations = appConfigurations?.copyWith(localPasswords: password);
@@ -290,19 +279,19 @@ class PasswordCreationController extends BaseController {
       return;
     }
     if ((arguments as String?).equalsIgnoreCase(Constants.ignoreGenNewWallet) != true) {
-      // Get.offNamed(
-      //   Routes.CREATE_OR_RESTORE_WALLET,
-      //   arguments: {NavigationArguments.appConfigurations: appConfigurations},
-      // );
+      Get.offNamed(
+        Routes.WALLET_CREATION,
+        arguments: {NavigationArguments.appConfigurations: appConfigurations},
+      );
     } else {
-      // Get.offNamed(
-      //   Routes.IMPORT_METHOD_SELECTION,
-      //   arguments: {NavigationArguments.appConfigurations: appConfigurations},
-      // );
+      Get.offNamed(
+        Routes.WALLET_IMPORT,
+        arguments: {NavigationArguments.appConfigurations: appConfigurations},
+      );
     }
   }
 
-  confirmPasswordTextChanged(String? confirmPassword) {
+  void confirmPasswordTextChanged(String? confirmPassword) {
     Fimber.d("confirmPasswordTextChanged(String? $confirmPassword)");
     enablePassCreationBut.value = false;
     this.confirmPassword = confirmPassword;
@@ -314,14 +303,14 @@ class PasswordCreationController extends BaseController {
   }
 
   @visibleForTesting
-  checkBiometricAuthentication() async {
+  Future<void> checkBiometricAuthentication() async {
     Fimber.d("checkBiometricAuthentication()");
     biometricAuthIsNotSupported = await biometricAuthenticator.deviceIsSupported();
     showBiometricLogin.value = biometricAuthIsNotSupported ?? false;
   }
 
   @visibleForTesting
-  handleBiometricLogin() async {
+  Future<void> handleBiometricLogin() async {
     Fimber.d("handleBiometricLogin()");
     final authenticated = await biometricAuthenticator.authenticateWithBiometrics(
       LocaleKeys.bimometricDescription.tr,
@@ -334,7 +323,7 @@ class PasswordCreationController extends BaseController {
     _loadAppConfig();
   }
 
-  _validateInputForm() {
+  void _validateInputForm() {
     Fimber.d("_validateInputForm()");
     if (StringExt(password)?.isNotBlank() == true &&
         passwordLengthIsError.value == PasswordStatus.pass &&
@@ -348,7 +337,7 @@ class PasswordCreationController extends BaseController {
     }
   }
 
-  acceptPasswordPolicy(bool isAccepted) {
+  void acceptPasswordPolicy(bool isAccepted) {
     Fimber.d("acceptPasswordPolicy(isAccepted: $isAccepted)");
     policyIsAccepted.value = isAccepted;
     _validateInputForm();
