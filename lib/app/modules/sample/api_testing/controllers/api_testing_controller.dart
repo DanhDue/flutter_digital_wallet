@@ -4,7 +4,6 @@ import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/base/networking_mixin.dart';
 import 'package:d3_wallet/data/bean/request/token_account_creation_request_object/token_account_creation_request_object.dart';
 import 'package:d3_wallet/data/bean/request/token_transfer_creation_request_object/token_transfer_creation_request_object.dart';
-import 'package:d3_wallet/data/bean/response/token_account_object/token_account_object.dart';
 import 'package:d3_wallet/data/repositories/token_repository.dart';
 import 'package:d3_wallet/data/repositories/transaction_repository.dart';
 import 'package:dart_helper_utils/dart_helper_utils.dart';
@@ -138,8 +137,4 @@ class ApiTestingController extends BaseController with NetworkingMixin {
     super.onClose();
     Fimber.d("onClose()");
   }
-}
-
-extension on List<TokenAccountObject?>? {
-  get encodedJsonString => null;
 }

@@ -70,17 +70,19 @@ class _LoginViewState extends State<LoginView> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Center(child: Assets.images.icZeno.image(width: 136, fit: BoxFit.cover)),
+                SizedBox(height: 36),
+                Center(child: Assets.images.icZenoTxt.image(width: 136, fit: BoxFit.cover)),
+                SizedBox(height: 24),
                 Expanded(
                   flex: 1,
                   child: SingleChildScrollView(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const AlwaysScrollableScrollPhysics(),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        SizedBox(height: 45),
+                        SizedBox(height: 46),
                         Assets.images.icSecureServer.svg(width: 146, fit: BoxFit.cover),
                         SizedBox(height: 24),
                         Text(

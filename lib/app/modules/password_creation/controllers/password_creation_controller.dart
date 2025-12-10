@@ -147,10 +147,10 @@ class PasswordCreationController extends BaseController {
   void keyboardVisibilityChanged(bool visible) {
     keyboardIsDismiss.value = !visible;
     if (!visible) {
-      if (StringExt(password)?.isNotBlank == true) {
+      if (StringExt(password)?.isNotBlank() == true) {
         passError.value = "";
         passwordsAreNotSame.value = password != confirmPassword;
-      } else if (StringExt(confirmPassword)?.isNotBlank == true) {
+      } else if (StringExt(confirmPassword)?.isNotBlank() == true) {
         passError.value = "fail";
       }
       _validateInputForm();
@@ -270,7 +270,7 @@ class PasswordCreationController extends BaseController {
     appConfigsRepository.saveAppConfigurations(appConfigurations);
   }
 
-  void createPassword({bool fromOnboarding = false}) {
+  void createPassword({bool fromOnboarding = false}) async {
     Fimber.d("createPassword()");
     enablePassCreationBut.value = false;
     appConfigurations = appConfigurations?.copyWith(localPasswords: password);
@@ -278,6 +278,7 @@ class PasswordCreationController extends BaseController {
       passwordAndWalletIsCreated.value = true;
       return;
     }
+    await appConfigsRepository.saveAppConfigurations(appConfigurations);
     if ((arguments as String?).equalsIgnoreCase(Constants.ignoreGenNewWallet) != true) {
       Get.offNamed(
         Routes.WALLET_CREATION,

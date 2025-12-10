@@ -28,8 +28,7 @@ class SplashController extends BaseController {
   final showRestartServiceWarning = false.obs;
 
   static int get HEALTH_CHECK_RETRY_INTERVAL => 4000; // 4 seconds
-  // static int get START_ZENO_SERVICE_INTERVAL => 46000; // 46 seconds
-  static int get START_ZENO_SERVICE_INTERVAL => 16000; // 46 seconds
+  static int get START_ZENO_SERVICE_INTERVAL => 46000; // 46 seconds
   static int get START_SPLASH_ANIMATION_INTERVAL => 850; // 850 milliseconds
   late int startTime;
 
@@ -53,6 +52,9 @@ class SplashController extends BaseController {
     if (serviceIsLive) {
       checkLogin();
     } else {
+      Fimber.d(
+        "Zeno Service is restarting. Wait and Retry after: $START_ZENO_SERVICE_INTERVAL milliseconds",
+      );
       Future.delayed(Duration(milliseconds: START_ZENO_SERVICE_INTERVAL), () {
         healthz(isLoop: true);
       });
@@ -131,18 +133,14 @@ class SplashController extends BaseController {
           error.printError();
           showRestartServiceWarning.value = true;
           if (isLoop) {
-            Future.delayed(Duration(seconds: HEALTH_CHECK_RETRY_INTERVAL), () {
-              healthz(isLoop: true);
-            });
+            healthz(isLoop: true);
           }
           return false;
       }
     } catch (exception) {
       exception.printError();
       if (isLoop) {
-        Future.delayed(Duration(seconds: HEALTH_CHECK_RETRY_INTERVAL), () {
-          healthz(isLoop: true);
-        });
+        healthz(isLoop: true);
       }
       return false;
     }

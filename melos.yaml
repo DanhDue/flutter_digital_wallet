@@ -215,3 +215,4 @@ scripts:
   installGitTools:
     run: bash ./scripts/install_git_tools.sh
     description: install git hooks.
+sdkPath: .fvm/flutter_sdk

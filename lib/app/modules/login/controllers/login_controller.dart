@@ -124,7 +124,7 @@ class LoginController extends BaseController {
       if (yourWallets?.isNotEmpty == true) {
         Get.offAllNamed(Routes.HOME);
       } else {
-        Get.toNamed(Routes.WALLET_CREATION);
+        Get.offAllNamed(Routes.WALLET_CREATION);
       }
     } else {
       isLoading.value = false;

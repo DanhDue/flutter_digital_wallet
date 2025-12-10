@@ -101,7 +101,7 @@ class _IntroViewState extends State<IntroView> with TickerProviderStateMixin {
                 CustomUnfilledButton(
                   onPressed: () {
                     Fimber.d("restore a exists wallet.");
-                    // controller.importWallet();
+                    controller.importWallet();
                   },
                   horizontalPadding: 16,
                   borderRadius: 30,

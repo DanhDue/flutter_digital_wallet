@@ -12,8 +12,16 @@ class WalletCreationView extends BaseNetworkingView<WalletCreationController> {
 
   @override
   Widget buildBody(BuildContext context, state) {
-    return const Center(
-      child: Text('WalletCreationView is working', style: TextStyle(fontSize: 20)),
+    return Scaffold(
+      body: SafeArea(
+        top: true,
+        bottom: false,
+        child: Column(
+          children: [
+            Center(child: Text('WalletCreationView is working', style: TextStyle(fontSize: 20))),
+          ],
+        ),
+      ),
     );
   }
 }
