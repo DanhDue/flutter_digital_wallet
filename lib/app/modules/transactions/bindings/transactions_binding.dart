@@ -1,3 +1,7 @@
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+// coverage:ignore-file
+
 import 'package:get/get.dart';
 
 import '../controllers/transactions_controller.dart';
@@ -5,8 +9,6 @@ import '../controllers/transactions_controller.dart';
 class TransactionsBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<TransactionsController>(
-      () => TransactionsController(),
-    );
+    Get.lazyPut<TransactionsController>(() => TransactionsController());
   }
 }

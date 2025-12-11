@@ -23,7 +23,8 @@ abstract class Routes {
   static const MNEMONIC_DESCRIPTION = _Paths.MNEMONIC_DESCRIPTION;
   static const MNEMONIC_CREATION = _Paths.MNEMONIC_CREATION;
   static const MNEMONIC_CONFIRMATION = _Paths.MNEMONIC_CONFIRMATION;
-  static const WALLET_CREATION_SUCCESSFULLY = _Paths.WALLET_CREATION_SUCCESSFULLY;
+  static const WALLET_CREATION_SUCCESSFULLY =
+      _Paths.WALLET_CREATION_SUCCESSFULLY;
   static const SRP_DESCRIPTION = _Paths.SRP_DESCRIPTION;
   static const MNEMONIC_WARNING = _Paths.MNEMONIC_WARNING;
   static const MY_WALLETS = _Paths.MY_WALLETS;
@@ -35,6 +36,7 @@ abstract class Routes {
   static const QR_SCANNING = _Paths.QR_SCANNING;
   static const TRENDS = _Paths.TRENDS;
   static const PROFILE = _Paths.PROFILE;
+  static const PROFILE_DETAIL = _Paths.PROFILE_DETAIL;
 }
 
 abstract class _Paths {
@@ -67,4 +69,5 @@ abstract class _Paths {
   static const QR_SCANNING = '/qr-scanning';
   static const TRENDS = '/trends';
   static const PROFILE = '/profile';
+  static const PROFILE_DETAIL = '/profile-detail';
 }

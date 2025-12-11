@@ -1,25 +1,24 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
-import 'package:get/get.dart';
+import 'package:d3_wallet/base/base_controller.dart';
+import 'package:fimber/fimber.dart';
 
-class MyQrController extends GetxController {
-  //TODO: Implement MyQrController
-
-  final count = 0.obs;
+class MyQrController extends BaseController {
   @override
   void onInit() {
     super.onInit();
+    Fimber.d("onInit()");
   }
 
   @override
   void onReady() {
     super.onReady();
+    Fimber.d("onReady()");
   }
 
   @override
   void onClose() {
     super.onClose();
+    Fimber.d("onClose()");
   }
-
-  void increment() => count.value++;
 }

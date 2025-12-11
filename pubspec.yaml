@@ -81,6 +81,7 @@ dependencies:
   dotted_decoration: ^2.0.0
   dotted_border: ^3.1.0
   permission_handler: ^12.0.1
+  back_button_interceptor: ^8.0.4
 
 dependency_overrides:
   vibration: ^3.1.3

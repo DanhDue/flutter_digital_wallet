@@ -1,28 +1,27 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
+import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
-import 'package:get/get.dart';
+import 'package:fimber/fimber.dart';
 
-class WalletTokenInfoController extends GetxController {
-  //TODO: Implement WalletTokenInfoController
-
-  final count = 0.obs;
+class WalletTokenInfoController extends BaseController {
   @override
   void onInit() {
     super.onInit();
+    Fimber.d("onInit()");
   }
 
   @override
   void onReady() {
     super.onReady();
+    Fimber.d("onReady()");
   }
 
   @override
   void onClose() {
     super.onClose();
+    Fimber.d("onClose()");
   }
-
-  void increment() => count.value++;
 
   void updateSelectedWallet(WalletResponseObject? selectedWallet) {}
 }

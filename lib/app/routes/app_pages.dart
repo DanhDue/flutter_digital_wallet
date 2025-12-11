@@ -34,6 +34,8 @@ import '../modules/password_creation/bindings/password_creation_binding.dart';
 import '../modules/password_creation/views/password_creation_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/profile_detail/bindings/profile_detail_binding.dart';
+import '../modules/profile_detail/views/profile_detail_view.dart';
 import '../modules/qr_scanning/bindings/qr_scanning_binding.dart';
 import '../modules/qr_scanning/views/qr_scanning_view.dart';
 import '../modules/sample/api_testing/bindings/api_testing_binding.dart';
@@ -55,16 +57,12 @@ import '../modules/wallet_creation_successfully/views/wallet_creation_successful
 import '../modules/wallet_token_info/bindings/wallet_token_info_binding.dart';
 import '../modules/wallet_token_info/views/wallet_token_info_view.dart';
 
-// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
-
-// coverage:ignore-file
-
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.MY_WALLETS;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
@@ -156,5 +154,10 @@ class AppPages {
     GetPage(name: _Paths.QR_SCANNING, page: () => QRScanningView(), binding: QRScanningBinding()),
     GetPage(name: _Paths.TRENDS, page: () => TrendsView(), binding: TrendsBinding()),
     GetPage(name: _Paths.PROFILE, page: () => ProfileView(), binding: ProfileBinding()),
+    GetPage(
+      name: _Paths.PROFILE_DETAIL,
+      page: () => ProfileDetailView(),
+      binding: ProfileDetailBinding(),
+    ),
   ];
 }
