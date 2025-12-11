@@ -31,6 +31,10 @@ abstract class Routes {
   static const COMMING_SOON_MODAL = _Paths.COMMING_SOON_MODAL;
   static const NETWORK_SELECTION = _Paths.NETWORK_SELECTION;
   static const MY_QR = _Paths.MY_QR;
+  static const TRANSACTIONS = _Paths.TRANSACTIONS;
+  static const QR_SCANNING = _Paths.QR_SCANNING;
+  static const TRENDS = _Paths.TRENDS;
+  static const PROFILE = _Paths.PROFILE;
 }
 
 abstract class _Paths {
@@ -59,4 +63,8 @@ abstract class _Paths {
   static const COMMING_SOON_MODAL = '/comming-soon-modal';
   static const NETWORK_SELECTION = '/network-selection';
   static const MY_QR = '/my-qr';
+  static const TRANSACTIONS = '/transactions';
+  static const QR_SCANNING = '/qr-scanning';
+  static const TRENDS = '/trends';
+  static const PROFILE = '/profile';
 }

@@ -1,7 +1,3 @@
-// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
-
-// coverage:ignore-file
-
 import 'package:get/get.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -36,12 +32,20 @@ import '../modules/onboard/s_r_p_description/views/s_r_p_description_view.dart';
 import '../modules/onboard/views/onboard_view.dart';
 import '../modules/password_creation/bindings/password_creation_binding.dart';
 import '../modules/password_creation/views/password_creation_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
+import '../modules/qr_scanning/bindings/qr_scanning_binding.dart';
+import '../modules/qr_scanning/views/qr_scanning_view.dart';
 import '../modules/sample/api_testing/bindings/api_testing_binding.dart';
 import '../modules/sample/api_testing/views/api_testing_view.dart';
 import '../modules/sample/networking_sample/bindings/networking_sample_binding.dart';
 import '../modules/sample/networking_sample/views/networking_sample_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/transactions/bindings/transactions_binding.dart';
+import '../modules/transactions/views/transactions_view.dart';
+import '../modules/trends/bindings/trends_binding.dart';
+import '../modules/trends/views/trends_view.dart';
 import '../modules/wallet_creation/wallet_creation/bindings/wallet_creation_binding.dart';
 import '../modules/wallet_creation/wallet_creation/views/wallet_creation_view.dart';
 import '../modules/wallet_creation/wallet_import/bindings/wallet_import_binding.dart';
@@ -50,6 +54,10 @@ import '../modules/wallet_creation_successfully/bindings/wallet_creation_success
 import '../modules/wallet_creation_successfully/views/wallet_creation_successfully_view.dart';
 import '../modules/wallet_token_info/bindings/wallet_token_info_binding.dart';
 import '../modules/wallet_token_info/views/wallet_token_info_view.dart';
+
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+// coverage:ignore-file
 
 part 'app_routes.dart';
 
@@ -140,5 +148,13 @@ class AppPages {
       binding: NetworkSelectionBinding(),
     ),
     GetPage(name: _Paths.MY_QR, page: () => const MyQrView(), binding: MyQrBinding()),
+    GetPage(
+      name: _Paths.TRANSACTIONS,
+      page: () => TransactionsView(),
+      binding: TransactionsBinding(),
+    ),
+    GetPage(name: _Paths.QR_SCANNING, page: () => QRScanningView(), binding: QRScanningBinding()),
+    GetPage(name: _Paths.TRENDS, page: () => TrendsView(), binding: TrendsBinding()),
+    GetPage(name: _Paths.PROFILE, page: () => ProfileView(), binding: ProfileBinding()),
   ];
 }
