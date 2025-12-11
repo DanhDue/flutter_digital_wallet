@@ -2,20 +2,57 @@
 
 // coverage:ignore-file
 
+import 'package:d3_wallet/app/routes/app_pages.dart';
+import 'package:d3_wallet/base/base_view.dart';
+import 'package:d3_wallet/base/widgets/custom_filled_button.dart';
+import 'package:d3_wallet/generated/assets.gen.dart';
+import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
+import 'package:get/route_manager.dart';
 
-import 'package:get/get.dart';
-
+import 'package:d3_wallet/generated/locales.g.dart';
 import '../controllers/wallet_creation_successfully_controller.dart';
 
-class WalletCreationSuccessfullyView extends GetView<WalletCreationSuccessfullyController> {
-  const WalletCreationSuccessfullyView({super.key});
+class WalletCreationSuccessfullyView extends BaseView<WalletCreationSuccessfullyController> {
+  WalletCreationSuccessfullyView({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget? onCreateViews(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('WalletCreationSuccessfullyView'), centerTitle: true),
-      body: const Center(
-        child: Text('WalletCreationSuccessfullyView is working', style: TextStyle(fontSize: 20)),
+      body: SafeArea(
+        top: true,
+        bottom: false,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Assets.images.icHighFiveRafiki.svg(fit: BoxFit.cover),
+            const SizedBox(height: 24),
+            Text(
+              LocaleKeys.secureRecoveryPhraseVerified.tr,
+              style: context.appThemes.bold20.copyWith(color: context.appThemes.trueBlue100),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              LocaleKeys.walletCreationSuccessMessage.tr,
+              style: context.appThemes.regular16.copyWith(color: context.appThemes.trueBlue100),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 24),
+            CustomFilledButton(
+              onPressed: () {
+                Get.offAllNamed(Routes.HOME);
+              },
+              borderRadius: 8,
+              verticalPadding: 8,
+              text: LocaleKeys.letsGo.tr,
+            ),
+            const SizedBox(height: 68),
+          ],
+        ).paddingSymmetric(horizontal: 16),
       ),
     );
   }

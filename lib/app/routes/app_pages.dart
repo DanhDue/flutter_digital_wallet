@@ -46,7 +46,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.ONBOARD;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
@@ -96,7 +96,7 @@ class AppPages {
           binding: MnemonicConfirmationBinding(),
         ),
         GetPage(
-          name: _Paths.S_R_P_DESCRIPTION,
+          name: _Paths.SRP_DESCRIPTION,
           page: () => SRPDescriptionView(bindingCreator: () => SRPDescriptionBinding()),
         ),
         GetPage(
@@ -108,7 +108,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.WALLET_CREATION_SUCCESSFULLY,
-      page: () => const WalletCreationSuccessfullyView(),
+      page: () => WalletCreationSuccessfullyView(),
       binding: WalletCreationSuccessfullyBinding(),
     ),
   ];

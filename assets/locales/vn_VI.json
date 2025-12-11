@@ -115,5 +115,8 @@
     "finish": "Hoàn thành",
     "incorrectSecretRecoveryPhrase": "Cụm từ không chính xác!",
     "incorrectSecretRecoveryPhraseDescription": "Vui lòng sắp xếp lại thứ tự của cụm từ",
+    "secureRecoveryPhraseVerified": "Đã xác minh cụm từ khôi phục bảo mật",
+    "walletCreationSuccessMessage": "Bạn đã tạo và bảo mật ví thành công. Vui lòng giữ cụm từ bí mật của bạn an toàn mọi lúc.",
+    "letsGo": "Tiếp tục",
     "eof": "Kết thúc tập tin. Vui lòng thêm văn bản mới phía trên mục này để tránh xung đột. Cảm ơn!"
 }

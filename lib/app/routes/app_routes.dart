@@ -20,12 +20,12 @@ abstract class Routes {
   static const SAMPLE = _Paths.SAMPLE;
   static const API_TESTING = _Paths.API_TESTING;
   static const NETWORKING_SAMPLE = _Paths.NETWORKING_SAMPLE;
-  static const MNEMONIC_DESCRIPTION = _Paths.ONBOARD + _Paths.MNEMONIC_DESCRIPTION;
-  static const MNEMONIC_CREATION = _Paths.ONBOARD + _Paths.MNEMONIC_CREATION;
-  static const MNEMONIC_CONFIRMATION = _Paths.ONBOARD + _Paths.MNEMONIC_CONFIRMATION;
+  static const MNEMONIC_DESCRIPTION = _Paths.MNEMONIC_DESCRIPTION;
+  static const MNEMONIC_CREATION = _Paths.MNEMONIC_CREATION;
+  static const MNEMONIC_CONFIRMATION = _Paths.MNEMONIC_CONFIRMATION;
   static const WALLET_CREATION_SUCCESSFULLY = _Paths.WALLET_CREATION_SUCCESSFULLY;
-  static const S_R_P_DESCRIPTION = _Paths.ONBOARD + _Paths.S_R_P_DESCRIPTION;
-  static const MNEMONIC_WARNING = _Paths.ONBOARD + _Paths.MNEMONIC_WARNING;
+  static const SRP_DESCRIPTION = _Paths.SRP_DESCRIPTION;
+  static const MNEMONIC_WARNING = _Paths.MNEMONIC_WARNING;
 }
 
 abstract class _Paths {
@@ -47,6 +47,6 @@ abstract class _Paths {
   static const MNEMONIC_CREATION = '/mnemonic-creation';
   static const MNEMONIC_CONFIRMATION = '/mnemonic-confirmation';
   static const WALLET_CREATION_SUCCESSFULLY = '/wallet-creation-successfully';
-  static const S_R_P_DESCRIPTION = '/s-r-p-description';
+  static const SRP_DESCRIPTION = '/srp-description';
   static const MNEMONIC_WARNING = '/mnemonic-warning';
 }

@@ -114,5 +114,8 @@
   "finish": "Finish",
   "incorrectSecretRecoveryPhrase": "Incorrect Secret Recovery Phrase!",
   "incorrectSecretRecoveryPhraseDescription": "Please re-arrange the order of the phrase.",
+  "secureRecoveryPhraseVerified": "Secure Recovery Phrase Verified",
+  "walletCreationSuccessMessage": "You have successfully created and secured your wallet. Please keep your Passphrase safe at all times.",
+  "letsGo": "Let's go!",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }
