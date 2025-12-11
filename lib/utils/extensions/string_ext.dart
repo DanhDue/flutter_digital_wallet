@@ -4,9 +4,11 @@
 
 import 'dart:ui';
 
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:d3_wallet/data/remote/app_uri.dart';
 import 'package:d3_wallet/utils/constants.dart';
 import 'package:d3_wallet/utils/date_time_utils.dart';
+import 'package:dart_extensions/dart_extensions.dart';
 import 'package:dart_helper_utils/dart_helper_utils.dart';
 import 'package:fimber/fimber.dart';
 import 'package:get/get_utils/get_utils.dart';
@@ -152,5 +154,17 @@ extension StringExt on String? {
     result = result.replaceAll(RegExp(r'[Đ]'), 'D');
     result = result.replaceAll(RegExp(r'[đ]'), 'd');
     return result;
+  }
+
+  String reformatUSDolar() {
+    return "${this?.replaceAll("\$", "").trim()} \$";
+  }
+
+  String clearUSDolarCharacter() {
+    return "${this?.replaceAll("\$", "").trim()}";
+  }
+
+  String buildCoinPrice(String symbol, {int? decimalDigits = 6}) {
+    return "${CurrencyTextInputFormatter.simpleCurrency(decimalDigits: decimalDigits).formatDouble((this?.toDoubleOrNull() ?? 0)).replaceAll("\$", "")} $symbol";
   }
 }

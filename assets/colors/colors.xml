@@ -20,6 +20,10 @@
     <color name="wild_sand">#F5F5F5</color>
     <color name="alabaster">#F8F8F8</color>
     <color name="smoky_white">#15000000</color>
+    <color name="gentle_gray">#DADADA</color>
+
+    <!-- Gold Series -->
+    <color name="rustic_rose_gold">#B17B80</color>
 
     <!-- Ink Series -->
     <color name="ink_0">#F7F9FF</color>
@@ -50,6 +54,7 @@
     <color name="shiny_shamrock">#60B582</color>
     <color name="honeydew">#F1FFE7</color>
     <color name="anti_flash_white">#F2F6F3</color>
+    <color name="green_vogue">#022D55</color>
 
     <!-- Blue Series -->
     <color name="blue_0">#D9E2FF</color>
@@ -74,6 +79,10 @@
     <color name="cyan">#00B0C3</color>
     <color name="ankees_blue">#1E293B</color>
     <color name="tech_blue">#2F80ED</color>
+    <color name="middle_blue">#0084E3</color>
+
+    <!-- Pink Series -->
+    <color name="pink_lady">#EDA5AC</color>
 
     <!-- Red Series -->
     <color name="red_0">#FFF2F4</color>
@@ -88,6 +97,8 @@
     <color name="dutch_white">#EFDCBB</color>
     <color name="orange">#F2994A</color>
     <color name="orange_100">#F36034</color>
+
+
 
     <!-- Other -->
     <color name="EOF">#FA0606</color>

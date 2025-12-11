@@ -27,6 +27,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   TextStyle get bold12;
   TextStyle get medium32;
   TextStyle get medium24;
+  TextStyle get medium18;
   TextStyle get medium16;
   TextStyle get medium14;
   TextStyle get regular20;
@@ -46,6 +47,8 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get smokyBlack;
   Color get cultured;
   Color get silver;
+  Color get gentleGray;
+  Color get rusticRoseGold;
   Color get ink0;
   Color get ink5;
   Color get ink10;
@@ -72,6 +75,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get shinyShamrock;
   Color get honeydew;
   Color get antiFlashWhite;
+  Color get greenVogue;
   Color get blue0;
   Color get blue5;
   Color get blue10;
@@ -94,10 +98,12 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get cyan;
   Color get ankeesBlue;
   Color get techBlue;
+  Color get middleBlue;
   Color get red0;
   Color get red100;
   Color get red;
   Color get champagnePink;
+  Color get pinkLady;
   Color get yellow5;
   Color get yellow100;
   Color get subYellow;
@@ -124,6 +130,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     TextStyle? bold12,
     TextStyle? medium32,
     TextStyle? medium24,
+    TextStyle? medium18,
     TextStyle? medium16,
     TextStyle? medium14,
     TextStyle? regular20,
@@ -143,6 +150,8 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? smokyBlack,
     Color? cultured,
     Color? silver,
+    Color? gentleGray,
+    Color? rusticRoseGold,
     Color? ink0,
     Color? ink5,
     Color? ink10,
@@ -169,6 +178,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? shinyShamrock,
     Color? honeydew,
     Color? antiFlashWhite,
+    Color? greenVogue,
     Color? blue0,
     Color? blue5,
     Color? blue10,
@@ -191,10 +201,12 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? cyan,
     Color? ankeesBlue,
     Color? techBlue,
+    Color? middleBlue,
     Color? red0,
     Color? red100,
     Color? red,
     Color? champagnePink,
+    Color? pinkLady,
     Color? yellow5,
     Color? yellow100,
     Color? subYellow,
@@ -220,6 +232,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       bold12: bold12 ?? this.bold12,
       medium32: medium32 ?? this.medium32,
       medium24: medium24 ?? this.medium24,
+      medium18: medium18 ?? this.medium18,
       medium16: medium16 ?? this.medium16,
       medium14: medium14 ?? this.medium14,
       regular20: regular20 ?? this.regular20,
@@ -239,6 +252,8 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       smokyBlack: smokyBlack ?? this.smokyBlack,
       cultured: cultured ?? this.cultured,
       silver: silver ?? this.silver,
+      gentleGray: gentleGray ?? this.gentleGray,
+      rusticRoseGold: rusticRoseGold ?? this.rusticRoseGold,
       ink0: ink0 ?? this.ink0,
       ink5: ink5 ?? this.ink5,
       ink10: ink10 ?? this.ink10,
@@ -265,6 +280,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       shinyShamrock: shinyShamrock ?? this.shinyShamrock,
       honeydew: honeydew ?? this.honeydew,
       antiFlashWhite: antiFlashWhite ?? this.antiFlashWhite,
+      greenVogue: greenVogue ?? this.greenVogue,
       blue0: blue0 ?? this.blue0,
       blue5: blue5 ?? this.blue5,
       blue10: blue10 ?? this.blue10,
@@ -287,10 +303,12 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       cyan: cyan ?? this.cyan,
       ankeesBlue: ankeesBlue ?? this.ankeesBlue,
       techBlue: techBlue ?? this.techBlue,
+      middleBlue: middleBlue ?? this.middleBlue,
       red0: red0 ?? this.red0,
       red100: red100 ?? this.red100,
       red: red ?? this.red,
       champagnePink: champagnePink ?? this.champagnePink,
+      pinkLady: pinkLady ?? this.pinkLady,
       yellow5: yellow5 ?? this.yellow5,
       yellow100: yellow100 ?? this.yellow100,
       subYellow: subYellow ?? this.subYellow,
@@ -321,6 +339,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       bold12: TextStyle.lerp(bold12, other.bold12, t)!,
       medium32: TextStyle.lerp(medium32, other.medium32, t)!,
       medium24: TextStyle.lerp(medium24, other.medium24, t)!,
+      medium18: TextStyle.lerp(medium18, other.medium18, t)!,
       medium16: TextStyle.lerp(medium16, other.medium16, t)!,
       medium14: TextStyle.lerp(medium14, other.medium14, t)!,
       regular20: TextStyle.lerp(regular20, other.regular20, t)!,
@@ -340,6 +359,8 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       smokyBlack: Color.lerp(smokyBlack, other.smokyBlack, t)!,
       cultured: Color.lerp(cultured, other.cultured, t)!,
       silver: Color.lerp(silver, other.silver, t)!,
+      gentleGray: Color.lerp(gentleGray, other.gentleGray, t)!,
+      rusticRoseGold: Color.lerp(rusticRoseGold, other.rusticRoseGold, t)!,
       ink0: Color.lerp(ink0, other.ink0, t)!,
       ink5: Color.lerp(ink5, other.ink5, t)!,
       ink10: Color.lerp(ink10, other.ink10, t)!,
@@ -366,6 +387,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       shinyShamrock: Color.lerp(shinyShamrock, other.shinyShamrock, t)!,
       honeydew: Color.lerp(honeydew, other.honeydew, t)!,
       antiFlashWhite: Color.lerp(antiFlashWhite, other.antiFlashWhite, t)!,
+      greenVogue: Color.lerp(greenVogue, other.greenVogue, t)!,
       blue0: Color.lerp(blue0, other.blue0, t)!,
       blue5: Color.lerp(blue5, other.blue5, t)!,
       blue10: Color.lerp(blue10, other.blue10, t)!,
@@ -388,10 +410,12 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       cyan: Color.lerp(cyan, other.cyan, t)!,
       ankeesBlue: Color.lerp(ankeesBlue, other.ankeesBlue, t)!,
       techBlue: Color.lerp(techBlue, other.techBlue, t)!,
+      middleBlue: Color.lerp(middleBlue, other.middleBlue, t)!,
       red0: Color.lerp(red0, other.red0, t)!,
       red100: Color.lerp(red100, other.red100, t)!,
       red: Color.lerp(red, other.red, t)!,
       champagnePink: Color.lerp(champagnePink, other.champagnePink, t)!,
+      pinkLady: Color.lerp(pinkLady, other.pinkLady, t)!,
       yellow5: Color.lerp(yellow5, other.yellow5, t)!,
       yellow100: Color.lerp(yellow100, other.yellow100, t)!,
       subYellow: Color.lerp(subYellow, other.subYellow, t)!,
@@ -423,6 +447,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(bold12, other.bold12) &&
             const DeepCollectionEquality().equals(medium32, other.medium32) &&
             const DeepCollectionEquality().equals(medium24, other.medium24) &&
+            const DeepCollectionEquality().equals(medium18, other.medium18) &&
             const DeepCollectionEquality().equals(medium16, other.medium16) &&
             const DeepCollectionEquality().equals(medium14, other.medium14) &&
             const DeepCollectionEquality().equals(regular20, other.regular20) &&
@@ -442,6 +467,8 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(smokyBlack, other.smokyBlack) &&
             const DeepCollectionEquality().equals(cultured, other.cultured) &&
             const DeepCollectionEquality().equals(silver, other.silver) &&
+            const DeepCollectionEquality().equals(gentleGray, other.gentleGray) &&
+            const DeepCollectionEquality().equals(rusticRoseGold, other.rusticRoseGold) &&
             const DeepCollectionEquality().equals(ink0, other.ink0) &&
             const DeepCollectionEquality().equals(ink5, other.ink5) &&
             const DeepCollectionEquality().equals(ink10, other.ink10) &&
@@ -468,6 +495,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(shinyShamrock, other.shinyShamrock) &&
             const DeepCollectionEquality().equals(honeydew, other.honeydew) &&
             const DeepCollectionEquality().equals(antiFlashWhite, other.antiFlashWhite) &&
+            const DeepCollectionEquality().equals(greenVogue, other.greenVogue) &&
             const DeepCollectionEquality().equals(blue0, other.blue0) &&
             const DeepCollectionEquality().equals(blue5, other.blue5) &&
             const DeepCollectionEquality().equals(blue10, other.blue10) &&
@@ -490,10 +518,12 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(cyan, other.cyan) &&
             const DeepCollectionEquality().equals(ankeesBlue, other.ankeesBlue) &&
             const DeepCollectionEquality().equals(techBlue, other.techBlue) &&
+            const DeepCollectionEquality().equals(middleBlue, other.middleBlue) &&
             const DeepCollectionEquality().equals(red0, other.red0) &&
             const DeepCollectionEquality().equals(red100, other.red100) &&
             const DeepCollectionEquality().equals(red, other.red) &&
             const DeepCollectionEquality().equals(champagnePink, other.champagnePink) &&
+            const DeepCollectionEquality().equals(pinkLady, other.pinkLady) &&
             const DeepCollectionEquality().equals(yellow5, other.yellow5) &&
             const DeepCollectionEquality().equals(yellow100, other.yellow100) &&
             const DeepCollectionEquality().equals(subYellow, other.subYellow) &&
@@ -523,6 +553,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(bold12),
       const DeepCollectionEquality().hash(medium32),
       const DeepCollectionEquality().hash(medium24),
+      const DeepCollectionEquality().hash(medium18),
       const DeepCollectionEquality().hash(medium16),
       const DeepCollectionEquality().hash(medium14),
       const DeepCollectionEquality().hash(regular20),
@@ -542,6 +573,8 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(smokyBlack),
       const DeepCollectionEquality().hash(cultured),
       const DeepCollectionEquality().hash(silver),
+      const DeepCollectionEquality().hash(gentleGray),
+      const DeepCollectionEquality().hash(rusticRoseGold),
       const DeepCollectionEquality().hash(ink0),
       const DeepCollectionEquality().hash(ink5),
       const DeepCollectionEquality().hash(ink10),
@@ -568,6 +601,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(shinyShamrock),
       const DeepCollectionEquality().hash(honeydew),
       const DeepCollectionEquality().hash(antiFlashWhite),
+      const DeepCollectionEquality().hash(greenVogue),
       const DeepCollectionEquality().hash(blue0),
       const DeepCollectionEquality().hash(blue5),
       const DeepCollectionEquality().hash(blue10),
@@ -590,10 +624,12 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(cyan),
       const DeepCollectionEquality().hash(ankeesBlue),
       const DeepCollectionEquality().hash(techBlue),
+      const DeepCollectionEquality().hash(middleBlue),
       const DeepCollectionEquality().hash(red0),
       const DeepCollectionEquality().hash(red100),
       const DeepCollectionEquality().hash(red),
       const DeepCollectionEquality().hash(champagnePink),
+      const DeepCollectionEquality().hash(pinkLady),
       const DeepCollectionEquality().hash(yellow5),
       const DeepCollectionEquality().hash(yellow100),
       const DeepCollectionEquality().hash(subYellow),

@@ -18,6 +18,7 @@ class NavigationArguments {
   static const swapResult = "swapResult";
   static const appConfigurations = "appConfigurations";
   static const networkFee = "networkFee";
+  static const wallet = "wallet";
 }
 
 class QrNavigationArguments {

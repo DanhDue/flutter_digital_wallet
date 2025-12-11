@@ -33,6 +33,7 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.bold12,
     required this.medium32,
     required this.medium24,
+    required this.medium18,
     required this.medium16,
     required this.medium14,
     required this.regular20,
@@ -55,6 +56,10 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.smokyBlack,
     required this.cultured,
     required this.silver,
+    required this.gentleGray,
+
+    // Gold Series
+    required this.rusticRoseGold,
 
     // Ink Series
     required this.ink0,
@@ -85,6 +90,7 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.shinyShamrock,
     required this.honeydew,
     required this.antiFlashWhite,
+    required this.greenVogue,
 
     // Blue Series
     required this.blue0,
@@ -109,12 +115,14 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.cyan,
     required this.ankeesBlue,
     required this.techBlue,
+    required this.middleBlue,
 
     // Red Series
     required this.red0,
     required this.red100,
     required this.red,
     required this.champagnePink,
+    required this.pinkLady,
 
     // Yellow / Orange Series
     required this.yellow5,
@@ -262,6 +270,13 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     decoration: TextDecoration.none,
   );
 
+  static const medium18TextStyle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    height: 1.33,
+    decoration: TextDecoration.none,
+  );
+
   static const medium16TextStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
@@ -360,6 +375,8 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   @override
   final TextStyle medium24;
   @override
+  final TextStyle medium18;
+  @override
   final TextStyle medium16;
   @override
   final TextStyle medium14;
@@ -400,6 +417,12 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   final Color cultured;
   @override
   final Color silver;
+  @override
+  final Color gentleGray;
+
+  // Gold Series
+  @override
+  final Color rusticRoseGold;
 
   // Ink Series
   @override
@@ -456,6 +479,8 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   final Color honeydew;
   @override
   final Color antiFlashWhite;
+  @override
+  final Color greenVogue;
 
   // Blue Series
   @override
@@ -502,6 +527,8 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   final Color ankeesBlue;
   @override
   final Color techBlue;
+  @override
+  final Color middleBlue;
 
   // Red Series
   @override
@@ -512,6 +539,8 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   final Color red;
   @override
   final Color champagnePink;
+  @override
+  final Color pinkLady;
 
   // Yellow / Orange Series
   @override
@@ -549,6 +578,7 @@ final lightAppThemes = AppThemes(
   bold12: AppThemes.bold12TextStyle,
   medium32: AppThemes.medium32TextStyle,
   medium24: AppThemes.medium24TextStyle,
+  medium18: AppThemes.medium18TextStyle,
   medium16: AppThemes.medium16TextStyle,
   medium14: AppThemes.medium14TextStyle,
   regular20: AppThemes.regular20TextStyle,
@@ -571,6 +601,10 @@ final lightAppThemes = AppThemes(
   smokyBlack: AppColors.smokyBlack,
   cultured: AppColors.cultured,
   silver: AppColors.silver,
+  gentleGray: AppColors.gentleGray,
+
+  // Gold Series
+  rusticRoseGold: AppColors.rusticRoseGold,
 
   // Ink Series
   ink0: AppColors.ink0,
@@ -601,6 +635,7 @@ final lightAppThemes = AppThemes(
   shinyShamrock: AppColors.shinyShamrock,
   honeydew: AppColors.honeydew,
   antiFlashWhite: AppColors.antiFlashWhite,
+  greenVogue: AppColors.greenVogue,
 
   // Blue Series
   blue0: AppColors.blue0,
@@ -625,12 +660,14 @@ final lightAppThemes = AppThemes(
   cyan: AppColors.cyan,
   ankeesBlue: AppColors.ankeesBlue,
   techBlue: AppColors.techBlue,
+  middleBlue: AppColors.middleBlue,
 
   // Red Series
   red0: AppColors.red0,
   red100: AppColors.red100,
   red: AppColors.red,
   champagnePink: AppColors.champagnePink,
+  pinkLady: AppColors.pinkLady,
 
   // Yellow / Orange Series
   yellow5: AppColors.yellow5,
@@ -662,6 +699,7 @@ final darkAppThemes = AppThemes(
   bold12: AppThemes.bold12TextStyle,
   medium32: AppThemes.medium32TextStyle,
   medium24: AppThemes.medium24TextStyle,
+  medium18: AppThemes.medium18TextStyle,
   medium16: AppThemes.medium16TextStyle,
   medium14: AppThemes.medium14TextStyle,
   regular20: AppThemes.regular20TextStyle,
@@ -684,6 +722,10 @@ final darkAppThemes = AppThemes(
   smokyBlack: AppColors.smokyBlack,
   cultured: AppColors.cultured,
   silver: AppColors.silver,
+  gentleGray: AppColors.gentleGray,
+
+  // Gold Series
+  rusticRoseGold: AppColors.rusticRoseGold,
 
   // Ink Series
   ink0: AppColors.ink0,
@@ -714,6 +756,7 @@ final darkAppThemes = AppThemes(
   shinyShamrock: AppColors.shinyShamrock,
   honeydew: AppColors.honeydew,
   antiFlashWhite: AppColors.antiFlashWhite,
+  greenVogue: AppColors.greenVogue,
 
   // Blue Series
   blue0: AppColors.blue0,
@@ -738,12 +781,14 @@ final darkAppThemes = AppThemes(
   cyan: AppColors.cyan,
   ankeesBlue: AppColors.ankeesBlue,
   techBlue: AppColors.techBlue,
+  middleBlue: AppColors.middleBlue,
 
   // Red Series
   red0: AppColors.red0,
   red100: AppColors.red100,
   red: AppColors.red,
   champagnePink: AppColors.champagnePink,
+  pinkLady: AppColors.pinkLady,
 
   // Yellow / Orange Series
   yellow5: AppColors.yellow5,

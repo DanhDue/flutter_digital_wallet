@@ -18,6 +18,7 @@ class CustomFilledButton extends StatelessWidget {
     this.verticalPadding,
     this.horizontalTextPadding,
     this.verticalTextPadding,
+    this.fullWidth = true,
   });
 
   final VoidCallback? onPressed;
@@ -30,11 +31,12 @@ class CustomFilledButton extends StatelessWidget {
   final double? verticalPadding;
   final double? horizontalTextPadding;
   final double? verticalTextPadding;
+  final bool fullWidth;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: fullWidth ? double.infinity : null,
       padding: EdgeInsetsGeometry.symmetric(
         horizontal: horizontalPadding ?? 0,
         vertical: verticalPadding ?? 0,

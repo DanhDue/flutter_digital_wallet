@@ -26,6 +26,11 @@ abstract class Routes {
   static const WALLET_CREATION_SUCCESSFULLY = _Paths.WALLET_CREATION_SUCCESSFULLY;
   static const SRP_DESCRIPTION = _Paths.SRP_DESCRIPTION;
   static const MNEMONIC_WARNING = _Paths.MNEMONIC_WARNING;
+  static const MY_WALLETS = _Paths.MY_WALLETS;
+  static const WALLET_TOKEN_INFO = _Paths.WALLET_TOKEN_INFO;
+  static const COMMING_SOON_MODAL = _Paths.COMMING_SOON_MODAL;
+  static const NETWORK_SELECTION = _Paths.NETWORK_SELECTION;
+  static const MY_QR = _Paths.MY_QR;
 }
 
 abstract class _Paths {
@@ -49,4 +54,9 @@ abstract class _Paths {
   static const WALLET_CREATION_SUCCESSFULLY = '/wallet-creation-successfully';
   static const SRP_DESCRIPTION = '/srp-description';
   static const MNEMONIC_WARNING = '/mnemonic-warning';
+  static const MY_WALLETS = '/my-wallets';
+  static const WALLET_TOKEN_INFO = '/wallet-token-info';
+  static const COMMING_SOON_MODAL = '/comming-soon-modal';
+  static const NETWORK_SELECTION = '/network-selection';
+  static const MY_QR = '/my-qr';
 }

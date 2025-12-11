@@ -5,6 +5,7 @@
 import 'package:d3_wallet/app/modules/onboard/s_r_p_description/bindings/s_r_p_description_binding.dart';
 import 'package:d3_wallet/base/base_binding_creator_widget.dart';
 import 'package:d3_wallet/generated/assets.gen.dart';
+import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +46,7 @@ class SRPDescriptionView
                     ),
                     Expanded(
                       child: Text(
-                        "“Cụm từ khôi phục bí mật” là gì?",
+                        LocaleKeys.whatIsSRP.tr,
                         style: context.appThemes.medium16.copyWith(
                           color: context.appThemes.ink100,
                         ),
@@ -84,25 +85,23 @@ class SRPDescriptionView
                     Text.rich(
                       textAlign: TextAlign.left,
                       TextSpan(
-                        text: "Cụm từ khôi phục bí mật",
+                        text: LocaleKeys.secretRecoveryPhrase.tr,
                         style: context.appThemes.bold14.copyWith(color: context.appThemes.ink100),
                         children: <TextSpan>[
                           TextSpan(
-                            text:
-                                " là một nhóm gồm mười hai từ chứa tất cả thông tin về ví của bạn, bao gồm cả tiền trong đó. Nó như một mật mã bí mật được dùng để truy cập toàn bộ ví của bạn.\n\nBạn phải giữ ",
+                            text: LocaleKeys.srpDefinitionPart1.tr,
                             style: context.appThemes.regular14.copyWith(
                               color: context.appThemes.ink80,
                             ),
                           ),
                           TextSpan(
-                            text: "Cụm từ khôi phục bí mật",
+                            text: LocaleKeys.secretRecoveryPhrase.tr,
                             style: context.appThemes.bold14.copyWith(
                               color: context.appThemes.ink100,
                             ),
                           ),
                           TextSpan(
-                            text:
-                                " một cách bảo mật và an toàn. Nếu ai đó có được Cụm từ khôi phục bí mật của bạn, thì họ sẽ có toàn quyền kiểm soát các ví của bạn. Hãy lưu cụm từ này ở một nơi mà bạn có thể truy cập.",
+                            text: LocaleKeys.srpDefinitionPart2.tr,
                             style: context.appThemes.regular14.copyWith(
                               color: context.appThemes.ink80,
                             ),
@@ -141,7 +140,7 @@ class SRPDescriptionView
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
-                                  "Lưu ý",
+                                  LocaleKeys.note.tr,
                                   style: context.appThemes.medium14.copyWith(
                                     color: context.appThemes.ink80,
                                   ),
@@ -151,13 +150,13 @@ class SRPDescriptionView
                                 Text.rich(
                                   textAlign: TextAlign.left,
                                   TextSpan(
-                                    text: "Nếu bạn làm mất, thì ngay cả SCoin cũng ",
+                                    text: LocaleKeys.srpWarningPart1.tr,
                                     style: context.appThemes.regular12.copyWith(
                                       color: context.appThemes.ink60,
                                     ),
                                     children: <TextSpan>[
                                       TextSpan(
-                                        text: "không thể giúp bạn khôi phục",
+                                        text: LocaleKeys.srpWarningPart2.tr,
                                         style: context.appThemes.bold12.copyWith(
                                           color: context.appThemes.ink100,
                                         ),

@@ -29,6 +29,10 @@ abstract class WalletResponseObject with _$WalletResponseObject {
     @HiveField(11)
     @JsonKey(name: 'scr_backup_reminder_is_shown', defaultValue: false)
     bool? scrBackupReminderIsShown,
+    @HiveField(12) @JsonKey(name: 'title') String? title,
+    @HiveField(13) @JsonKey(name: 'name') String? name,
+    @HiveField(14) @JsonKey(name: 'password') String? password,
+    @HiveField(15) @JsonKey(name: 'noAccent') String? noAccentName,
   }) = _WalletResponseObject;
 
   factory WalletResponseObject.fromJson(Map<String, Object?> json) =>

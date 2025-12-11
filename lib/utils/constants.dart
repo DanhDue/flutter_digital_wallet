@@ -81,7 +81,6 @@ class NetworkIds {
   static const String BITCOIN = "BTC";
   static const String ETHEREUM = "ETH";
   static const String SOLANA = "SOL";
-  static const String SNAPTIX = "SCN";
   static const String SAMO = "devSAMO";
 }
 
