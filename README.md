@@ -2,7 +2,8 @@
 
 A Digital Wallet project.
 
-## Navigation Architecture
+<details>
+<summary><h2>Navigation Architecture</h2></summary>
 
 This project uses **GetX** for state management and navigation with a custom nested navigation implementation that supports both global and tab-level navigation.
 
@@ -148,8 +149,13 @@ Get.toNamed(Routes.PROFILE_SETTINGS, id: NavIds.profile);
 4. **Use `Get.back(id: navId)`** to go back within a specific tab
 5. **Use `Get.back()`** (without id) to go back on the global navigator
 
-## Animated Visibility
+</details>
+
+<details>
+<summary><h2>Animated Visibility</h2></summary>
 
 Animate appearance and disappearance using pre-built effects with the AnimatedVisibility widget.
 
 <img src="screenshots/animated_visibility_01.gif" height="480" /> <img src="screenshots/animated_visibility_02.gif" height="480" />
+
+</details>
