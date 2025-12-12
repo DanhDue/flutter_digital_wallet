@@ -4,7 +4,7 @@ A Digital Wallet project.
 
 ## Table of Contents
 
-I. [Navigation Architecture](#navigation-architecture)
+I. [Navigation Architecture](#i-navigation-architecture)
    1. [Navigation Types](#navigation-types)
    2. [Navigator IDs](#navigator-ids)
    3. [Navigation Structure](#navigation-structure)
@@ -13,9 +13,9 @@ I. [Navigation Architecture](#navigation-architecture)
    6. [Key Files](#key-files)
    7. [Best Practices](#best-practices)
 
-II. [Animated Visibility](#animated-visibility)
+II. [Animated Visibility](#ii-animated-visibility)
 
-<details>
+<details open>
 <summary><h2>I. Navigation Architecture</h2></summary>
 
 This project uses **GetX** for state management and navigation with a custom nested navigation implementation that supports both global and tab-level navigation.
@@ -164,7 +164,7 @@ Get.toNamed(Routes.PROFILE_SETTINGS, id: NavIds.profile);
 
 </details>
 
-<details>
+<details open>
 <summary><h2>II. Animated Visibility</h2></summary>
 
 Animate appearance and disappearance using pre-built effects with the AnimatedVisibility widget.
