@@ -36,7 +36,7 @@ abstract class Routes {
   static const QR_SCANNING = _Paths.QR_SCANNING;
   static const TRENDS = _Paths.TRENDS;
   static const PROFILE = _Paths.PROFILE;
-  static const PROFILE_DETAIL = _Paths.PROFILE_DETAIL;
+  static const PROFILE_DETAIL = _Paths.PROFILE + _Paths.PROFILE_DETAIL;
 }
 
 abstract class _Paths {

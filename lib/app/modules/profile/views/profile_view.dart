@@ -3,6 +3,7 @@
 // coverage:ignore-file
 
 import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
+import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/base/base_view.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,16 @@ class ProfileView extends BaseView<ProfileController> {
               ),
               child: const Text('Go to Profile Detail'),
             ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: _navigateToLogin,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: context.appThemes.mainGreen,
+                foregroundColor: context.appThemes.white,
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              ),
+              child: const Text('Go to Login'),
+            ),
           ],
         ),
       ),
@@ -40,6 +51,12 @@ class ProfileView extends BaseView<ProfileController> {
 
   void _navigateToProfileDetail() {
     // Use GetX nested navigation with named route and navigator ID
-    Get.toNamed('/profile/details', id: NavIds.profile);
+    Get.toNamed(Routes.PROFILE_DETAIL, id: NavIds.profile);
+  }
+
+  void _navigateToLogin() {
+    // Navigate to Login using global/root navigation (hides bottom nav bar)
+    // Home stays in stack, so back button returns to Home
+    Get.toNamed(Routes.LOGIN);
   }
 }

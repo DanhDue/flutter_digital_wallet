@@ -2,9 +2,10 @@
 
 import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
 import 'package:d3_wallet/app/modules/home/controllers/home_controller.dart';
+import 'package:d3_wallet/app/modules/profile/profile_detail/bindings/profile_detail_binding.dart';
+import 'package:d3_wallet/app/modules/profile/profile_detail/views/profile_detail_view.dart';
 import 'package:d3_wallet/app/modules/profile/views/profile_view.dart';
-import 'package:d3_wallet/app/modules/profile_detail/bindings/profile_detail_binding.dart';
-import 'package:d3_wallet/app/modules/profile_detail/views/profile_detail_view.dart';
+import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class ProfileNav extends StatelessWidget {
     return Navigator(
       key: Get.nestedKey(NavIds.profile),
       onGenerateRoute: (settings) {
-        if (settings.name == '/profile/details') {
+        if (settings.name == Routes.PROFILE_DETAIL) {
           return GetPageRoute(
             settings: settings,
             page: () => ProfileDetailView(),

@@ -50,6 +50,14 @@ class HomeController extends BaseController with NetworkingMixin {
   bool _onBackPressed(bool stopDefaultButtonEvent, RouteInfo info) {
     Fimber.d("Back button intercepted");
 
+    // First, check if we can pop from the root/global navigator
+    // This handles cases like Login screen pushed on top of Home
+    if (Get.key.currentState != null && Get.key.currentState!.canPop()) {
+      Fimber.d("Popping root navigator (global screen)");
+      Get.back(); // Pop from root navigator
+      return true; // Consumed
+    }
+
     // Try to pop from the current tab's nested navigator using GetX
     final nestedKey = Get.nestedKey(currentNavId);
     if (nestedKey?.currentState != null && nestedKey!.currentState!.canPop()) {
