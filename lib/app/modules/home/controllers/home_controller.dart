@@ -4,20 +4,14 @@ import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/base/networking_mixin.dart';
 import 'package:fimber/fimber.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 class HomeController extends BaseController with NetworkingMixin {
-  final currentTabIndex = 0.obs;
+  static HomeController get to => Get.find();
 
-  // Global keys for each tab's navigator
-  final myWalletsNavKey = GlobalKey<NavigatorState>();
-  final transactionsNavKey = GlobalKey<NavigatorState>();
-  final qrScanningNavKey = GlobalKey<NavigatorState>();
-  final trendsNavKey = GlobalKey<NavigatorState>();
-  final profileNavKey = GlobalKey<NavigatorState>();
+  final currentTabIndex = 0.obs;
 
   // For double-back-to-exit functionality
   DateTime? _lastBackPressTime;
@@ -48,35 +42,20 @@ class HomeController extends BaseController with NetworkingMixin {
     currentTabIndex.value = index;
   }
 
-  /// Get the navigator key for the current tab
-  GlobalKey<NavigatorState> get currentNavKey {
-    switch (currentTabIndex.value) {
-      case 0:
-        return myWalletsNavKey;
-      case 1:
-        return transactionsNavKey;
-      case 2:
-        return qrScanningNavKey;
-      case 3:
-        return trendsNavKey;
-      case 4:
-        return profileNavKey;
-      default:
-        return myWalletsNavKey;
-    }
-  }
+  /// Get the current navigator ID
+  int get currentNavId => currentTabIndex.value;
 
   /// Back button interceptor callback
   /// Returns true to consume the event (handled), false to let system handle it
   bool _onBackPressed(bool stopDefaultButtonEvent, RouteInfo info) {
     Fimber.d("Back button intercepted");
 
-    // First, check if the current tab's nested navigator can pop
-    final navState = currentNavKey.currentState;
-    if (navState != null && navState.canPop()) {
+    // Try to pop from the current tab's nested navigator using GetX
+    final nestedKey = Get.nestedKey(currentNavId);
+    if (nestedKey?.currentState != null && nestedKey!.currentState!.canPop()) {
       Fimber.d("Popping nested navigator");
-      navState.pop();
-      return true; // Consumed, don't let system handle it
+      Get.back(id: currentNavId);
+      return true; // Consumed
     }
 
     // At root of tab - implement double-back-to-exit
@@ -96,10 +75,10 @@ class HomeController extends BaseController with NetworkingMixin {
 
   /// Handle back button press (for PopScope fallback)
   Future<bool> handleBackPress() async {
-    // First, check if the current tab's nested navigator can pop
-    final navState = currentNavKey.currentState;
-    if (navState != null && navState.canPop()) {
-      navState.pop();
+    // Try to pop from nested navigator using GetX
+    final nestedKey = Get.nestedKey(currentNavId);
+    if (nestedKey?.currentState != null && nestedKey!.currentState!.canPop()) {
+      Get.back(id: currentNavId);
       return false; // Handled, don't exit
     }
 

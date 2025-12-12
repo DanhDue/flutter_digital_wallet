@@ -2,16 +2,14 @@
 
 // coverage:ignore-file
 
-import 'package:d3_wallet/app/modules/my_wallets/bindings/my_wallets_binding.dart';
-import 'package:d3_wallet/app/modules/my_wallets/views/my_wallets_view.dart';
-import 'package:d3_wallet/app/modules/profile/views/profile_view.dart';
-import 'package:d3_wallet/app/modules/qr_scanning/views/qr_scanning_view.dart';
-import 'package:d3_wallet/app/modules/transactions/views/transactions_view.dart';
-import 'package:d3_wallet/app/modules/trends/views/trends_view.dart';
+import 'package:d3_wallet/app/modules/home/navs/profile_nav.dart';
+import 'package:d3_wallet/app/modules/home/navs/qr_nav.dart';
+import 'package:d3_wallet/app/modules/home/navs/transactions_nav.dart';
+import 'package:d3_wallet/app/modules/home/navs/trends_nav.dart';
+import 'package:d3_wallet/app/modules/home/navs/wallet_nav.dart';
 import 'package:d3_wallet/base/base_view.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
@@ -24,23 +22,14 @@ class HomeView extends BaseView<HomeController> {
     return Scaffold(
       body: Obx(
         () => IndexedStack(
-          index: controller.currentTabIndex.value,
-          children: [
-            _TabPage(
-              navKey: controller.myWalletsNavKey,
-              child: MyWalletsView(bindingCreator: () => MyWalletsBinding()),
-            ),
-            _TabPage(navKey: controller.transactionsNavKey, child: TransactionsView()),
-            _TabPage(navKey: controller.qrScanningNavKey, child: QRScanningView()),
-            _TabPage(navKey: controller.trendsNavKey, child: TrendsView()),
-            _TabPage(navKey: controller.profileNavKey, child: ProfileView()),
-          ],
+          index: HomeController.to.currentTabIndex.value,
+          children: const [WalletNav(), TransactionsNav(), QRNav(), TrendsNav(), ProfileNav()],
         ),
       ),
       bottomNavigationBar: Obx(
         () => _CustomBottomNavBar(
-          currentIndex: controller.currentTabIndex.value,
-          onTap: controller.changeTab,
+          currentIndex: HomeController.to.currentTabIndex.value,
+          onTap: HomeController.to.changeTab,
         ),
       ),
     );
@@ -212,47 +201,6 @@ class _CenterNavItem extends StatelessWidget {
           child: Icon(icon, color: context.appThemes.white, size: 28),
         ),
       ),
-    );
-  }
-}
-
-/// A tab page with its own Navigator for nested navigation
-class _TabPage extends StatelessWidget {
-  const _TabPage({required this.navKey, required this.child});
-
-  final GlobalKey<NavigatorState> navKey;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.find<HomeController>();
-
-    return Navigator(
-      key: navKey,
-      onGenerateRoute:
-          (settings) => MaterialPageRoute(
-            builder:
-                (context) => PopScope(
-                  canPop: false,
-                  onPopInvokedWithResult: (didPop, result) async {
-                    if (didPop) return;
-
-                    // Check if this navigator can pop
-                    if (navKey.currentState?.canPop() == true) {
-                      navKey.currentState?.pop();
-                      return;
-                    }
-
-                    // At root - handle double-back-to-exit
-                    final shouldExit = await controller.handleBackPress();
-                    if (shouldExit) {
-                      SystemNavigator.pop();
-                    }
-                  },
-                  child: child,
-                ),
-            settings: settings,
-          ),
     );
   }
 }
