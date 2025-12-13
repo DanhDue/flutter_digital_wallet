@@ -146,5 +146,10 @@
   "navTransactions": "Browser",
   "navTrends": "Trends",
   "navSettings": "Settings",
+  "walletActionSend": "Send",
+  "walletActionReceive": "Receive",
+  "walletActionBuy": "Buy",
+  "walletActionStaking": "Staking",
+  "noWalletsAvailable": "No wallets available",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

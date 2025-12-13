@@ -132,6 +132,27 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.dutchWhite,
     required this.orange,
     required this.orange100,
+
+    // Material Design Colors (Primary shades - 500)
+    required this.materialRed,
+    required this.materialPink,
+    required this.materialPurple,
+    required this.materialDeepPurple,
+    required this.materialIndigo,
+    required this.materialBlue,
+    required this.materialLightBlue,
+    required this.materialCyan,
+    required this.materialTeal,
+    required this.materialGreen,
+    required this.materialLightGreen,
+    required this.materialLime,
+    required this.materialYellow,
+    required this.materialAmber,
+    required this.materialOrange,
+    required this.materialDeepOrange,
+    required this.materialBrown,
+    required this.materialGrey,
+    required this.materialBlueGrey,
   });
 
   // ===========================================================================
@@ -558,6 +579,46 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   final Color orange;
   @override
   final Color orange100;
+
+  // Material Design Colors (Primary shades - 500)
+  @override
+  final Color materialRed;
+  @override
+  final Color materialPink;
+  @override
+  final Color materialPurple;
+  @override
+  final Color materialDeepPurple;
+  @override
+  final Color materialIndigo;
+  @override
+  final Color materialBlue;
+  @override
+  final Color materialLightBlue;
+  @override
+  final Color materialCyan;
+  @override
+  final Color materialTeal;
+  @override
+  final Color materialGreen;
+  @override
+  final Color materialLightGreen;
+  @override
+  final Color materialLime;
+  @override
+  final Color materialYellow;
+  @override
+  final Color materialAmber;
+  @override
+  final Color materialOrange;
+  @override
+  final Color materialDeepOrange;
+  @override
+  final Color materialBrown;
+  @override
+  final Color materialGrey;
+  @override
+  final Color materialBlueGrey;
 }
 
 final lightAppThemes = AppThemes(
@@ -680,6 +741,27 @@ final lightAppThemes = AppThemes(
   dutchWhite: AppColors.dutchWhite,
   orange: AppColors.orange,
   orange100: AppColors.orange100,
+
+  // Material Design Colors (Primary shades - 500)
+  materialRed: AppColors.materialRed500,
+  materialPink: AppColors.materialPink500,
+  materialPurple: AppColors.materialPurple500,
+  materialDeepPurple: AppColors.materialDeepPurple500,
+  materialIndigo: AppColors.materialIndigo500,
+  materialBlue: AppColors.materialBlue500,
+  materialLightBlue: AppColors.materialLightBlue500,
+  materialCyan: AppColors.materialCyan500,
+  materialTeal: AppColors.materialTeal500,
+  materialGreen: AppColors.materialGreen500,
+  materialLightGreen: AppColors.materialLightGreen500,
+  materialLime: AppColors.materialLime500,
+  materialYellow: AppColors.materialYellow500,
+  materialAmber: AppColors.materialAmber500,
+  materialOrange: AppColors.materialOrange500,
+  materialDeepOrange: AppColors.materialDeepOrange500,
+  materialBrown: AppColors.materialBrown500,
+  materialGrey: AppColors.materialGrey500,
+  materialBlueGrey: AppColors.materialBlueGrey500,
 );
 
 final darkAppThemes = AppThemes(
@@ -802,6 +884,27 @@ final darkAppThemes = AppThemes(
   dutchWhite: AppColors.dutchWhite,
   orange: AppColors.orange,
   orange100: AppColors.orange100,
+
+  // Material Design Colors (Primary shades - 500)
+  materialRed: AppColors.materialRed500,
+  materialPink: AppColors.materialPink500,
+  materialPurple: AppColors.materialPurple500,
+  materialDeepPurple: AppColors.materialDeepPurple500,
+  materialIndigo: AppColors.materialIndigo500,
+  materialBlue: AppColors.materialBlue500,
+  materialLightBlue: AppColors.materialLightBlue500,
+  materialCyan: AppColors.materialCyan500,
+  materialTeal: AppColors.materialTeal500,
+  materialGreen: AppColors.materialGreen500,
+  materialLightGreen: AppColors.materialLightGreen500,
+  materialLime: AppColors.materialLime500,
+  materialYellow: AppColors.materialYellow500,
+  materialAmber: AppColors.materialAmber500,
+  materialOrange: AppColors.materialOrange500,
+  materialDeepOrange: AppColors.materialDeepOrange500,
+  materialBrown: AppColors.materialBrown500,
+  materialGrey: AppColors.materialGrey500,
+  materialBlueGrey: AppColors.materialBlueGrey500,
 );
 
 final talkerTheme = TalkerScreenTheme(logColors: {GoodLog.getKey: const Color(0xff4CAF50)});

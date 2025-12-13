@@ -3,6 +3,7 @@
 // coverage:ignore-file
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:card_swiper/card_swiper.dart';
 import 'package:d3_wallet/app/modules/comming_soon_modal/bindings/comming_soon_modal_binding.dart';
 import 'package:d3_wallet/app/modules/comming_soon_modal/views/comming_soon_modal_view.dart';
 import 'package:d3_wallet/app/modules/my_wallets/bindings/my_wallets_binding.dart';
@@ -17,6 +18,7 @@ import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:d3_wallet/utils/extensions/double_extension.dart';
 import 'package:d3_wallet/utils/extensions/string_ext.dart';
+import 'package:d3_wallet/utils/gradient_utils.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boring_avatars/flutter_boring_avatars.dart';
@@ -42,7 +44,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
           top: true,
           bottom: true,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: GetPlatform.isIOS ? 16 : 13),
+            padding: EdgeInsets.symmetric(horizontal: GetPlatform.isIOS ? 0 : 13),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,10 +59,22 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    TokenActionButton(icon: Assets.images.icSend, title: "Send"),
-                    TokenActionButton(icon: Assets.images.icReceive, title: "Receive"),
-                    TokenActionButton(icon: Assets.images.icBuy, title: "Buy"),
-                    TokenActionButton(icon: Assets.images.icStaking, title: "Staking"),
+                    TokenActionButton(
+                      icon: Assets.images.icSend,
+                      title: LocaleKeys.walletActionSend.tr,
+                    ),
+                    TokenActionButton(
+                      icon: Assets.images.icReceive,
+                      title: LocaleKeys.walletActionReceive.tr,
+                    ),
+                    TokenActionButton(
+                      icon: Assets.images.icBuy,
+                      title: LocaleKeys.walletActionBuy.tr,
+                    ),
+                    TokenActionButton(
+                      icon: Assets.images.icStaking,
+                      title: LocaleKeys.walletActionStaking.tr,
+                    ),
                   ],
                 ).paddingSymmetric(horizontal: 50),
                 SizedBox(height: 26),
@@ -268,18 +282,74 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
               .paddingSymmetric(horizontal: 12),
         ),
       ],
-    );
+    ).paddingSymmetric(horizontal: 16);
   }
 
   _buildWalletInfo(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
+    return Obx(() {
+      final wallets = controller.wallets;
+
+      if (wallets.isEmpty) {
+        return SizedBox(
+          height: 186,
+          child: Center(
+            child: Text(
+              LocaleKeys.noWalletsAvailable.tr,
+              style: context.appThemes.regular16.copyWith(color: context.appThemes.ink60),
+            ),
+          ),
+        );
+      }
+
+      final reversedWallets = wallets.reversed.toList();
+
+      return Container(
+        height: 186,
+        alignment: Alignment.center,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return Swiper(
+              itemCount: reversedWallets.length,
+              index: reversedWallets.length - 1,
+              itemBuilder:
+                  (context, index) =>
+                      _buildWalletCard(context, reversedWallets[index], constraints, index),
+              layout: SwiperLayout.STACK,
+              itemWidth: constraints.maxWidth * 0.86,
+              scale: 0.96,
+              loop: false,
+            );
+          },
+        ),
+      );
+    });
+  }
+
+  Widget _buildWalletCard(
+    BuildContext context,
+    WalletResponseObject? wallet,
+    BoxConstraints constraints,
+    int walletIndex,
+  ) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        gradient: LinearGradient(
+          colors: GradientUtils.getWalletGradientColors(context, walletIndex),
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          stops: [0.0, 0.3, 1.0],
+        ),
+      ),
       child: Stack(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         children: [
           AspectRatio(
-            aspectRatio: 335 / 151,
-            child: Assets.images.icWalletBackground.svg(fit: BoxFit.cover),
+            aspectRatio: 335 / 168,
+            child: Assets.images.icWalletBackground2.svg(
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
@@ -294,9 +364,9 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      "Account 1",
+                      wallet?.name ?? "Account",
                       style: context.appThemes.bold18.copyWith(
-                        color: context.appThemes.gentleGray,
+                        color: GradientUtils.getTextColorForGradient(context, walletIndex),
                       ),
                     ),
                     Expanded(child: SizedBox.shrink()),
@@ -317,7 +387,9 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                         overflow: TextOverflow.ellipsis,
                         TextSpan(
                           text: "\$ ",
-                          style: context.appThemes.bold24.copyWith(color: context.appThemes.white),
+                          style: context.appThemes.bold24.copyWith(
+                            color: GradientUtils.getTextColorForGradient(context, walletIndex),
+                          ),
                           children: [
                             TextSpan(
                               text:
@@ -325,7 +397,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                                       ? LocaleKeys.myWalletHiddenBalance.tr
                                       : controller.fullBalance.value.shrinkAndReformat(),
                               style: context.appThemes.bold24.copyWith(
-                                color: context.appThemes.white,
+                                color: GradientUtils.getTextColorForGradient(context, walletIndex),
                               ),
                             ),
                           ],
@@ -343,7 +415,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                                   height: 24,
                                   fit: BoxFit.contain,
                                   colorFilter: ColorFilter.mode(
-                                    context.appThemes.white,
+                                    GradientUtils.getTextColorForGradient(context, walletIndex),
                                     BlendMode.srcIn,
                                   ),
                                 )
@@ -352,7 +424,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                                   height: 24,
                                   fit: BoxFit.contain,
                                   colorFilter: ColorFilter.mode(
-                                    context.appThemes.white,
+                                    GradientUtils.getTextColorForGradient(context, walletIndex),
                                     BlendMode.srcIn,
                                   ),
                                 ),
@@ -367,7 +439,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                         controller.balanceIsHidden.value
                             ? Container(
                               decoration: BoxDecoration(
-                                color: context.appThemes.white.withValues(alpha: 0.6),
+                                color: context.appThemes.materialIndigo.withValues(alpha: 0.7),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               alignment: Alignment.centerLeft,
@@ -380,7 +452,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                             )
                             : Container(
                               decoration: BoxDecoration(
-                                color: context.appThemes.white.withValues(alpha: 0.6),
+                                color: context.appThemes.materialIndigo.withValues(alpha: 0.7),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               padding: EdgeInsets.symmetric(vertical: 3, horizontal: 3),
@@ -425,9 +497,12 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      "controller.selectedWallet.value.address".formatWalletAddress() ?? "",
+                      (wallet?.address ?? "").formatWalletAddress() ?? "",
                       style: context.appThemes.regular20.copyWith(
-                        color: context.appThemes.gentleGray,
+                        color: GradientUtils.getTextColorForGradient(
+                          context,
+                          walletIndex,
+                        ).withValues(alpha: 0.6),
                       ),
                       textAlign: TextAlign.start,
                     ),
@@ -436,7 +511,13 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                       width: 24,
                       height: 24,
                       fit: BoxFit.contain,
-                      colorFilter: ColorFilter.mode(context.appThemes.gentleGray, BlendMode.srcIn),
+                      colorFilter: ColorFilter.mode(
+                        GradientUtils.getTextColorForGradient(
+                          context,
+                          walletIndex,
+                        ).withValues(alpha: 0.6),
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ],
                 ),

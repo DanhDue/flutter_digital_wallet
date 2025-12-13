@@ -29,6 +29,8 @@ class MyWalletsController extends BaseController {
         logo: "https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png",
       ).obs;
 
+  final RxList<WalletResponseObject?> wallets = <WalletResponseObject?>[].obs;
+
   final RxList<TokenAccountObject?> tokens = <TokenAccountObject?>[].obs;
 
   final fullBalance = 0.0.obs;
@@ -37,6 +39,15 @@ class MyWalletsController extends BaseController {
   void onInit() {
     super.onInit();
     Fimber.d("onInit()");
+
+    // Mock wallet data for testing - Generate 20 wallets
+    wallets.value = List.generate(
+      20,
+      (index) => WalletResponseObject(
+        name: "Account ${index + 1}",
+        address: "0x${(index + 1).toRadixString(16).padLeft(40, '0')}",
+      ),
+    );
   }
 
   @override

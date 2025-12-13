@@ -111,6 +111,25 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get dutchWhite;
   Color get orange;
   Color get orange100;
+  Color get materialRed;
+  Color get materialPink;
+  Color get materialPurple;
+  Color get materialDeepPurple;
+  Color get materialIndigo;
+  Color get materialBlue;
+  Color get materialLightBlue;
+  Color get materialCyan;
+  Color get materialTeal;
+  Color get materialGreen;
+  Color get materialLightGreen;
+  Color get materialLime;
+  Color get materialYellow;
+  Color get materialAmber;
+  Color get materialOrange;
+  Color get materialDeepOrange;
+  Color get materialBrown;
+  Color get materialGrey;
+  Color get materialBlueGrey;
 
   @override
   AppThemes copyWith({
@@ -215,6 +234,25 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? dutchWhite,
     Color? orange,
     Color? orange100,
+    Color? materialRed,
+    Color? materialPink,
+    Color? materialPurple,
+    Color? materialDeepPurple,
+    Color? materialIndigo,
+    Color? materialBlue,
+    Color? materialLightBlue,
+    Color? materialCyan,
+    Color? materialTeal,
+    Color? materialGreen,
+    Color? materialLightGreen,
+    Color? materialLime,
+    Color? materialYellow,
+    Color? materialAmber,
+    Color? materialOrange,
+    Color? materialDeepOrange,
+    Color? materialBrown,
+    Color? materialGrey,
+    Color? materialBlueGrey,
   }) {
     return AppThemes(
       headline: headline ?? this.headline,
@@ -318,6 +356,25 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       dutchWhite: dutchWhite ?? this.dutchWhite,
       orange: orange ?? this.orange,
       orange100: orange100 ?? this.orange100,
+      materialRed: materialRed ?? this.materialRed,
+      materialPink: materialPink ?? this.materialPink,
+      materialPurple: materialPurple ?? this.materialPurple,
+      materialDeepPurple: materialDeepPurple ?? this.materialDeepPurple,
+      materialIndigo: materialIndigo ?? this.materialIndigo,
+      materialBlue: materialBlue ?? this.materialBlue,
+      materialLightBlue: materialLightBlue ?? this.materialLightBlue,
+      materialCyan: materialCyan ?? this.materialCyan,
+      materialTeal: materialTeal ?? this.materialTeal,
+      materialGreen: materialGreen ?? this.materialGreen,
+      materialLightGreen: materialLightGreen ?? this.materialLightGreen,
+      materialLime: materialLime ?? this.materialLime,
+      materialYellow: materialYellow ?? this.materialYellow,
+      materialAmber: materialAmber ?? this.materialAmber,
+      materialOrange: materialOrange ?? this.materialOrange,
+      materialDeepOrange: materialDeepOrange ?? this.materialDeepOrange,
+      materialBrown: materialBrown ?? this.materialBrown,
+      materialGrey: materialGrey ?? this.materialGrey,
+      materialBlueGrey: materialBlueGrey ?? this.materialBlueGrey,
     );
   }
 
@@ -426,6 +483,25 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       dutchWhite: Color.lerp(dutchWhite, other.dutchWhite, t)!,
       orange: Color.lerp(orange, other.orange, t)!,
       orange100: Color.lerp(orange100, other.orange100, t)!,
+      materialRed: Color.lerp(materialRed, other.materialRed, t)!,
+      materialPink: Color.lerp(materialPink, other.materialPink, t)!,
+      materialPurple: Color.lerp(materialPurple, other.materialPurple, t)!,
+      materialDeepPurple: Color.lerp(materialDeepPurple, other.materialDeepPurple, t)!,
+      materialIndigo: Color.lerp(materialIndigo, other.materialIndigo, t)!,
+      materialBlue: Color.lerp(materialBlue, other.materialBlue, t)!,
+      materialLightBlue: Color.lerp(materialLightBlue, other.materialLightBlue, t)!,
+      materialCyan: Color.lerp(materialCyan, other.materialCyan, t)!,
+      materialTeal: Color.lerp(materialTeal, other.materialTeal, t)!,
+      materialGreen: Color.lerp(materialGreen, other.materialGreen, t)!,
+      materialLightGreen: Color.lerp(materialLightGreen, other.materialLightGreen, t)!,
+      materialLime: Color.lerp(materialLime, other.materialLime, t)!,
+      materialYellow: Color.lerp(materialYellow, other.materialYellow, t)!,
+      materialAmber: Color.lerp(materialAmber, other.materialAmber, t)!,
+      materialOrange: Color.lerp(materialOrange, other.materialOrange, t)!,
+      materialDeepOrange: Color.lerp(materialDeepOrange, other.materialDeepOrange, t)!,
+      materialBrown: Color.lerp(materialBrown, other.materialBrown, t)!,
+      materialGrey: Color.lerp(materialGrey, other.materialGrey, t)!,
+      materialBlueGrey: Color.lerp(materialBlueGrey, other.materialBlueGrey, t)!,
     );
   }
 
@@ -534,7 +610,26 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(subYellow, other.subYellow) &&
             const DeepCollectionEquality().equals(dutchWhite, other.dutchWhite) &&
             const DeepCollectionEquality().equals(orange, other.orange) &&
-            const DeepCollectionEquality().equals(orange100, other.orange100));
+            const DeepCollectionEquality().equals(orange100, other.orange100) &&
+            const DeepCollectionEquality().equals(materialRed, other.materialRed) &&
+            const DeepCollectionEquality().equals(materialPink, other.materialPink) &&
+            const DeepCollectionEquality().equals(materialPurple, other.materialPurple) &&
+            const DeepCollectionEquality().equals(materialDeepPurple, other.materialDeepPurple) &&
+            const DeepCollectionEquality().equals(materialIndigo, other.materialIndigo) &&
+            const DeepCollectionEquality().equals(materialBlue, other.materialBlue) &&
+            const DeepCollectionEquality().equals(materialLightBlue, other.materialLightBlue) &&
+            const DeepCollectionEquality().equals(materialCyan, other.materialCyan) &&
+            const DeepCollectionEquality().equals(materialTeal, other.materialTeal) &&
+            const DeepCollectionEquality().equals(materialGreen, other.materialGreen) &&
+            const DeepCollectionEquality().equals(materialLightGreen, other.materialLightGreen) &&
+            const DeepCollectionEquality().equals(materialLime, other.materialLime) &&
+            const DeepCollectionEquality().equals(materialYellow, other.materialYellow) &&
+            const DeepCollectionEquality().equals(materialAmber, other.materialAmber) &&
+            const DeepCollectionEquality().equals(materialOrange, other.materialOrange) &&
+            const DeepCollectionEquality().equals(materialDeepOrange, other.materialDeepOrange) &&
+            const DeepCollectionEquality().equals(materialBrown, other.materialBrown) &&
+            const DeepCollectionEquality().equals(materialGrey, other.materialGrey) &&
+            const DeepCollectionEquality().equals(materialBlueGrey, other.materialBlueGrey));
   }
 
   @override
@@ -642,6 +737,25 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(dutchWhite),
       const DeepCollectionEquality().hash(orange),
       const DeepCollectionEquality().hash(orange100),
+      const DeepCollectionEquality().hash(materialRed),
+      const DeepCollectionEquality().hash(materialPink),
+      const DeepCollectionEquality().hash(materialPurple),
+      const DeepCollectionEquality().hash(materialDeepPurple),
+      const DeepCollectionEquality().hash(materialIndigo),
+      const DeepCollectionEquality().hash(materialBlue),
+      const DeepCollectionEquality().hash(materialLightBlue),
+      const DeepCollectionEquality().hash(materialCyan),
+      const DeepCollectionEquality().hash(materialTeal),
+      const DeepCollectionEquality().hash(materialGreen),
+      const DeepCollectionEquality().hash(materialLightGreen),
+      const DeepCollectionEquality().hash(materialLime),
+      const DeepCollectionEquality().hash(materialYellow),
+      const DeepCollectionEquality().hash(materialAmber),
+      const DeepCollectionEquality().hash(materialOrange),
+      const DeepCollectionEquality().hash(materialDeepOrange),
+      const DeepCollectionEquality().hash(materialBrown),
+      const DeepCollectionEquality().hash(materialGrey),
+      const DeepCollectionEquality().hash(materialBlueGrey),
     ]);
   }
 }

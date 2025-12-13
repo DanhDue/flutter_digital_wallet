@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class CustomBotNavBar extends StatelessWidget {
-  const CustomBotNavBar({required this.currentIndex, required this.onTap});
+  const CustomBotNavBar({super.key, required this.currentIndex, required this.onTap});
 
   final int currentIndex;
   final void Function(int) onTap;
