@@ -12,7 +12,6 @@ class TransactionsView extends BaseView<TransactionsController> {
   @override
   Widget onCreateViews(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('TransactionsView'), centerTitle: true),
       body: const Center(
         child: Text('TransactionsView is working', style: TextStyle(fontSize: 20)),
       ),

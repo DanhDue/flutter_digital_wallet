@@ -17,7 +17,6 @@ class ProfileView extends BaseView<ProfileController> {
   @override
   Widget onCreateViews(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('ProfileView'), centerTitle: true),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +26,7 @@ class ProfileView extends BaseView<ProfileController> {
             ElevatedButton(
               onPressed: _navigateToProfileDetail,
               style: ElevatedButton.styleFrom(
-                backgroundColor: context.appThemes.mainGreen,
+                backgroundColor: context.appThemes.trueBlue,
                 foregroundColor: context.appThemes.white,
                 padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               ),
@@ -37,7 +36,7 @@ class ProfileView extends BaseView<ProfileController> {
             ElevatedButton(
               onPressed: _navigateToLogin,
               style: ElevatedButton.styleFrom(
-                backgroundColor: context.appThemes.mainGreen,
+                backgroundColor: context.appThemes.trueBlue,
                 foregroundColor: context.appThemes.white,
                 padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
               ),

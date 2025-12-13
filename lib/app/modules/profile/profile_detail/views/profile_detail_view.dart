@@ -12,7 +12,11 @@ class ProfileDetailView extends BaseView<ProfileDetailController> {
   @override
   Widget onCreateViews(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('ProfileDetailView'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('ProfileDetailView'),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+      ),
       body: const Center(
         child: Text('ProfileDetailView is working', style: TextStyle(fontSize: 20)),
       ),

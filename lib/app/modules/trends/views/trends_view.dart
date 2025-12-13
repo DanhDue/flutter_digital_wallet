@@ -12,7 +12,6 @@ class TrendsView extends BaseView<TrendsController> {
   @override
   Widget onCreateViews(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('TrendsView'), centerTitle: true),
       body: const Center(child: Text('TrendsView is working', style: TextStyle(fontSize: 20))),
     );
   }

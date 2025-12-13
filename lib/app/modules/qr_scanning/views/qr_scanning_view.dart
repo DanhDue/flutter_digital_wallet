@@ -12,7 +12,6 @@ class QRScanningView extends BaseView<QRScanningController> {
   @override
   Widget onCreateViews(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('QRScanningView'), centerTitle: true),
       body: const Center(child: Text('QRScanningView is working', style: TextStyle(fontSize: 20))),
     );
   }
