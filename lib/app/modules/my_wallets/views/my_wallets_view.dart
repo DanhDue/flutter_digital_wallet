@@ -157,6 +157,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
             ),
           ),
         ),
+        SizedBox(width: 48),
         Expanded(child: SizedBox.shrink()),
         InkWell(
           onTap: () async {
@@ -247,6 +248,23 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
           },
           child: Assets.images.icSearch
               .svg(width: 24, height: 24, fit: BoxFit.cover)
+              .paddingSymmetric(horizontal: 12),
+        ),
+        InkWell(
+          onTap: () async {
+            showWrapBottomSheet(
+              context,
+              CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding()),
+              routeSettings: RouteSettings(name: Routes.COMMING_SOON_MODAL),
+            );
+          },
+          child: Assets.images.icBitcoinCard
+              .svg(
+                width: 24,
+                height: 24,
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(context.appThemes.trueBlue, BlendMode.srcIn),
+              )
               .paddingSymmetric(horizontal: 12),
         ),
       ],
