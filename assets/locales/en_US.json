@@ -142,5 +142,9 @@
   "txtNFTList": "NFT List",
   "nftNotFoundMessage": "NFT not found",
   "addNFT": "Add NFT",
+  "navMyWallet": "My Wallet",
+  "navTransactions": "Transactions",
+  "navTrends": "Trends",
+  "navSettings": "Settings",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

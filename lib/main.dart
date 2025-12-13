@@ -75,7 +75,7 @@ void main() async {
           themeMode: ThemeMode.light,
           debugShowCheckedModeBanner: false,
           translationsKeys: AppTranslation.translations,
-          locale: AppLocales.vnVI,
+          locale: AppLocales.enUS,
           initialBinding: AppGlobalBindings(),
           initialRoute: AppPages.INITIAL,
           getPages: AppPages.routes,

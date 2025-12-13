@@ -83,9 +83,12 @@ class HomeController extends BaseController with NetworkingMixin {
 
   /// Handle back button press (for PopScope fallback)
   Future<bool> handleBackPress() async {
+    Fimber.d("handleBackPress() called");
+
     // Try to pop from nested navigator using GetX
     final nestedKey = Get.nestedKey(currentNavId);
     if (nestedKey?.currentState != null && nestedKey!.currentState!.canPop()) {
+      Fimber.d("Popping from nested navigator");
       Get.back(id: currentNavId);
       return false; // Handled, don't exit
     }
@@ -94,9 +97,14 @@ class HomeController extends BaseController with NetworkingMixin {
     final now = DateTime.now();
     if (_lastBackPressTime == null || now.difference(_lastBackPressTime!) > _exitTimeWindow) {
       _lastBackPressTime = now;
+      Fimber.d("First back press - showing toast");
       SmartDialog.showToast("Press back again to exit");
       return false;
     }
+
+    // User pressed back twice - exit app
+    Fimber.d("Second back press - exiting app");
+    SystemNavigator.pop();
     return true;
   }
 }

@@ -119,19 +119,20 @@ class LoginController extends BaseController {
     appConfigurations = await appConfigsRepository.retrieveAppConfigurations();
     final yourWallets = await walletRepo.retrieveYourWallets();
     Fimber.d("appConfig: $appConfigurations");
-    if (password.equalsIgnoreCase(appConfigurations?.localPasswords) == true) {
-      isLoading.value = false;
-      if (yourWallets?.isNotEmpty == true) {
-        Get.offAllNamed(Routes.HOME);
-      } else {
-        Get.offAllNamed(Routes.WALLET_CREATION);
-      }
-    } else {
-      isLoading.value = false;
-      passError.value = LocaleKeys.passwordErrorMessage.tr;
-      enableUnlockButton.value = false;
-      passwordIsFocus.value = false;
-    }
+    Get.offAllNamed(Routes.HOME);
+    // if (password.equalsIgnoreCase(appConfigurations?.localPasswords) == true) {
+    //   isLoading.value = false;
+    //   if (yourWallets?.isNotEmpty == true) {
+    //     Get.offAllNamed(Routes.HOME);
+    //   } else {
+    //     Get.offAllNamed(Routes.WALLET_CREATION);
+    //   }
+    // } else {
+    //   isLoading.value = false;
+    //   passError.value = LocaleKeys.passwordErrorMessage.tr;
+    //   enableUnlockButton.value = false;
+    //   passwordIsFocus.value = false;
+    // }
   }
 
   void reimportWallets() async {

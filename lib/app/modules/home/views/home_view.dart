@@ -2,12 +2,14 @@
 
 // coverage:ignore-file
 
+import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
 import 'package:d3_wallet/app/modules/home/navs/profile_nav.dart';
 import 'package:d3_wallet/app/modules/home/navs/qr_nav.dart';
 import 'package:d3_wallet/app/modules/home/navs/transactions_nav.dart';
 import 'package:d3_wallet/app/modules/home/navs/trends_nav.dart';
 import 'package:d3_wallet/app/modules/home/navs/wallet_nav.dart';
 import 'package:d3_wallet/base/base_view.dart';
+import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,17 +21,26 @@ class HomeView extends BaseView<HomeController> {
 
   @override
   Widget? onCreateViews(BuildContext context) {
-    return Scaffold(
-      body: Obx(
-        () => IndexedStack(
-          index: HomeController.to.currentTabIndex.value,
-          children: const [WalletNav(), TransactionsNav(), QRNav(), TrendsNav(), ProfileNav()],
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) async {
+        if (didPop) return;
+
+        // Call the controller's back press handler
+        await controller.handleBackPress();
+      },
+      child: Scaffold(
+        body: Obx(
+          () => IndexedStack(
+            index: HomeController.to.currentTabIndex.value,
+            children: const [WalletNav(), TransactionsNav(), QRNav(), TrendsNav(), ProfileNav()],
+          ),
         ),
-      ),
-      bottomNavigationBar: Obx(
-        () => _CustomBottomNavBar(
-          currentIndex: HomeController.to.currentTabIndex.value,
-          onTap: HomeController.to.changeTab,
+        bottomNavigationBar: Obx(
+          () => _CustomBottomNavBar(
+            currentIndex: HomeController.to.currentTabIndex.value,
+            onTap: HomeController.to.changeTab,
+          ),
         ),
       ),
     );
@@ -69,45 +80,45 @@ class _CustomBottomNavBar extends StatelessWidget {
               _NavItem(
                 icon: Icons.account_balance_wallet_outlined,
                 activeIcon: Icons.account_balance_wallet,
-                label: 'Ví của tôi',
-                isActive: currentIndex == 0,
+                label: LocaleKeys.navMyWallet.tr,
+                isActive: currentIndex == NavIds.wallet,
                 activeColor: activeColor,
                 inactiveColor: inactiveColor,
-                onTap: () => onTap(0),
+                onTap: () => onTap(NavIds.wallet),
               ),
               _NavItem(
                 icon: Icons.swap_horiz_outlined,
                 activeIcon: Icons.swap_horiz,
-                label: 'Giao dịch',
-                isActive: currentIndex == 1,
+                label: LocaleKeys.navTransactions.tr,
+                isActive: currentIndex == NavIds.transactions,
                 activeColor: activeColor,
                 inactiveColor: inactiveColor,
-                onTap: () => onTap(1),
+                onTap: () => onTap(NavIds.transactions),
               ),
               // Center elevated QR Scanner button
               _CenterNavItem(
                 icon: Icons.qr_code_scanner,
-                isActive: currentIndex == 2,
+                isActive: currentIndex == NavIds.qr,
                 activeColor: activeColor,
-                onTap: () => onTap(2),
+                onTap: () => onTap(NavIds.qr),
               ),
               _NavItem(
                 icon: Icons.trending_up_outlined,
                 activeIcon: Icons.trending_up,
-                label: 'Xu hướng',
-                isActive: currentIndex == 3,
+                label: LocaleKeys.navTrends.tr,
+                isActive: currentIndex == NavIds.trends,
                 activeColor: activeColor,
                 inactiveColor: inactiveColor,
-                onTap: () => onTap(3),
+                onTap: () => onTap(NavIds.trends),
               ),
               _NavItem(
                 icon: Icons.settings_outlined,
                 activeIcon: Icons.settings,
-                label: 'Cài đặt',
-                isActive: currentIndex == 4,
+                label: LocaleKeys.navSettings.tr,
+                isActive: currentIndex == NavIds.profile,
                 activeColor: activeColor,
                 inactiveColor: inactiveColor,
-                onTap: () => onTap(4),
+                onTap: () => onTap(NavIds.profile),
               ),
             ],
           ),

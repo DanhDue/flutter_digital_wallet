@@ -143,5 +143,9 @@
     "txtNFTList": "Danh sách NFT",
     "nftNotFoundMessage": "Không tìm thấy NFT của bạn?",
     "addNFT": "Thêm NFT",
+    "navMyWallet": "Ví của tôi",
+    "navTransactions": "Giao dịch",
+    "navTrends": "Xu hướng",
+    "navSettings": "Cài đặt",
     "eof": "Kết thúc tập tin. Vui lòng thêm văn bản mới phía trên mục này để tránh xung đột. Cảm ơn!"
 }
