@@ -110,8 +110,9 @@ abstract class BaseView<C extends BaseController> extends GetView<C> {
       isScrollControlled: true,
       showDragHandle: false,
       useRootNavigator: true,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(8))),
+      useSafeArea: false,
       clipBehavior: Clip.antiAliasWithSaveLayer,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(8))),
       builder: (context) => Wrap(children: [widget]),
       routeSettings: routeSettings,
     );

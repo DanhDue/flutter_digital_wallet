@@ -48,6 +48,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get cultured;
   Color get silver;
   Color get gentleGray;
+  Color get boldGrey;
   Color get rusticRoseGold;
   Color get ink0;
   Color get ink5;
@@ -151,6 +152,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? cultured,
     Color? silver,
     Color? gentleGray,
+    Color? boldGrey,
     Color? rusticRoseGold,
     Color? ink0,
     Color? ink5,
@@ -253,6 +255,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       cultured: cultured ?? this.cultured,
       silver: silver ?? this.silver,
       gentleGray: gentleGray ?? this.gentleGray,
+      boldGrey: boldGrey ?? this.boldGrey,
       rusticRoseGold: rusticRoseGold ?? this.rusticRoseGold,
       ink0: ink0 ?? this.ink0,
       ink5: ink5 ?? this.ink5,
@@ -360,6 +363,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       cultured: Color.lerp(cultured, other.cultured, t)!,
       silver: Color.lerp(silver, other.silver, t)!,
       gentleGray: Color.lerp(gentleGray, other.gentleGray, t)!,
+      boldGrey: Color.lerp(boldGrey, other.boldGrey, t)!,
       rusticRoseGold: Color.lerp(rusticRoseGold, other.rusticRoseGold, t)!,
       ink0: Color.lerp(ink0, other.ink0, t)!,
       ink5: Color.lerp(ink5, other.ink5, t)!,
@@ -468,6 +472,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(cultured, other.cultured) &&
             const DeepCollectionEquality().equals(silver, other.silver) &&
             const DeepCollectionEquality().equals(gentleGray, other.gentleGray) &&
+            const DeepCollectionEquality().equals(boldGrey, other.boldGrey) &&
             const DeepCollectionEquality().equals(rusticRoseGold, other.rusticRoseGold) &&
             const DeepCollectionEquality().equals(ink0, other.ink0) &&
             const DeepCollectionEquality().equals(ink5, other.ink5) &&
@@ -574,6 +579,7 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(cultured),
       const DeepCollectionEquality().hash(silver),
       const DeepCollectionEquality().hash(gentleGray),
+      const DeepCollectionEquality().hash(boldGrey),
       const DeepCollectionEquality().hash(rusticRoseGold),
       const DeepCollectionEquality().hash(ink0),
       const DeepCollectionEquality().hash(ink5),

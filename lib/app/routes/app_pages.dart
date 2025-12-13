@@ -1,3 +1,7 @@
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+// coverage:ignore-file
+
 import 'package:get/get.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
@@ -62,7 +66,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),

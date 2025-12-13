@@ -9,6 +9,7 @@ import 'package:d3_wallet/app/modules/home/navs/transactions_nav.dart';
 import 'package:d3_wallet/app/modules/home/navs/trends_nav.dart';
 import 'package:d3_wallet/app/modules/home/navs/wallet_nav.dart';
 import 'package:d3_wallet/base/base_view.dart';
+import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -30,10 +31,14 @@ class HomeView extends BaseView<HomeController> {
         await controller.handleBackPress();
       },
       child: Scaffold(
-        body: Obx(
-          () => IndexedStack(
-            index: HomeController.to.currentTabIndex.value,
-            children: const [WalletNav(), TransactionsNav(), QRNav(), TrendsNav(), ProfileNav()],
+        body: SafeArea(
+          top: true,
+          bottom: false,
+          child: Obx(
+            () => IndexedStack(
+              index: HomeController.to.currentTabIndex.value,
+              children: const [WalletNav(), TransactionsNav(), QRNav(), TrendsNav(), ProfileNav()],
+            ),
           ),
         ),
         bottomNavigationBar: Obx(
@@ -56,8 +61,8 @@ class _CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activeColor = context.appThemes.mainGreen;
-    final inactiveColor = context.appThemes.ink40;
+    final activeColor = context.appThemes.trueBlue;
+    final inactiveColor = context.appThemes.boldGrey;
     final backgroundColor = context.appThemes.white;
 
     return Container(
@@ -65,17 +70,18 @@ class _CustomBottomNavBar extends StatelessWidget {
         color: backgroundColor,
         boxShadow: [
           BoxShadow(
-            color: context.appThemes.ink20.withValues(alpha: 0.15),
+            color: context.appThemes.ink40.withValues(alpha: 0.15),
             blurRadius: 10,
             offset: const Offset(0, -2),
           ),
         ],
       ),
       child: SafeArea(
+        bottom: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.only(bottom: 23, top: 18),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _NavItem(
                 icon: Icons.account_balance_wallet_outlined,
@@ -152,22 +158,28 @@ class _NavItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = isActive ? activeColor : inactiveColor;
 
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: SizedBox(
-        width: 64,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+    return Expanded(
+      child: GestureDetector(
+        onTap: onTap,
+        behavior: HitTestBehavior.opaque,
+        child: Stack(
+          alignment: Alignment.bottomCenter,
           children: [
-            Icon(isActive ? activeIcon : icon, color: color, size: 24),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: context.appThemes.regular10.copyWith(color: color),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(isActive ? activeIcon : icon, color: color, size: 24),
+                const SizedBox(height: 4),
+                Text(
+                  label,
+                  style: context.appThemes.regular12.copyWith(color: color),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 13),
+              ],
             ),
+            if (isActive) Assets.images.icSelectedBotTabIndicator.image(fit: BoxFit.cover),
           ],
         ),
       ),
@@ -194,7 +206,7 @@ class _CenterNavItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Transform.translate(
-        offset: const Offset(0, -12), // Elevate the button
+        offset: const Offset(0, -16), // Elevate the button
         child: Container(
           width: 56,
           height: 56,

@@ -57,6 +57,7 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.cultured,
     required this.silver,
     required this.gentleGray,
+    required this.boldGrey,
 
     // Gold Series
     required this.rusticRoseGold,
@@ -419,6 +420,8 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   final Color silver;
   @override
   final Color gentleGray;
+  @override
+  final Color boldGrey;
 
   // Gold Series
   @override
@@ -602,6 +605,7 @@ final lightAppThemes = AppThemes(
   cultured: AppColors.cultured,
   silver: AppColors.silver,
   gentleGray: AppColors.gentleGray,
+  boldGrey: AppColors.boldGrey,
 
   // Gold Series
   rusticRoseGold: AppColors.rusticRoseGold,
@@ -723,6 +727,7 @@ final darkAppThemes = AppThemes(
   cultured: AppColors.cultured,
   silver: AppColors.silver,
   gentleGray: AppColors.gentleGray,
+  boldGrey: AppColors.boldGrey,
 
   // Gold Series
   rusticRoseGold: AppColors.rusticRoseGold,
