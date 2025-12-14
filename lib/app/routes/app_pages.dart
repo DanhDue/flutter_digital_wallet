@@ -20,6 +20,8 @@ import '../modules/my_qr/bindings/my_qr_binding.dart';
 import '../modules/my_qr/views/my_qr_view.dart';
 import '../modules/my_wallets/bindings/my_wallets_binding.dart';
 import '../modules/my_wallets/views/my_wallets_view.dart';
+import '../modules/my_wallets/wallet_card/bindings/wallet_card_widget_binding.dart';
+import '../modules/my_wallets/wallet_card/views/wallet_card_view.dart';
 import '../modules/network_selection/bindings/network_selection_binding.dart';
 import '../modules/network_selection/views/network_selection_view.dart';
 import '../modules/onboard/bindings/onboard_binding.dart';
@@ -60,6 +62,10 @@ import '../modules/wallet_creation_successfully/bindings/wallet_creation_success
 import '../modules/wallet_creation_successfully/views/wallet_creation_successfully_view.dart';
 import '../modules/wallet_token_info/bindings/wallet_token_info_binding.dart';
 import '../modules/wallet_token_info/views/wallet_token_info_view.dart';
+
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+// coverage:ignore-file
 
 part 'app_routes.dart';
 
@@ -134,6 +140,13 @@ class AppPages {
     GetPage(
       name: _Paths.MY_WALLETS,
       page: () => MyWalletsView(bindingCreator: () => MyWalletsBinding()),
+      children: [
+        GetPage(
+          name: _Paths.WALLET_CARD_WIDGET,
+          page: () => WalletCardView(),
+          binding: WalletCardBinding(),
+        ),
+      ],
     ),
     GetPage(
       name: _Paths.WALLET_TOKEN_INFO,

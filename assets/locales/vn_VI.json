@@ -152,5 +152,7 @@
     "walletActionBuy": "Mua",
     "walletActionStaking": "Staking",
     "noWalletsAvailable": "Không có ví nào",
+    "qrCodeIsSaveToGallery": "Mã QR Code đã được lưu vào thư viện ảnh",
+    "walletAddressCopiedAndWillBeCleared": "Địa chỉ ví đã được sao chép vào bộ nhớ tạm và sẽ được xóa sau 30 giây",
     "eof": "Kết thúc tập tin. Vui lòng thêm văn bản mới phía trên mục này để tránh xung đột. Cảm ơn!"
 }

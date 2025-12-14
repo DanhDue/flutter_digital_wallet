@@ -151,5 +151,7 @@
   "walletActionBuy": "Buy",
   "walletActionStaking": "Staking",
   "noWalletsAvailable": "No wallets available",
+  "qrCodeIsSaveToGallery": "QR Code is saved to Gallery",
+  "walletAddressCopiedAndWillBeCleared": "Wallet address copied to clipboard and will be cleared in 30 seconds",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

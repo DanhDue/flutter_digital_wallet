@@ -7,6 +7,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:d3_wallet/app/modules/comming_soon_modal/bindings/comming_soon_modal_binding.dart';
 import 'package:d3_wallet/app/modules/comming_soon_modal/views/comming_soon_modal_view.dart';
 import 'package:d3_wallet/app/modules/my_wallets/bindings/my_wallets_binding.dart';
+import 'package:d3_wallet/app/modules/my_wallets/wallet_card/views/wallet_card_view.dart';
 import 'package:d3_wallet/app/modules/network_selection/views/network_selection_view.dart';
 import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/app/routes/navigation_arguments.dart';
@@ -16,9 +17,6 @@ import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_respo
 import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
-import 'package:d3_wallet/utils/extensions/double_extension.dart';
-import 'package:d3_wallet/utils/extensions/string_ext.dart';
-import 'package:d3_wallet/utils/gradient_utils.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boring_avatars/flutter_boring_avatars.dart';
@@ -313,7 +311,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
               index: reversedWallets.length - 1,
               itemBuilder:
                   (context, index) =>
-                      _buildWalletCard(context, reversedWallets[index], constraints, index),
+                      WalletCardView(wallet: reversedWallets[index], walletIndex: index),
               layout: SwiperLayout.STACK,
               itemWidth: constraints.maxWidth * 0.86,
               scale: 0.96,
@@ -323,210 +321,6 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
         ),
       );
     });
-  }
-
-  Widget _buildWalletCard(
-    BuildContext context,
-    WalletResponseObject? wallet,
-    BoxConstraints constraints,
-    int walletIndex,
-  ) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
-          colors: GradientUtils.getWalletGradientColors(context, walletIndex),
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          stops: [0.0, 0.3, 1.0],
-        ),
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          AspectRatio(
-            aspectRatio: 335 / 168,
-            child: Assets.images.icWalletBackground2.svg(
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      wallet?.name ?? "Account",
-                      style: context.appThemes.bold18.copyWith(
-                        color: GradientUtils.getTextColorForGradient(context, walletIndex),
-                      ),
-                    ),
-                    Expanded(child: SizedBox.shrink()),
-                    Assets.images.icVerticalDots
-                        .svg(fit: BoxFit.cover, height: 24)
-                        .paddingSymmetric(horizontal: 12),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Obx(
-                      () => Text.rich(
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        TextSpan(
-                          text: "\$ ",
-                          style: context.appThemes.bold24.copyWith(
-                            color: GradientUtils.getTextColorForGradient(context, walletIndex),
-                          ),
-                          children: [
-                            TextSpan(
-                              text:
-                                  controller.balanceIsHidden.value
-                                      ? LocaleKeys.myWalletHiddenBalance.tr
-                                      : controller.fullBalance.value.shrinkAndReformat(),
-                              style: context.appThemes.bold24.copyWith(
-                                color: GradientUtils.getTextColorForGradient(context, walletIndex),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 14),
-                    Obx(
-                      () => InkWell(
-                        onTap: () => controller.hideBalance(),
-                        child:
-                            controller.balanceIsHidden.value
-                                ? Assets.images.icVisibility.svg(
-                                  width: 24,
-                                  height: 24,
-                                  fit: BoxFit.contain,
-                                  colorFilter: ColorFilter.mode(
-                                    GradientUtils.getTextColorForGradient(context, walletIndex),
-                                    BlendMode.srcIn,
-                                  ),
-                                )
-                                : Assets.images.icInvisibility.svg(
-                                  width: 24,
-                                  height: 24,
-                                  fit: BoxFit.contain,
-                                  colorFilter: ColorFilter.mode(
-                                    GradientUtils.getTextColorForGradient(context, walletIndex),
-                                    BlendMode.srcIn,
-                                  ),
-                                ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 6),
-                Obx(
-                  () => Visibility(
-                    child:
-                        controller.balanceIsHidden.value
-                            ? Container(
-                              decoration: BoxDecoration(
-                                color: context.appThemes.materialIndigo.withValues(alpha: 0.7),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                "••••••••",
-                                style: context.appThemes.regular14.copyWith(
-                                  color: context.appThemes.ink40,
-                                ),
-                              ),
-                            )
-                            : Container(
-                              decoration: BoxDecoration(
-                                color: context.appThemes.materialIndigo.withValues(alpha: 0.7),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              padding: EdgeInsets.symmetric(vertical: 3, horizontal: 3),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Assets.images.icArrowAltLtop.svg(
-                                    width: 12,
-                                    height: 12,
-                                    fit: BoxFit.contain,
-                                  ),
-                                  Text(
-                                    "20,878,699",
-                                    style: context.appThemes.regular14.copyWith(
-                                      color: context.appThemes.green100,
-                                    ),
-                                  ),
-                                  Text(
-                                    "\$",
-                                    style: context.appThemes.regular14.copyWith(
-                                      color: context.appThemes.green100,
-                                    ),
-                                  ),
-                                  SizedBox(width: 2),
-                                  Text(
-                                    "(+11.48%)",
-                                    style: context.appThemes.regular14.copyWith(
-                                      color: context.appThemes.green100,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                  ),
-                ),
-                SizedBox(height: 18),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      (wallet?.address ?? "").formatWalletAddress() ?? "",
-                      style: context.appThemes.regular20.copyWith(
-                        color: GradientUtils.getTextColorForGradient(
-                          context,
-                          walletIndex,
-                        ).withValues(alpha: 0.6),
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                    SizedBox(width: 16),
-                    Assets.images.icCopyLine.svg(
-                      width: 24,
-                      height: 24,
-                      fit: BoxFit.contain,
-                      colorFilter: ColorFilter.mode(
-                        GradientUtils.getTextColorForGradient(
-                          context,
-                          walletIndex,
-                        ).withValues(alpha: 0.6),
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   _showCommingSoon(BuildContext context) async {

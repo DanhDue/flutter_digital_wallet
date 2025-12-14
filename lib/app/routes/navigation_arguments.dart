@@ -19,6 +19,7 @@ class NavigationArguments {
   static const appConfigurations = "appConfigurations";
   static const networkFee = "networkFee";
   static const wallet = "wallet";
+  static const walletIndex = "walletIndex";
 }
 
 class QrNavigationArguments {

@@ -80,29 +80,11 @@ class GradientUtils {
         context.appThemes.materialPurple,
         context.appThemes.materialPink,
       ],
-      // 12. Emerald - Rich green
-      [
-        context.appThemes.materialTeal,
-        context.appThemes.materialTeal,
-        context.appThemes.materialGreen,
-      ],
       // 13. Sunrise - Yellow to orange
       [
         context.appThemes.materialAmber,
         context.appThemes.materialAmber,
         context.appThemes.materialOrange,
-      ],
-      // 14. Twilight - Indigo to purple
-      [
-        context.appThemes.materialIndigo,
-        context.appThemes.materialIndigo,
-        context.appThemes.materialPurple,
-      ],
-      // 15. Coral - Pink to red
-      [
-        context.appThemes.materialPink,
-        context.appThemes.materialPink,
-        context.appThemes.materialRed,
       ],
       // 16. Aqua - Cyan to blue
       [
@@ -116,28 +98,49 @@ class GradientUtils {
         context.appThemes.materialLime,
         context.appThemes.materialLightGreen,
       ],
-      // 18. Crimson - Deep red
+      // 18. Tangerine - Orange gradient
+      [
+        context.appThemes.materialOrange,
+        context.appThemes.materialOrange,
+        context.appThemes.materialAmber,
+      ],
+      // 15. Coral - Pink to red
+      [
+        context.appThemes.materialPink,
+        context.appThemes.materialPink,
+        context.appThemes.materialRed,
+      ],
+      // 19. Crimson - Deep red
       [
         context.appThemes.materialRed,
         context.appThemes.materialRed,
         context.appThemes.materialDeepOrange,
       ],
       // 19. Sapphire - Deep blue
+      // [
+      //   context.appThemes.materialBlue,
+      //   context.appThemes.materialBlue,
+      //   context.appThemes.materialIndigo,
+      // ],
+      // 12. Emerald - Rich green
       [
-        context.appThemes.materialBlue,
-        context.appThemes.materialBlue,
+        context.appThemes.materialTeal,
+        context.appThemes.materialTeal,
+        context.appThemes.materialGreen,
+      ],
+      // 14. Twilight - Indigo to purple
+      [
         context.appThemes.materialIndigo,
+        context.appThemes.materialIndigo,
+        context.appThemes.materialPurple,
       ],
       // 20. Tangerine - Orange gradient
-      [
-        context.appThemes.materialOrange,
-        context.appThemes.materialOrange,
-        context.appThemes.materialAmber,
-      ],
+      [context.appThemes.middleBlue, context.appThemes.middleBlue, context.appThemes.pinkLady],
     ];
 
     // Use wallet index to ensure unique gradient for each card
-    return colorSets[walletIndex % colorSets.length];
+    // return popular3ColorGradients[walletIndex % colorSets.length];
+    return colorSets[walletIndex];
   }
 
   /// Calculate the best text color (white or black) based on gradient luminance

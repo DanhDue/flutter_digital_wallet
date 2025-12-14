@@ -36,6 +36,7 @@ abstract class Routes {
   static const TRENDS = _Paths.TRENDS;
   static const PROFILE = _Paths.PROFILE;
   static const PROFILE_DETAIL = _Paths.PROFILE + _Paths.PROFILE_DETAIL;
+  static const WALLET_CARD_WIDGET = _Paths.MY_WALLETS + _Paths.WALLET_CARD_WIDGET;
 }
 
 abstract class _Paths {
@@ -69,4 +70,5 @@ abstract class _Paths {
   static const TRENDS = '/trends';
   static const PROFILE = '/profile';
   static const PROFILE_DETAIL = '/profile-detail';
+  static const WALLET_CARD_WIDGET = '/wallet-card-widget';
 }

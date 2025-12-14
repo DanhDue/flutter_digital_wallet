@@ -1,4 +1,4 @@
-// Copyright (c) 2025, one of the UniCloud projects. All rights reserved.
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
 // coverage:ignore-file
 
