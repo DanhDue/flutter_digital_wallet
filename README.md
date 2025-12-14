@@ -5,13 +5,13 @@ A Digital Wallet project.
 ## Table of Contents
 
 I. [Navigation Architecture](#i-navigation-architecture)
-   1. [Navigation Types](#navigation-types)
-   2. [Navigator IDs](#navigator-ids)
-   3. [Navigation Structure](#navigation-structure)
-   4. [Back Button Behavior](#back-button-behavior)
-   5. [Adding New Nested Routes](#adding-new-nested-routes)
-   6. [Key Files](#key-files)
-   7. [Best Practices](#best-practices)
+   1. [Navigation Types](#1-navigation-types)
+   2. [Navigator IDs](#2-navigator-ids)
+   3. [Navigation Structure](#3-navigation-structure)
+   4. [Back Button Behavior](#4-back-button-behavior)
+   5. [Adding New Nested Routes](#5-adding-new-nested-routes)
+   6. [Key Files](#6-key-files)
+   7. [Best Practices](#7-best-practices)
 
 II. [Animated Visibility](#ii-animated-visibility)
 
@@ -20,9 +20,9 @@ II. [Animated Visibility](#ii-animated-visibility)
 
 This project uses **GetX** for state management and navigation with a custom nested navigation implementation that supports both global and tab-level navigation.
 
-### Navigation Types
+### 1. Navigation Types
 
-#### 1. Global Navigation (Root Navigator)
+#### 1.1. Global Navigation (Root Navigator)
 Global navigation replaces the entire screen and hides the bottom navigation bar. Use this for app-level flows like splash → login → home.
 
 **Usage:**
@@ -45,7 +45,7 @@ void _navigateToLogin() {
 }
 ```
 
-#### 2. Nested Navigation (Tab Navigator)
+#### 1.2. Nested Navigation (Tab Navigator)
 Nested navigation keeps you within a specific tab and maintains the bottom navigation bar visibility. Each tab has its own navigation stack.
 
 **Usage:**
@@ -65,7 +65,7 @@ void _navigateToProfileDetail() {
 }
 ```
 
-### Navigator IDs
+### 2. Navigator IDs
 
 Navigator IDs are defined in `lib/app/modules/home/constants/nav_ids.dart`:
 
@@ -80,7 +80,7 @@ class NavIds {
 }
 ```
 
-### Navigation Structure
+### 3. Navigation Structure
 
 ```
 Root Navigator (Global)
@@ -106,7 +106,7 @@ Root Navigator (Global)
                 └── Profile Detail Screen
 ```
 
-### Back Button Behavior
+### 4. Back Button Behavior
 
 The app implements a smart back button handling system with the following priority:
 
@@ -120,16 +120,16 @@ The app implements a smart back button handling system with the following priori
 - `PopScope` wrappers in nav widgets handle tab-level back presses
 - `BackButtonInterceptor` intercepts system back button events
 
-### Adding New Nested Routes
+### 5. Adding New Nested Routes
 
 To add a new nested route within a tab:
 
-1. **Define the route** in `app_routes.dart`:
+#### 5.1. **Define the route** in `app_routes.dart`:
 ```dart
 static const PROFILE_SETTINGS = _Paths.PROFILE + _Paths.PROFILE_SETTINGS;
 ```
 
-2. **Add route to the nav widget** (e.g., `profile_nav.dart`):
+#### 5.2. **Add route to the nav widget** (e.g., `profile_nav.dart`):
 ```dart
 if (settings.name == Routes.PROFILE_SETTINGS) {
   return GetPageRoute(
@@ -140,12 +140,12 @@ if (settings.name == Routes.PROFILE_SETTINGS) {
 }
 ```
 
-3. **Navigate using the navigator ID**:
+#### 5.3. **Navigate using the navigator ID**:
 ```dart
 Get.toNamed(Routes.PROFILE_SETTINGS, id: NavIds.profile);
 ```
 
-### Key Files
+### 6. Key Files
 
 - **`lib/app/modules/home/constants/nav_ids.dart`** - Navigator ID definitions
 - **`lib/app/modules/home/controllers/home_controller.dart`** - Back button handling logic
@@ -154,7 +154,7 @@ Get.toNamed(Routes.PROFILE_SETTINGS, id: NavIds.profile);
 - **`lib/app/routes/app_routes.dart`** - Route name definitions
 - **`lib/app/routes/app_pages.dart`** - Route configuration
 
-### Best Practices
+### 7. Best Practices
 
 1. **Use global navigation** for screens that should replace the entire view (login, splash, etc.)
 2. **Use nested navigation** for screens within a tab that should keep the bottom nav visible
