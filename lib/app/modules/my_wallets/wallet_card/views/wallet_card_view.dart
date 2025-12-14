@@ -82,12 +82,9 @@ class _WalletCardViewState extends State<WalletCardView> {
             children: [
               Visibility(
                 visible: true,
-                child: AspectRatio(
-                  aspectRatio: 335 / 168,
-                  child: Assets.images.icWalletBackground.svg(
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ),
+                child: Assets.images.icWalletBackground.svg(
+                  fit: BoxFit.cover,
+                  width: double.infinity,
                 ),
               ),
               Padding(
