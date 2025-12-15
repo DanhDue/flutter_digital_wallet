@@ -1,7 +1,11 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
+import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
+import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:fimber/fimber.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 
 class ProfileController extends BaseController {
   @override
@@ -20,5 +24,15 @@ class ProfileController extends BaseController {
   void onClose() {
     super.onClose();
     Fimber.d("onClose()");
+  }
+
+  logout() {
+    Fimber.d("logout()");
+    Get.toNamed(Routes.LOGIN);
+  }
+
+  navigateToProfileDetail() {
+    Fimber.d("navigateToProfileDetail()");
+    Get.toNamed(Routes.PROFILE_DETAIL, id: NavIds.profile);
   }
 }

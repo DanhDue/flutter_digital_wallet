@@ -2,6 +2,7 @@
 
 import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
 import 'package:d3_wallet/app/modules/home/controllers/home_controller.dart';
+import 'package:d3_wallet/app/modules/trends/bindings/trends_binding.dart';
 import 'package:d3_wallet/app/modules/trends/views/trends_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +32,7 @@ class TrendsNav extends StatelessWidget {
                 },
                 child: TrendsView(),
               ),
+          binding: TrendsBinding(),
         );
       },
     );

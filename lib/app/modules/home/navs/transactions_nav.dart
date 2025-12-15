@@ -2,6 +2,7 @@
 
 import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
 import 'package:d3_wallet/app/modules/home/controllers/home_controller.dart';
+import 'package:d3_wallet/app/modules/transactions/bindings/transactions_binding.dart';
 import 'package:d3_wallet/app/modules/transactions/views/transactions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +32,7 @@ class TransactionsNav extends StatelessWidget {
                 },
                 child: TransactionsView(),
               ),
+          binding: TransactionsBinding(),
         );
       },
     );

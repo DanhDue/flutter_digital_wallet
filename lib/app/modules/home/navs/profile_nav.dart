@@ -2,6 +2,7 @@
 
 import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
 import 'package:d3_wallet/app/modules/home/controllers/home_controller.dart';
+import 'package:d3_wallet/app/modules/profile/bindings/profile_binding.dart';
 import 'package:d3_wallet/app/modules/profile/profile_detail/bindings/profile_detail_binding.dart';
 import 'package:d3_wallet/app/modules/profile/profile_detail/views/profile_detail_view.dart';
 import 'package:d3_wallet/app/modules/profile/views/profile_view.dart';
@@ -41,6 +42,7 @@ class ProfileNav extends StatelessWidget {
                   },
                   child: ProfileView(),
                 ),
+            binding: ProfileBinding(),
           );
         }
       },
