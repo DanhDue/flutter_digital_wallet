@@ -2,6 +2,7 @@
 
 // coverage:ignore-file
 
+import 'package:animated_visibility/animated_visibility.dart';
 import 'package:d3_wallet/base/widgets/pretty_animated_qr_view.dart';
 import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
 import 'package:d3_wallet/generated/assets.gen.dart';
@@ -80,12 +81,31 @@ class _WalletCardViewState extends State<WalletCardView> {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Visibility(
-                visible: true,
-                child: Assets.images.icWalletBackground.svg(
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
+              Stack(
+                children: [
+                  Positioned(
+                    right: 75,
+                    child: Assets.images.icFingerPrint1.svg(height: 56, fit: BoxFit.cover),
+                  ),
+                  Positioned(
+                    left: 26,
+                    bottom: 0,
+                    child: Assets.images.icFingerPrint2.svg(height: 56, fit: BoxFit.cover),
+                  ),
+                  Positioned(
+                    right: 18,
+                    bottom: 12,
+                    child: Obx(
+                      () => Visibility(
+                        visible: !controller.showQRCode.value,
+                        maintainSize: true,
+                        maintainState: true,
+                        maintainAnimation: true,
+                        child: Assets.images.icCardArrowDown.svg(height: 68, fit: BoxFit.cover),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
@@ -259,7 +279,7 @@ class _WalletCardViewState extends State<WalletCardView> {
                         SizedBox(width: 16),
                         InkWell(
                           onTap: () => controller.copyAddress(),
-                          child: Assets.images.icCopyLine.svg(
+                          child: Assets.images.icLucideCopy.svg(
                             width: 24,
                             height: 24,
                             fit: BoxFit.contain,
@@ -281,8 +301,11 @@ class _WalletCardViewState extends State<WalletCardView> {
           ),
         ),
         Obx(
-          () => Visibility(
+          () => AnimatedVisibility(
             visible: controller.showQRCode.value,
+            enter: fadeIn(),
+            exit: fadeOut(),
+            enterDuration: const Duration(seconds: 2),
             child: Container(
               color: context.appThemes.white,
               width: 96,
