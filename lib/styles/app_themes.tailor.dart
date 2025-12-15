@@ -76,6 +76,27 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get shinyShamrock;
   Color get honeydew;
   Color get antiFlashWhite;
+  Color get greenVogue0;
+  Color get greenVogue5;
+  Color get greenVogue10;
+  Color get greenVogue15;
+  Color get greenVogue20;
+  Color get greenVogue25;
+  Color get greenVogue30;
+  Color get greenVogue35;
+  Color get greenVogue40;
+  Color get greenVogue45;
+  Color get greenVogue50;
+  Color get greenVogue55;
+  Color get greenVogue60;
+  Color get greenVogue65;
+  Color get greenVogue70;
+  Color get greenVogue75;
+  Color get greenVogue80;
+  Color get greenVogue85;
+  Color get greenVogue90;
+  Color get greenVogue95;
+  Color get greenVogue100;
   Color get greenVogue;
   Color get blue0;
   Color get blue5;
@@ -199,6 +220,27 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? shinyShamrock,
     Color? honeydew,
     Color? antiFlashWhite,
+    Color? greenVogue0,
+    Color? greenVogue5,
+    Color? greenVogue10,
+    Color? greenVogue15,
+    Color? greenVogue20,
+    Color? greenVogue25,
+    Color? greenVogue30,
+    Color? greenVogue35,
+    Color? greenVogue40,
+    Color? greenVogue45,
+    Color? greenVogue50,
+    Color? greenVogue55,
+    Color? greenVogue60,
+    Color? greenVogue65,
+    Color? greenVogue70,
+    Color? greenVogue75,
+    Color? greenVogue80,
+    Color? greenVogue85,
+    Color? greenVogue90,
+    Color? greenVogue95,
+    Color? greenVogue100,
     Color? greenVogue,
     Color? blue0,
     Color? blue5,
@@ -321,6 +363,27 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       shinyShamrock: shinyShamrock ?? this.shinyShamrock,
       honeydew: honeydew ?? this.honeydew,
       antiFlashWhite: antiFlashWhite ?? this.antiFlashWhite,
+      greenVogue0: greenVogue0 ?? this.greenVogue0,
+      greenVogue5: greenVogue5 ?? this.greenVogue5,
+      greenVogue10: greenVogue10 ?? this.greenVogue10,
+      greenVogue15: greenVogue15 ?? this.greenVogue15,
+      greenVogue20: greenVogue20 ?? this.greenVogue20,
+      greenVogue25: greenVogue25 ?? this.greenVogue25,
+      greenVogue30: greenVogue30 ?? this.greenVogue30,
+      greenVogue35: greenVogue35 ?? this.greenVogue35,
+      greenVogue40: greenVogue40 ?? this.greenVogue40,
+      greenVogue45: greenVogue45 ?? this.greenVogue45,
+      greenVogue50: greenVogue50 ?? this.greenVogue50,
+      greenVogue55: greenVogue55 ?? this.greenVogue55,
+      greenVogue60: greenVogue60 ?? this.greenVogue60,
+      greenVogue65: greenVogue65 ?? this.greenVogue65,
+      greenVogue70: greenVogue70 ?? this.greenVogue70,
+      greenVogue75: greenVogue75 ?? this.greenVogue75,
+      greenVogue80: greenVogue80 ?? this.greenVogue80,
+      greenVogue85: greenVogue85 ?? this.greenVogue85,
+      greenVogue90: greenVogue90 ?? this.greenVogue90,
+      greenVogue95: greenVogue95 ?? this.greenVogue95,
+      greenVogue100: greenVogue100 ?? this.greenVogue100,
       greenVogue: greenVogue ?? this.greenVogue,
       blue0: blue0 ?? this.blue0,
       blue5: blue5 ?? this.blue5,
@@ -448,6 +511,27 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       shinyShamrock: Color.lerp(shinyShamrock, other.shinyShamrock, t)!,
       honeydew: Color.lerp(honeydew, other.honeydew, t)!,
       antiFlashWhite: Color.lerp(antiFlashWhite, other.antiFlashWhite, t)!,
+      greenVogue0: Color.lerp(greenVogue0, other.greenVogue0, t)!,
+      greenVogue5: Color.lerp(greenVogue5, other.greenVogue5, t)!,
+      greenVogue10: Color.lerp(greenVogue10, other.greenVogue10, t)!,
+      greenVogue15: Color.lerp(greenVogue15, other.greenVogue15, t)!,
+      greenVogue20: Color.lerp(greenVogue20, other.greenVogue20, t)!,
+      greenVogue25: Color.lerp(greenVogue25, other.greenVogue25, t)!,
+      greenVogue30: Color.lerp(greenVogue30, other.greenVogue30, t)!,
+      greenVogue35: Color.lerp(greenVogue35, other.greenVogue35, t)!,
+      greenVogue40: Color.lerp(greenVogue40, other.greenVogue40, t)!,
+      greenVogue45: Color.lerp(greenVogue45, other.greenVogue45, t)!,
+      greenVogue50: Color.lerp(greenVogue50, other.greenVogue50, t)!,
+      greenVogue55: Color.lerp(greenVogue55, other.greenVogue55, t)!,
+      greenVogue60: Color.lerp(greenVogue60, other.greenVogue60, t)!,
+      greenVogue65: Color.lerp(greenVogue65, other.greenVogue65, t)!,
+      greenVogue70: Color.lerp(greenVogue70, other.greenVogue70, t)!,
+      greenVogue75: Color.lerp(greenVogue75, other.greenVogue75, t)!,
+      greenVogue80: Color.lerp(greenVogue80, other.greenVogue80, t)!,
+      greenVogue85: Color.lerp(greenVogue85, other.greenVogue85, t)!,
+      greenVogue90: Color.lerp(greenVogue90, other.greenVogue90, t)!,
+      greenVogue95: Color.lerp(greenVogue95, other.greenVogue95, t)!,
+      greenVogue100: Color.lerp(greenVogue100, other.greenVogue100, t)!,
       greenVogue: Color.lerp(greenVogue, other.greenVogue, t)!,
       blue0: Color.lerp(blue0, other.blue0, t)!,
       blue5: Color.lerp(blue5, other.blue5, t)!,
@@ -576,6 +660,27 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(shinyShamrock, other.shinyShamrock) &&
             const DeepCollectionEquality().equals(honeydew, other.honeydew) &&
             const DeepCollectionEquality().equals(antiFlashWhite, other.antiFlashWhite) &&
+            const DeepCollectionEquality().equals(greenVogue0, other.greenVogue0) &&
+            const DeepCollectionEquality().equals(greenVogue5, other.greenVogue5) &&
+            const DeepCollectionEquality().equals(greenVogue10, other.greenVogue10) &&
+            const DeepCollectionEquality().equals(greenVogue15, other.greenVogue15) &&
+            const DeepCollectionEquality().equals(greenVogue20, other.greenVogue20) &&
+            const DeepCollectionEquality().equals(greenVogue25, other.greenVogue25) &&
+            const DeepCollectionEquality().equals(greenVogue30, other.greenVogue30) &&
+            const DeepCollectionEquality().equals(greenVogue35, other.greenVogue35) &&
+            const DeepCollectionEquality().equals(greenVogue40, other.greenVogue40) &&
+            const DeepCollectionEquality().equals(greenVogue45, other.greenVogue45) &&
+            const DeepCollectionEquality().equals(greenVogue50, other.greenVogue50) &&
+            const DeepCollectionEquality().equals(greenVogue55, other.greenVogue55) &&
+            const DeepCollectionEquality().equals(greenVogue60, other.greenVogue60) &&
+            const DeepCollectionEquality().equals(greenVogue65, other.greenVogue65) &&
+            const DeepCollectionEquality().equals(greenVogue70, other.greenVogue70) &&
+            const DeepCollectionEquality().equals(greenVogue75, other.greenVogue75) &&
+            const DeepCollectionEquality().equals(greenVogue80, other.greenVogue80) &&
+            const DeepCollectionEquality().equals(greenVogue85, other.greenVogue85) &&
+            const DeepCollectionEquality().equals(greenVogue90, other.greenVogue90) &&
+            const DeepCollectionEquality().equals(greenVogue95, other.greenVogue95) &&
+            const DeepCollectionEquality().equals(greenVogue100, other.greenVogue100) &&
             const DeepCollectionEquality().equals(greenVogue, other.greenVogue) &&
             const DeepCollectionEquality().equals(blue0, other.blue0) &&
             const DeepCollectionEquality().equals(blue5, other.blue5) &&
@@ -702,6 +807,27 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(shinyShamrock),
       const DeepCollectionEquality().hash(honeydew),
       const DeepCollectionEquality().hash(antiFlashWhite),
+      const DeepCollectionEquality().hash(greenVogue0),
+      const DeepCollectionEquality().hash(greenVogue5),
+      const DeepCollectionEquality().hash(greenVogue10),
+      const DeepCollectionEquality().hash(greenVogue15),
+      const DeepCollectionEquality().hash(greenVogue20),
+      const DeepCollectionEquality().hash(greenVogue25),
+      const DeepCollectionEquality().hash(greenVogue30),
+      const DeepCollectionEquality().hash(greenVogue35),
+      const DeepCollectionEquality().hash(greenVogue40),
+      const DeepCollectionEquality().hash(greenVogue45),
+      const DeepCollectionEquality().hash(greenVogue50),
+      const DeepCollectionEquality().hash(greenVogue55),
+      const DeepCollectionEquality().hash(greenVogue60),
+      const DeepCollectionEquality().hash(greenVogue65),
+      const DeepCollectionEquality().hash(greenVogue70),
+      const DeepCollectionEquality().hash(greenVogue75),
+      const DeepCollectionEquality().hash(greenVogue80),
+      const DeepCollectionEquality().hash(greenVogue85),
+      const DeepCollectionEquality().hash(greenVogue90),
+      const DeepCollectionEquality().hash(greenVogue95),
+      const DeepCollectionEquality().hash(greenVogue100),
       const DeepCollectionEquality().hash(greenVogue),
       const DeepCollectionEquality().hash(blue0),
       const DeepCollectionEquality().hash(blue5),

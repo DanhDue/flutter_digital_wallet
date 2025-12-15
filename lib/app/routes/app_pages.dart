@@ -38,12 +38,20 @@ import '../modules/onboard/s_r_p_description/views/s_r_p_description_view.dart';
 import '../modules/onboard/views/onboard_view.dart';
 import '../modules/password_creation/bindings/password_creation_binding.dart';
 import '../modules/password_creation/views/password_creation_view.dart';
+import '../modules/payment/request_payment/bindings/request_payment_binding.dart';
+import '../modules/payment/request_payment/views/request_payment_view.dart';
+import '../modules/payment/request_payment_results/bindings/request_payment_results_binding.dart';
+import '../modules/payment/request_payment_results/views/request_payment_results_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/profile_detail/bindings/profile_detail_binding.dart';
 import '../modules/profile/profile_detail/views/profile_detail_view.dart';
 import '../modules/profile/views/profile_view.dart';
-import '../modules/qr_scanning/bindings/qr_scanning_binding.dart';
-import '../modules/qr_scanning/views/qr_scanning_view.dart';
+import '../modules/qr_scanner/bindings/qr_scanner_binding.dart';
+import '../modules/qr_scanner/qr/bindings/qr_binding.dart';
+import '../modules/qr_scanner/qr/views/qr_view.dart';
+import '../modules/qr_scanner/scanner/bindings/scanner_binding.dart';
+import '../modules/qr_scanner/scanner/views/scanner_view.dart';
+import '../modules/qr_scanner/views/qr_scanner_view.dart';
 import '../modules/sample/api_testing/bindings/api_testing_binding.dart';
 import '../modules/sample/api_testing/views/api_testing_view.dart';
 import '../modules/sample/networking_sample/bindings/networking_sample_binding.dart';
@@ -52,6 +60,10 @@ import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/transactions/bindings/transactions_binding.dart';
 import '../modules/transactions/views/transactions_view.dart';
+import '../modules/transfer/transfer/bindings/transfer_binding.dart';
+import '../modules/transfer/transfer/views/transfer_view.dart';
+import '../modules/transfer/transfer_confirmation/bindings/transfer_confirmation_binding.dart';
+import '../modules/transfer/transfer_confirmation/views/transfer_confirmation_view.dart';
 import '../modules/trends/bindings/trends_binding.dart';
 import '../modules/trends/views/trends_view.dart';
 import '../modules/wallet_creation/wallet_creation/bindings/wallet_creation_binding.dart';
@@ -164,13 +176,37 @@ class AppPages {
       page: () => TransactionsView(),
       binding: TransactionsBinding(),
     ),
-    GetPage(name: _Paths.QR_SCANNING, page: () => QRScanningView(), binding: QRScanningBinding()),
+    GetPage(name: _Paths.QR_SCANNING, page: () => QRScannerView(), binding: QRScannerBinding()),
     GetPage(name: _Paths.TRENDS, page: () => TrendsView(), binding: TrendsBinding()),
     GetPage(name: _Paths.PROFILE, page: () => ProfileView(), binding: ProfileBinding()),
     GetPage(
       name: _Paths.PROFILE_DETAIL,
       page: () => ProfileDetailView(),
       binding: ProfileDetailBinding(),
+    ),
+    GetPage(name: _Paths.SCANNER, page: () => const ScannerView(), binding: ScannerBinding()),
+    GetPage(name: _Paths.QR, page: () => const QRView(), binding: QRBinding()),
+    GetPage(
+      name: _Paths.TRANSFER,
+      page: () => TransferView(),
+      binding: TransferBinding(),
+      children: [
+        GetPage(
+          name: _Paths.TRANSFER_CONFIRMATION,
+          page: () => TransferConfirmationView(),
+          binding: TransferConfirmationBinding(),
+        ),
+      ],
+    ),
+    GetPage(
+      name: _Paths.REQUEST_PAYMENT,
+      page: () => RequestPaymentView(),
+      binding: RequestPaymentBinding(),
+    ),
+    GetPage(
+      name: _Paths.REQUEST_PAYMENT_RESULTS,
+      page: () => RequestPaymentResultsView(),
+      binding: RequestPaymentResultsBinding(),
     ),
   ];
 }

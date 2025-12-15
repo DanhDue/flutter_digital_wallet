@@ -91,6 +91,27 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.shinyShamrock,
     required this.honeydew,
     required this.antiFlashWhite,
+    required this.greenVogue0,
+    required this.greenVogue5,
+    required this.greenVogue10,
+    required this.greenVogue15,
+    required this.greenVogue20,
+    required this.greenVogue25,
+    required this.greenVogue30,
+    required this.greenVogue35,
+    required this.greenVogue40,
+    required this.greenVogue45,
+    required this.greenVogue50,
+    required this.greenVogue55,
+    required this.greenVogue60,
+    required this.greenVogue65,
+    required this.greenVogue70,
+    required this.greenVogue75,
+    required this.greenVogue80,
+    required this.greenVogue85,
+    required this.greenVogue90,
+    required this.greenVogue95,
+    required this.greenVogue100,
     required this.greenVogue,
 
     // Blue Series
@@ -504,6 +525,48 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   @override
   final Color antiFlashWhite;
   @override
+  final Color greenVogue0;
+  @override
+  final Color greenVogue5;
+  @override
+  final Color greenVogue10;
+  @override
+  final Color greenVogue15;
+  @override
+  final Color greenVogue20;
+  @override
+  final Color greenVogue25;
+  @override
+  final Color greenVogue30;
+  @override
+  final Color greenVogue35;
+  @override
+  final Color greenVogue40;
+  @override
+  final Color greenVogue45;
+  @override
+  final Color greenVogue50;
+  @override
+  final Color greenVogue55;
+  @override
+  final Color greenVogue60;
+  @override
+  final Color greenVogue65;
+  @override
+  final Color greenVogue70;
+  @override
+  final Color greenVogue75;
+  @override
+  final Color greenVogue80;
+  @override
+  final Color greenVogue85;
+  @override
+  final Color greenVogue90;
+  @override
+  final Color greenVogue95;
+  @override
+  final Color greenVogue100;
+  @override
   final Color greenVogue;
 
   // Blue Series
@@ -700,6 +763,27 @@ final lightAppThemes = AppThemes(
   shinyShamrock: AppColors.shinyShamrock,
   honeydew: AppColors.honeydew,
   antiFlashWhite: AppColors.antiFlashWhite,
+  greenVogue0: AppColors.greenVogue0,
+  greenVogue5: AppColors.greenVogue5,
+  greenVogue10: AppColors.greenVogue10,
+  greenVogue15: AppColors.greenVogue15,
+  greenVogue20: AppColors.greenVogue20,
+  greenVogue25: AppColors.greenVogue25,
+  greenVogue30: AppColors.greenVogue30,
+  greenVogue35: AppColors.greenVogue35,
+  greenVogue40: AppColors.greenVogue40,
+  greenVogue45: AppColors.greenVogue45,
+  greenVogue50: AppColors.greenVogue50,
+  greenVogue55: AppColors.greenVogue55,
+  greenVogue60: AppColors.greenVogue60,
+  greenVogue65: AppColors.greenVogue65,
+  greenVogue70: AppColors.greenVogue70,
+  greenVogue75: AppColors.greenVogue75,
+  greenVogue80: AppColors.greenVogue80,
+  greenVogue85: AppColors.greenVogue85,
+  greenVogue90: AppColors.greenVogue90,
+  greenVogue95: AppColors.greenVogue95,
+  greenVogue100: AppColors.greenVogue100,
   greenVogue: AppColors.greenVogue,
 
   // Blue Series
@@ -843,6 +927,27 @@ final darkAppThemes = AppThemes(
   shinyShamrock: AppColors.shinyShamrock,
   honeydew: AppColors.honeydew,
   antiFlashWhite: AppColors.antiFlashWhite,
+  greenVogue0: AppColors.greenVogue0,
+  greenVogue5: AppColors.greenVogue5,
+  greenVogue10: AppColors.greenVogue10,
+  greenVogue15: AppColors.greenVogue15,
+  greenVogue20: AppColors.greenVogue20,
+  greenVogue25: AppColors.greenVogue25,
+  greenVogue30: AppColors.greenVogue30,
+  greenVogue35: AppColors.greenVogue35,
+  greenVogue40: AppColors.greenVogue40,
+  greenVogue45: AppColors.greenVogue45,
+  greenVogue50: AppColors.greenVogue50,
+  greenVogue55: AppColors.greenVogue55,
+  greenVogue60: AppColors.greenVogue60,
+  greenVogue65: AppColors.greenVogue65,
+  greenVogue70: AppColors.greenVogue70,
+  greenVogue75: AppColors.greenVogue75,
+  greenVogue80: AppColors.greenVogue80,
+  greenVogue85: AppColors.greenVogue85,
+  greenVogue90: AppColors.greenVogue90,
+  greenVogue95: AppColors.greenVogue95,
+  greenVogue100: AppColors.greenVogue100,
   greenVogue: AppColors.greenVogue,
 
   // Blue Series

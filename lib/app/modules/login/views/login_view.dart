@@ -187,7 +187,7 @@ class _LoginViewState extends State<LoginView> {
                                   },
                                   backgroundColor:
                                       controller.enableUnlockButton.value
-                                          ? context.appThemes.blue100
+                                          ? context.appThemes.trueBlue
                                           : context.appThemes.blue15,
                                   text: LocaleKeys.unlock.tr,
                                 ),
@@ -248,7 +248,7 @@ class _LoginViewState extends State<LoginView> {
                           child: Text(
                             LocaleKeys.reimportWallets.tr,
                             style: context.appThemes.medium14.copyWith(
-                              color: context.appThemes.blue100,
+                              color: context.appThemes.trueBlue,
                             ),
                           ),
                         ),

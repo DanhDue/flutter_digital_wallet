@@ -3,7 +3,7 @@
 // coverage:ignore-file
 
 import 'package:d3_wallet/app/modules/profile/controllers/profile_controller.dart';
-import 'package:d3_wallet/app/modules/qr_scanning/controllers/qr_scanning_controller.dart';
+import 'package:d3_wallet/app/modules/qr_scanner/controllers/qr_scanner_controller.dart';
 import 'package:d3_wallet/app/modules/transactions/controllers/transactions_controller.dart';
 import 'package:d3_wallet/app/modules/trends/controllers/trends_controller.dart';
 import 'package:get/get.dart';
@@ -15,7 +15,7 @@ class HomeBinding extends Bindings {
   void dependencies() {
     Get.put<HomeController>(HomeController());
     Get.lazyPut<TransactionsController>(() => TransactionsController());
-    Get.lazyPut<QRScanningController>(() => QRScanningController());
+    Get.lazyPut<QRScannerController>(() => QRScannerController());
     Get.lazyPut<TrendsController>(() => TrendsController());
     Get.lazyPut<ProfileController>(() => ProfileController());
   }

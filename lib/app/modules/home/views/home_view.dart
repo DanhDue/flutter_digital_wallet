@@ -29,7 +29,7 @@ class HomeView extends BaseView<HomeController> {
       },
       child: Scaffold(
         body: SafeArea(
-          top: true,
+          top: false,
           bottom: false,
           child: Obx(
             () => IndexedStack(

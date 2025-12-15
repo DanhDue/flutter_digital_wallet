@@ -55,6 +55,27 @@
     <color name="shiny_shamrock">#60B582</color>
     <color name="honeydew">#F1FFE7</color>
     <color name="anti_flash_white">#F2F6F3</color>
+    <color name="green_vogue_0">#F0F5F9</color>
+    <color name="green_vogue_5">#E1EBF3</color>
+    <color name="green_vogue_10">#D2E1ED</color>
+    <color name="green_vogue_15">#C3D7E7</color>
+    <color name="green_vogue_20">#B4CDE1</color>
+    <color name="green_vogue_25">#A5C3DB</color>
+    <color name="green_vogue_30">#96B9D5</color>
+    <color name="green_vogue_35">#87AFCF</color>
+    <color name="green_vogue_40">#78A5C9</color>
+    <color name="green_vogue_45">#699BC3</color>
+    <color name="green_vogue_50">#5A91BD</color>
+    <color name="green_vogue_55">#4B87B7</color>
+    <color name="green_vogue_60">#3C7DB1</color>
+    <color name="green_vogue_65">#2D73AB</color>
+    <color name="green_vogue_70">#2469A5</color>
+    <color name="green_vogue_75">#1B5F9F</color>
+    <color name="green_vogue_80">#135599</color>
+    <color name="green_vogue_85">#0B4B93</color>
+    <color name="green_vogue_90">#06418D</color>
+    <color name="green_vogue_95">#043787</color>
+    <color name="green_vogue_100">#022D55</color>
     <color name="green_vogue">#022D55</color>
 
     <!-- Blue Series -->

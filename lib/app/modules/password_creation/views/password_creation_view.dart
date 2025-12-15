@@ -436,7 +436,7 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                                       TextSpan(
                                         text: LocaleKeys.learnMore.tr,
                                         style: context.appThemes.regular14.copyWith(
-                                          color: context.appThemes.blue100,
+                                          color: context.appThemes.trueBlue,
                                         ),
                                         recognizer:
                                             TapGestureRecognizer()
@@ -463,7 +463,7 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                   },
                   backgroundColor:
                       controller.enablePassCreationBut.value
-                          ? context.appThemes.blue100
+                          ? context.appThemes.trueBlue
                           : context.appThemes.blue15,
                   text: LocaleKeys.createPassword.tr,
                 ),

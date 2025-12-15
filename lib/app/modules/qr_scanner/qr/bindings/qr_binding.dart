@@ -4,11 +4,11 @@
 
 import 'package:get/get.dart';
 
-import '../controllers/qr_scanning_controller.dart';
+import '../controllers/qr_controller.dart';
 
-class QRScanningBinding extends Bindings {
+class QRBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<QRScanningController>(() => QRScanningController());
+    Get.lazyPut<QRController>(() => QRController());
   }
 }

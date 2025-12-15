@@ -36,7 +36,13 @@ abstract class Routes {
   static const TRENDS = _Paths.TRENDS;
   static const PROFILE = _Paths.PROFILE;
   static const PROFILE_DETAIL = _Paths.PROFILE + _Paths.PROFILE_DETAIL;
-  static const WALLET_CARD_WIDGET = _Paths.MY_WALLETS + _Paths.WALLET_CARD_WIDGET;
+  static const WALLET_CARD_WIDGET = _Paths.WALLET_CARD_WIDGET;
+  static const SCANNER = _Paths.SCANNER;
+  static const QR = _Paths.QR;
+  static const TRANSFER = _Paths.TRANSFER;
+  static const TRANSFER_CONFIRMATION = _Paths.TRANSFER_CONFIRMATION;
+  static const REQUEST_PAYMENT = _Paths.REQUEST_PAYMENT;
+  static const REQUEST_PAYMENT_RESULTS = _Paths.REQUEST_PAYMENT_RESULTS;
 }
 
 abstract class _Paths {
@@ -71,4 +77,10 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const PROFILE_DETAIL = '/profile-detail';
   static const WALLET_CARD_WIDGET = '/wallet-card-widget';
+  static const SCANNER = '/scanner';
+  static const QR = '/qr';
+  static const TRANSFER = '/transfer';
+  static const TRANSFER_CONFIRMATION = '/transfer-confirmation';
+  static const REQUEST_PAYMENT = '/request-payment';
+  static const REQUEST_PAYMENT_RESULTS = '/request-payment-results';
 }

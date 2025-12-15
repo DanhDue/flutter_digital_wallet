@@ -2,7 +2,7 @@
 
 import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
 import 'package:d3_wallet/app/modules/home/controllers/home_controller.dart';
-import 'package:d3_wallet/app/modules/qr_scanning/views/qr_scanning_view.dart';
+import 'package:d3_wallet/app/modules/qr_scanner/views/qr_scanner_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -29,7 +29,7 @@ class QRNav extends StatelessWidget {
                     SystemNavigator.pop();
                   }
                 },
-                child: QRScanningView(),
+                child: QRScannerView(),
               ),
         );
       },

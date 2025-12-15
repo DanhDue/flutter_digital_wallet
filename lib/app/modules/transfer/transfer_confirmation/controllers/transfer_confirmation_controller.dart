@@ -3,7 +3,7 @@
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:fimber/fimber.dart';
 
-class QRScanningController extends BaseController {
+class TransferConfirmationController extends BaseController {
   @override
   void onInit() {
     super.onInit();

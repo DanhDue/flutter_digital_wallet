@@ -10,7 +10,6 @@ class NavigationArguments {
   static const selectedNetwork = "selectedNetwork";
   static const coinMarketInfo = "coinMarketInfo";
   static const slippage = "slippage";
-  static const dAmount = "dAmount";
   static const selectedToken = "selectedToken";
   static const selectedDestToken = "selectedDestToken";
   static const estimatedReceivedCoin = "estimatedReceivedCoin";
@@ -20,6 +19,12 @@ class NavigationArguments {
   static const networkFee = "networkFee";
   static const wallet = "wallet";
   static const walletIndex = "walletIndex";
+  static const fromQRScanner = "fromQRScanner";
+  static const srcWallet = "srcWallet";
+  static const destWallet = "destWallet";
+  static const amount = "amount";
+  static const mintToken = "mintToken";
+  static const walletAddress = "walletAddress";
 }
 
 class QrNavigationArguments {

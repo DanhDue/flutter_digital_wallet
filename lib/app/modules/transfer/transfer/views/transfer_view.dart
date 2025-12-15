@@ -5,14 +5,15 @@
 import 'package:d3_wallet/base/base_view.dart';
 import 'package:flutter/material.dart';
 
-import '../controllers/qr_scanning_controller.dart';
+import '../controllers/transfer_controller.dart';
 
-class QRScanningView extends BaseView<QRScanningController> {
-  QRScanningView({super.key});
+class TransferView extends BaseView<TransferController> {
+  TransferView({super.key});
+
   @override
   Widget onCreateViews(BuildContext context) {
     return Scaffold(
-      body: const Center(child: Text('QRScanningView is working', style: TextStyle(fontSize: 20))),
+      body: const Center(child: Text('TransferView is working', style: TextStyle(fontSize: 20))),
     );
   }
 }
