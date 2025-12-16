@@ -1,5 +1,7 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
+import 'dart:convert';
+
 import 'package:bip39/bip39.dart' as bip39;
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/base/networking_mixin.dart';
@@ -90,24 +92,97 @@ class WalletImportController extends BaseController with NetworkingMixin {
     if (!visible && srpOrPk?.isNotEmpty == true) _validateSRPOrPk();
   }
 
-  void _validateSRPOrPk() {
+  _validateSRPOrPk() {
+    // check if it's a mnemonic
     isMnemonic.value = bip39.validateMnemonic(srpOrPk ?? "") && srpOrPk?.isNotEmpty == true;
     if (isMnemonic.value) {
       isValid.value = true;
       isMnemonicError.value = false;
+    }
+    // If not a mnemonic, check if it's a Solana private key
+    final isPrivateKey = _isSolanaPrivateKey(srpOrPk ?? "");
+
+    if (isPrivateKey) {
+      isMnemonic.value = false; // It's a private key, not a mnemonic
+      isValid.value = true;
+      isMnemonicError.value = false;
     } else {
-      if (srpOrPk?.isNotEmpty == true) {
-        isMnemonicError.value = true;
-      } else {
-        isMnemonicError.value = false;
-      }
+      // Neither mnemonic nor valid private key
       isValid.value = false;
+      isMnemonicError.value = true;
+    }
+  }
+
+  bool _isSolanaPrivateKey(String input) {
+    if (input.isEmpty) return false;
+
+    final trimmed = input.trim();
+
+    // Check if it's a byte array format like [30, 11, 190, ...]
+    if (_isValidByteArray(trimmed)) {
+      return true;
+    }
+
+    // Check if it's a Base58 encoded private key (most common format)
+    // Solana private keys in Base58 are typically 87-88 characters
+    if (_isValidBase58(trimmed) && trimmed.length >= 87 && trimmed.length <= 88) {
+      return true;
+    }
+
+    // Check if it's a hex string (64 bytes = 128 hex characters)
+    if (_isValidHex(trimmed) && trimmed.length == 128) {
+      return true;
+    }
+
+    return false;
+  }
+
+  bool _isValidBase58(String input) {
+    // Base58 alphabet (Bitcoin/Solana uses this)
+    final base58Regex = RegExp(r'^[1-9A-HJ-NP-Za-km-z]+$');
+    return base58Regex.hasMatch(input);
+  }
+
+  bool _isValidHex(String input) {
+    final hexRegex = RegExp(r'^[0-9a-fA-F]+$');
+    return hexRegex.hasMatch(input);
+  }
+
+  bool _isValidByteArray(String input) {
+    try {
+      // Check if it looks like a JSON array
+      if (!input.startsWith('[') || !input.endsWith(']')) {
+        return false;
+      }
+
+      // Try to parse as JSON
+      final dynamic decoded = jsonDecode(input);
+
+      if (decoded is! List) {
+        return false;
+      }
+
+      // Check if all elements are integers and within byte range (0-255)
+      for (final element in decoded) {
+        if (element is! int || element < 0 || element > 255) {
+          return false;
+        }
+      }
+
+      // Solana private keys are either 32 bytes (seed) or 64 bytes (full keypair)
+      final length = decoded.length;
+      return length == 32 || length == 64;
+    } catch (e) {
+      return false;
     }
   }
 
   void restoreWallet() async {
     Fimber.d("restoreWallet()");
     isLoading.value = true;
+    Future.delayed(const Duration(seconds: 6), () {
+      isLoading.value = false;
+    });
   }
 
   void scannedText(String? mnemonics) {

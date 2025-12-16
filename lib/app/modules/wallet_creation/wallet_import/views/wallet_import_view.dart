@@ -309,12 +309,10 @@ class _WalletImportViewState extends State<WalletImportView> {
           Obx(() {
             if (controller.isLoading.value == true) {
               WidgetsBinding.instance.addPostFrameCallback((duration) {
-                // EasyLoading.show();
                 SmartDialog.showLoading(msg: "");
               });
             } else {
               WidgetsBinding.instance.addPostFrameCallback((duration) {
-                // EasyLoading.dismiss();
                 SmartDialog.dismiss();
               });
             }
