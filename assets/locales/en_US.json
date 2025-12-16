@@ -169,6 +169,6 @@
   "examplePrivateKeyValue": "[30, 11, 190, 179, 246, 65, 118, 132, 202, 155, 23, 86, 66, 27, 192, 248, 240, 101, 105, 0, 108, 200, 33, 213, 2, 10, 153, 113, 230, 120, 39, 247, 182, 4, 65, 160, 255, 152, 38, 250, 239, 41, 103, 174, 141, 230, 77, 55, 88, 123, 171, 173, 74, 159, 104, 60, 216, 246, 74, 85, 70, 36, 160, 132]",
   "exampleBase58PrivateKey": "3. Base58 Private Key:",
   "exampleBase58PrivateKeyValue": "bqoPDmymK4nn7tJWeFRoVt78v7s1t2NnUUsQobMfv1jLGaYYnZF1sVrusz3djjt415GooSFaVHpGAWXDC5Mpq9V",
-  "cannotCreateWalletError": "Cannot create a new wallet now!",
+  "cannotCreateWalletError": "Wallet creation is temporarily unavailable. Please try again in a few moments.",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

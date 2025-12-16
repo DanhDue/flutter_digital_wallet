@@ -24,9 +24,9 @@ import 'package:get/get.dart';
 import 'package:material_text_fields/utils/extensions.dart';
 
 class OnboardingPasswordCreationView extends StatefulHookWidget {
-  const OnboardingPasswordCreationView({super.key, this.passwordAndWalletAreCreated});
+  const OnboardingPasswordCreationView({super.key, this.passwordIsCreated});
 
-  final ValueChanged<AppConfigurations?>? passwordAndWalletAreCreated;
+  final ValueChanged<AppConfigurations?>? passwordIsCreated;
 
   @override
   State<OnboardingPasswordCreationView> createState() => _OnboardingPasswordCreationViewState();
@@ -466,7 +466,7 @@ class _OnboardingPasswordCreationViewState extends State<OnboardingPasswordCreat
                 if (controller.passwordAndWalletIsCreated.value) {
                   WidgetsBinding.instance.addPostFrameCallback((duration) {
                     Future.delayed(Duration(milliseconds: Constants.keyboardDismissDuration), () {
-                      widget.passwordAndWalletAreCreated?.call(controller.appConfigurations);
+                      widget.passwordIsCreated?.call(controller.appConfigurations);
                     });
                   });
                 }

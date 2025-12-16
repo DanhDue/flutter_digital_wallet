@@ -120,7 +120,7 @@ class _OnboardViewState extends State<OnboardView> {
                     effect: FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
                       child: OnboardingPasswordCreationView(
-                        passwordAndWalletAreCreated: (data) {
+                        passwordIsCreated: (data) {
                           controller.updateCreatedAppConfigurations(data);
                           controller.jumpToPage(OnboardPageIndex.secureWalletPageIndex);
                         },

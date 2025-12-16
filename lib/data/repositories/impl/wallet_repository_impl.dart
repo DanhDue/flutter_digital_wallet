@@ -65,7 +65,9 @@ class WalletRepositoryImpl extends WalletRepository with SafeCallApiMixin {
 
   @override
   Future<void> updateYourWallets(List<WalletResponseObject?>? wallets) async {
-    await _walletsStorage.clearYourWallets();
-    if (wallets.isNotEmptyOrNull == true) await _walletsStorage.updateYourWallets(wallets);
+    if (wallets.isNotEmptyOrNull == true) {
+      await _walletsStorage.clearYourWallets();
+      await _walletsStorage.updateYourWallets(wallets);
+    }
   }
 }

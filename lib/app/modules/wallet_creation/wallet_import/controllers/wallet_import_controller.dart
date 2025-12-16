@@ -9,7 +9,6 @@ import 'package:d3_wallet/base/networking_mixin.dart';
 import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
 import 'package:d3_wallet/data/repositories/wallet_repository.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
-import 'package:dart_extensions/dart_extensions.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -230,20 +229,20 @@ class WalletImportController extends BaseController with NetworkingMixin {
   }
 
   updateWallets(WalletResponseObject wallet) async {
-    final yourWallets = await walletRepo.retrieveYourWallets();
-    final oldWallet = yourWallets?.firstOrNullWhere((item) => item?.address == wallet.address);
-    if (oldWallet != null) {
-      final oldWalletIndex = yourWallets?.indexOf(oldWallet);
-      if (oldWalletIndex?.isGreaterThan(-1) == true) {
-        yourWallets?.removeAt(oldWalletIndex!);
-        yourWallets?.insert(
-          oldWalletIndex!,
-          oldWallet.copyWith(scrIsBackedUp: true, scrBackupReminderIsShown: true),
-        );
-        await walletRepo.updateYourWallets(yourWallets);
-      }
+    final yourWallets = await walletRepo.retrieveYourWallets() ?? [];
+    final oldWalletIndex = yourWallets.indexWhere((item) => item?.address == wallet.address);
+
+    if (oldWalletIndex != -1) {
+      // Update existing wallet with backup flags
+      yourWallets[oldWalletIndex] = yourWallets[oldWalletIndex]!.copyWith(
+        scrIsBackedUp: true,
+        scrBackupReminderIsShown: true,
+      );
     } else {
-      await walletRepo.updateYourWallets([...?yourWallets, wallet]);
+      // Add new wallet
+      yourWallets.add(wallet);
     }
+
+    await walletRepo.updateYourWallets(yourWallets);
   }
 }

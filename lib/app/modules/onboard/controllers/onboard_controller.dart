@@ -94,7 +94,7 @@ class OnboardController extends BaseController with NetworkingMixin {
       await walletRepo.updateYourWallets([wallet.value]);
       return;
     }
-    final oldWallet = yourWallets?.firstOrNullWhere(
+    final oldWallet = yourWallets.firstOrNullWhere(
       (item) => item?.address == wallet.value?.address,
     );
     if (oldWallet != null) {

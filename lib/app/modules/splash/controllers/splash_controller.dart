@@ -77,8 +77,7 @@ class SplashController extends BaseController {
 
   @visibleForTesting
   checkLogin() async {
-    final appConfigurations =
-        this.appConfigurations ?? await appConfigsRepository.retrieveAppConfigurations();
+    appConfigurations ??= await appConfigsRepository.retrieveAppConfigurations();
     Fimber.d("App configurations: $appConfigurations");
     if (appConfigurations == null) {
       Future.delayed(ToastDuration.LENGTH_SHORT, () {
@@ -87,7 +86,7 @@ class SplashController extends BaseController {
       });
     } else {
       // check biometric logging.
-      if (appConfigurations.isBiometricsLogin == true) {
+      if (appConfigurations?.isBiometricsLogin == true) {
         isLoading.value = false;
         Fimber.d("Need to show the biometric login.");
         handleBiometricLogin();

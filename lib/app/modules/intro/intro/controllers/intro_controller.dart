@@ -18,7 +18,7 @@ class IntroController extends BaseController {
 
   final isNewAddition = false.obs;
   final appConfigsRepository = Get.find<AppConfigsRepository>();
-  late AppConfigurations? appConfigurations;
+  AppConfigurations? appConfigurations;
 
   @override
   void onInit() {
@@ -27,7 +27,7 @@ class IntroController extends BaseController {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
     Fimber.d("onReady()");
     _loadAppConfig();
