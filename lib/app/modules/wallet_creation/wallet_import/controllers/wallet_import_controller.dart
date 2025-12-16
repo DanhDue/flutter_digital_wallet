@@ -3,17 +3,23 @@
 import 'dart:convert';
 
 import 'package:bip39/bip39.dart' as bip39;
+import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/base/networking_mixin.dart';
 import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
+import 'package:d3_wallet/data/repositories/wallet_repository.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 class WalletImportController extends BaseController with NetworkingMixin {
   dynamic arguments = Get.arguments;
+
+  final walletRepo = Get.find<WalletRepository>();
 
   late TextEditingController? textEditingController;
   late FocusNode? focusNode;
@@ -25,6 +31,10 @@ class WalletImportController extends BaseController with NetworkingMixin {
   final isMnemonic = true.obs;
   final isMnemonicError = false.obs;
   final isValid = false.obs;
+  String? deviceToken;
+  String? privateKey;
+  String? bs58PrivateKey;
+  String? mnemonics;
 
   late final Rx<WalletResponseObject?> wallet = WalletResponseObject().obs;
 
@@ -98,6 +108,8 @@ class WalletImportController extends BaseController with NetworkingMixin {
     if (isMnemonic.value) {
       isValid.value = true;
       isMnemonicError.value = false;
+      mnemonics = srpOrPk;
+      return;
     }
     // If not a mnemonic, check if it's a Solana private key
     final isPrivateKey = _isSolanaPrivateKey(srpOrPk ?? "");
@@ -120,17 +132,20 @@ class WalletImportController extends BaseController with NetworkingMixin {
 
     // Check if it's a byte array format like [30, 11, 190, ...]
     if (_isValidByteArray(trimmed)) {
+      privateKey = trimmed;
       return true;
     }
 
     // Check if it's a Base58 encoded private key (most common format)
     // Solana private keys in Base58 are typically 87-88 characters
     if (_isValidBase58(trimmed) && trimmed.length >= 87 && trimmed.length <= 88) {
+      bs58PrivateKey = trimmed;
       return true;
     }
 
     // Check if it's a hex string (64 bytes = 128 hex characters)
     if (_isValidHex(trimmed) && trimmed.length == 128) {
+      privateKey = trimmed;
       return true;
     }
 
@@ -180,9 +195,24 @@ class WalletImportController extends BaseController with NetworkingMixin {
   void restoreWallet() async {
     Fimber.d("restoreWallet()");
     isLoading.value = true;
-    Future.delayed(const Duration(seconds: 6), () {
-      isLoading.value = false;
-    });
+    callApi(
+      walletRepo.createOrRestoreWallet(
+        mnemonics: mnemonics,
+        privateKey: privateKey,
+        bs58PrivateKey: bs58PrivateKey,
+        deviceToken: deviceToken,
+      ),
+      onSuccess: (response) {
+        Fimber.d("createOrRestoreWallet() onSuccess: $response");
+        isLoading.value = false;
+        Get.toNamed(Routes.HOME);
+      },
+      onError: (error) {
+        Fimber.d("createOrRestoreWallet() onError: $error");
+        isLoading.value = false;
+        SmartDialog.showToast(error.message ?? "Something went wrong!");
+      },
+    );
   }
 
   void scannedText(String? mnemonics) {
