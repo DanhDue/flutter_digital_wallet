@@ -20,9 +20,9 @@ class QRController extends BaseController {
   void onInit() {
     super.onInit();
     Fimber.d("onInit()");
-    showFullScreen.value = (arguments as Map?)?[NavigationArguments.qr.showFullScreen] ?? false;
+    showFullScreen.value = retrieveArgument<bool>(NavigationArguments.qr.showFullScreen) ?? false;
     selectedWallet.value =
-        (arguments as Map?)?[NavigationArguments.wallet] as WalletResponseObject? ??
+        retrieveArgument<WalletResponseObject>(NavigationArguments.wallet) ??
         WalletResponseObject();
     Fimber.d("showFullScreen: ${showFullScreen.value}");
     walletIsChanged.stream.listen((event) {

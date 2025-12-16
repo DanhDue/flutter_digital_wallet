@@ -4,7 +4,6 @@ import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/app/routes/navigation_arguments.dart';
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
-import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
 import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/utils/biometric_auth/biometric_authenticator.dart';
@@ -64,8 +63,6 @@ class PasswordCreationController extends BaseController {
 
   static const int mediumStrengthPasswordLength = 8;
   static const int strongStrengthPasswordLength = 12;
-
-  late final Rx<WalletResponseObject?> wallet = WalletResponseObject().obs;
 
   // Regex patterns
   static final _repeatedCharRegex = RegExp(r'^(\w)\1+$');

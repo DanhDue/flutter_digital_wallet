@@ -36,8 +36,7 @@ class IntroController extends BaseController {
   _loadAppConfig() async {
     Fimber.d("_loadAppConfig()");
     isNewAddition.value = (arguments as Map?)?[NavigationArguments.isNewAddition] ?? false;
-    appConfigurations =
-        await appConfigsRepository.retrieveAppConfigurations() ?? AppConfigurations();
+    appConfigurations = await appConfigsRepository.retrieveAppConfigurations();
   }
 
   @override
@@ -57,7 +56,10 @@ class IntroController extends BaseController {
 
   void createNewWallet() {
     Fimber.d("createNewWallet()");
-    Get.toNamed(Routes.ONBOARD);
+    Get.toNamed(
+      Routes.ONBOARD,
+      arguments: {NavigationArguments.appConfigurations: appConfigurations},
+    );
   }
 
   void updateConfig() {

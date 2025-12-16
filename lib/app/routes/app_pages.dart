@@ -80,7 +80,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.WALLET_IMPORT;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),

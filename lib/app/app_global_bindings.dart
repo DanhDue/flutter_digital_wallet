@@ -3,6 +3,7 @@
 // coverage:ignore-file
 
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
+import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
 import 'package:d3_wallet/data/local/impl/selected_account_storage_impl.dart';
 import 'package:d3_wallet/data/local/impl/token_account_storage_impl.dart';
 import 'package:d3_wallet/data/local/impl/wallets_storage_impl.dart';
@@ -43,6 +44,7 @@ class AppGlobalBindings extends Bindings {
     Get.lazyPut<WalletsStorage>(() => WalletsStorageImpl(), fenix: true);
     Get.lazyPut<TokenAccountStorage>(() => TokenAccountStorageImpl(), fenix: true);
     Hive.registerAdapter(AppConfigurationsAdapter());
+    Hive.registerAdapter(WalletResponseObjectAdapter());
     Get.lazyPut(() => DioFactory().dio, fenix: true);
     Get.lazyPut<AppConfigsRepository>(() => AppConfigurationsRepositoryImpl(), fenix: true);
     Get.lazyPut<LocalAuthentication>(() => LocalAuthentication(), fenix: true);

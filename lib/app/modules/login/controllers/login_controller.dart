@@ -173,6 +173,7 @@ class LoginController extends BaseController {
     Fimber.d("keyboardVisibilityChanged($visible)");
     Future.delayed(Duration(milliseconds: visible ? 0 : Constants.keyboardDismissDuration), () {
       keyboardIsVisible.value = visible;
+      if (visible == false && enableUnlockButton.value && !isLoading.value) checkPassword();
     });
   }
 }

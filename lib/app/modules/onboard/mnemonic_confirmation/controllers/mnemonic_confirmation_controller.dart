@@ -185,7 +185,7 @@ class MnemonicConfirmationController extends BaseController {
           oldWalletIndex!,
           oldWallet.copyWith(scrIsBackedUp: true, scrBackupReminderIsShown: true),
         );
-        // await walletRepo.updateYourWallets(yourWallets);
+        await walletRepo.updateYourWallets(yourWallets);
       }
     }
     isLoading.value = false;

@@ -8,7 +8,6 @@ import 'package:d3_wallet/app/modules/password_creation/controllers/password_cre
 import 'package:d3_wallet/base/widgets/custom_filled_button.dart';
 import 'package:d3_wallet/base/widgets/input_text.dart';
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
-import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
 import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
@@ -27,7 +26,7 @@ import 'package:material_text_fields/utils/extensions.dart';
 class OnboardingPasswordCreationView extends StatefulHookWidget {
   const OnboardingPasswordCreationView({super.key, this.passwordAndWalletAreCreated});
 
-  final ValueChanged<(WalletResponseObject?, AppConfigurations?)>? passwordAndWalletAreCreated;
+  final ValueChanged<AppConfigurations?>? passwordAndWalletAreCreated;
 
   @override
   State<OnboardingPasswordCreationView> createState() => _OnboardingPasswordCreationViewState();
@@ -467,10 +466,7 @@ class _OnboardingPasswordCreationViewState extends State<OnboardingPasswordCreat
                 if (controller.passwordAndWalletIsCreated.value) {
                   WidgetsBinding.instance.addPostFrameCallback((duration) {
                     Future.delayed(Duration(milliseconds: Constants.keyboardDismissDuration), () {
-                      widget.passwordAndWalletAreCreated?.call((
-                        controller.wallet.value,
-                        controller.appConfigurations,
-                      ));
+                      widget.passwordAndWalletAreCreated?.call(controller.appConfigurations);
                     });
                   });
                 }

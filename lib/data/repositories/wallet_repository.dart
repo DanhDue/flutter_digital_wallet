@@ -9,6 +9,8 @@ import 'package:d3_wallet/data/result.dart';
 abstract class WalletRepository {
   Future<List<WalletResponseObject?>?> retrieveYourWallets();
 
+  Future<void> updateYourWallets(List<WalletResponseObject?>? wallets);
+
   Future<Result<BaseResponseObject<WalletResponseObject>?, ApiError>> createOrRestoreWallet({
     String? deviceToken,
     String? privateKey,

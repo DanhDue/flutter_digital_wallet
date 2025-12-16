@@ -8,13 +8,12 @@ import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/base/networking_mixin.dart';
 import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
 import 'package:d3_wallet/data/repositories/wallet_repository.dart';
+import 'package:d3_wallet/generated/locales.g.dart';
+import 'package:dart_extensions/dart_extensions.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get.dart';
 
 class WalletImportController extends BaseController with NetworkingMixin {
   dynamic arguments = Get.arguments;
@@ -35,8 +34,6 @@ class WalletImportController extends BaseController with NetworkingMixin {
   String? privateKey;
   String? bs58PrivateKey;
   String? mnemonics;
-
-  late final Rx<WalletResponseObject?> wallet = WalletResponseObject().obs;
 
   @override
   void onInit() {
@@ -202,15 +199,25 @@ class WalletImportController extends BaseController with NetworkingMixin {
         bs58PrivateKey: bs58PrivateKey,
         deviceToken: deviceToken,
       ),
-      onSuccess: (response) {
+      onSuccess: (response) async {
         Fimber.d("createOrRestoreWallet() onSuccess: $response");
         isLoading.value = false;
-        Get.toNamed(Routes.HOME);
+        if (response?.data != null) {
+          try {
+            await updateWallets(response!.data!);
+            Get.toNamed(Routes.HOME);
+          } catch (e) {
+            Fimber.e("Failed to update wallets: $e");
+            SmartDialog.showToast(LocaleKeys.cannotCreateWalletError.tr);
+          }
+        } else {
+          SmartDialog.showToast(LocaleKeys.cannotCreateWalletError.tr);
+        }
       },
       onError: (error) {
         Fimber.d("createOrRestoreWallet() onError: $error");
         isLoading.value = false;
-        SmartDialog.showToast(error.message ?? "Something went wrong!");
+        SmartDialog.showToast(error.message ?? LocaleKeys.cannotCreateWalletError.tr);
       },
     );
   }
@@ -220,5 +227,23 @@ class WalletImportController extends BaseController with NetworkingMixin {
     textEditingController?.text = mnemonics ?? "";
     onTextChanged(mnemonics ?? "");
     keyboardVisibilityChanged(false);
+  }
+
+  updateWallets(WalletResponseObject wallet) async {
+    final yourWallets = await walletRepo.retrieveYourWallets();
+    final oldWallet = yourWallets?.firstOrNullWhere((item) => item?.address == wallet.address);
+    if (oldWallet != null) {
+      final oldWalletIndex = yourWallets?.indexOf(oldWallet);
+      if (oldWalletIndex?.isGreaterThan(-1) == true) {
+        yourWallets?.removeAt(oldWalletIndex!);
+        yourWallets?.insert(
+          oldWalletIndex!,
+          oldWallet.copyWith(scrIsBackedUp: true, scrBackupReminderIsShown: true),
+        );
+        await walletRepo.updateYourWallets(yourWallets);
+      }
+    } else {
+      await walletRepo.updateYourWallets([...?yourWallets, wallet]);
+    }
   }
 }

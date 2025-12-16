@@ -65,19 +65,20 @@ class SplashController extends BaseController {
     final checkingTime = DateTime.now().millisecondsSinceEpoch - startTime;
     Fimber.d("_pendingNavigation() =>Checking time: $checkingTime");
     Future.delayed(Duration(milliseconds: HEALTH_CHECK_RETRY_INTERVAL - checkingTime), () {
+      isLoading.value = false;
       Get.offAllNamed(route);
     });
   }
 
   _loadAppConfig() async {
     Fimber.d("_loadAppConfig()");
-    appConfigurations =
-        await appConfigsRepository.retrieveAppConfigurations() ?? AppConfigurations();
+    appConfigurations = await appConfigsRepository.retrieveAppConfigurations();
   }
 
   @visibleForTesting
   checkLogin() async {
-    final appConfigurations = await appConfigsRepository.retrieveAppConfigurations();
+    final appConfigurations =
+        this.appConfigurations ?? await appConfigsRepository.retrieveAppConfigurations();
     Fimber.d("App configurations: $appConfigurations");
     if (appConfigurations == null) {
       Future.delayed(ToastDuration.LENGTH_SHORT, () {
@@ -91,8 +92,12 @@ class SplashController extends BaseController {
         Fimber.d("Need to show the biometric login.");
         handleBiometricLogin();
       } else {
-        isLoading.value = false;
-        _pendingNavigation(Routes.LOGIN);
+        final yourWallets = await walletRepo.retrieveYourWallets();
+        if (yourWallets?.isNotEmpty == true) {
+          _pendingNavigation(Routes.LOGIN);
+        } else {
+          _pendingNavigation(Routes.INTRO);
+        }
       }
     }
   }

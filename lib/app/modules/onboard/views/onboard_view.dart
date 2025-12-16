@@ -58,15 +58,21 @@ class _OnboardViewState extends State<OnboardView> {
                   children: [
                     (controller.currentPage.value == OnboardPageIndex.passwordCreationPageIndex ||
                             controller.currentPage.value ==
-                                OnboardPageIndex.mnemonicConfirmationPageIndex)
+                                OnboardPageIndex.mnemonicConfirmationPageIndex ||
+                            controller.currentPage.value == OnboardPageIndex.secureWalletPageIndex)
                         ? InkWell(
                           onTap: () {
-                            controller.currentPage.value ==
-                                    OnboardPageIndex.passwordCreationPageIndex
+                            (controller.currentPage.value ==
+                                        OnboardPageIndex.passwordCreationPageIndex ||
+                                    controller.currentPage.value ==
+                                        OnboardPageIndex.secureWalletPageIndex)
                                 ? Get.back()
-                                : controller.jumpToPage(
-                                  OnboardPageIndex.mnemonicDescriptionPageIndex,
-                                );
+                                : {
+                                  controller.shouldBeConfirmMnemonic.value = false,
+                                  controller.jumpToPage(
+                                    OnboardPageIndex.mnemonicCreationPageIndex,
+                                  ),
+                                };
                           },
                           child: Assets.images.icBack.svg(
                             width: 36,
@@ -115,7 +121,7 @@ class _OnboardViewState extends State<OnboardView> {
                     child: KeepAliveWidget(
                       child: OnboardingPasswordCreationView(
                         passwordAndWalletAreCreated: (data) {
-                          controller.updateCreatedAppConfigurations(data.$1, data.$2);
+                          controller.updateCreatedAppConfigurations(data);
                           controller.jumpToPage(OnboardPageIndex.secureWalletPageIndex);
                         },
                       ),

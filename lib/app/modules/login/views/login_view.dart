@@ -145,6 +145,7 @@ class _LoginViewState extends State<LoginView> {
                                   () =>
                                       controller.obscurePassword.value =
                                           !controller.obscurePassword.value,
+                              onFieldSubmitted: (value) => controller.checkPassword(),
                             ),
                           ),
                         ),
@@ -180,16 +181,18 @@ class _LoginViewState extends State<LoginView> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Flexible(
-                                child: CustomFilledButton(
-                                  onPressed: () {
-                                    if (controller.enableUnlockButton.value != true) return;
-                                    controller.checkPassword();
-                                  },
-                                  backgroundColor:
-                                      controller.enableUnlockButton.value
-                                          ? context.appThemes.trueBlue
-                                          : context.appThemes.blue15,
-                                  text: LocaleKeys.unlock.tr,
+                                child: Obx(
+                                  () => CustomFilledButton(
+                                    onPressed: () {
+                                      if (controller.enableUnlockButton.value != true) return;
+                                      controller.checkPassword();
+                                    },
+                                    backgroundColor:
+                                        controller.enableUnlockButton.value
+                                            ? context.appThemes.trueBlue
+                                            : context.appThemes.blue15,
+                                    text: LocaleKeys.unlock.tr,
+                                  ),
                                 ),
                               ),
                               Visibility(
