@@ -9,6 +9,7 @@ import 'package:d3_wallet/app/modules/comming_soon_modal/views/comming_soon_moda
 import 'package:d3_wallet/app/modules/my_wallets/bindings/my_wallets_binding.dart';
 import 'package:d3_wallet/app/modules/my_wallets/wallet_card/views/wallet_card_view.dart';
 import 'package:d3_wallet/app/modules/network_selection/views/network_selection_view.dart';
+import 'package:d3_wallet/app/modules/wallet_token_info/views/wallet_token_info_view.dart';
 import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/app/routes/navigation_arguments.dart';
 import 'package:d3_wallet/base/base_binding_creator_widget.dart';
@@ -17,6 +18,7 @@ import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_respo
 import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
+import 'package:dart_helper_utils/dart_helper_utils.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boring_avatars/flutter_boring_avatars.dart';
@@ -34,7 +36,6 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
   Widget? onCreateViews(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // call this method here to hide soft keyboard
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
@@ -76,16 +77,31 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                   ],
                 ).paddingSymmetric(horizontal: 50),
                 SizedBox(height: 26),
-                Container(width: double.infinity, height: 1, color: context.appThemes.ink5),
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Obx(
+                          () => WalletTokenInfoView(
+                            selectedWallet: controller.selectedWallet.value,
+                            balanceIsHidden: controller.balanceIsHidden.value,
+                          ),
+                        ),
+                      ],
+                    ).paddingSymmetric(horizontal: 16),
+                  ),
+                ),
                 Obx(() {
                   if (controller.isLoading.value == true) {
                     WidgetsBinding.instance.addPostFrameCallback((duration) {
-                      // EasyLoading.show();
                       SmartDialog.showLoading(msg: "");
                     });
                   } else {
                     WidgetsBinding.instance.addPostFrameCallback((duration) {
-                      // EasyLoading.dismiss();
                       SmartDialog.dismiss();
                     });
                   }
@@ -277,7 +293,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(context.appThemes.trueBlue, BlendMode.srcIn),
               )
-              .paddingSymmetric(horizontal: 12),
+              .paddingOnly(left: 12),
         ),
       ],
     ).paddingSymmetric(horizontal: 16);
@@ -287,7 +303,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
     return Obx(() {
       final wallets = controller.wallets;
 
-      if (wallets.isEmpty) {
+      if (wallets.isEmptyOrNull) {
         return SizedBox(
           height: 186,
           child: Center(
@@ -313,7 +329,10 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                   (context, index) =>
                       WalletCardView(wallet: reversedWallets[index], walletIndex: index),
               layout: SwiperLayout.STACK,
-              itemWidth: constraints.maxWidth * 0.86,
+              itemWidth:
+                  controller.wallets.length > 1
+                      ? constraints.maxWidth - 40
+                      : constraints.maxWidth - 32,
               scale: 0.96,
               loop: false,
             );

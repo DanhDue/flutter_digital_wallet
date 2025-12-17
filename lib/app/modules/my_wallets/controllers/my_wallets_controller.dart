@@ -39,21 +39,31 @@ class MyWalletsController extends BaseController {
   void onInit() {
     super.onInit();
     Fimber.d("onInit()");
-
-    // Mock wallet data for testing - Generate 20 wallets
-    wallets.value = List.generate(
-      20,
-      (index) => WalletResponseObject(
-        name: "Account ${index + 1}",
-        address: "0x${(index + 1).toRadixString(16).padLeft(40, '0')}",
-      ),
-    );
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
     Fimber.d("onReady()");
+    isLoading.value = true;
+    try {
+      wallets.value = await walletRepo.retrieveYourWallets() ?? [];
+      selectedWallet.value = wallets.value.firstOrNull ?? WalletResponseObject();
+    } catch (e) {
+      Fimber.e("Error retrieving wallets", ex: e);
+      wallets.value = [];
+      selectedWallet.value = WalletResponseObject();
+    } finally {
+      isLoading.value = false;
+    }
+    // Mock wallet data for testing - Generate 20 wallets
+    // wallets.value = List.generate(
+    //   20,
+    //   (index) => WalletResponseObject(
+    //     name: "Account ${index + 1}",
+    //     address: "0x${(index + 1).toRadixString(16).padLeft(40, '0')}",
+    //   ),
+    // );
   }
 
   @override

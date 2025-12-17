@@ -8,6 +8,7 @@ import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_respo
 import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
+import 'package:d3_wallet/widgets/rectangular_indicator.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -49,20 +50,41 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        TabBar.secondary(
-          onTap: (index) {
-            setState(() {
-              _selectedTabbar = index;
-            });
-          },
-          splashFactory: NoSplash.splashFactory,
-          indicatorWeight: 2,
-          indicatorColor: context.appThemes.trueBlue,
-          dividerColor: context.appThemes.ink5,
-          labelColor: context.appThemes.trueBlue,
-          unselectedLabelColor: context.appThemes.ink20,
-          controller: _tabController,
-          tabs: <Widget>[Tab(text: LocaleKeys.token.tr), Tab(text: LocaleKeys.nft.tr)],
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          decoration: BoxDecoration(
+            border: Border.all(color: context.appThemes.trueBlue, width: 1),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TabBar(
+            indicatorSize: TabBarIndicatorSize.tab,
+            labelPadding: EdgeInsets.symmetric(vertical: 0),
+            indicatorPadding: EdgeInsetsGeometry.symmetric(vertical: 4),
+            onTap: (index) {
+              setState(() {
+                _selectedTabbar = index;
+              });
+            },
+            splashFactory: NoSplash.splashFactory,
+            overlayColor: WidgetStateProperty.all(Colors.transparent),
+            dividerColor: Colors.transparent,
+            labelColor: Colors.white,
+            unselectedLabelColor: context.appThemes.ink40,
+            labelStyle: context.appThemes.bold14,
+            unselectedLabelStyle: context.appThemes.bold14,
+            indicator: RectangularIndicator(
+              color: context.appThemes.trueBlue,
+              bottomLeftRadius: 6,
+              bottomRightRadius: 6,
+              topLeftRadius: 6,
+              topRightRadius: 6,
+              horizontalPadding: 0,
+              verticalPadding: 0,
+              paintingStyle: PaintingStyle.fill,
+            ),
+            controller: _tabController,
+            tabs: <Widget>[Tab(text: LocaleKeys.token.tr), Tab(text: LocaleKeys.nft.tr)],
+          ),
         ),
         Builder(
           builder: (_) {
@@ -89,22 +111,28 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
+        children: [const SizedBox(height: 56), _buildEmptyTokensLayouts(context)],
+      ),
+    );
+  }
+
+  _buildEmptyTokensLayouts(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(height: 12),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Text(
-              LocaleKeys.tokenList.tr,
-              style: context.appThemes.bold14.copyWith(color: context.appThemes.ink100),
-              textAlign: TextAlign.left,
-            ),
+          Assets.images.icNoFound.svg(width: 86, fit: BoxFit.cover),
+          SizedBox(height: 4),
+          Text(
+            LocaleKeys.tokenNotFoundMessage.tr,
+            style: context.appThemes.regular14.copyWith(color: context.appThemes.ink60),
           ),
-          SizedBox(height: 12),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [],
+          SizedBox(height: 4),
+          CustomUnfilledButton(
+            text: LocaleKeys.addToken.tr,
+            onPressed: () => Fimber.d("Add token"),
           ),
         ],
       ),
@@ -133,19 +161,7 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: 12),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Text(
-              LocaleKeys.txtNFTList.tr,
-              style: context.appThemes.bold14.copyWith(color: context.appThemes.ink100),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          SizedBox(height: 12),
-          _buildEmptyNFTLayouts(context),
-        ],
+        children: [const SizedBox(height: 56), _buildEmptyNFTLayouts(context)],
       ),
     );
   }
@@ -157,11 +173,11 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Assets.images.icIllusEmptyNft.svg(width: 180, height: 180, fit: BoxFit.cover),
+          Assets.images.icNoFound.svg(width: 86, fit: BoxFit.cover),
           SizedBox(height: 4),
           Text(
             LocaleKeys.nftNotFoundMessage.tr,
-            style: context.appThemes.regular14.copyWith(color: context.appThemes.ink40),
+            style: context.appThemes.regular14.copyWith(color: context.appThemes.ink60),
           ),
           SizedBox(height: 4),
           CustomUnfilledButton(text: LocaleKeys.addNFT.tr, onPressed: () => Fimber.d("Add NFT")),
