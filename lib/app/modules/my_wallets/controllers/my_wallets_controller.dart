@@ -68,7 +68,41 @@ class MyWalletsController extends BaseController {
   @override
   void onClose() {
     super.onClose();
-    Fimber.d("onClose()");
+    Fimber.d("MyWalletsController onClose - cleaning up all wallet card controllers");
+    cleanupAllWalletCardControllers();
+  }
+
+  /// Clean up all wallet card controllers
+  void cleanupAllWalletCardControllers() {
+    for (var wallet in wallets) {
+      if (wallet != null) {
+        final tag = GetXControllerTags.walletCard(wallet.address);
+        if (Get.isRegistered<dynamic>(tag: tag)) {
+          Get.delete(tag: tag);
+          Fimber.d("Deleted controller for wallet with tag: $tag");
+        }
+      }
+    }
+  }
+
+  /// Clean up controller for a specific wallet (e.g., when wallet is deleted)
+  void cleanupWalletCardController(String? walletAddress) {
+    if (walletAddress == null) return;
+    final tag = GetXControllerTags.walletCard(walletAddress);
+    if (Get.isRegistered<dynamic>(tag: tag)) {
+      Get.delete(tag: tag);
+      Fimber.d("Deleted controller for removed wallet with tag: $tag");
+    }
+  }
+
+  /// This method is called when a wallet is removed
+  void removeWallet(WalletResponseObject wallet) {
+    final wasRemoved = wallets.remove(wallet);
+    if (wasRemoved && selectedWallet.value == wallet) {
+      // Set to first available wallet or empty object
+      selectedWallet.value = wallets.firstOrNull ?? WalletResponseObject();
+    }
+    cleanupWalletCardController(wallet.address);
   }
 
   void backupIsDone() {}

@@ -16,6 +16,7 @@ import 'package:d3_wallet/data/bean/response/network_object/network_object.dart'
 import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
+import 'package:d3_wallet/utils/constants.dart';
 import 'package:dart_helper_utils/dart_helper_utils.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
@@ -252,11 +253,17 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
         child: LayoutBuilder(
           builder: (context, constraints) {
             return Swiper(
+              key: const PageStorageKey<String>(PageStorageKeys.WALLETS_SWIPER),
               itemCount: reversedWallets.length,
               index: reversedWallets.length - 1,
-              itemBuilder:
-                  (context, index) =>
-                      WalletCardView(wallet: reversedWallets[index], walletIndex: index),
+              itemBuilder: (context, index) {
+                final wallet = reversedWallets[index];
+                return WalletCardView(
+                  key: ValueKey(PageStorageKeys.walletCardKey(wallet?.address, index)),
+                  wallet: wallet,
+                  walletIndex: index,
+                );
+              },
               layout: SwiperLayout.STACK,
               itemWidth:
                   controller.wallets.length > 1

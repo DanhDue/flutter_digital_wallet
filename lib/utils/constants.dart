@@ -100,6 +100,28 @@ class NetworkIds {
   static const String SAMO = "devSAMO";
 }
 
+class GetXControllerTags {
+  static const String WALLET_CARD_PREFIX = 'wallet_card_';
+
+  /// Generate tag for wallet card controller
+  static String walletCard(String? walletAddress) {
+    if (walletAddress == null) {
+      throw ArgumentError('Wallet address cannot be null');
+    }
+    return '$WALLET_CARD_PREFIX$walletAddress';
+  }
+}
+
+class PageStorageKeys {
+  static const String WALLETS_SWIPER = 'wallets_swiper';
+
+  /// Generate ValueKey for wallet card widget
+  /// Uses wallet address for uniqueness, falls back to index if address is null
+  static String walletCardKey(String? walletAddress, int index) {
+    return 'wallet_${walletAddress ?? index}_$index';
+  }
+}
+
 class AppFlavor {
   static const String PRODUCTION = "prd";
   static const String STAGING = "stg";

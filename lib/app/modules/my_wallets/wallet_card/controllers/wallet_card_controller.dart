@@ -28,15 +28,20 @@ class WalletCardController extends BaseController {
   final showQRCode = false.obs;
   Timer? showRQCodeTimer;
 
+  // Store subscription reference for proper cleanup
+  StreamSubscription<bool>? _balanceVisibilitySubscription;
+
   @override
   void onInit() {
     super.onInit();
-    Fimber.d("onInit");
+    Fimber.d("WalletCardController onInit");
     wallet.value =
         (arguments as Map?)?[NavigationArguments.wallet] as WalletResponseObject? ??
         WalletResponseObject();
     walletIndex = (arguments as Map?)?[NavigationArguments.walletIndex] as int? ?? 0;
-    hiddenBalanceIsChanged.stream.listen((isHidden) {
+
+    // Store subscription so we can cancel it later
+    _balanceVisibilitySubscription = hiddenBalanceIsChanged.stream.listen((isHidden) {
       balanceIsHidden.value = isHidden;
     });
   }
@@ -44,14 +49,22 @@ class WalletCardController extends BaseController {
   @override
   void onReady() {
     super.onReady();
-    Fimber.d("onReady");
+    Fimber.d("WalletCardController onReady");
     qrData.value = QrUtils.instance.retrieveTransferQRData(wallet.value.address ?? "");
   }
 
   @override
   void onClose() {
     super.onClose();
-    Fimber.d("onClose");
+    Fimber.d("WalletCardController onClose - cleaning up resources");
+
+    // Cancel timer to prevent it from running after controller is disposed
+    showRQCodeTimer?.cancel();
+    showRQCodeTimer = null;
+
+    // Cancel stream subscription to prevent memory leak
+    _balanceVisibilitySubscription?.cancel();
+    _balanceVisibilitySubscription = null;
   }
 
   void updateWallet(WalletResponseObject? inWallet, int walletIndex) {

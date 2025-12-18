@@ -12,6 +12,8 @@ import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:d3_wallet/utils/extensions/double_extension.dart';
 import 'package:d3_wallet/utils/extensions/string_ext.dart';
 import 'package:d3_wallet/utils/gradient_utils.dart';
+import 'package:d3_wallet/utils/constants.dart';
+import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
@@ -28,19 +30,32 @@ class WalletCardView extends StatefulWidget {
   State<WalletCardView> createState() => _WalletCardViewState();
 }
 
-class _WalletCardViewState extends State<WalletCardView> {
+class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAliveClientMixin {
   late final WalletCardController controller;
 
   @protected
   late PrettyQrDecoration decoration;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   void initState() {
     super.initState();
 
-    // Create a unique controller for each card using wallet address as tag
-    final tag = 'wallet_card_${widget.wallet?.address ?? widget.walletIndex}';
-    controller = Get.put(WalletCardController(), tag: tag, permanent: false);
+    // Create a unique tag for this wallet's controller
+    final tag = GetXControllerTags.walletCard(
+      widget.wallet?.address ?? widget.walletIndex.toString(),
+    );
+
+    // Try to find existing controller, or create a new permanent one
+    if (Get.isRegistered<WalletCardController>(tag: tag)) {
+      controller = Get.find<WalletCardController>(tag: tag);
+      Fimber.d("Reusing existing controller for tag: $tag");
+    } else {
+      controller = Get.put(WalletCardController(), tag: tag, permanent: true);
+      Fimber.d("Created new permanent controller for tag: $tag");
+    }
 
     decoration = PrettyQrDecoration(
       shape: const PrettyQrSmoothSymbol(color: AppColors.ink100, roundFactor: 1),
@@ -57,14 +72,15 @@ class _WalletCardViewState extends State<WalletCardView> {
 
   @override
   void dispose() {
-    // Clean up the controller when widget is disposed
-    final tag = 'wallet_card_${widget.wallet?.address ?? widget.walletIndex}';
-    Get.delete<WalletCardController>(tag: tag);
+    // Don't delete the controller - it's permanent and will be reused
+    // Only dispose when the wallet is actually removed from the list
+    Fimber.d("WalletCardView dispose called for ${widget.wallet?.address}");
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context); // Required by AutomaticKeepAliveClientMixin
     return Stack(
       alignment: Alignment.bottomRight,
       children: [
