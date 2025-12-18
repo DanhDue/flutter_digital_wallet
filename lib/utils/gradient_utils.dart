@@ -15,11 +15,7 @@ class GradientUtils {
     // 20 popular gradient combinations used by designers
     final colorSets = [
       // 1. Ocean Blue - Classic blue gradient
-      [
-        context.appThemes.materialBlue,
-        context.appThemes.materialBlue,
-        context.appThemes.materialCyan,
-      ],
+      [context.appThemes.middleBlue, context.appThemes.middleBlue, context.appThemes.pinkLady],
       // 2. Sunset - Warm orange to pink
       [
         context.appThemes.materialOrange,
@@ -80,55 +76,49 @@ class GradientUtils {
         context.appThemes.materialPurple,
         context.appThemes.materialPink,
       ],
-      // 13. Sunrise - Yellow to orange
+      // 12. Sunrise - Yellow to orange
       [
         context.appThemes.materialAmber,
         context.appThemes.materialAmber,
         context.appThemes.materialOrange,
       ],
-      // 16. Aqua - Cyan to blue
+      // 13. Aqua - Cyan to blue
       [
         context.appThemes.materialCyan,
         context.appThemes.materialCyan,
         context.appThemes.materialBlue,
       ],
-      // 17. Lime - Bright lime green
+      // 14. Lime - Bright lime green
       [
         context.appThemes.materialLime,
         context.appThemes.materialLime,
         context.appThemes.materialLightGreen,
       ],
-      // 18. Tangerine - Orange gradient
+      // 15. Tangerine - Orange gradient
       [
         context.appThemes.materialOrange,
         context.appThemes.materialOrange,
         context.appThemes.materialAmber,
       ],
-      // 15. Coral - Pink to red
+      // 16. Coral - Pink to red
       [
         context.appThemes.materialPink,
         context.appThemes.materialPink,
         context.appThemes.materialRed,
       ],
-      // 19. Crimson - Deep red
+      // 17. Crimson - Deep red
       [
         context.appThemes.materialRed,
         context.appThemes.materialRed,
         context.appThemes.materialDeepOrange,
       ],
-      // 19. Sapphire - Deep blue
-      // [
-      //   context.appThemes.materialBlue,
-      //   context.appThemes.materialBlue,
-      //   context.appThemes.materialIndigo,
-      // ],
-      // 12. Emerald - Rich green
+      // 18. Emerald - Rich green
       [
         context.appThemes.materialTeal,
         context.appThemes.materialTeal,
         context.appThemes.materialGreen,
       ],
-      // 14. Twilight - Indigo to purple
+      // 19. Twilight - Indigo to purple
       [
         context.appThemes.materialIndigo,
         context.appThemes.materialIndigo,

@@ -91,7 +91,7 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
               colors: GradientUtils.getWalletGradientColors(context, widget.walletIndex),
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              stops: [0.0, 0.3, 1.0],
+              stops: [0.0, 0.2, 1.0],
             ),
           ),
           child: Stack(
