@@ -22,7 +22,7 @@ abstract class WalletResponseObject with _$WalletResponseObject {
     @HiveField(4) @JsonKey(name: 'bs58PrivateKey') String? bs58PrivateKey,
     @HiveField(5) @JsonKey(name: 'address') String? address,
     @HiveField(6) @JsonKey(name: 'mnemonics') String? mnemonics,
-    @HiveField(7) @JsonKey(name: 'balance') int? balance,
+    @HiveField(7) @JsonKey(name: 'balance') double? balance,
     @HiveField(8) @JsonKey(name: 'error') String? error,
     @HiveField(9) @JsonKey(name: 'signature') String? signature,
     @HiveField(10) @JsonKey(name: 'scr_is_backed_up', defaultValue: false) bool? scrIsBackedUp,

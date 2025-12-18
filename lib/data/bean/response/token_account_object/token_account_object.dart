@@ -17,6 +17,7 @@ abstract class TokenAccountObject with _$TokenAccountObject {
     @JsonKey(name: 'amount') double? amount,
     @JsonKey(name: 'mint_token') MintTokenObject? mintToken,
     @JsonKey(name: 'account_owner') String? accountOwner,
+    @JsonKey(name: 'price') double? price,
     @JsonKey(name: 'percentChange24h') double? percentChange24h,
   }) = _TokenAccountObject;
 

@@ -43,6 +43,7 @@ abstract class Routes {
   static const TRANSFER_CONFIRMATION = _Paths.TRANSFER_CONFIRMATION;
   static const REQUEST_PAYMENT = _Paths.REQUEST_PAYMENT;
   static const REQUEST_PAYMENT_RESULTS = _Paths.REQUEST_PAYMENT_RESULTS;
+  static const MY_TOKENS = _Paths.MY_TOKENS;
 }
 
 abstract class _Paths {
@@ -83,4 +84,5 @@ abstract class _Paths {
   static const TRANSFER_CONFIRMATION = '/transfer-confirmation';
   static const REQUEST_PAYMENT = '/request-payment';
   static const REQUEST_PAYMENT_RESULTS = '/request-payment-results';
+  static const MY_TOKENS = '/my-tokens';
 }

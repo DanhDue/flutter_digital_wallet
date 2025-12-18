@@ -4,6 +4,9 @@
 
 import 'dart:ui';
 
+import 'package:d3_wallet/data/bean/response/mint_token_object/mint_token_object.dart';
+import 'package:d3_wallet/data/bean/response/token_account_object/token_account_object.dart';
+
 class Constants {
   static const externalLinks = ExternalLinks();
   static const emailValidateReg =
@@ -30,6 +33,19 @@ class Constants {
   static const solMintToken = "So11111111111111111111111111111111111111112";
   static const oneMillion = 1_000_000;
   static const oneBillion = 1_000_000_000;
+
+  static const TokenAccountObject solanaTokenAccount = TokenAccountObject(
+    mintToken: MintTokenObject(
+      name: 'Solana',
+      symbol: 'SOL',
+      address: 'So11111111111111111111111111111111111111112',
+      uri: '',
+      logo: 'https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png',
+      mintAuthority: '',
+    ),
+    price: 186.68,
+    percentChange24h: 1.52402308,
+  );
 }
 
 class ExternalLinks {

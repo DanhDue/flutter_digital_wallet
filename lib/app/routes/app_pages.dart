@@ -18,6 +18,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/my_qr/bindings/my_qr_binding.dart';
 import '../modules/my_qr/views/my_qr_view.dart';
+import '../modules/my_tokens/bindings/my_tokens_binding.dart';
+import '../modules/my_tokens/views/my_tokens_view.dart';
 import '../modules/my_wallets/bindings/my_wallets_binding.dart';
 import '../modules/my_wallets/views/my_wallets_view.dart';
 import '../modules/my_wallets/wallet_card/bindings/wallet_card_widget_binding.dart';
@@ -80,7 +82,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.MY_TOKENS;
 
   static final routes = [
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
@@ -208,5 +210,6 @@ class AppPages {
       page: () => RequestPaymentResultsView(),
       binding: RequestPaymentResultsBinding(),
     ),
+    GetPage(name: _Paths.MY_TOKENS, page: () => MyTokensView(), binding: MyTokensBinding()),
   ];
 }
