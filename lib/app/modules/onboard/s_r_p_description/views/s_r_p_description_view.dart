@@ -15,7 +15,7 @@ import '../controllers/s_r_p_description_controller.dart';
 
 class SRPDescriptionView
     extends BaseBindingCreatorView<SRPDescriptionBinding, SRPDescriptionController> {
-  SRPDescriptionView({super.key, required super.bindingCreator});
+  SRPDescriptionView({super.key, super.bindingCreator});
 
   @override
   Widget? onCreateViews(BuildContext context) {

@@ -2,13 +2,12 @@
 
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:d3_wallet/base/base_controller.dart';
-import 'package:d3_wallet/base/networking_mixin.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
-class HomeController extends BaseController with NetworkingMixin {
+class HomeController extends BaseController {
   static HomeController get to => Get.find();
 
   final currentTabIndex = 0.obs;

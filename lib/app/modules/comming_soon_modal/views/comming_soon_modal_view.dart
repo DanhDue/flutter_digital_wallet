@@ -15,7 +15,7 @@ import '../controllers/comming_soon_modal_controller.dart';
 
 class CommingSoonModalView
     extends BaseBindingCreatorView<CommingSoonModalBinding, CommingSoonModalController> {
-  CommingSoonModalView({super.key, required super.bindingCreator});
+  CommingSoonModalView({super.key, super.bindingCreator});
 
   @override
   Widget? onCreateViews(BuildContext context) {

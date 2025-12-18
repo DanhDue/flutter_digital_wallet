@@ -11,10 +11,8 @@ import 'package:d3_wallet/app/modules/my_wallets/wallet_card/views/wallet_card_v
 import 'package:d3_wallet/app/modules/network_selection/views/network_selection_view.dart';
 import 'package:d3_wallet/app/modules/wallet_token_info/views/wallet_token_info_view.dart';
 import 'package:d3_wallet/app/routes/app_pages.dart';
-import 'package:d3_wallet/app/routes/navigation_arguments.dart';
 import 'package:d3_wallet/base/base_binding_creator_widget.dart';
 import 'package:d3_wallet/data/bean/response/network_object/network_object.dart';
-import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
 import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
@@ -23,14 +21,13 @@ import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boring_avatars/flutter_boring_avatars.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/utils.dart';
 
 import '../controllers/my_wallets_controller.dart';
 
 class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsController> {
-  MyWalletsView({super.key, required super.bindingCreator});
+  MyWalletsView({super.key, super.bindingCreator});
 
   @override
   Widget? onCreateViews(BuildContext context) {
@@ -78,21 +75,14 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                 ).paddingSymmetric(horizontal: 50),
                 SizedBox(height: 26),
                 Expanded(
-                  child: SingleChildScrollView(
-                    physics: AlwaysScrollableScrollPhysics(),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Obx(
-                          () => WalletTokenInfoView(
-                            selectedWallet: controller.selectedWallet.value,
-                            balanceIsHidden: controller.balanceIsHidden.value,
-                          ),
-                        ),
-                      ],
-                    ).paddingSymmetric(horizontal: 16),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Obx(
+                      () => WalletTokenInfoView(
+                        selectedWallet: controller.selectedWallet.value,
+                        balanceIsHidden: controller.balanceIsHidden.value,
+                      ),
+                    ),
                   ),
                 ),
                 Obx(() {
@@ -115,49 +105,6 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
     );
   }
 
-  _handleActions(BuildContext context, AccountActions action, WalletResponseObject? wallet) async {
-    switch (action) {
-      case AccountActions.shareLink:
-        Fimber.d("AccountActions.shareLink");
-        break;
-      case AccountActions.showSecureQuestions:
-        final nextAction = await showWrapBottomSheet(
-          context,
-          CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding()),
-          routeSettings: RouteSettings(name: Routes.COMMING_SOON_MODAL),
-        );
-        _handleActions(context, nextAction, wallet);
-        break;
-      case AccountActions.showFirstSecureQuestion:
-        final nextAction = await showWrapBottomSheet(
-          context,
-          CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding()),
-          routeSettings: RouteSettings(name: Routes.COMMING_SOON_MODAL),
-        );
-        _handleActions(context, nextAction, wallet);
-        break;
-      case AccountActions.showSecondSecureQuestion:
-        final nextAction = await showWrapBottomSheet(
-          context,
-          CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding()),
-          routeSettings: RouteSettings(name: Routes.COMMING_SOON_MODAL),
-        );
-        _handleActions(context, nextAction, wallet);
-        break;
-      case AccountActions.showMnemonics:
-        final done = await Get.toNamed(
-          Routes.HOME,
-          arguments: {NavigationArguments.selectedWallet: wallet},
-        );
-        if (done) {
-          controller.backupIsDone();
-        }
-        break;
-      default:
-        break;
-    }
-  }
-
   _buildTopBar(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -165,13 +112,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
       mainAxisSize: MainAxisSize.max,
       children: [
         InkWell(
-          onTap: () async {
-            showWrapBottomSheet(
-              context,
-              CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding()),
-              routeSettings: RouteSettings(name: Routes.COMMING_SOON_MODAL),
-            );
-          },
+          onTap: () => _showCommingSoon(context),
           child: SizedBox(
             width: 48,
             height: 48,
@@ -267,25 +208,13 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
         ),
         Expanded(child: SizedBox.shrink()),
         InkWell(
-          onTap: () async {
-            showWrapBottomSheet(
-              context,
-              CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding()),
-              routeSettings: RouteSettings(name: Routes.COMMING_SOON_MODAL),
-            );
-          },
+          onTap: () => _showCommingSoon(context),
           child: Assets.images.icSearch
               .svg(width: 24, height: 24, fit: BoxFit.cover)
               .paddingSymmetric(horizontal: 12),
         ),
         InkWell(
-          onTap: () async {
-            showWrapBottomSheet(
-              context,
-              CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding()),
-              routeSettings: RouteSettings(name: Routes.COMMING_SOON_MODAL),
-            );
-          },
+          onTap: () => _showCommingSoon(context),
           child: Assets.images.icBitcoinCard
               .svg(
                 width: 24,
@@ -343,21 +272,10 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
   }
 
   _showCommingSoon(BuildContext context) async {
-    showModalBottomSheet(
-      context: context,
-      useRootNavigator: true,
-      backgroundColor: context.appThemes.transparent,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(8))),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      builder:
-          (context) => Padding(
-            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: Wrap(
-              children: [CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding())],
-            ),
-          ),
+    showWrapBottomSheet(
+      context,
+      CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding()),
       routeSettings: RouteSettings(name: Routes.COMMING_SOON_MODAL),
-      isScrollControlled: true,
     );
   }
 }

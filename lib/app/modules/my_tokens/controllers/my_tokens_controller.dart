@@ -93,7 +93,7 @@ class MyTokensController extends BaseController with NetworkingMixin {
             final solTokenInfo = Constants.solanaTokenAccount.copyWith(
               address: walletData.address ?? "",
               owner: walletData.address ?? "",
-              amount: walletData.balance,
+              amount: walletData.balance?.toDouble(),
             );
             Fimber.d("solToken: ${solTokenInfo.toJson()}");
             lstTokens.insert(0, solTokenInfo);

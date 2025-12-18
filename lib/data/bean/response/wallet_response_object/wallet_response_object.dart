@@ -10,6 +10,24 @@ import 'package:hive/hive.dart';
 part 'wallet_response_object.freezed.dart';
 part 'wallet_response_object.g.dart';
 
+/// Converter to handle int/double to num conversion for backward compatibility
+class NumConverter implements JsonConverter<num?, Object?> {
+  const NumConverter();
+
+  @override
+  num? fromJson(Object? json) {
+    if (json == null) return null;
+    if (json is num) return json;
+    if (json is String) {
+      return double.tryParse(json) ?? int.tryParse(json);
+    }
+    return null;
+  }
+
+  @override
+  Object? toJson(num? object) => object;
+}
+
 @freezed
 @HiveType(typeId: StorageKeys.walletHiveTypeId)
 abstract class WalletResponseObject with _$WalletResponseObject {
@@ -22,7 +40,7 @@ abstract class WalletResponseObject with _$WalletResponseObject {
     @HiveField(4) @JsonKey(name: 'bs58PrivateKey') String? bs58PrivateKey,
     @HiveField(5) @JsonKey(name: 'address') String? address,
     @HiveField(6) @JsonKey(name: 'mnemonics') String? mnemonics,
-    @HiveField(7) @JsonKey(name: 'balance') double? balance,
+    @HiveField(7) @JsonKey(name: 'balance') @NumConverter() num? balance,
     @HiveField(8) @JsonKey(name: 'error') String? error,
     @HiveField(9) @JsonKey(name: 'signature') String? signature,
     @HiveField(10) @JsonKey(name: 'scr_is_backed_up', defaultValue: false) bool? scrIsBackedUp,

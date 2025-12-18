@@ -45,7 +45,6 @@ class MyWalletsController extends BaseController {
   void onReady() async {
     super.onReady();
     Fimber.d("onReady()");
-    isLoading.value = true;
     try {
       wallets.value = await walletRepo.retrieveYourWallets() ?? [];
       selectedWallet.value = wallets.value.firstOrNull ?? WalletResponseObject();

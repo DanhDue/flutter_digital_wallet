@@ -15,7 +15,9 @@ abstract class BaseBindingCreatorView<Binding extends Bindings, T extends BaseCo
     extends BaseView<T> {
   final BindingCreator<Binding>? bindingCreator;
 
-  BaseBindingCreatorView({super.key, required this.bindingCreator});
+  bool bindingCreatorIsCreated = false;
+
+  BaseBindingCreatorView({super.key, this.bindingCreator});
 
   @override
   Widget? onCreateViews(BuildContext context);
@@ -34,6 +36,8 @@ abstract class BaseBindingCreatorView<Binding extends Bindings, T extends BaseCo
   }
 
   void _createBinding() {
+    if (bindingCreatorIsCreated) return;
+    bindingCreatorIsCreated = true;
     Binding? binding = bindingCreator?.call();
     binding?.dependencies();
   }

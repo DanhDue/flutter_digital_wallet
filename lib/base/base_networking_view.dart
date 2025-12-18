@@ -20,10 +20,7 @@ abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> 
       onLoading: Builder(
         builder: (context) {
           onLoadingStatusChange(true);
-          return Container(
-            color: Colors.white,
-            child: buildLoading(context) ?? const SizedBox.shrink(),
-          );
+          return Scaffold(body: buildLoading(context) ?? const SizedBox.shrink());
         },
       ),
       onError: (error) {

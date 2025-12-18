@@ -2,6 +2,7 @@
 
 // coverage:ignore-file
 
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:d3_wallet/data/bean/response/mint_token_object/mint_token_object.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -40,3 +41,10 @@ List<TokenAccountObject> jsonToListUserObjects(Object? json) =>
     List<Object>.from(
       json as List,
     ).map((e) => TokenAccountObject.fromJson(e as Map<String, dynamic>)).toList();
+
+extension TokenAccountObjectExt on TokenAccountObject? {
+  String? estimateAmountInUSD() {
+    final dUSDAmount = (this?.amount ?? 0.0) * (this?.price ?? 1);
+    return CurrencyTextInputFormatter.simpleCurrency().formatDouble(dUSDAmount);
+  }
+}

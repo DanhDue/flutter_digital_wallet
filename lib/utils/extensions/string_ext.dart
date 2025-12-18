@@ -164,7 +164,8 @@ extension StringExt on String? {
     return "${this?.replaceAll("\$", "").trim()}";
   }
 
-  String buildCoinPrice(String symbol, {int? decimalDigits = 6}) {
+  String? buildCoinPrice(String symbol, {int? decimalDigits = 6}) {
+    if (this == null) return null;
     return "${CurrencyTextInputFormatter.simpleCurrency(decimalDigits: decimalDigits).formatDouble((this?.toDoubleOrNull() ?? 0)).replaceAll("\$", "")} $symbol";
   }
 }

@@ -2,6 +2,8 @@
 
 // coverage:ignore-file
 
+import 'package:d3_wallet/app/modules/my_tokens/bindings/my_tokens_binding.dart';
+import 'package:d3_wallet/app/modules/my_tokens/views/my_tokens_view.dart';
 import 'package:d3_wallet/app/modules/wallet_token_info/controllers/wallet_token_info_controller.dart';
 import 'package:d3_wallet/base/widgets/custom_unfilled_button.dart';
 import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
@@ -13,7 +15,7 @@ import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:get/get_utils/src/extensions/export.dart';
 
 class WalletTokenInfoView extends StatefulWidget {
   const WalletTokenInfoView({super.key, this.selectedWallet, this.balanceIsHidden});
@@ -48,7 +50,8 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
       children: <Widget>[
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -86,16 +89,18 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
             tabs: <Widget>[Tab(text: LocaleKeys.token.tr), Tab(text: LocaleKeys.nft.tr)],
           ),
         ),
-        Builder(
-          builder: (_) {
-            if (_selectedTabbar == 0) {
-              return _buildTokenView(context, widget.selectedWallet, widget.balanceIsHidden);
-            } else if (_selectedTabbar == 1) {
-              return _buildNFTView(context, widget.balanceIsHidden);
-            } else {
-              return SizedBox.shrink();
-            }
-          },
+        Expanded(
+          child: Builder(
+            builder: (_) {
+              if (_selectedTabbar == 0) {
+                return _buildTokenView(context, widget.selectedWallet, widget.balanceIsHidden);
+              } else if (_selectedTabbar == 1) {
+                return _buildNFTView(context, widget.balanceIsHidden);
+              } else {
+                return SizedBox.shrink();
+              }
+            },
+          ),
         ),
       ],
     );
@@ -106,37 +111,11 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
     WalletResponseObject? selectedWallet,
     bool? balanceIsHidden,
   ) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [const SizedBox(height: 56), _buildEmptyTokensLayouts(context)],
-      ),
-    );
-  }
-
-  _buildEmptyTokensLayouts(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Assets.images.icNoFound.svg(width: 86, fit: BoxFit.cover),
-          SizedBox(height: 4),
-          Text(
-            LocaleKeys.tokenNotFoundMessage.tr,
-            style: context.appThemes.regular14.copyWith(color: context.appThemes.ink60),
-          ),
-          SizedBox(height: 4),
-          CustomUnfilledButton(
-            text: LocaleKeys.addToken.tr,
-            onPressed: () => Fimber.d("Add token"),
-          ),
-        ],
-      ),
-    );
+    return MyTokensView(
+      selectedWallet: selectedWallet,
+      balanceIsHidden: balanceIsHidden,
+      bindingCreator: () => MyTokensBinding(),
+    ).paddingOnly(top: 6);
   }
 
   _buildNFTView(BuildContext context, bool? balanceIsHidden) {
