@@ -137,8 +137,8 @@ class NetworkingSampleView extends NetworkingView<NetworkingSampleController> {
                   ),
                 ),
                 Assets.lotties.sandyLoading.lottie(
-                  width: 120,
-                  height: 120,
+                  width: 320,
+                  height: 320,
                   fit: BoxFit.cover,
                   animate: true,
                   repeat: true,

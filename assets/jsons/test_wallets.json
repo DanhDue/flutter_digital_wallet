@@ -12,13 +12,6 @@
         "balance": 0
     },
     {
-        "privateKey": "[247, 89, 137, 83, 34, 20, 174, 168, 157, 148, 153, 87, 231, 191, 138, 46, 83, 76, 138, 99, 210, 192, 153, 199, 41, 140, 69, 148, 149, 149, 193, 102, 170, 248, 227, 155, 184, 200, 202, 149, 150, 64, 121, 235, 35, 29, 154, 148, 46, 128, 167, 52, 225, 221, 153, 47, 220, 86, 65, 205, 10, 173, 60, 67]",
-        "bs58PrivateKey": "5wq34gZYy6QZLLjBJ9dZ3embc1Hyuda7poyBuQfq66Dfb6KeT7bYXsqnfWYTKovpuzSJNH5ys6qQGQYe2UrbLeEe",
-        "address": "CWQRnmDJTpdn4j46oj21ht5BbycUzwVRcHQWger4ipta",
-        "mnemonics": "stand connect volcano use exclude install parrot good logic edge horn regret follow element wise eye age foster alcohol other miracle repair fury amused",
-        "balance": 0
-    },
-    {
         "privateKey": "[30, 11, 190, 179, 246, 65, 118, 132, 202, 155, 23, 86, 66, 27, 192, 248, 240, 101, 105, 0, 108, 200, 33, 213, 2, 10, 153, 113, 230, 120, 39, 247, 182, 4, 65, 160, 255, 152, 38, 250, 239, 41, 103, 174, 141, 230, 77, 55, 88, 123, 171, 173, 74, 159, 104, 60, 216, 246, 74, 85, 70, 36, 160, 132]",
         "bs58PrivateKey": "bqoPDmymK4nn7tJWeFRoVt78v7s1t2NnUUsQobMfv1jLGaYYnZF1sVrusz3djjt415GooSFaVHpGAWXDC5Mpq9V",
         "address": "DFWxzQhpy8ZZags5ijzF7bWjZqqGhvWvWgyKZofkkjXh",
