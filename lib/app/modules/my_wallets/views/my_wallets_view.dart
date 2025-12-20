@@ -264,6 +264,10 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                   walletIndex: index,
                 );
               },
+              onIndexChanged: (index) {
+                Fimber.d("onIndexChanged - index: $index");
+                controller.updateSelectedWallet(reversedWallets[index]);
+              },
               layout: SwiperLayout.STACK,
               itemWidth:
                   controller.wallets.length > 1

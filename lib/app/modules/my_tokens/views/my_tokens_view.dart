@@ -5,7 +5,8 @@
 import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:d3_wallet/base/base_binding_networking_view.dart';
+import 'package:d3_wallet/base/base_binding_stateful_networking_view.dart';
+import 'package:d3_wallet/base/binding_creator.dart';
 import 'package:d3_wallet/base/widgets/custom_unfilled_button.dart';
 import 'package:d3_wallet/data/bean/response/token_account_object/token_account_object.dart';
 import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_response_object.dart';
@@ -15,15 +16,16 @@ import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:d3_wallet/utils/extensions/string_ext.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:get/utils.dart';
+import 'package:get/get.dart';
 
 import '../bindings/my_tokens_binding.dart';
 import '../controllers/my_tokens_controller.dart';
 
-class MyTokensView extends BaseBindingNetworkingView<MyTokensBinding, MyTokensController> {
-  MyTokensView({super.key, super.bindingCreator, this.selectedWallet, this.balanceIsHidden});
+class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, MyTokensController> {
+  const MyTokensView({super.key, this.bindingCreator, this.selectedWallet, this.balanceIsHidden});
+
+  @override
+  final BindingCreator<MyTokensBinding>? bindingCreator;
 
   final WalletResponseObject? selectedWallet;
   final bool? balanceIsHidden;
@@ -67,14 +69,19 @@ class MyTokensView extends BaseBindingNetworkingView<MyTokensBinding, MyTokensCo
   }
 
   @override
+  void onLoadData(MyTokensController controller) {
+    // This is called in initState and didUpdateWidget
+    // It handles triggering the data fetch
+    controller.hiddenBalanceChanged(balanceIsHidden);
+    controller.fetchTokenAccounts(WalletResponseObject(address: selectedWallet?.address ?? ""));
+  }
+
+  @override
   Widget buildBody(BuildContext context, state) {
-    // state = null => initial state
-    if (state == null) {
-      controller.hiddenBalanceChanged(balanceIsHidden);
-      controller.fetchTokenAccounts(
-        WalletResponseObject(address: "CRG9hpv6WpMHhiNZKF9XSjTnfS9SavtTJqhTRc3xG4GZ"),
-      );
-    }
+    // Now buildBody is purely for rendering - no lifecycle logic!
+    // Get controller from GetX since StatefulWidget doesn't have direct access
+    final controller = Get.find<MyTokensController>();
+
     return Obx(
       () => ListView.separated(
         padding: const EdgeInsets.symmetric(vertical: 10),

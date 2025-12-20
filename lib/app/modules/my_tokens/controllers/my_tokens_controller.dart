@@ -69,12 +69,8 @@ class MyTokensController extends BaseController with NetworkingMixin {
       return;
     }
 
-    if (isRefreshing == true) {
-      // reset params.
-      lstTokens = [];
-      tokens.value = lstTokens;
-      tokens.refresh();
-    }
+    // reset params - don't clear tokens yet, let callMultipleApis manage the loading state
+    lstTokens = [];
 
     await callMultipleApis(
       [
@@ -97,8 +93,6 @@ class MyTokensController extends BaseController with NetworkingMixin {
             );
             Fimber.d("solToken: ${solTokenInfo.toJson()}");
             lstTokens.insert(0, solTokenInfo);
-            tokens.value = lstTokens;
-            tokens.refresh();
           }
         }
 
@@ -111,10 +105,12 @@ class MyTokensController extends BaseController with NetworkingMixin {
             Fimber.d("tokenAccounts: ${tokenList.firstOrNull?.toJson()}");
             lstTokens.addAll(tokenList);
             Fimber.d("lstTokenInfo: $lstTokens");
-            tokens.value = lstTokens;
-            tokens.refresh();
           }
         }
+
+        // Sync tokens list with the new data
+        tokens.value = lstTokens;
+        tokens.refresh();
       },
       onAnyError: (error) {
         Fimber.e("API error: ${error.toString()}");

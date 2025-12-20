@@ -1,5 +1,7 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
+import 'dart:convert';
+
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
 import 'package:d3_wallet/data/bean/response/network_object/network_object.dart';
@@ -8,8 +10,10 @@ import 'package:d3_wallet/data/bean/response/wallet_response_object/wallet_respo
 import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
 import 'package:d3_wallet/data/repositories/token_repository.dart';
 import 'package:d3_wallet/data/repositories/wallet_repository.dart';
+import 'package:d3_wallet/generated/assets.gen.dart';
 import 'package:d3_wallet/utils/constants.dart';
 import 'package:fimber/fimber.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
@@ -56,13 +60,7 @@ class MyWalletsController extends BaseController {
       isLoading.value = false;
     }
     // Mock wallet data for testing - Generate 20 wallets
-    // wallets.value = List.generate(
-    //   20,
-    //   (index) => WalletResponseObject(
-    //     name: "Account ${index + 1}",
-    //     address: "0x${(index + 1).toRadixString(16).padLeft(40, '0')}",
-    //   ),
-    // );
+    _loadTestWallets();
   }
 
   @override
@@ -70,6 +68,18 @@ class MyWalletsController extends BaseController {
     super.onClose();
     Fimber.d("MyWalletsController onClose - cleaning up all wallet card controllers");
     cleanupAllWalletCardControllers();
+  }
+
+  _loadTestWallets() async {
+    final data = await rootBundle.loadString(Assets.jsons.testWallets);
+    final walletsJson = json.decode(data);
+    if (walletsJson is List) {
+      wallets.addAll(
+        walletsJson.map((element) => WalletResponseObject.fromJson(element)).toList(),
+      );
+    }
+    selectedWallet.value = wallets.value.firstOrNull ?? WalletResponseObject();
+    wallets.refresh();
   }
 
   /// Clean up all wallet card controllers
@@ -110,4 +120,8 @@ class MyWalletsController extends BaseController {
   void updateSelectedNetwork(NetworkObject selectedNetworkValue) {}
 
   void hideBalance() {}
+
+  void updateSelectedWallet(WalletResponseObject? reversedWallet) {
+    selectedWallet.value = reversedWallet ?? WalletResponseObject();
+  }
 }
