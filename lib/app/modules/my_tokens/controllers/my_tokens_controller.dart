@@ -18,7 +18,6 @@ class MyTokensController extends BaseController with NetworkingMixin {
   final tokenRepo = Get.find<TokenRepository>();
   final walletRepo = Get.find<WalletRepository>();
 
-  var lstTokens = <TokenAccountObject?>[];
   final RxList<TokenAccountObject?> tokens = <TokenAccountObject?>[].obs;
   final balanceIsHidden = false.obs;
 
@@ -52,64 +51,66 @@ class MyTokensController extends BaseController with NetworkingMixin {
     Fimber.d("onReady()");
   }
 
-  fetchTokenAccounts(WalletResponseObject? selectedWallet, {bool? isRefreshing = false}) async {
-    Fimber.d("build: ${selectedWallet?.toJson().encodedJsonString}");
-    if (selectedWallet?.address?.isNullOrWhiteSpace ?? true) {
+  fetchTokenAccounts(WalletResponseObject? wallet, {bool? isRefreshing = false}) async {
+    Fimber.d("fetchTokenAccounts wallet: ${wallet?.address}");
+    if (wallet?.address?.isNullOrWhiteSpace ?? true) {
       Fimber.e("Cannot fetch token accounts: no valid wallet selected");
       return;
     }
-    if (isRefreshing != true &&
-        (selectedWallet == null || selectedWallet.address == this.selectedWallet.value.address)) {
+
+    // Capture the request address to prevent race conditions
+    final requestAddress = wallet!.address!;
+
+    if (isRefreshing != true && (requestAddress == selectedWallet.value.address)) {
       return;
     }
+
     if (isRefreshing != true) {
-      this.selectedWallet.value = selectedWallet!;
+      selectedWallet.value = wallet;
     }
+
     if (isLoading.value) {
       return;
     }
 
-    // reset params - don't clear tokens yet, let callMultipleApis manage the loading state
-    lstTokens = [];
-
     await callMultipleApis(
-      [
-        walletRepo.validateWallet(this.selectedWallet.value.address ?? ""),
-        tokenRepo.getAllTokenAccounts(this.selectedWallet.value.address ?? ""),
-      ],
+      [walletRepo.validateWallet(requestAddress), tokenRepo.getAllTokenAccounts(requestAddress)],
       onAllSuccess: (results) {
-        Fimber.d("All API calls succeeded with ${results.length} results");
+        // IMPORTANT: Verify we are still looking for the same wallet
+        if (requestAddress != selectedWallet.value.address) {
+          Fimber.d(
+            "Ignoring stale response for $requestAddress (current: ${selectedWallet.value.address})",
+          );
+          return;
+        }
+
+        Fimber.d("All API calls succeeded for $requestAddress");
+        final List<TokenAccountObject?> localLstTokens = [];
 
         // First result is wallet validation (unwrapped WalletResponseObject?)
         if (results.isNotEmpty) {
           final walletData = results[0]?.data;
-          Fimber.d("wallet result type: ${walletData.runtimeType}");
           if (walletData is WalletResponseObject) {
-            Fimber.d("wallet: ${walletData.toString()}");
             final solTokenInfo = Constants.solanaTokenAccount.copyWith(
               address: walletData.address ?? "",
               owner: walletData.address ?? "",
               amount: walletData.balance?.toDouble(),
             );
-            Fimber.d("solToken: ${solTokenInfo.toJson()}");
-            lstTokens.insert(0, solTokenInfo);
+            localLstTokens.insert(0, solTokenInfo);
           }
         }
 
         // Second result is token accounts (unwrapped List<TokenAccountObject?>?)
         if (results.length > 1) {
           final tokenAccountList = results[1]?.data;
-          Fimber.d("tokenAccounts result type: ${tokenAccountList.runtimeType}");
           if (tokenAccountList is List) {
             final tokenList = tokenAccountList.cast<TokenAccountObject?>();
-            Fimber.d("tokenAccounts: ${tokenList.firstOrNull?.toJson()}");
-            lstTokens.addAll(tokenList);
-            Fimber.d("lstTokenInfo: $lstTokens");
+            localLstTokens.addAll(tokenList);
           }
         }
 
         // Sync tokens list with the new data
-        tokens.value = lstTokens;
+        tokens.value = localLstTokens;
         tokens.refresh();
       },
       onAnyError: (error) {
