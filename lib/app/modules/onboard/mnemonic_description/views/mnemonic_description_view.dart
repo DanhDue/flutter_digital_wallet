@@ -15,7 +15,7 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import '../controllers/mnemonic_description_controller.dart';
 
 class MnemonicDescriptionView extends BaseView<MnemonicDescriptionController> {
-  MnemonicDescriptionView({super.key, this.getStarted, this.skip});
+  const MnemonicDescriptionView({super.key, this.getStarted, this.skip});
 
   final VoidCallback? getStarted;
   final VoidCallback? skip;

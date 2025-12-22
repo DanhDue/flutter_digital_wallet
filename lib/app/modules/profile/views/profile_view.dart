@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends BaseView<ProfileController> {
-  ProfileView({super.key});
+  const ProfileView({super.key});
 
   @override
   Widget onCreateViews(BuildContext context) {

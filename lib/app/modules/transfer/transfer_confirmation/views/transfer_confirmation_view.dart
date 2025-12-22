@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../controllers/transfer_confirmation_controller.dart';
 
 class TransferConfirmationView extends BaseView<TransferConfirmationController> {
-  TransferConfirmationView({super.key});
+  const TransferConfirmationView({super.key});
 
   @override
   Widget onCreateViews(BuildContext context) {

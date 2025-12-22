@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../controllers/trends_controller.dart';
 
 class TrendsView extends BaseView<TrendsController> {
-  TrendsView({super.key});
+  const TrendsView({super.key});
   @override
   Widget onCreateViews(BuildContext context) {
     return Scaffold(

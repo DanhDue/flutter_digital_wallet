@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../controllers/api_testing_controller.dart';
 
 class ApiTestingView extends BaseNetworkingView<ApiTestingController> {
-  ApiTestingView({super.key});
+  const ApiTestingView({super.key});
 
   @override
   Widget? buildLoading(BuildContext context) =>

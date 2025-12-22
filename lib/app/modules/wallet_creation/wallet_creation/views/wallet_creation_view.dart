@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../controllers/wallet_creation_controller.dart';
 
 class WalletCreationView extends BaseNetworkingView<WalletCreationController> {
-  WalletCreationView({super.key});
+  const WalletCreationView({super.key});
 
   @override
   Widget buildBody(BuildContext context, state) {

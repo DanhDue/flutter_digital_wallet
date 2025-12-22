@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import '../controllers/mnemonic_warning_controller.dart';
 
 class MnemonicWarningView extends BaseView<MnemonicWarningController> {
-  MnemonicWarningView({super.key, this.showMnemonic});
+  const MnemonicWarningView({super.key, this.showMnemonic});
 
   final VoidCallback? showMnemonic;
 

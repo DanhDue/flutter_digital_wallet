@@ -15,7 +15,7 @@ import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends BaseView<HomeController> {
-  HomeView({super.key});
+  const HomeView({super.key});
 
   @override
   Widget? onCreateViews(BuildContext context) {

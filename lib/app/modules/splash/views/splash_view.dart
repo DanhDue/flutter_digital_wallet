@@ -15,7 +15,7 @@ import 'package:pretty_animated_text/pretty_animated_text.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashView extends BaseView<SplashController> {
-  SplashView({super.key});
+  const SplashView({super.key});
 
   @override
   Widget? onCreateViews(BuildContext context) {

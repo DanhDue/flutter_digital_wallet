@@ -15,7 +15,7 @@ import 'package:d3_wallet/generated/locales.g.dart';
 import '../controllers/wallet_creation_successfully_controller.dart';
 
 class WalletCreationSuccessfullyView extends BaseView<WalletCreationSuccessfullyController> {
-  WalletCreationSuccessfullyView({super.key});
+  const WalletCreationSuccessfullyView({super.key});
 
   @override
   Widget? onCreateViews(BuildContext context) {

@@ -4,8 +4,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:card_swiper/card_swiper.dart';
-import 'package:d3_wallet/app/modules/comming_soon_modal/bindings/comming_soon_modal_binding.dart';
-import 'package:d3_wallet/app/modules/comming_soon_modal/views/comming_soon_modal_view.dart';
+import 'package:d3_wallet/base/dialog_mixin.dart';
 import 'package:d3_wallet/app/modules/my_wallets/bindings/my_wallets_binding.dart';
 import 'package:d3_wallet/app/modules/my_wallets/wallet_card/views/wallet_card_view.dart';
 import 'package:d3_wallet/app/modules/network_selection/views/network_selection_view.dart';
@@ -27,7 +26,8 @@ import 'package:get/utils.dart';
 
 import '../controllers/my_wallets_controller.dart';
 
-class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsController> {
+class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsController>
+    with DialogMixin {
   MyWalletsView({super.key, super.bindingCreator});
 
   @override
@@ -113,7 +113,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
       mainAxisSize: MainAxisSize.max,
       children: [
         InkWell(
-          onTap: () => _showCommingSoon(context),
+          onTap: () => showCommingSoon(context),
           child: SizedBox(
             width: 48,
             height: 48,
@@ -209,13 +209,13 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
         ),
         Expanded(child: SizedBox.shrink()),
         InkWell(
-          onTap: () => _showCommingSoon(context),
+          onTap: () => showCommingSoon(context),
           child: Assets.images.icSearch
               .svg(width: 24, height: 24, fit: BoxFit.cover)
               .paddingSymmetric(horizontal: 12),
         ),
         InkWell(
-          onTap: () => _showCommingSoon(context),
+          onTap: () => showCommingSoon(context),
           child: Assets.images.icBitcoinCard
               .svg(
                 width: 24,
@@ -280,14 +280,6 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
         ),
       );
     });
-  }
-
-  _showCommingSoon(BuildContext context) async {
-    showWrapBottomSheet(
-      context,
-      CommingSoonModalView(bindingCreator: () => CommingSoonModalBinding()),
-      routeSettings: RouteSettings(name: Routes.COMMING_SOON_MODAL),
-    );
   }
 }
 

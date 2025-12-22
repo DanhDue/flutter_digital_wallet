@@ -8,7 +8,7 @@ import 'base_controller.dart';
 import 'base_view.dart';
 
 abstract class BaseNetworkingView<C extends BaseController> extends BaseView<C> {
-  BaseNetworkingView({super.key});
+  const BaseNetworkingView({super.key});
 
   @override
   Widget onCreateViews(BuildContext context) {

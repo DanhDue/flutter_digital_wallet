@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../controllers/transactions_controller.dart';
 
 class TransactionsView extends BaseView<TransactionsController> {
-  TransactionsView({super.key});
+  const TransactionsView({super.key});
   @override
   Widget onCreateViews(BuildContext context) {
     return Scaffold(

@@ -2,6 +2,7 @@
 
 // coverage:ignore-file
 
+import 'package:d3_wallet/base/dialog_mixin.dart';
 import 'package:d3_wallet/base/base_view.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:dart_extensions/dart_extensions.dart';
@@ -12,7 +13,7 @@ import 'package:get/get.dart';
 import '../../../generated/assets.gen.dart';
 import 'base_controller.dart';
 
-abstract class BaseAppBarView<C extends BaseController> extends BaseView<C> {
+abstract class BaseAppBarView<C extends BaseController> extends BaseView<C> with DialogMixin {
   BaseAppBarView({super.key});
 
   @override
@@ -76,7 +77,7 @@ abstract class BaseAppBarView<C extends BaseController> extends BaseView<C> {
                 if (controller.isError.value?.isNotBlank == true) {
                   String message = controller.isError.value.toString();
                   WidgetsBinding.instance.addPostFrameCallback((duration) {
-                    showErrorDialog(context, messageError: message);
+                    showErrorDialog(messageError: message);
                   });
                   controller.isError.value = "";
                 }

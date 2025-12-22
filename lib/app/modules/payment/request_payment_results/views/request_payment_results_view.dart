@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../controllers/request_payment_results_controller.dart';
 
 class RequestPaymentResultsView extends BaseView<RequestPaymentResultsController> {
-  RequestPaymentResultsView({super.key});
+  const RequestPaymentResultsView({super.key});
 
   @override
   Widget onCreateViews(BuildContext context) {

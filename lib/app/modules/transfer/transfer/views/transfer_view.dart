@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../controllers/transfer_controller.dart';
 
 class TransferView extends BaseView<TransferController> {
-  TransferView({super.key});
+  const TransferView({super.key});
 
   @override
   Widget onCreateViews(BuildContext context) {

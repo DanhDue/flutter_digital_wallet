@@ -15,7 +15,7 @@ import 'package:slider_button/slider_button.dart';
 import '../controllers/start_controller.dart';
 
 class StartView extends BaseView<StartController> {
-  StartView({super.key});
+  const StartView({super.key});
 
   @override
   Widget? onCreateViews(BuildContext context) {
