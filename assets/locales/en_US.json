@@ -171,5 +171,9 @@
   "exampleBase58PrivateKey": "3. Base58 Private Key:",
   "exampleBase58PrivateKeyValue": "bqoPDmymK4nn7tJWeFRoVt78v7s1t2NnUUsQobMfv1jLGaYYnZF1sVrusz3djjt415GooSFaVHpGAWXDC5Mpq9V",
   "cannotCreateWalletError": "Wallet creation is temporarily unavailable. Please try again in a few moments.",
+  "allNetworks": "All networks",
+  "search": "Search",
+  "searchingNotFound": "No search results found",
+  "selectNetwork": "Select network",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

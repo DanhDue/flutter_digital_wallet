@@ -172,5 +172,9 @@
     "exampleBase58PrivateKey": "3. Khóa riêng tư Base58:",
     "exampleBase58PrivateKeyValue": "bqoPDmymK4nn7tJWeFRoVt78v7s1t2NnUUsQobMfv1jLGaYYnZF1sVrusz3djjt415GooSFaVHpGAWXDC5Mpq9V",
     "cannotCreateWalletError": "Không thể tạo ví ngay lúc này. Vui lòng thử lại sau ít phút.",
+    "allNetworks": "Tất cả mạng",
+    "search": "Tìm kiếm",
+    "selectNetwork": "Chọn mạng",
+    "searchingNotFound": "Không có kết quả tìm kiếm phù hợp",
     "eof": "Kết thúc tập tin. Vui lòng thêm văn bản mới phía trên mục này để tránh xung đột. Cảm ơn!"
 }
