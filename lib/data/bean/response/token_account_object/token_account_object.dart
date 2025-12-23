@@ -32,15 +32,13 @@ TokenAccountObject? jsonToNullableUserObject(Object? json) =>
 TokenAccountObject jsonToUserObject(Object? json) =>
     TokenAccountObject.fromJson(json as Map<String, dynamic>);
 
-List<TokenAccountObject?> jsonToListNullableUserObjects(Object? json) =>
-    List.from(
-      json as List,
-    ).map((e) => TokenAccountObject.fromJson(e as Map<String, dynamic>)).toList();
+List<TokenAccountObject?> jsonToListNullableUserObjects(Object? json) => List.from(
+  json as List,
+).map((e) => TokenAccountObject.fromJson(e as Map<String, dynamic>)).toList();
 
-List<TokenAccountObject> jsonToListUserObjects(Object? json) =>
-    List<Object>.from(
-      json as List,
-    ).map((e) => TokenAccountObject.fromJson(e as Map<String, dynamic>)).toList();
+List<TokenAccountObject> jsonToListUserObjects(Object? json) => List<Object>.from(
+  json as List,
+).map((e) => TokenAccountObject.fromJson(e as Map<String, dynamic>)).toList();
 
 extension TokenAccountObjectExt on TokenAccountObject? {
   String? estimateAmountInUSD() {

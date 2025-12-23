@@ -15,8 +15,8 @@ import 'package:talker_flutter/talker_flutter.dart';
 mixin SafeCallApiMixin {
   Future<Result<R, ApiError>> safeApiCall<R>(Function call, {Map<String, dynamic>? params}) async {
     try {
-      final List<ConnectivityResult> connectivityResult =
-          await (Connectivity().checkConnectivity());
+      final List<ConnectivityResult> connectivityResult = await (Connectivity()
+          .checkConnectivity());
       if (connectivityResult.contains(ConnectivityResult.none)) {
         return Result.failure(
           ApiError(

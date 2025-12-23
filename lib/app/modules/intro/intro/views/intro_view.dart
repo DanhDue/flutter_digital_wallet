@@ -61,10 +61,9 @@ class _IntroViewState extends State<IntroView> with TickerProviderStateMixin {
           children: [
             SizedBox(height: 6),
             InkWell(
-              onTap:
-                  () => {
-                    // controller.skip()
-                  },
+              onTap: () => {
+                // controller.skip()
+              },
               child: Assets.images.android12splashLight.image(height: 128, fit: BoxFit.cover),
             ),
             SizedBox(height: 32),

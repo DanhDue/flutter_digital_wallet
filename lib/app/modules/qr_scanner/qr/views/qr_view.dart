@@ -61,33 +61,31 @@ class _QRViewState extends State<QRView> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Obx(
-            () =>
-                controller.showFullScreen.value == true
-                    ? SizedBox(height: 49)
-                    : SizedBox(height: 75),
+            () => controller.showFullScreen.value == true
+                ? SizedBox(height: 49)
+                : SizedBox(height: 75),
           ), // TOP PADDING => To show view bellow the TabBar.
           Obx(
             () =>
                 controller.showFullScreen.value == true ? SizedBox.shrink() : SizedBox(height: 30),
           ),
           Obx(
-            () =>
-                controller.showFullScreen.value == true
-                    ? Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        InkWell(
-                          onTap: () => Get.back(),
-                          child: Container(
-                            padding: EdgeInsets.only(top: 10, right: 22, bottom: 10, left: 22),
-                            child: Icon(size: 24, Icons.close, color: context.appThemes.trueBlue),
-                          ),
+            () => controller.showFullScreen.value == true
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      InkWell(
+                        onTap: () => Get.back(),
+                        child: Container(
+                          padding: EdgeInsets.only(top: 10, right: 22, bottom: 10, left: 22),
+                          child: Icon(size: 24, Icons.close, color: context.appThemes.trueBlue),
                         ),
-                      ],
-                    )
-                    : SizedBox.shrink(),
+                      ),
+                    ],
+                  )
+                : SizedBox.shrink(),
           ),
           Expanded(
             child: SingleChildScrollView(

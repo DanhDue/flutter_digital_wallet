@@ -49,12 +49,12 @@ class BaseAppBarWidget extends StatelessWidget {
               children: [
                 Navigator.canPop(context) || expandHeaderViewBuilder != null
                     ? InkWell(
-                      onTap: () => Get.back(),
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 9, bottom: 9, right: 9),
-                        child: Assets.images.icFingerScan.svg(width: 24, height: 24),
-                      ),
-                    )
+                        onTap: () => Get.back(),
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 9, bottom: 9, right: 9),
+                          child: Assets.images.icFingerScan.svg(width: 24, height: 24),
+                        ),
+                      )
                     : const SizedBox.shrink(),
                 const SizedBox(width: 3),
                 Expanded(child: expandHeaderViewBuilder?.call() ?? Container()),
@@ -66,15 +66,17 @@ class BaseAppBarWidget extends StatelessWidget {
             ),
             title?.isNotEmpty == true
                 ? Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    title ?? "",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    textAlign: TextAlign.start,
-                    style: context.appThemes.headline.copyWith(color: context.appThemes.mainGreen),
-                  ),
-                )
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      title ?? "",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      textAlign: TextAlign.start,
+                      style: context.appThemes.headline.copyWith(
+                        color: context.appThemes.mainGreen,
+                      ),
+                    ),
+                  )
                 : const SizedBox(),
           ],
         ),

@@ -46,10 +46,9 @@ extension DoubleExt on double? {
 
   String? retrieveDoubleAmount(String region, {int decimalDigits = 3}) {
     final zerosNumbers = List.filled(decimalDigits, '#').join();
-    final formatter =
-        region == Region.VN
-            ? NumberFormat("###,###.$zerosNumbers", "vi_VN")
-            : NumberFormat("###,###.$zerosNumbers", "en_US");
+    final formatter = region == Region.VN
+        ? NumberFormat("###,###.$zerosNumbers", "vi_VN")
+        : NumberFormat("###,###.$zerosNumbers", "en_US");
     final formattedAmount = formatter.format(this);
     return formattedAmount;
   }

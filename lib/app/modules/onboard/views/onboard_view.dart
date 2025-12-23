@@ -61,36 +61,36 @@ class _OnboardViewState extends State<OnboardView> {
                                 OnboardPageIndex.mnemonicConfirmationPageIndex ||
                             controller.currentPage.value == OnboardPageIndex.secureWalletPageIndex)
                         ? InkWell(
-                          onTap: () {
-                            (controller.currentPage.value ==
-                                        OnboardPageIndex.passwordCreationPageIndex ||
-                                    controller.currentPage.value ==
-                                        OnboardPageIndex.secureWalletPageIndex)
-                                ? Get.back()
-                                : {
-                                  controller.shouldBeConfirmMnemonic.value = false,
-                                  controller.jumpToPage(
-                                    OnboardPageIndex.mnemonicCreationPageIndex,
-                                  ),
-                                };
-                          },
-                          child: Assets.images.icBack.svg(
-                            width: 36,
-                            height: 36,
-                            fit: BoxFit.cover,
-                          ),
-                        )
+                            onTap: () {
+                              (controller.currentPage.value ==
+                                          OnboardPageIndex.passwordCreationPageIndex ||
+                                      controller.currentPage.value ==
+                                          OnboardPageIndex.secureWalletPageIndex)
+                                  ? Get.back()
+                                  : {
+                                      controller.shouldBeConfirmMnemonic.value = false,
+                                      controller.jumpToPage(
+                                        OnboardPageIndex.mnemonicCreationPageIndex,
+                                      ),
+                                    };
+                            },
+                            child: Assets.images.icBack.svg(
+                              width: 36,
+                              height: 36,
+                              fit: BoxFit.cover,
+                            ),
+                          )
                         : Visibility(
-                          visible: false,
-                          maintainSize: true,
-                          maintainState: true,
-                          maintainAnimation: true,
-                          child: Assets.images.icBack.svg(
-                            width: 36,
-                            height: 36,
-                            fit: BoxFit.cover,
+                            visible: false,
+                            maintainSize: true,
+                            maintainState: true,
+                            maintainAnimation: true,
+                            child: Assets.images.icBack.svg(
+                              width: 36,
+                              height: 36,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
                     Expanded(
                       child: Center(
                         child: Assets.images.icZenoTxt.image(width: 105, fit: BoxFit.cover),
@@ -136,10 +136,8 @@ class _OnboardViewState extends State<OnboardView> {
                       bindingCreator: () => MnemonicDescriptionBinding(),
                       child: MnemonicDescriptionView(
                         skip: () => controller.createWalletAndSaveAppConfigurations(toHome: true),
-                        getStarted:
-                            () => controller.jumpToPage(
-                              OnboardPageIndex.mnemonicDescriptionPageIndex,
-                            ),
+                        getStarted: () =>
+                            controller.jumpToPage(OnboardPageIndex.mnemonicDescriptionPageIndex),
                       ),
                     ),
                   ),
@@ -180,9 +178,8 @@ class _OnboardViewState extends State<OnboardView> {
                       child: Obx(
                         () => MnemonicConfirmationView(
                           createdWallet: controller.wallet.value,
-                          mnemonicIsVerified:
-                              (isVerified) =>
-                                  controller.updateMnemonicIsVerified(isVerified ?? false),
+                          mnemonicIsVerified: (isVerified) =>
+                              controller.updateMnemonicIsVerified(isVerified ?? false),
                           finish: () => Get.offAllNamed(Routes.WALLET_CREATION_SUCCESSFULLY),
                         ),
                       ),
@@ -240,10 +237,9 @@ class _OnboardViewState extends State<OnboardView> {
                   child: Obx(
                     () => Container(
                       height: 1.5,
-                      color:
-                          controller.passwordIsCreated.value
-                              ? context.appThemes.techBlue
-                              : context.appThemes.ink10,
+                      color: controller.passwordIsCreated.value
+                          ? context.appThemes.techBlue
+                          : context.appThemes.ink10,
                     ),
                   ),
                 ),
@@ -253,10 +249,9 @@ class _OnboardViewState extends State<OnboardView> {
                   child: Obx(
                     () => Container(
                       height: 1.5,
-                      color:
-                          controller.shouldBeConfirmMnemonic.value
-                              ? context.appThemes.techBlue
-                              : context.appThemes.ink10,
+                      color: controller.shouldBeConfirmMnemonic.value
+                          ? context.appThemes.techBlue
+                          : context.appThemes.ink10,
                     ),
                   ),
                 ),
@@ -279,23 +274,22 @@ class _OnboardViewState extends State<OnboardView> {
                     children: [
                       controller.passwordIsCreated.value
                           ? Assets.images.icStepOneIsDone.svg(
-                            width: 20,
-                            height: 20,
-                            fit: BoxFit.cover,
-                          )
+                              width: 20,
+                              height: 20,
+                              fit: BoxFit.cover,
+                            )
                           : Assets.images.icStepOneIsRunning.svg(
-                            width: 20,
-                            height: 20,
-                            fit: BoxFit.cover,
-                          ),
+                              width: 20,
+                              height: 20,
+                              fit: BoxFit.cover,
+                            ),
                       SizedBox(height: 4),
                       Text(
                         LocaleKeys.createPassword.tr,
                         style: context.appThemes.regular10.copyWith(
-                          color:
-                              controller.passwordIsCreated.value
-                                  ? context.appThemes.techBlue
-                                  : context.appThemes.ink60,
+                          color: controller.passwordIsCreated.value
+                              ? context.appThemes.techBlue
+                              : context.appThemes.ink60,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -312,34 +306,33 @@ class _OnboardViewState extends State<OnboardView> {
                     children: [
                       controller.shouldBeConfirmMnemonic.value
                           ? Assets.images.icStepTwoIsDone.svg(
-                            width: 20,
-                            height: 20,
-                            fit: BoxFit.cover,
-                          )
+                              width: 20,
+                              height: 20,
+                              fit: BoxFit.cover,
+                            )
                           : ((controller.currentPage.value ==
-                                      OnboardPageIndex.secureWalletPageIndex ||
-                                  controller.currentPage.value ==
-                                      OnboardPageIndex.mnemonicDescriptionPageIndex ||
-                                  controller.currentPage.value ==
-                                      OnboardPageIndex.mnemonicCreationPageIndex)
-                              ? Assets.images.icStepTwoIsRunning.svg(
-                                width: 20,
-                                height: 20,
-                                fit: BoxFit.cover,
-                              )
-                              : Assets.images.icStepTwoIsWaiting.svg(
-                                width: 20,
-                                height: 20,
-                                fit: BoxFit.cover,
-                              )),
+                                        OnboardPageIndex.secureWalletPageIndex ||
+                                    controller.currentPage.value ==
+                                        OnboardPageIndex.mnemonicDescriptionPageIndex ||
+                                    controller.currentPage.value ==
+                                        OnboardPageIndex.mnemonicCreationPageIndex)
+                                ? Assets.images.icStepTwoIsRunning.svg(
+                                    width: 20,
+                                    height: 20,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Assets.images.icStepTwoIsWaiting.svg(
+                                    width: 20,
+                                    height: 20,
+                                    fit: BoxFit.cover,
+                                  )),
                       SizedBox(height: 4),
                       Text(
                         LocaleKeys.secureWalletStep.tr,
                         style: context.appThemes.regular10.copyWith(
-                          color:
-                              controller.shouldBeConfirmMnemonic.value
-                                  ? context.appThemes.techBlue
-                                  : context.appThemes.ink60,
+                          color: controller.shouldBeConfirmMnemonic.value
+                              ? context.appThemes.techBlue
+                              : context.appThemes.ink60,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -356,31 +349,31 @@ class _OnboardViewState extends State<OnboardView> {
                     children: [
                       controller.mnemonicIsVerified.value
                           ? Assets.images.icStepThreeIsDone.svg(
-                            width: 20,
-                            height: 20,
-                            fit: BoxFit.cover,
-                          )
+                              width: 20,
+                              height: 20,
+                              fit: BoxFit.cover,
+                            )
                           : (controller.currentPage.value ==
-                                  OnboardPageIndex.mnemonicConfirmationPageIndex
-                              ? Assets.images.icStepThreeIsRunning.svg(
-                                width: 20,
-                                height: 20,
-                                fit: BoxFit.cover,
-                              )
-                              : Assets.images.icStepThreeIsWaiting.svg(
-                                width: 20,
-                                height: 20,
-                                fit: BoxFit.cover,
-                              )),
+                                    OnboardPageIndex.mnemonicConfirmationPageIndex
+                                ? Assets.images.icStepThreeIsRunning.svg(
+                                    width: 20,
+                                    height: 20,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Assets.images.icStepThreeIsWaiting.svg(
+                                    width: 20,
+                                    height: 20,
+                                    fit: BoxFit.cover,
+                                  )),
                       SizedBox(height: 4),
                       Text(
                         LocaleKeys.confirmSRPStep.tr,
                         style: context.appThemes.regular10.copyWith(
                           color:
                               controller.currentPage.value ==
-                                      OnboardPageIndex.mnemonicConfirmationPageIndex
-                                  ? context.appThemes.techBlue
-                                  : context.appThemes.ink60,
+                                  OnboardPageIndex.mnemonicConfirmationPageIndex
+                              ? context.appThemes.techBlue
+                              : context.appThemes.ink60,
                         ),
                         textAlign: TextAlign.center,
                       ),

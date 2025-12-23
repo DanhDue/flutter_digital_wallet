@@ -84,12 +84,11 @@ mixin DialogMixin {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
       ),
-      builder:
-          (context) => SingleChildScrollView(
-            controller: ModalScrollController.of(context),
-            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-            child: Wrap(children: [widget]),
-          ),
+      builder: (context) => SingleChildScrollView(
+        controller: ModalScrollController.of(context),
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Wrap(children: [widget]),
+      ),
       routeSettings: routeSettings,
     );
   }

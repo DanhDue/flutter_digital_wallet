@@ -31,7 +31,9 @@ class ZoomScaleSlider extends StatelessWidget {
           child: Row(
             children: [
               Text('0%', overflow: TextOverflow.fade, style: labelStyle),
-              Expanded(child: Slider(value: state.zoomScale, onChanged: controller.setZoomScale)),
+              Expanded(
+                child: Slider(value: state.zoomScale, onChanged: controller.setZoomScale),
+              ),
               Text('100%', overflow: TextOverflow.fade, style: labelStyle),
             ],
           ),

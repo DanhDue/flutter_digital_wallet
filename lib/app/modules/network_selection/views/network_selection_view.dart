@@ -127,30 +127,28 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                                     child: Icon(
                                       Icons.search_outlined,
                                       size: 32,
-                                      color:
-                                          controller.filterTextIsFocus.value
-                                              ? context.appThemes.trueBlue
-                                              : context.appThemes.ink40,
+                                      color: controller.filterTextIsFocus.value
+                                          ? context.appThemes.trueBlue
+                                          : context.appThemes.ink40,
                                     ),
                                   ),
-                                  suffixIcon:
-                                      controller.showFilterTextClearIcon.value
-                                          ? InkWell(
-                                            onTap: () => controller.clearFilterredText(),
-                                            child: Container(
-                                              padding: EdgeInsetsGeometry.all(10),
-                                              child: Assets.images.icClear.svg(
-                                                width: 10,
-                                                height: 10,
-                                                fit: BoxFit.cover,
-                                                colorFilter: ColorFilter.mode(
-                                                  context.appThemes.ink60,
-                                                  BlendMode.srcATop,
-                                                ),
+                                  suffixIcon: controller.showFilterTextClearIcon.value
+                                      ? InkWell(
+                                          onTap: () => controller.clearFilterredText(),
+                                          child: Container(
+                                            padding: EdgeInsetsGeometry.all(10),
+                                            child: Assets.images.icClear.svg(
+                                              width: 10,
+                                              height: 10,
+                                              fit: BoxFit.cover,
+                                              colorFilter: ColorFilter.mode(
+                                                context.appThemes.ink60,
+                                                BlendMode.srcATop,
                                               ),
                                             ),
-                                          )
-                                          : SizedBox.shrink(),
+                                          ),
+                                        )
+                                      : SizedBox.shrink(),
                                   theme: FilledOrOutlinedTextTheme(
                                     radius: 6,
                                     contentPadding: const EdgeInsets.symmetric(
@@ -161,10 +159,9 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                                       color: context.appThemes.red,
                                     ),
                                     fillColor: Colors.transparent,
-                                    prefixIconColor:
-                                        controller.filterTextIsFocus.value
-                                            ? context.appThemes.trueBlue
-                                            : context.appThemes.ink40,
+                                    prefixIconColor: controller.filterTextIsFocus.value
+                                        ? context.appThemes.trueBlue
+                                        : context.appThemes.ink40,
                                     enabledColor: context.appThemes.ink10,
                                     focusedColor: context.appThemes.trueBlue,
                                     floatingLabelStyle: TextStyle(
@@ -173,10 +170,9 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                                     labelStyle: context.appThemes.regular10.copyWith(
                                       color: context.appThemes.ink40,
                                     ),
-                                    iconColor:
-                                        controller.filterTextIsFocus.value
-                                            ? context.appThemes.trueBlue
-                                            : context.appThemes.ink40,
+                                    iconColor: controller.filterTextIsFocus.value
+                                        ? context.appThemes.trueBlue
+                                        : context.appThemes.ink40,
                                   ),
                                   controller: controller.filterTextEditingController,
                                   onChanged: (value) => controller.filterNetworksByName(value),
@@ -190,15 +186,14 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                       SizedBox(
                         height: 232,
                         child: Obx(
-                          () =>
-                              !controller.filteredNetworks.isNotEmpty
-                                  ? _buildNotFoundItem(context)
-                                  : ListView(
-                                    children: [
-                                      for (final network in controller.filteredNetworks)
-                                        _buildNetworkItem(context, network, controller),
-                                    ],
-                                  ),
+                          () => !controller.filteredNetworks.isNotEmpty
+                              ? _buildNotFoundItem(context)
+                              : ListView(
+                                  children: [
+                                    for (final network in controller.filteredNetworks)
+                                      _buildNetworkItem(context, network, controller),
+                                  ],
+                                ),
                         ),
                       ),
                     ],
@@ -241,10 +236,9 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
       child: Obx(
         () => Container(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          color:
-              controller.selectedNetwork.value.name == network.name
-                  ? context.appThemes.blue0
-                  : context.appThemes.white,
+          color: controller.selectedNetwork.value.name == network.name
+              ? context.appThemes.blue0
+              : context.appThemes.white,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,

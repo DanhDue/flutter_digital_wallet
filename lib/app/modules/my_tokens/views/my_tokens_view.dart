@@ -87,12 +87,11 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
         padding: const EdgeInsets.symmetric(vertical: 10),
         separatorBuilder: (context, index) => const SizedBox(height: 8),
         itemCount: controller.tokens.value.length,
-        itemBuilder:
-            (context, index) => _buildTokenItem(
-              context,
-              controller.tokens.value[index],
-              controller.balanceIsHidden.value,
-            ),
+        itemBuilder: (context, index) => _buildTokenItem(
+          context,
+          controller.tokens.value[index],
+          controller.balanceIsHidden.value,
+        ),
       ),
     );
   }
@@ -126,10 +125,9 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
                       ? "${token?.percentChange24h?.isNegative == true ? "" : "+"}${token?.percentChange24h?.toStringAsFixed(4)}%"
                       : "0.00%",
                   style: context.appThemes.regular10.copyWith(
-                    color:
-                        token?.percentChange24h?.isNegative == true
-                            ? context.appThemes.red100
-                            : context.appThemes.green100,
+                    color: token?.percentChange24h?.isNegative == true
+                        ? context.appThemes.red100
+                        : context.appThemes.green100,
                   ),
                   textAlign: TextAlign.end,
                   maxLines: 1,
@@ -148,10 +146,10 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
             Text(
               balanceIsHidden != true
                   ? (token?.amount.toString()).buildCoinPrice(
-                        token?.mintToken?.symbol ?? "",
-                        decimalDigits: 2,
-                      ) ??
-                      ""
+                          token?.mintToken?.symbol ?? "",
+                          decimalDigits: 2,
+                        ) ??
+                        ""
                   : LocaleKeys.myWalletHiddenBalance.tr,
               style: context.appThemes.medium14.copyWith(color: context.appThemes.ink100),
             ),
@@ -208,18 +206,18 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
   _retrieveCoinTrendingIcon(BuildContext context, TokenAccountObject? token) {
     return token?.percentChange24h?.isNegative == true
         ? Transform.rotate(
-          angle: 0 * pi / 180,
-          child: Assets.images.icArrowAltLdown.svg(
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(context.appThemes.red100, BlendMode.srcATop),
-          ),
-        )
+            angle: 0 * pi / 180,
+            child: Assets.images.icArrowAltLdown.svg(
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(context.appThemes.red100, BlendMode.srcATop),
+            ),
+          )
         : Transform.rotate(
-          angle: 180 * pi / 180,
-          child: Assets.images.icArrowAltLdown.svg(
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(context.appThemes.green100, BlendMode.srcATop),
-          ),
-        );
+            angle: 180 * pi / 180,
+            child: Assets.images.icArrowAltLdown.svg(
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(context.appThemes.green100, BlendMode.srcATop),
+            ),
+          );
   }
 }

@@ -30,18 +30,17 @@ class ProfileNav extends StatelessWidget {
           // Root screen - wrap with PopScope for back handling
           return GetPageRoute(
             settings: settings,
-            page:
-                () => PopScope(
-                  canPop: false,
-                  onPopInvokedWithResult: (didPop, result) async {
-                    if (didPop) return;
-                    final shouldExit = await HomeController.to.handleBackPress();
-                    if (shouldExit) {
-                      SystemNavigator.pop();
-                    }
-                  },
-                  child: ProfileView(),
-                ),
+            page: () => PopScope(
+              canPop: false,
+              onPopInvokedWithResult: (didPop, result) async {
+                if (didPop) return;
+                final shouldExit = await HomeController.to.handleBackPress();
+                if (shouldExit) {
+                  SystemNavigator.pop();
+                }
+              },
+              child: ProfileView(),
+            ),
             binding: ProfileBinding(),
           );
         }

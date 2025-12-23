@@ -20,18 +20,17 @@ class QRNav extends StatelessWidget {
         // Root screen - wrap with PopScope for back handling
         return GetPageRoute(
           settings: settings,
-          page:
-              () => PopScope(
-                canPop: false,
-                onPopInvokedWithResult: (didPop, result) async {
-                  if (didPop) return;
-                  final shouldExit = await HomeController.to.handleBackPress();
-                  if (shouldExit) {
-                    SystemNavigator.pop();
-                  }
-                },
-                child: QRScannerView(),
-              ),
+          page: () => PopScope(
+            canPop: false,
+            onPopInvokedWithResult: (didPop, result) async {
+              if (didPop) return;
+              final shouldExit = await HomeController.to.handleBackPress();
+              if (shouldExit) {
+                SystemNavigator.pop();
+              }
+            },
+            child: QRScannerView(),
+          ),
           binding: QRScannerBinding(),
         );
       },

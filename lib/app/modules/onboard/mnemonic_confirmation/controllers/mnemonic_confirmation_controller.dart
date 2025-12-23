@@ -63,8 +63,9 @@ class MnemonicConfirmationController extends BaseController {
       List<int> randomIndices = List.generate(mnemonicWordCount, (index) => index)..shuffle();
       shownWordIndices.value = randomIndices.take(showWordCount).toList();
 
-      hiddenWordIndices.value =
-          randomIndices.where((index) => !shownWordIndices.contains(index)).toList();
+      hiddenWordIndices.value = randomIndices
+          .where((index) => !shownWordIndices.contains(index))
+          .toList();
       Fimber.d("remainIndices: $hiddenWordIndices");
 
       int minHiddenWordIndex = hiddenWordIndices.reduce((a, b) => a < b ? a : b);

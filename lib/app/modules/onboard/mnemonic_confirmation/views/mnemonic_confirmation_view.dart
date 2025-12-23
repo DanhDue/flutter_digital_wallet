@@ -116,9 +116,9 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
                     text: LocaleKeys.finish.tr,
                     backgroundColor:
                         (controller.wallet.value?.mnemonics?.isNotBlank() == true &&
-                                controller.mnemonicIsVerified.value)
-                            ? context.appThemes.trueBlue100
-                            : context.appThemes.trueBlue40,
+                            controller.mnemonicIsVerified.value)
+                        ? context.appThemes.trueBlue100
+                        : context.appThemes.trueBlue40,
                   ),
                 ),
               ],
@@ -214,21 +214,19 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
                         () => Container(
                           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                           alignment: Alignment.centerLeft,
-                          decoration:
-                              controller.allWords[index]?.isHidden != true
-                                  ? BoxDecoration(
-                                    color: context.appThemes.ink5,
-                                    borderRadius: BorderRadius.circular(4),
-                                  )
-                                  : DottedDecoration(
-                                    shape: Shape.box,
-                                    borderRadius: BorderRadius.circular(4),
-                                    color:
-                                        index == controller.focusedIndex.value
-                                            ? context.appThemes.trueBlue100
-                                            : context.appThemes.ink10,
-                                    dash: [2, 2],
-                                  ),
+                          decoration: controller.allWords[index]?.isHidden != true
+                              ? BoxDecoration(
+                                  color: context.appThemes.ink5,
+                                  borderRadius: BorderRadius.circular(4),
+                                )
+                              : DottedDecoration(
+                                  shape: Shape.box,
+                                  borderRadius: BorderRadius.circular(4),
+                                  color: index == controller.focusedIndex.value
+                                      ? context.appThemes.trueBlue100
+                                      : context.appThemes.ink10,
+                                  dash: [2, 2],
+                                ),
                           child: Text(
                             controller.allWords[index]?.enterWord ?? "",
                             style: context.appThemes.regular14.copyWith(

@@ -59,9 +59,8 @@ class MnemonicDescriptionView extends BaseView<MnemonicDescriptionController> {
                               style: context.appThemes.regular18.copyWith(
                                 color: context.appThemes.trueBlue100,
                               ),
-                              recognizer:
-                                  TapGestureRecognizer()
-                                    ..onTap = () => _showSRPDescription(context),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => _showSRPDescription(context),
                             ),
                             TextSpan(
                               text: LocaleKeys.protectYourWalletDescriptionSegment2.tr,

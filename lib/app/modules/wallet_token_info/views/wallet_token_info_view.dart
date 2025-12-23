@@ -86,7 +86,10 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
               paintingStyle: PaintingStyle.fill,
             ),
             controller: _tabController,
-            tabs: <Widget>[Tab(text: LocaleKeys.token.tr), Tab(text: LocaleKeys.nft.tr)],
+            tabs: <Widget>[
+              Tab(text: LocaleKeys.token.tr),
+              Tab(text: LocaleKeys.nft.tr),
+            ],
           ),
         ),
         Expanded(

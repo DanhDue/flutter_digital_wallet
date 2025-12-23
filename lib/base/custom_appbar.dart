@@ -33,16 +33,15 @@ class CustomAppBar extends AppBar {
          ),
          centerTitle: true,
          automaticallyImplyLeading: false,
-         leading:
-             context != null && Navigator.canPop(context) && shouldBeBack
-                 ? IconButton(
-                   onPressed: () {
-                     Fimber.d("CustomAppBar.backPress()");
-                     handleBackPress != null ? handleBackPress.call() : Get.back();
-                   },
-                   icon: Assets.images.icArrowLeft.svg(width: 24, height: 24),
-                 )
-                 : null,
+         leading: context != null && Navigator.canPop(context) && shouldBeBack
+             ? IconButton(
+                 onPressed: () {
+                   Fimber.d("CustomAppBar.backPress()");
+                   handleBackPress != null ? handleBackPress.call() : Get.back();
+                 },
+                 icon: Assets.images.icArrowLeft.svg(width: 24, height: 24),
+               )
+             : null,
          actions: [
            ...(actions ?? []),
            if (showHomeButton == true)

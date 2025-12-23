@@ -31,45 +31,45 @@ abstract class BaseAppBarView<C extends BaseController> extends BaseView<C> with
               const SizedBox(height: 35),
               isAppBarSupported
                   ? Container(
-                    color: context.appThemes.background,
-                    child: Row(
-                      children: [
-                        isBackButtonShown
-                            ? IconButton(
-                              onPressed: () {
-                                Get.back();
-                              },
-                              icon: Assets.images.icFingerScan.svg(width: 24, height: 24),
-                            )
-                            : const SizedBox(width: 24, height: 24),
-                        const SizedBox(width: 3),
-                        Expanded(child: expandAppBarWidget(context) ?? Container()),
-                        const SizedBox(width: 3),
-                        if (actionAppBar(context)?.isNotEmpty == true) ...{
-                          Row(children: actionAppBar(context) ?? []),
-                        } else ...{
-                          const SizedBox(width: 30),
-                        },
-                      ],
-                    ),
-                  )
+                      color: context.appThemes.background,
+                      child: Row(
+                        children: [
+                          isBackButtonShown
+                              ? IconButton(
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  icon: Assets.images.icFingerScan.svg(width: 24, height: 24),
+                                )
+                              : const SizedBox(width: 24, height: 24),
+                          const SizedBox(width: 3),
+                          Expanded(child: expandAppBarWidget(context) ?? Container()),
+                          const SizedBox(width: 3),
+                          if (actionAppBar(context)?.isNotEmpty == true) ...{
+                            Row(children: actionAppBar(context) ?? []),
+                          } else ...{
+                            const SizedBox(width: 30),
+                          },
+                        ],
+                      ),
+                    )
                   : Container(),
               const SizedBox(height: 4),
               titleAppBar?.isNotEmpty == true
                   ? Container(
-                    margin: const EdgeInsets.only(left: 20, right: 20),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        titleAppBar!,
-                        maxLines: 2,
-                        textAlign: TextAlign.start,
-                        style: context.appThemes.headline.copyWith(
-                          color: context.appThemes.mainGreen,
+                      margin: const EdgeInsets.only(left: 20, right: 20),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          titleAppBar!,
+                          maxLines: 2,
+                          textAlign: TextAlign.start,
+                          style: context.appThemes.headline.copyWith(
+                            color: context.appThemes.mainGreen,
+                          ),
                         ),
                       ),
-                    ),
-                  )
+                    )
                   : const SizedBox(),
               const SizedBox(height: 12),
               Expanded(child: child(context)),

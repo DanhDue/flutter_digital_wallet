@@ -238,12 +238,11 @@ class _ExpandablePageViewState extends State<ExpandablePageView> {
       curve: widget.animationCurve,
       duration: _getDuration(),
       tween: Tween<double>(begin: _previousSize, end: _currentSize),
-      builder:
-          (context, value, child) => SizedBox(
-            height: _isHorizontalScroll ? value : null,
-            width: !_isHorizontalScroll ? value : null,
-            child: child,
-          ),
+      builder: (context, value, child) => SizedBox(
+        height: _isHorizontalScroll ? value : null,
+        width: !_isHorizontalScroll ? value : null,
+        child: child,
+      ),
       child: _buildPageView(),
     );
   }
@@ -336,33 +335,30 @@ class _ExpandablePageViewState extends State<ExpandablePageView> {
   Widget _itemBuilder(BuildContext context, int index) {
     final item = widget.itemBuilder!(context, index);
     return OverflowPage(
-      onSizeChange:
-          (size) => setState(() => _sizes[index] = _isHorizontalScroll ? size.height : size.width),
+      onSizeChange: (size) =>
+          setState(() => _sizes[index] = _isHorizontalScroll ? size.height : size.width),
       alignment: widget.alignment,
       scrollDirection: widget.scrollDirection,
       child: item,
     );
   }
 
-  List<Widget> _sizeReportingChildren() =>
-      widget.children!
-          .asMap()
-          .map(
-            (index, child) => MapEntry(
-              index,
-              OverflowPage(
-                onSizeChange:
-                    (size) => setState(
-                      () => _sizes[index] = _isHorizontalScroll ? size.height : size.width,
-                    ),
-                alignment: widget.alignment,
-                scrollDirection: widget.scrollDirection,
-                child: child,
-              ),
-            ),
-          )
-          .values
-          .toList();
+  List<Widget> _sizeReportingChildren() => widget.children!
+      .asMap()
+      .map(
+        (index, child) => MapEntry(
+          index,
+          OverflowPage(
+            onSizeChange: (size) =>
+                setState(() => _sizes[index] = _isHorizontalScroll ? size.height : size.width),
+            alignment: widget.alignment,
+            scrollDirection: widget.scrollDirection,
+            child: child,
+          ),
+        ),
+      )
+      .values
+      .toList();
 }
 
 class OverflowPage extends StatelessWidget {

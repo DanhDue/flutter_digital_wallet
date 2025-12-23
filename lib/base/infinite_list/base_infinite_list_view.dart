@@ -54,11 +54,9 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
                   key: controller.refreshIndicatorKey ?? GlobalKey(),
                   onRefresh: () => controller.fetchData(isRefresh: true),
                   child: GetBuilder<C>(
-                    builder:
-                        (controller) =>
-                            controller.items.isEmptyOrNull
-                                ? const SizedBox.shrink()
-                                : buildInfiniteList(),
+                    builder: (controller) => controller.items.isEmptyOrNull
+                        ? const SizedBox.shrink()
+                        : buildInfiniteList(),
                   ),
                 ),
               ),
@@ -78,7 +76,10 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
                     key: controller.refreshFromNoData ?? GlobalKey(),
                     onRefresh: () => controller.fetchData(isRefresh: true),
                     child: Stack(
-                      children: [Center(child: buildHasNoDataLayout(context)), ListView()],
+                      children: [
+                        Center(child: buildHasNoDataLayout(context)),
+                        ListView(),
+                      ],
                     ),
                   ),
                 ),
@@ -116,20 +117,19 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
             return Center(
               child: InkWell(
                 onTap: () => controller.fetchData(isLoadMore: true),
-                child:
-                    controller.loadMoreError == true
-                        ? buildErrorItemWhileLoadMore()
-                        : const Padding(
-                          padding: EdgeInsets.all(8),
-                          child: CircularProgressIndicator(),
-                        ),
+                child: controller.loadMoreError == true
+                    ? buildErrorItemWhileLoadMore()
+                    : const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: CircularProgressIndicator(),
+                      ),
               ),
             );
           } else {
             return controller.items.isNotEmpty
                 ? const Center(
-                  child: Padding(padding: EdgeInsets.all(8), child: CircularProgressIndicator()),
-                )
+                    child: Padding(padding: EdgeInsets.all(8), child: CircularProgressIndicator()),
+                  )
                 : const SizedBox.shrink();
           }
         }

@@ -12,8 +12,11 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class NetworkSelectionController extends BaseController {
-  final selectedNetwork =
-      NetworkObject(id: NetworkIds.ALL, name: LocaleKeys.allNetworks.tr, logo: "").obs;
+  final selectedNetwork = NetworkObject(
+    id: NetworkIds.ALL,
+    name: LocaleKeys.allNetworks.tr,
+    logo: "",
+  ).obs;
   final lstNetworks = <NetworkObject>[].obs;
   final RxList<NetworkObject> filteredNetworks = <NetworkObject>[].obs;
   late TextEditingController? filterTextEditingController;
@@ -78,10 +81,9 @@ class NetworkSelectionController extends BaseController {
 
   void setInputs(NetworkObject? selectedNetwork) {
     Fimber.d("setInputs(selectedNetwork: ${selectedNetwork?.toJson().encodedJsonString})");
-    this.selectedNetwork.value =
-        ((StringExt(selectedNetwork?.name)?.isNotBlank() == true)
-            ? selectedNetwork
-            : NetworkObject(id: NetworkIds.ALL, name: LocaleKeys.allNetworks.tr, logo: ""))!;
+    this.selectedNetwork.value = ((StringExt(selectedNetwork?.name)?.isNotBlank() == true)
+        ? selectedNetwork
+        : NetworkObject(id: NetworkIds.ALL, name: LocaleKeys.allNetworks.tr, logo: ""))!;
   }
 
   void updateSelectedNetwork(NetworkObject network) {
@@ -96,10 +98,9 @@ class NetworkSelectionController extends BaseController {
     networkName = query;
     showFilterTextClearIcon.value = true;
 
-    filteredNetworks.value =
-        lstNetworks
-            .where((network) => network.name?.toLowerCase().contains(query.toLowerCase()) == true)
-            .toList();
+    filteredNetworks.value = lstNetworks
+        .where((network) => network.name?.toLowerCase().contains(query.toLowerCase()) == true)
+        .toList();
   }
 
   void clearFilterredText() {

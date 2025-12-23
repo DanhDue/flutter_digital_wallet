@@ -141,52 +141,47 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                             controller: controller.passwordTextEditingController,
                             focusNode: controller.passwordFocusNode,
                             onChanged: (value) => controller.passwordTextChanged(value),
-                            status:
-                                controller.passwordIsFocus.value
-                                    ? InputTextStatus.focus
-                                    : StringExt(controller.passError.value).isNotBlank() == true
-                                    ? InputTextStatus.error
-                                    : InputTextStatus.normal,
+                            status: controller.passwordIsFocus.value
+                                ? InputTextStatus.focus
+                                : StringExt(controller.passError.value).isNotBlank() == true
+                                ? InputTextStatus.error
+                                : InputTextStatus.normal,
                             keyboardType: TextInputType.visiblePassword,
                             textInputAction: TextInputAction.next,
                             obscureText: controller.obscurePassword.value,
                             labelText: LocaleKeys.newPassword.tr,
                             hintText: LocaleKeys.enterTextPlease.tr,
                             enableInteractiveSelection: false,
-                            suffixIcon:
-                                controller.showPasswordClearIcon.value == true
-                                    ? InkWell(
-                                      onTap: () => controller.clearPassword(),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                          left: 24,
-                                          top: 12,
-                                          bottom: 12,
-                                          right: 4,
-                                        ),
-                                        child: Assets.images.icClear.svg(),
+                            suffixIcon: controller.showPasswordClearIcon.value == true
+                                ? InkWell(
+                                    onTap: () => controller.clearPassword(),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 24,
+                                        top: 12,
+                                        bottom: 12,
+                                        right: 4,
                                       ),
-                                    )
-                                    : null,
+                                      child: Assets.images.icClear.svg(),
+                                    ),
+                                  )
+                                : null,
                             showPrefixIconsDivider: controller.showPasswordClearIcon.value,
-                            secondSuffixIcon:
-                                StringExt(controller.password)?.isNotBlank() == true
-                                    ? (controller.obscurePassword.value == true
-                                        ? Assets.images.icVisibility.svg(
+                            secondSuffixIcon: StringExt(controller.password)?.isNotBlank() == true
+                                ? (controller.obscurePassword.value == true
+                                      ? Assets.images.icVisibility.svg(
                                           width: 24,
                                           height: 24,
                                           fit: BoxFit.cover,
                                         )
-                                        : Assets.images.icInvisibility.svg(
+                                      : Assets.images.icInvisibility.svg(
                                           width: 24,
                                           height: 24,
                                           fit: BoxFit.cover,
                                         ))
-                                    : SizedBox.shrink(),
-                            onSecondSuffixIconTap:
-                                () =>
-                                    controller.obscurePassword.value =
-                                        !controller.obscurePassword.value,
+                                : SizedBox.shrink(),
+                            onSecondSuffixIconTap: () => controller.obscurePassword.value =
+                                !controller.obscurePassword.value,
                             onFieldSubmitted: (v) {
                               FocusScope.of(
                                 context,
@@ -236,18 +231,18 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                                         controller.passStrength.value == PasswordStrength.fair
                                             ? LocaleKeys.passwordIsFair.tr
                                             : (controller.passStrength.value ==
-                                                    PasswordStrength.weak
-                                                ? LocaleKeys.passwordIsWeak.tr
-                                                : LocaleKeys.passwordIsExcellent.tr),
+                                                      PasswordStrength.weak
+                                                  ? LocaleKeys.passwordIsWeak.tr
+                                                  : LocaleKeys.passwordIsExcellent.tr),
                                         style: context.appThemes.regular12.copyWith(
                                           color:
                                               controller.passStrength.value ==
-                                                      PasswordStrength.fair
-                                                  ? context.appThemes.yellow100
-                                                  : (controller.passStrength.value ==
-                                                          PasswordStrength.weak
-                                                      ? context.appThemes.red100
-                                                      : context.appThemes.green100),
+                                                  PasswordStrength.fair
+                                              ? context.appThemes.yellow100
+                                              : (controller.passStrength.value ==
+                                                        PasswordStrength.weak
+                                                    ? context.appThemes.red100
+                                                    : context.appThemes.green100),
                                         ),
                                       ),
                                     ],
@@ -263,51 +258,46 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                             controller: controller.confirmPasswordTextEditingController,
                             focusNode: controller.confirmPasswordFocusNode,
                             onChanged: (value) => controller.confirmPasswordTextChanged(value),
-                            status:
-                                controller.confirmPasswordIsFocus.value
-                                    ? InputTextStatus.focus
-                                    : (controller.passwordsAreNotSame.value == true
-                                        ? InputTextStatus.error
-                                        : InputTextStatus.normal),
+                            status: controller.confirmPasswordIsFocus.value
+                                ? InputTextStatus.focus
+                                : (controller.passwordsAreNotSame.value == true
+                                      ? InputTextStatus.error
+                                      : InputTextStatus.normal),
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: controller.obscureConfirmPassword.value,
                             labelText: LocaleKeys.confirmPassword.tr,
                             hintText: LocaleKeys.enterTextPlease.tr,
                             enableInteractiveSelection: false,
-                            suffixIcon:
-                                controller.showConfirmPasswordClearIcon.value == true
-                                    ? InkWell(
-                                      onTap: () => controller.clearConfirmPassword(),
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                          left: 24,
-                                          top: 12,
-                                          bottom: 12,
-                                          right: 4,
-                                        ),
-                                        child: Assets.images.icClear.svg(),
+                            suffixIcon: controller.showConfirmPasswordClearIcon.value == true
+                                ? InkWell(
+                                    onTap: () => controller.clearConfirmPassword(),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 24,
+                                        top: 12,
+                                        bottom: 12,
+                                        right: 4,
                                       ),
-                                    )
-                                    : null,
+                                      child: Assets.images.icClear.svg(),
+                                    ),
+                                  )
+                                : null,
                             showPrefixIconsDivider: controller.showConfirmPasswordClearIcon.value,
-                            secondSuffixIcon:
-                                controller.confirmPassword.isNotEmptyOrNull
-                                    ? (controller.obscureConfirmPassword.value == true
-                                        ? Assets.images.icVisibility.svg(
+                            secondSuffixIcon: controller.confirmPassword.isNotEmptyOrNull
+                                ? (controller.obscureConfirmPassword.value == true
+                                      ? Assets.images.icVisibility.svg(
                                           width: 24,
                                           height: 24,
                                           fit: BoxFit.cover,
                                         )
-                                        : Assets.images.icInvisibility.svg(
+                                      : Assets.images.icInvisibility.svg(
                                           width: 24,
                                           height: 24,
                                           fit: BoxFit.cover,
                                         ))
-                                    : SizedBox.shrink(),
-                            onSecondSuffixIconTap:
-                                () =>
-                                    controller.obscureConfirmPassword.value =
-                                        !controller.obscureConfirmPassword.value,
+                                : SizedBox.shrink(),
+                            onSecondSuffixIconTap: () => controller.obscureConfirmPassword.value =
+                                !controller.obscureConfirmPassword.value,
                             onFieldSubmitted: (v) {
                               FocusManager.instance.primaryFocus?.unfocus();
                             },
@@ -389,40 +379,34 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                                   alpha: 0.12,
                                 ),
                                 value: controller.authWithBiometric.value,
-                                onChanged:
-                                    (value) => {
-                                      controller.toggleBiometric(
-                                        !controller.authWithBiometric.value,
-                                      ),
-                                    },
+                                onChanged: (value) => {
+                                  controller.toggleBiometric(!controller.authWithBiometric.value),
+                                },
                               ),
                             ),
                           ],
                         ),
                         SizedBox(height: 24),
                         InkWell(
-                          onTap:
-                              () => controller.acceptPasswordPolicy(
-                                !controller.policyIsAccepted.value,
-                              ),
+                          onTap: () =>
+                              controller.acceptPasswordPolicy(!controller.policyIsAccepted.value),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Obx(
-                                () =>
-                                    controller.policyIsAccepted.value
-                                        ? Assets.images.icCheckedBox.svg(
-                                          width: 24,
-                                          height: 24,
-                                          fit: BoxFit.cover,
-                                        )
-                                        : Assets.images.icUncheckedBox.svg(
-                                          width: 24,
-                                          height: 24,
-                                          fit: BoxFit.cover,
-                                        ),
+                                () => controller.policyIsAccepted.value
+                                    ? Assets.images.icCheckedBox.svg(
+                                        width: 24,
+                                        height: 24,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Assets.images.icUncheckedBox.svg(
+                                        width: 24,
+                                        height: 24,
+                                        fit: BoxFit.cover,
+                                      ),
                               ),
                               SizedBox(width: 4),
                               Expanded(
@@ -438,9 +422,8 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                                         style: context.appThemes.regular14.copyWith(
                                           color: context.appThemes.trueBlue,
                                         ),
-                                        recognizer:
-                                            TapGestureRecognizer()
-                                              ..onTap = () => Fimber.d("See more about"),
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () => Fimber.d("See more about"),
                                       ),
                                     ],
                                   ),
@@ -461,10 +444,9 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                     if (controller.enablePassCreationBut.value != true) return;
                     controller.createPassword();
                   },
-                  backgroundColor:
-                      controller.enablePassCreationBut.value
-                          ? context.appThemes.trueBlue
-                          : context.appThemes.blue15,
+                  backgroundColor: controller.enablePassCreationBut.value
+                      ? context.appThemes.trueBlue
+                      : context.appThemes.blue15,
                   text: LocaleKeys.createPassword.tr,
                 ),
               ),
@@ -504,8 +486,8 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
         status == PasswordStatus.pass
             ? Assets.images.icCheckCircle.svg(width: 24, height: 24, fit: BoxFit.cover)
             : (status == PasswordStatus.fail
-                ? Assets.images.icErrorCheckCircle.svg(width: 24, height: 24, fit: BoxFit.cover)
-                : Assets.images.icUncheckCircle.svg(width: 24, height: 24, fit: BoxFit.cover)),
+                  ? Assets.images.icErrorCheckCircle.svg(width: 24, height: 24, fit: BoxFit.cover)
+                  : Assets.images.icUncheckCircle.svg(width: 24, height: 24, fit: BoxFit.cover)),
         SizedBox(width: 8),
         Flexible(
           child: Text(

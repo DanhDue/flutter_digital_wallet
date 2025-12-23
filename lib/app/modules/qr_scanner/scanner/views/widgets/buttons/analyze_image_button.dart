@@ -42,10 +42,9 @@ class AnalyzeImageButton extends StatelessWidget {
       return;
     }
 
-    final snackBar =
-        barcodes != null && barcodes.barcodes.isNotEmpty
-            ? const SnackBar(content: Text('Barcode found!'), backgroundColor: Colors.green)
-            : const SnackBar(content: Text('No barcode found!'), backgroundColor: Colors.red);
+    final snackBar = barcodes != null && barcodes.barcodes.isNotEmpty
+        ? const SnackBar(content: Text('Barcode found!'), backgroundColor: Colors.green)
+        : const SnackBar(content: Text('No barcode found!'), backgroundColor: Colors.red);
 
     if (barcodes?.barcodes.isNotEmptyOrNull == true) {
       barcodeIsScanned?.call(barcodes?.barcodes.first.rawValue);

@@ -100,10 +100,9 @@ class _QRScannerViewState extends State<QRScannerView> with TickerProviderStateM
                               borderRadius: BorderRadius.all(Radius.circular(10)),
                             ),
                             labelColor: context.appThemes.white,
-                            unselectedLabelColor:
-                                _selectedTabbar == 0
-                                    ? context.appThemes.white.withValues(alpha: 0.54)
-                                    : context.appThemes.black.withValues(alpha: 0.54),
+                            unselectedLabelColor: _selectedTabbar == 0
+                                ? context.appThemes.white.withValues(alpha: 0.54)
+                                : context.appThemes.black.withValues(alpha: 0.54),
                             tabs: [
                               TabItem(title: LocaleKeys.scanQrCode.tr),
                               TabItem(title: LocaleKeys.yourQrCode.tr),

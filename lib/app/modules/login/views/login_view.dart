@@ -100,51 +100,46 @@ class _LoginViewState extends State<LoginView> {
                               controller: controller.passwordTextEditingController,
                               focusNode: controller.passwordFocusNode,
                               onChanged: (value) => controller.passwordTextChanged(value),
-                              status:
-                                  controller.passwordIsFocus.value
-                                      ? InputTextStatus.focus
-                                      : controller.passError.value.isNotBlank == true
-                                      ? InputTextStatus.error
-                                      : InputTextStatus.normal,
+                              status: controller.passwordIsFocus.value
+                                  ? InputTextStatus.focus
+                                  : controller.passError.value.isNotBlank == true
+                                  ? InputTextStatus.error
+                                  : InputTextStatus.normal,
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: controller.obscurePassword.value,
                               labelText: LocaleKeys.password.tr,
                               hintText: LocaleKeys.enterTextPlease.tr,
                               enableInteractiveSelection: false,
-                              suffixIcon:
-                                  controller.showPasswordClearIcon.value == true
-                                      ? InkWell(
-                                        onTap: () => controller.clearPassword(),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: 24,
-                                            top: 12,
-                                            bottom: 12,
-                                            right: 4,
-                                          ),
-                                          child: Assets.images.icClear.svg(),
+                              suffixIcon: controller.showPasswordClearIcon.value == true
+                                  ? InkWell(
+                                      onTap: () => controller.clearPassword(),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                          left: 24,
+                                          top: 12,
+                                          bottom: 12,
+                                          right: 4,
                                         ),
-                                      )
-                                      : null,
+                                        child: Assets.images.icClear.svg(),
+                                      ),
+                                    )
+                                  : null,
                               showPrefixIconsDivider: controller.showPasswordClearIcon.value,
-                              secondSuffixIcon:
-                                  controller.password.isNotBlank
-                                      ? (controller.obscurePassword.value == true
-                                          ? Assets.images.icVisibility.svg(
+                              secondSuffixIcon: controller.password.isNotBlank
+                                  ? (controller.obscurePassword.value == true
+                                        ? Assets.images.icVisibility.svg(
                                             width: 24,
                                             height: 24,
                                             fit: BoxFit.cover,
                                           )
-                                          : Assets.images.icInvisibility.svg(
+                                        : Assets.images.icInvisibility.svg(
                                             width: 24,
                                             height: 24,
                                             fit: BoxFit.cover,
                                           ))
-                                      : SizedBox.shrink(),
-                              onSecondSuffixIconTap:
-                                  () =>
-                                      controller.obscurePassword.value =
-                                          !controller.obscurePassword.value,
+                                  : SizedBox.shrink(),
+                              onSecondSuffixIconTap: () => controller.obscurePassword.value =
+                                  !controller.obscurePassword.value,
                               onFieldSubmitted: (value) => controller.checkPassword(),
                             ),
                           ),
@@ -187,10 +182,9 @@ class _LoginViewState extends State<LoginView> {
                                       if (controller.enableUnlockButton.value != true) return;
                                       controller.checkPassword();
                                     },
-                                    backgroundColor:
-                                        controller.enableUnlockButton.value
-                                            ? context.appThemes.trueBlue
-                                            : context.appThemes.blue15,
+                                    backgroundColor: controller.enableUnlockButton.value
+                                        ? context.appThemes.trueBlue
+                                        : context.appThemes.blue15,
                                     text: LocaleKeys.unlock.tr,
                                   ),
                                 ),

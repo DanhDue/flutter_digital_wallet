@@ -212,32 +212,30 @@ class _WalletImportViewState extends State<WalletImportView> {
                               () => InputText(
                                 controller: controller.textEditingController,
                                 focusNode: controller.focusNode,
-                                status:
-                                    controller.isFocus.value
-                                        ? InputTextStatus.focus
-                                        : (controller.isMnemonicError.value != true
-                                            ? InputTextStatus.normal
-                                            : InputTextStatus.error),
+                                status: controller.isFocus.value
+                                    ? InputTextStatus.focus
+                                    : (controller.isMnemonicError.value != true
+                                          ? InputTextStatus.normal
+                                          : InputTextStatus.error),
                                 onChanged: (value) => controller.onTextChanged(value),
                                 labelText: LocaleKeys.srpOrPk.tr,
                                 hintText: LocaleKeys.enterTextPlease.tr,
                                 minLines: 1,
                                 maxLines: 3,
-                                suffixIcon:
-                                    controller.showClearIcon.value == true
-                                        ? InkWell(
-                                          onTap: () => controller.clearText(),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                              left: 24,
-                                              top: 12,
-                                              bottom: 12,
-                                              right: 4,
-                                            ),
-                                            child: Assets.images.icClear.svg(),
+                                suffixIcon: controller.showClearIcon.value == true
+                                    ? InkWell(
+                                        onTap: () => controller.clearText(),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                            left: 24,
+                                            top: 12,
+                                            bottom: 12,
+                                            right: 4,
                                           ),
-                                        )
-                                        : null,
+                                          child: Assets.images.icClear.svg(),
+                                        ),
+                                      )
+                                    : null,
                                 showPrefixIconsDivider: controller.showClearIcon.value,
                                 secondSuffixIcon: Assets.images.icScan.svg(
                                   width: 24,
@@ -295,10 +293,9 @@ class _WalletImportViewState extends State<WalletImportView> {
                           controller.restoreWallet();
                         }
                       },
-                      backgroundColor:
-                          controller.isValid.value
-                              ? context.appThemes.trueBlue100
-                              : context.appThemes.blue15,
+                      backgroundColor: controller.isValid.value
+                          ? context.appThemes.trueBlue100
+                          : context.appThemes.blue15,
                       text: LocaleKeys.recoveryWallet.tr,
                     ),
                   ),

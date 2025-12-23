@@ -128,10 +128,9 @@ class _NavItem extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   label,
-                  style:
-                      isActive
-                          ? context.appThemes.bold12.copyWith(color: color)
-                          : context.appThemes.regular12.copyWith(color: color),
+                  style: isActive
+                      ? context.appThemes.bold12.copyWith(color: color)
+                      : context.appThemes.regular12.copyWith(color: color),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

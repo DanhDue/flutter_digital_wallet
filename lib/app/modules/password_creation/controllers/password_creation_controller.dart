@@ -170,8 +170,9 @@ class PasswordCreationController extends BaseController {
   }
 
   void _checkPassLength(String? password) {
-    passwordLengthIsError.value =
-        (password?.length.isGreaterThan(7) == true) ? PasswordStatus.pass : PasswordStatus.fail;
+    passwordLengthIsError.value = (password?.length.isGreaterThan(7) == true)
+        ? PasswordStatus.pass
+        : PasswordStatus.fail;
   }
 
   void _checkPassSimpleCharacter(String? password) {

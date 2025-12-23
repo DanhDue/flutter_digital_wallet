@@ -17,10 +17,9 @@ class SplashBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(
-      () =>
-          DioFactory()
-              .withReceiveTimeout(const Duration(seconds: DependencyInjections.HEALTHZ_TIMEOUT))
-              .dio,
+      () => DioFactory()
+          .withReceiveTimeout(const Duration(seconds: DependencyInjections.HEALTHZ_TIMEOUT))
+          .dio,
       tag: DependencyInjections.HEALTHZ,
       fenix: true,
     );

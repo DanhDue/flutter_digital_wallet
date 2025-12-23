@@ -140,15 +140,14 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                 borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
               ),
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              builder:
-                  (context) => Padding(
-                    padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                    child: Wrap(
-                      children: [
-                        NetworkSelectionView(selectedNetwork: controller.selectedNetwork.value),
-                      ],
-                    ),
-                  ),
+              builder: (context) => Padding(
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: Wrap(
+                  children: [
+                    NetworkSelectionView(selectedNetwork: controller.selectedNetwork.value),
+                  ],
+                ),
+              ),
               routeSettings: RouteSettings(name: Routes.NETWORK_SELECTION),
               isScrollControlled: true,
             );
@@ -269,10 +268,9 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                 controller.updateSelectedWallet(reversedWallets[index]);
               },
               layout: SwiperLayout.STACK,
-              itemWidth:
-                  controller.wallets.length > 1
-                      ? constraints.maxWidth - 40
-                      : constraints.maxWidth - 32,
+              itemWidth: controller.wallets.length > 1
+                  ? constraints.maxWidth - 40
+                  : constraints.maxWidth - 32,
               scale: 0.96,
               loop: false,
             );

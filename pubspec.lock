@@ -1838,10 +1838,10 @@ packages:
     dependency: transitive
     description:
       name: pubspec_manager
-      sha256: "48f425bb06cb38bb8bda84e70794cb373416033519668bcf481efbda1c10d9a1"
+      sha256: "77c02537d8dc0a0458625003a03ce5e915f2de59fb605a13bf2d156f93225c45"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.1"
   pubspec_parse:
     dependency: transitive
     description:
@@ -1888,7 +1888,7 @@ packages:
     description:
       path: generator
       ref: analyzer
-      resolved-ref: "79478e29b967f0e3b77c5646cda928f6664327aa"
+      resolved-ref: "2e0dcb50dad174e5fecf12c536374eff43440599"
       url: "https://github.com/DanhDue/retrofit.dart.git"
     source: git
     version: "10.2.2"
@@ -2498,5 +2498,5 @@ packages:
     source: hosted
     version: "2.1.0"
 sdks:
-  dart: ">=3.9.0 <4.0.0"
+  dart: ">=3.10.0 <4.0.0"
   flutter: ">=3.35.0"

@@ -38,17 +38,16 @@ class CommonHeaderBar extends StatelessWidget {
       padding: EdgeInsets.only(left: 12, top: 50, right: 12),
       decoration: BoxDecoration(
         color: Colors.white,
-        boxShadow:
-            showShadow == true
-                ? [
-                  BoxShadow(
-                    color: context.appThemes.ink80.withValues(alpha: 0.05),
-                    blurRadius: 12,
-                    offset: Offset(0, 2),
-                    spreadRadius: 4,
-                  ),
-                ]
-                : [],
+        boxShadow: showShadow == true
+            ? [
+                BoxShadow(
+                  color: context.appThemes.ink80.withValues(alpha: 0.05),
+                  blurRadius: 12,
+                  offset: Offset(0, 2),
+                  spreadRadius: 4,
+                ),
+              ]
+            : [],
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
@@ -79,16 +78,16 @@ class CommonHeaderBar extends StatelessWidget {
                 ),
                 (actions != null && actions!.isNotEmpty)
                     ? Visibility(
-                      visible: false,
-                      maintainSize: true,
-                      maintainState: true,
-                      maintainAnimation: true,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: actions!,
-                      ),
-                    )
+                        visible: false,
+                        maintainSize: true,
+                        maintainState: true,
+                        maintainAnimation: true,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: actions!,
+                        ),
+                      )
                     : SizedBox.shrink(),
               ],
             ),
@@ -132,10 +131,10 @@ class CommonHeaderBar extends StatelessWidget {
                 ),
                 (actions != null && actions!.isNotEmpty)
                     ? Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: actions!,
-                    )
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: actions!,
+                      )
                     : SizedBox.shrink(),
               ],
             ),

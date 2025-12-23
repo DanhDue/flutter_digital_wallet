@@ -97,8 +97,8 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
                               children: [
                                 _createGuideUILayouts(
                                   context,
-                                  viewSecretRecoveryPhrase:
-                                      () => controller.generateSecretRecoveryPhrase(),
+                                  viewSecretRecoveryPhrase: () =>
+                                      controller.generateSecretRecoveryPhrase(),
                                 ),
                               ],
                             ),
@@ -135,9 +135,9 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
                     text: LocaleKeys.txtContinue.tr,
                     backgroundColor:
                         (controller.wallet.value?.mnemonics?.isNotBlank() == true &&
-                                controller.secretRecoveryPhraseIsGenerated.value)
-                            ? context.appThemes.trueBlue100
-                            : context.appThemes.trueBlue40,
+                            controller.secretRecoveryPhraseIsGenerated.value)
+                        ? context.appThemes.trueBlue100
+                        : context.appThemes.trueBlue40,
                   ),
                 ),
               ],

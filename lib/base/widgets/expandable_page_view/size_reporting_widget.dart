@@ -26,7 +26,9 @@ class _SizeReportingWidgetState extends State<SizeReportingWidget> {
         WidgetsBinding.instance.addPostFrameCallback((_) => _notifySize());
         return true;
       },
-      child: SizeChangedLayoutNotifier(child: Container(key: _widgetKey, child: widget.child)),
+      child: SizeChangedLayoutNotifier(
+        child: Container(key: _widgetKey, child: widget.child),
+      ),
     );
   }
 

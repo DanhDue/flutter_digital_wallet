@@ -62,10 +62,10 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
       image: PrettyQrDecorationImage(
         image: Assets.images.icZeno.provider(),
         opacity: 0.69,
-        position: PrettyQrDecorationImagePosition.embedded,
+        position: .embedded,
       ),
       background: Colors.transparent,
-      quietZone: PrettyQrQuietZone.zero,
+      quietZone: .zero,
     );
     controller.updateWallet(widget.wallet, widget.walletIndex);
   }
@@ -82,31 +82,31 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
   Widget build(BuildContext context) {
     super.build(context); // Required by AutomaticKeepAliveClientMixin
     return Stack(
-      alignment: Alignment.bottomRight,
+      alignment: .bottomRight,
       children: [
         Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: .circular(20),
             gradient: LinearGradient(
               colors: GradientUtils.getWalletGradientColors(context, widget.walletIndex),
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
+              begin: .centerLeft,
+              end: .centerRight,
               stops: [0.0, 0.2, 1.0],
             ),
           ),
           child: Stack(
-            alignment: Alignment.center,
+            alignment: .center,
             children: [
               Stack(
                 children: [
                   Positioned(
                     right: 75,
-                    child: Assets.images.icFingerPrint1.svg(height: 56, fit: BoxFit.cover),
+                    child: Assets.images.icFingerPrint1.svg(height: 56, fit: .cover),
                   ),
                   Positioned(
                     left: 26,
                     bottom: 0,
-                    child: Assets.images.icFingerPrint2.svg(height: 56, fit: BoxFit.cover),
+                    child: Assets.images.icFingerPrint2.svg(height: 56, fit: .cover),
                   ),
                   Positioned(
                     right: 18,
@@ -117,23 +117,23 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
                         maintainSize: true,
                         maintainState: true,
                         maintainAnimation: true,
-                        child: Assets.images.icCardArrowDown.svg(height: 68, fit: BoxFit.cover),
+                        child: Assets.images.icCardArrowDown.svg(height: 68, fit: .cover),
                       ),
                     ),
                   ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                padding: const .symmetric(vertical: 20, horizontal: 16),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .start,
+                  mainAxisSize: .min,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .center,
+                      mainAxisSize: .max,
                       children: [
                         Text(
                           widget.wallet?.name ?? "Account",
@@ -144,22 +144,22 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
                             ),
                           ),
                         ),
-                        Expanded(child: SizedBox.shrink()),
+                        const Expanded(child: SizedBox.shrink()),
                         Assets.images.icVerticalDots
-                            .svg(fit: BoxFit.cover, height: 24)
+                            .svg(fit: .cover, height: 24)
                             .paddingSymmetric(horizontal: 12),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .center,
+                      mainAxisSize: .max,
                       children: [
                         Obx(
                           () => Text.rich(
                             maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                            overflow: .ellipsis,
                             TextSpan(
                               text: "\$ ",
                               style: context.appThemes.bold24.copyWith(
@@ -170,10 +170,9 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
                               ),
                               children: [
                                 TextSpan(
-                                  text:
-                                      controller.balanceIsHidden.value
-                                          ? LocaleKeys.myWalletHiddenBalance.tr
-                                          : controller.fullBalance.value.shrinkAndReformat(),
+                                  text: controller.balanceIsHidden.value
+                                      ? LocaleKeys.myWalletHiddenBalance.tr
+                                      : controller.fullBalance.value.shrinkAndReformat(),
                                   style: context.appThemes.bold24.copyWith(
                                     color: GradientUtils.getTextColorForGradient(
                                       context,
@@ -185,98 +184,96 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
                             ),
                           ),
                         ),
-                        SizedBox(width: 14),
+                        const SizedBox(width: 14),
                         Obx(
                           () => InkWell(
                             onTap: () => controller.hideBalance(),
-                            child:
-                                controller.balanceIsHidden.value
-                                    ? Assets.images.icVisibility.svg(
-                                      width: 24,
-                                      height: 24,
-                                      fit: BoxFit.contain,
-                                      colorFilter: ColorFilter.mode(
-                                        GradientUtils.getTextColorForGradient(
-                                          context,
-                                          widget.walletIndex,
-                                        ),
-                                        BlendMode.srcIn,
+                            child: controller.balanceIsHidden.value
+                                ? Assets.images.icVisibility.svg(
+                                    width: 24,
+                                    height: 24,
+                                    fit: .contain,
+                                    colorFilter: .mode(
+                                      GradientUtils.getTextColorForGradient(
+                                        context,
+                                        widget.walletIndex,
                                       ),
-                                    )
-                                    : Assets.images.icInvisibility.svg(
-                                      width: 24,
-                                      height: 24,
-                                      fit: BoxFit.contain,
-                                      colorFilter: ColorFilter.mode(
-                                        GradientUtils.getTextColorForGradient(
-                                          context,
-                                          widget.walletIndex,
-                                        ),
-                                        BlendMode.srcIn,
-                                      ),
+                                      .srcIn,
                                     ),
+                                  )
+                                : Assets.images.icInvisibility.svg(
+                                    width: 24,
+                                    height: 24,
+                                    fit: .contain,
+                                    colorFilter: .mode(
+                                      GradientUtils.getTextColorForGradient(
+                                        context,
+                                        widget.walletIndex,
+                                      ),
+                                      .srcIn,
+                                    ),
+                                  ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(height: 6),
                     Obx(
                       () => Visibility(
-                        child:
-                            controller.balanceIsHidden.value
-                                ? Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    LocaleKeys.myWalletHiddenBalance.tr,
-                                    style: context.appThemes.regular14.copyWith(
-                                      color: GradientUtils.getTextColorForGradient(
-                                        context,
-                                        controller.walletIndex,
-                                      ),
+                        child: controller.balanceIsHidden.value
+                            ? Container(
+                                alignment: .centerLeft,
+                                child: Text(
+                                  LocaleKeys.myWalletHiddenBalance.tr,
+                                  style: context.appThemes.regular14.copyWith(
+                                    color: GradientUtils.getTextColorForGradient(
+                                      context,
+                                      controller.walletIndex,
                                     ),
                                   ),
-                                )
-                                : Container(
-                                  decoration: BoxDecoration(
-                                    color: context.appThemes.materialIndigo.withValues(alpha: 0.7),
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  padding: EdgeInsets.symmetric(vertical: 3, horizontal: 3),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Assets.images.icArrowAltLtop.svg(
-                                        width: 12,
-                                        height: 12,
-                                        fit: BoxFit.contain,
-                                      ),
-                                      Text(
-                                        "20,878,699",
-                                        style: context.appThemes.regular14.copyWith(
-                                          color: context.appThemes.green100,
-                                        ),
-                                      ),
-                                      Text(
-                                        "\$",
-                                        style: context.appThemes.regular14.copyWith(
-                                          color: context.appThemes.green100,
-                                        ),
-                                      ),
-                                      SizedBox(width: 2),
-                                      Text(
-                                        "(+11.48%)",
-                                        style: context.appThemes.regular14.copyWith(
-                                          color: context.appThemes.green100,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
                                 ),
+                              )
+                            : Container(
+                                decoration: BoxDecoration(
+                                  color: context.appThemes.materialIndigo.withValues(alpha: 0.7),
+                                  borderRadius: .circular(8),
+                                ),
+                                padding: .symmetric(vertical: 3, horizontal: 3),
+                                child: Row(
+                                  mainAxisAlignment: .start,
+                                  crossAxisAlignment: .center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Assets.images.icArrowAltLtop.svg(
+                                      width: 12,
+                                      height: 12,
+                                      fit: .contain,
+                                    ),
+                                    Text(
+                                      "20,878,699",
+                                      style: context.appThemes.regular14.copyWith(
+                                        color: context.appThemes.green100,
+                                      ),
+                                    ),
+                                    Text(
+                                      "\$",
+                                      style: context.appThemes.regular14.copyWith(
+                                        color: context.appThemes.green100,
+                                      ),
+                                    ),
+                                    SizedBox(width: 2),
+                                    Text(
+                                      "(+11.48%)",
+                                      style: context.appThemes.regular14.copyWith(
+                                        color: context.appThemes.green100,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                       ),
                     ),
-                    SizedBox(height: 18),
+                    const SizedBox(height: 18),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -290,21 +287,21 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
                               widget.walletIndex,
                             ).withValues(alpha: 0.6),
                           ),
-                          textAlign: TextAlign.start,
+                          textAlign: .start,
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         InkWell(
                           onTap: () => controller.copyAddress(),
                           child: Assets.images.icLucideCopy.svg(
                             width: 24,
                             height: 24,
-                            fit: BoxFit.contain,
-                            colorFilter: ColorFilter.mode(
+                            fit: .contain,
+                            colorFilter: .mode(
                               GradientUtils.getTextColorForGradient(
                                 context,
                                 widget.walletIndex,
                               ).withValues(alpha: 0.6),
-                              BlendMode.srcIn,
+                              .srcIn,
                             ),
                           ),
                         ),

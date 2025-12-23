@@ -26,12 +26,11 @@ class MyWalletsController extends BaseController {
   final selectedWallet = WalletResponseObject().obs;
   final shouldBeShownSCRReminder = false.obs;
   var remindLater = false;
-  final selectedNetwork =
-      NetworkObject(
-        id: NetworkIds.SOLANA,
-        name: "DevNet",
-        logo: "https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png",
-      ).obs;
+  final selectedNetwork = NetworkObject(
+    id: NetworkIds.SOLANA,
+    name: "DevNet",
+    logo: "https://s2.coinmarketcap.com/static/img/coins/200x200/5426.png",
+  ).obs;
 
   final RxList<WalletResponseObject?> wallets = <WalletResponseObject?>[].obs;
 

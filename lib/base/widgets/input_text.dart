@@ -64,12 +64,11 @@ class InputText extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         border: Border.all(
-          color:
-              status == InputTextStatus.normal
-                  ? context.appThemes.ink10
-                  : (status == InputTextStatus.focus
-                      ? context.appThemes.blue40
-                      : context.appThemes.red),
+          color: status == InputTextStatus.normal
+              ? context.appThemes.ink10
+              : (status == InputTextStatus.focus
+                    ? context.appThemes.blue40
+                    : context.appThemes.red),
         ),
         color: context.appThemes.transparent,
         borderRadius: BorderRadius.circular(4),
@@ -92,29 +91,28 @@ class InputText extends StatelessWidget {
               maxLines: maxLines,
               maxLength: maxLength,
               textAlign: TextAlign.start,
-              contextMenuBuilder:
-                  enableInteractiveSelection == false
-                      ? (context, editableTextState) {
-                        final List<ContextMenuButtonItem> buttonItems =
-                            editableTextState.contextMenuButtonItems;
-                        buttonItems.removeWhere((ContextMenuButtonItem buttonItem) {
-                          return buttonItem.type == ContextMenuButtonType.cut ||
-                              buttonItem.type == ContextMenuButtonType.copy ||
-                              buttonItem.type == ContextMenuButtonType.paste ||
-                              buttonItem.type == ContextMenuButtonType.selectAll ||
-                              buttonItem.type == ContextMenuButtonType.lookUp ||
-                              buttonItem.type == ContextMenuButtonType.searchWeb ||
-                              buttonItem.type == ContextMenuButtonType.share ||
-                              buttonItem.type == ContextMenuButtonType.liveTextInput ||
-                              buttonItem.type == ContextMenuButtonType.custom;
-                        });
-                        return AdaptiveTextSelectionToolbar.buttonItems(
-                          anchors: editableTextState.contextMenuAnchors,
-                          buttonItems: buttonItems,
-                        );
-                      }
-                      : (context, editableTextState) =>
-                          _defaultContextMenuBuilder(context, editableTextState),
+              contextMenuBuilder: enableInteractiveSelection == false
+                  ? (context, editableTextState) {
+                      final List<ContextMenuButtonItem> buttonItems =
+                          editableTextState.contextMenuButtonItems;
+                      buttonItems.removeWhere((ContextMenuButtonItem buttonItem) {
+                        return buttonItem.type == ContextMenuButtonType.cut ||
+                            buttonItem.type == ContextMenuButtonType.copy ||
+                            buttonItem.type == ContextMenuButtonType.paste ||
+                            buttonItem.type == ContextMenuButtonType.selectAll ||
+                            buttonItem.type == ContextMenuButtonType.lookUp ||
+                            buttonItem.type == ContextMenuButtonType.searchWeb ||
+                            buttonItem.type == ContextMenuButtonType.share ||
+                            buttonItem.type == ContextMenuButtonType.liveTextInput ||
+                            buttonItem.type == ContextMenuButtonType.custom;
+                      });
+                      return AdaptiveTextSelectionToolbar.buttonItems(
+                        anchors: editableTextState.contextMenuAnchors,
+                        buttonItems: buttonItems,
+                      );
+                    }
+                  : (context, editableTextState) =>
+                        _defaultContextMenuBuilder(context, editableTextState),
               decoration: InputDecoration(
                 border: InputBorder.none,
                 filled: true,
