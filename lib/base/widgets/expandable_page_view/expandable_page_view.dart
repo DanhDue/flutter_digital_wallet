@@ -142,12 +142,12 @@ class ExpandablePageView extends StatefulWidget {
     this.dragStartBehavior = DragStartBehavior.start,
     this.allowImplicitScrolling = false,
     this.restorationId,
-    this.clipBehavior = Clip.hardEdge,
+    this.clipBehavior = .hardEdge,
     this.animateFirstPage = false,
     this.estimatedPageSize = 0.0,
-    this.alignment = Alignment.topCenter,
+    this.alignment = .topCenter,
     this.scrollBehavior,
-    this.scrollDirection = Axis.horizontal,
+    this.scrollDirection = .horizontal,
     this.padEnds = true,
     super.key,
   }) : assert(estimatedPageSize >= 0.0),
@@ -167,12 +167,12 @@ class ExpandablePageView extends StatefulWidget {
     this.dragStartBehavior = DragStartBehavior.start,
     this.allowImplicitScrolling = false,
     this.restorationId,
-    this.clipBehavior = Clip.hardEdge,
+    this.clipBehavior = .hardEdge,
     this.animateFirstPage = false,
     this.estimatedPageSize = 0.0,
-    this.alignment = Alignment.topCenter,
+    this.alignment = .topCenter,
     this.scrollBehavior,
-    this.scrollDirection = Axis.horizontal,
+    this.scrollDirection = .horizontal,
     this.padEnds = true,
     super.key,
   }) : assert(estimatedPageSize >= 0.0),
@@ -196,7 +196,7 @@ class _ExpandablePageViewState extends State<ExpandablePageView> {
 
   bool get isBuilder => widget.itemBuilder != null;
 
-  bool get _isHorizontalScroll => widget.scrollDirection == Axis.horizontal;
+  bool get _isHorizontalScroll => widget.scrollDirection == .horizontal;
 
   @override
   void initState() {
@@ -274,7 +274,7 @@ class _ExpandablePageViewState extends State<ExpandablePageView> {
     if (_firstPageLoaded) {
       return widget.animationDuration;
     }
-    return widget.animateFirstPage ? widget.animationDuration : Duration.zero;
+    return widget.animateFirstPage ? widget.animationDuration : .zero;
   }
 
   Widget _buildPageView() {
@@ -378,10 +378,10 @@ class OverflowPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OverflowBox(
-      minHeight: scrollDirection == Axis.horizontal ? 0 : null,
-      minWidth: scrollDirection == Axis.vertical ? 0 : null,
-      maxHeight: scrollDirection == Axis.horizontal ? double.infinity : null,
-      maxWidth: scrollDirection == Axis.vertical ? double.infinity : null,
+      minHeight: scrollDirection == .horizontal ? 0 : null,
+      minWidth: scrollDirection == .vertical ? 0 : null,
+      maxHeight: scrollDirection == .horizontal ? .infinity : null,
+      maxWidth: scrollDirection == .vertical ? .infinity : null,
       alignment: alignment,
       child: SizeReportingWidget(onSizeChange: onSizeChange, child: child),
     );

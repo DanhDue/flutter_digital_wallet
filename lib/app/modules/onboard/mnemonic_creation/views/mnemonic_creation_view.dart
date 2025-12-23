@@ -56,21 +56,21 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
                 child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: const AlwaysScrollableScrollPhysics(),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: .start,
+                    crossAxisAlignment: .center,
+                    mainAxisSize: .max,
                     children: [
                       SizedBox(height: 8),
                       SizedBox(
-                        width: double.infinity,
+                        width: .infinity,
                         child: Text(
                           LocaleKeys.writeDownSecretRecoveryPhrase.tr,
                           style: context.appThemes.bold24.copyWith(
                             color: context.appThemes.ink100,
                           ),
-                          textAlign: TextAlign.center,
+                          textAlign: .center,
                         ),
                       ),
                       SizedBox(height: 8),
@@ -79,21 +79,21 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
                         style: context.appThemes.regular14.copyWith(
                           color: context.appThemes.ink60,
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: .center,
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       ExpandablePageView(
                         controller: _pageController,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         children: [
                           AnimatedPage(
                             index: 0,
                             controller: _pageController,
                             effect: FadeEffect(opacity: 1),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: .start,
+                              crossAxisAlignment: .center,
+                              mainAxisSize: .max,
                               children: [
                                 _createGuideUILayouts(
                                   context,
@@ -108,9 +108,9 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
                             controller: _pageController,
                             effect: FadeEffect(opacity: 1),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: .start,
+                              crossAxisAlignment: .center,
+                              mainAxisSize: .max,
                               children: [_buildSecretRecoveryPhrase(context)],
                             ),
                           ),
@@ -123,8 +123,8 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
             ),
             Column(
               children: [
-                Container(width: double.infinity, height: 1, color: context.appThemes.ink10),
-                SizedBox(height: 12),
+                Container(width: .infinity, height: 1, color: context.appThemes.ink10),
+                const SizedBox(height: 12),
                 Obx(
                   () => CustomFilledButton(
                     horizontalPadding: 16,
@@ -160,32 +160,32 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
     return Column(
       children: [
         Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(vertical: 50, horizontal: 16),
+          width: .infinity,
+          padding: const .symmetric(vertical: 50, horizontal: 16),
           decoration: BoxDecoration(
             border: Border.all(color: context.appThemes.ink10),
             color: context.appThemes.ink5,
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: .circular(4),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: .start,
+            crossAxisAlignment: .center,
+            mainAxisSize: .min,
             children: [
-              Assets.images.icVisibility.svg(width: 24, height: 24, fit: BoxFit.cover),
-              SizedBox(height: 16),
+              Assets.images.icVisibility.svg(width: 24, height: 24, fit: .cover),
+              const SizedBox(height: 16),
               Text(
                 LocaleKeys.tapToRevealSecretRecoveryPhrase.tr,
                 style: context.appThemes.medium14.copyWith(color: context.appThemes.ink100),
-                textAlign: TextAlign.center,
+                textAlign: .center,
               ),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
               Text(
                 LocaleKeys.securityAlertMessage.tr,
                 style: context.appThemes.regular14.copyWith(color: context.appThemes.ink80),
-                textAlign: TextAlign.center,
+                textAlign: .center,
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               IntrinsicWidth(
                 child: CustomUnfilledButton(
                   verticalPadding: 0,
@@ -207,20 +207,20 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
     if (controller.wallet.value?.mnemonics?.isNotBlank() == true) {
       final words = controller.wallet.value?.mnemonics?.split(" ");
       return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .center,
+        mainAxisSize: .min,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            padding: const .symmetric(horizontal: 16, vertical: 16),
             decoration: BoxDecoration(
               border: Border.all(color: context.appThemes.ink10),
               color: context.appThemes.white,
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: .circular(4),
             ),
             child: GridView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               semanticChildCount: words?.length ?? 0,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -231,14 +231,14 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
               itemCount: words?.length ?? 0,
               itemBuilder: (context, index) {
                 return Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .max,
                   children: [
                     Container(
-                      alignment: Alignment.centerLeft,
+                      alignment: .centerLeft,
                       child: Stack(
-                        alignment: Alignment.centerLeft,
+                        alignment: .centerLeft,
                         children: [
                           Visibility(
                             visible: false,
@@ -251,7 +251,7 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
                                 color: context.appThemes.ink100,
                               ),
                               maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                              overflow: .ellipsis,
                             ),
                           ),
                           Text(
@@ -260,19 +260,19 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
                               color: context.appThemes.ink100,
                             ),
                             maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                            overflow: .ellipsis,
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                        alignment: Alignment.centerLeft,
+                        padding: const .symmetric(horizontal: 8, vertical: 4),
+                        alignment: .centerLeft,
                         decoration: BoxDecoration(
                           color: context.appThemes.ink5,
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: .circular(4),
                         ),
                         child: Text(
                           words?[index] ?? "",
@@ -287,14 +287,14 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
               },
             ),
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           IntrinsicWidth(
             child: CustomUnfilledButton(
               startIcon: Assets.images.icCopyLine.svg(
                 width: 24,
                 height: 24,
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(context.appThemes.trueBlue100, BlendMode.srcIn),
+                fit: .cover,
+                colorFilter: .mode(context.appThemes.trueBlue100, .srcIn),
               ),
               text: LocaleKeys.copyToClipboardAction.tr,
               borderColor: context.appThemes.trueBlue100,
@@ -322,7 +322,7 @@ class _MnemonicCreationViewState extends State<MnemonicCreationView> {
       return Text(
         LocaleKeys.commonErrorMessage.tr,
         style: context.appThemes.h3,
-        textAlign: TextAlign.center,
+        textAlign: .center,
       );
     }
   }

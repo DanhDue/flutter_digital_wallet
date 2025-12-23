@@ -40,13 +40,13 @@ class QrScannerOverlayShape extends ShapeBorder {
   final double cutOutBottomOffset;
 
   @override
-  EdgeInsetsGeometry get dimensions => const EdgeInsets.all(10);
+  EdgeInsetsGeometry get dimensions => const .all(10);
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
     return Path()
       ..fillType = PathFillType.evenOdd
-      ..addPath(getOuterPath(rect), Offset.zero);
+      ..addPath(getOuterPath(rect), .zero);
   }
 
   @override
@@ -107,7 +107,7 @@ class QrScannerOverlayShape extends ShapeBorder {
           cutOutRect.top,
           cutOutRect.right,
           cutOutRect.top + _borderLength,
-          topRight: Radius.circular(borderRadius),
+          topRight: .circular(borderRadius),
         ),
         borderPaint,
       )
@@ -118,7 +118,7 @@ class QrScannerOverlayShape extends ShapeBorder {
           cutOutRect.top,
           cutOutRect.left + _borderLength,
           cutOutRect.top + _borderLength,
-          topLeft: Radius.circular(borderRadius),
+          topLeft: .circular(borderRadius),
         ),
         borderPaint,
       )
@@ -129,7 +129,7 @@ class QrScannerOverlayShape extends ShapeBorder {
           cutOutRect.bottom - _borderLength,
           cutOutRect.right,
           cutOutRect.bottom,
-          bottomRight: Radius.circular(borderRadius),
+          bottomRight: .circular(borderRadius),
         ),
         borderPaint,
       )
@@ -140,11 +140,11 @@ class QrScannerOverlayShape extends ShapeBorder {
           cutOutRect.bottom - _borderLength,
           cutOutRect.left + _borderLength,
           cutOutRect.bottom,
-          bottomLeft: Radius.circular(borderRadius),
+          bottomLeft: .circular(borderRadius),
         ),
         borderPaint,
       )
-      ..drawRRect(RRect.fromRectAndRadius(cutOutRect, Radius.circular(borderRadius)), boxPaint)
+      ..drawRRect(RRect.fromRectAndRadius(cutOutRect, .circular(borderRadius)), boxPaint)
       ..restore();
   }
 

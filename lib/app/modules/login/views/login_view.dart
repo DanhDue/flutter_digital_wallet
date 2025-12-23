@@ -63,49 +63,49 @@ class _LoginViewState extends State<LoginView> {
           top: true,
           bottom: true,
           child: SizedBox(
-            width: double.infinity,
-            height: double.infinity,
+            width: .infinity,
+            height: .infinity,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .center,
+              mainAxisSize: .max,
               children: [
-                SizedBox(height: 36),
-                Center(child: Assets.images.icZenoTxt.image(width: 136, fit: BoxFit.cover)),
-                SizedBox(height: 24),
+                const SizedBox(height: 36),
+                Center(child: Assets.images.icZenoTxt.image(width: 136, fit: .cover)),
+                const SizedBox(height: 24),
                 Expanded(
                   flex: 1,
                   child: SingleChildScrollView(
                     physics: const AlwaysScrollableScrollPhysics(),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .center,
+                      mainAxisSize: .max,
                       children: [
-                        SizedBox(height: 46),
-                        Assets.images.icSecureServer.svg(width: 146, fit: BoxFit.cover),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 46),
+                        Assets.images.icSecureServer.svg(width: 146, fit: .cover),
+                        const SizedBox(height: 24),
                         Text(
                           LocaleKeys.welcomeback.tr,
                           style: context.appThemes.bold20.copyWith(
                             color: context.appThemes.ink100,
                           ),
-                          textAlign: TextAlign.center,
+                          textAlign: .center,
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         Obx(
                           () => Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            padding: const .symmetric(horizontal: 16),
                             child: InputText(
                               controller: controller.passwordTextEditingController,
                               focusNode: controller.passwordFocusNode,
                               onChanged: (value) => controller.passwordTextChanged(value),
                               status: controller.passwordIsFocus.value
-                                  ? InputTextStatus.focus
+                                  ? .focus
                                   : controller.passError.value.isNotBlank == true
-                                  ? InputTextStatus.error
-                                  : InputTextStatus.normal,
-                              keyboardType: TextInputType.visiblePassword,
+                                  ? .error
+                                  : .normal,
+                              keyboardType: .visiblePassword,
                               obscureText: controller.obscurePassword.value,
                               labelText: LocaleKeys.password.tr,
                               hintText: LocaleKeys.enterTextPlease.tr,
@@ -114,7 +114,7 @@ class _LoginViewState extends State<LoginView> {
                                   ? InkWell(
                                       onTap: () => controller.clearPassword(),
                                       child: Padding(
-                                        padding: const EdgeInsets.only(
+                                        padding: const .only(
                                           left: 24,
                                           top: 12,
                                           bottom: 12,
@@ -130,12 +130,12 @@ class _LoginViewState extends State<LoginView> {
                                         ? Assets.images.icVisibility.svg(
                                             width: 24,
                                             height: 24,
-                                            fit: BoxFit.cover,
+                                            fit: .cover,
                                           )
                                         : Assets.images.icInvisibility.svg(
                                             width: 24,
                                             height: 24,
-                                            fit: BoxFit.cover,
+                                            fit: .cover,
                                           ))
                                   : SizedBox.shrink(),
                               onSecondSuffixIconTap: () => controller.obscurePassword.value =
@@ -148,14 +148,14 @@ class _LoginViewState extends State<LoginView> {
                           () => Visibility(
                             visible: controller.passError.value.isNotBlank == true,
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: .start,
+                              crossAxisAlignment: .center,
+                              mainAxisSize: .min,
                               children: [
-                                SizedBox(height: 16),
+                                const SizedBox(height: 16),
                                 Container(
-                                  width: double.infinity,
-                                  padding: EdgeInsets.symmetric(horizontal: 30),
+                                  width: .infinity,
+                                  padding: const .symmetric(horizontal: 30),
                                   child: Text(
                                     controller.passError.value,
                                     style: context.appThemes.paragraphSemiBold.copyWith(
@@ -167,13 +167,13 @@ class _LoginViewState extends State<LoginView> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          padding: const .symmetric(horizontal: 16),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: .start,
+                            crossAxisAlignment: .center,
+                            mainAxisSize: .max,
                             children: [
                               Flexible(
                                 child: Obx(
@@ -194,14 +194,14 @@ class _LoginViewState extends State<LoginView> {
                                 child: InkWell(
                                   onTap: () => controller.handleBiometricLogin(),
                                   child: Padding(
-                                    padding: EdgeInsetsGeometry.only(left: 16),
+                                    padding: const .only(left: 16),
                                     child: Assets.images.icFaceId.svg(
                                       width: 36,
                                       height: 36,
-                                      fit: BoxFit.cover,
+                                      fit: .cover,
                                       colorFilter: ColorFilter.mode(
                                         context.appThemes.textGrey,
-                                        BlendMode.srcIn,
+                                        .srcIn,
                                       ),
                                     ),
                                   ),
@@ -218,22 +218,22 @@ class _LoginViewState extends State<LoginView> {
                   () => Visibility(
                     visible: !controller.keyboardIsVisible.value,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .center,
+                      mainAxisSize: .min,
                       children: [
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 30),
+                          padding: const .symmetric(horizontal: 30),
                           child: Text(
                             LocaleKeys.cannotLoginGuide.tr,
                             style: context.appThemes.regular14.copyWith(
                               color: context.appThemes.ink60,
                             ),
-                            textAlign: TextAlign.center,
+                            textAlign: .center,
                           ),
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         InkWell(
                           onTap: () async {
                             final needToReimportWallets = await Get.dialog(
@@ -263,31 +263,31 @@ class _LoginViewState extends State<LoginView> {
 
   Widget _reimportWalletWarningDialog(BuildContext context) {
     return Dialog(
-      insetPadding: EdgeInsets.symmetric(horizontal: 20),
+      insetPadding: const .symmetric(horizontal: 20),
       backgroundColor: context.appThemes.white,
       child: Padding(
-        padding: const EdgeInsets.all(18),
+        padding: const .all(18),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: .start,
+          crossAxisAlignment: .center,
+          mainAxisSize: .min,
           children: [
-            Assets.images.icIllusWarning.svg(width: 48, height: 48, fit: BoxFit.cover),
-            SizedBox(height: 16),
+            Assets.images.icIllusWarning.svg(width: 48, height: 48, fit: .cover),
+            const SizedBox(height: 16),
             Text(
               LocaleKeys.reimportWalletWarningTitle.tr,
               style: context.appThemes.bold16.copyWith(color: context.appThemes.ink100),
-              textAlign: TextAlign.center,
+              textAlign: .center,
             ),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
               LocaleKeys.reimportDesOne.tr,
               style: context.appThemes.regular12.copyWith(color: context.appThemes.ink80),
-              textAlign: TextAlign.center,
+              textAlign: .center,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text.rich(
-              textAlign: TextAlign.center,
+              textAlign: .center,
               TextSpan(
                 text: LocaleKeys.reimportDesTwoFirstSegment.tr,
                 style: context.appThemes.regular12.copyWith(color: context.appThemes.ink80),
@@ -311,56 +311,56 @@ class _LoginViewState extends State<LoginView> {
                 ],
               ),
             ),
-            SizedBox(height: 18),
+            const SizedBox(height: 18),
             SizedBox(
-              width: double.infinity,
+              width: .infinity,
               child: TextButton(
                 onPressed: () {
                   Get.back(result: true);
                 },
                 style: ButtonStyle(
                   splashFactory: NoSplash.splashFactory,
-                  backgroundColor: WidgetStateProperty.all(context.appThemes.trueBlue),
-                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                  backgroundColor: .all(context.appThemes.trueBlue),
+                  shape: .all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: .circular(6),
                       side: BorderSide(color: context.appThemes.trueBlue),
                     ),
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 28, vertical: 5),
+                  padding: const .symmetric(horizontal: 28, vertical: 5),
                   child: Text(
                     LocaleKeys.continueRemoving.tr,
                     style: context.appThemes.medium14.copyWith(color: context.appThemes.white),
-                    textAlign: TextAlign.center,
+                    textAlign: .center,
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             SizedBox(
-              width: double.infinity,
+              width: .infinity,
               child: TextButton(
                 onPressed: () {
                   Get.back(result: false);
                 },
                 style: ButtonStyle(
                   splashFactory: NoSplash.splashFactory,
-                  backgroundColor: WidgetStateProperty.all(context.appThemes.transparent),
-                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                  backgroundColor: .all(context.appThemes.transparent),
+                  shape: .all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
+                      borderRadius: .circular(40),
                       side: BorderSide(color: context.appThemes.transparent, width: 0),
                     ),
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 28, vertical: 5),
+                  padding: const .symmetric(horizontal: 28, vertical: 5),
                   child: Text(
                     LocaleKeys.cancel.tr,
                     style: context.appThemes.medium14.copyWith(color: context.appThemes.trueBlue),
-                    textAlign: TextAlign.center,
+                    textAlign: .center,
                   ),
                 ),
               ),

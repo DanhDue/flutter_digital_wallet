@@ -55,26 +55,30 @@ class _IntroViewState extends State<IntroView> with TickerProviderStateMixin {
         top: true,
         bottom: false,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: .start,
+          crossAxisAlignment: .center,
+          mainAxisSize: .max,
           children: [
-            SizedBox(height: 6),
+            const SizedBox(height: 6),
             InkWell(
               onTap: () => {
                 // controller.skip()
               },
-              child: Assets.images.android12splashLight.image(height: 128, fit: BoxFit.cover),
+              child: Assets.images.android12splashLight.image(height: 128, fit: .cover),
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             Expanded(
               child: Stack(
-                alignment: Alignment.bottomCenter,
+                alignment: .bottomCenter,
                 children: [
                   PageView(
                     controller: _pageViewController,
                     onPageChanged: _handlePageViewChanged,
-                    children: [FirstIntroPage(), SecondIntroPage(), ThirdIntroPage()],
+                    children: [
+                      const FirstIntroPage(),
+                      const SecondIntroPage(),
+                      const ThirdIntroPage(),
+                    ],
                   ),
                   SmoothPageIndicator(
                     controller: _pageViewController,
@@ -91,11 +95,11 @@ class _IntroViewState extends State<IntroView> with TickerProviderStateMixin {
                 ],
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: .center,
+              crossAxisAlignment: .center,
+              mainAxisSize: .min,
               children: [
                 CustomUnfilledButton(
                   onPressed: () {
@@ -120,7 +124,7 @@ class _IntroViewState extends State<IntroView> with TickerProviderStateMixin {
                 ),
               ],
             ),
-            SizedBox(height: 26),
+            const SizedBox(height: 26),
           ],
         ),
       ),

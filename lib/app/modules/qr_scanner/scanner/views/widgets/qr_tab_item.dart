@@ -15,30 +15,25 @@ class TabItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tab(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: .center,
+        crossAxisAlignment: .center,
+        mainAxisSize: .max,
         children: [
           Expanded(
-            child: Text(
-              title,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              textAlign: TextAlign.center,
-            ),
+            child: Text(title, overflow: .ellipsis, maxLines: 1, textAlign: .center),
           ),
           (count?.isGreaterThan(0) == true)
               ? Container(
                   margin: const EdgeInsetsDirectional.only(start: 5),
-                  padding: const EdgeInsets.all(3),
+                  padding: const .all(3),
                   decoration: BoxDecoration(color: Colors.grey.shade200, shape: BoxShape.circle),
                   child: Center(
                     child: Text(
                       (count?.isGreaterThan(9) == true) ? "9+" : count.toString(),
                       style: const TextStyle(color: Colors.black54, fontSize: 10),
                       maxLines: 1,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
+                      textAlign: .center,
+                      overflow: .ellipsis,
                     ),
                   ),
                 )

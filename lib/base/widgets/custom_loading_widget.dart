@@ -19,21 +19,21 @@ class CustomLoadingWidget extends StatelessWidget {
       children: [
         IntrinsicWidth(
           child: Container(
-            padding: const EdgeInsets.all(16),
+            padding: const .all(16),
             decoration: BoxDecoration(
               color: context.appThemes.white,
               borderRadius: BorderRadius.circular(12),
             ),
-            alignment: Alignment.center,
+            alignment: .center,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: .center,
+              crossAxisAlignment: .center,
+              mainAxisSize: .min,
               children: [
                 Assets.lotties.sandyLoading.lottie(
                   width: 120,
                   height: 120,
-                  fit: BoxFit.cover,
+                  fit: .cover,
                   animate: true,
                   repeat: true,
                   backgroundLoading: true,
@@ -42,7 +42,7 @@ class CustomLoadingWidget extends StatelessWidget {
                   visible: msg != null && msg!.isNotEmpty,
                   child: Column(
                     children: [
-                      SizedBox(height: 2),
+                      const SizedBox(height: 2),
                       Text(
                         msg ?? LocaleKeys.processing.tr,
                         style: context.appThemes.regular12.copyWith(

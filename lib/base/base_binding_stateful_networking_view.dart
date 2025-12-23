@@ -133,7 +133,7 @@ class _BaseBindingStatefulNetworkingViewState<Binding extends Bindings, C extend
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      behavior: HitTestBehavior.opaque,
+      behavior: .opaque,
       onTap: () {
         // Hide soft keyboard
         FocusManager.instance.primaryFocus?.unfocus();

@@ -91,7 +91,7 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
               colors: GradientUtils.getWalletGradientColors(context, widget.walletIndex),
               begin: .centerLeft,
               end: .centerRight,
-              stops: [0.0, 0.2, 1.0],
+              stops: const [0.0, 0.2, 1.0],
             ),
           ),
           child: Stack(
@@ -238,11 +238,11 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
                                   color: context.appThemes.materialIndigo.withValues(alpha: 0.7),
                                   borderRadius: .circular(8),
                                 ),
-                                padding: .symmetric(vertical: 3, horizontal: 3),
+                                padding: const .symmetric(vertical: 3, horizontal: 3),
                                 child: Row(
                                   mainAxisAlignment: .start,
                                   crossAxisAlignment: .center,
-                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisSize: .min,
                                   children: [
                                     Assets.images.icArrowAltLtop.svg(
                                       width: 12,
@@ -261,7 +261,7 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
                                         color: context.appThemes.green100,
                                       ),
                                     ),
-                                    SizedBox(width: 2),
+                                    const SizedBox(width: 2),
                                     Text(
                                       "(+11.48%)",
                                       style: context.appThemes.regular14.copyWith(
@@ -275,9 +275,9 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
                     ),
                     const SizedBox(height: 18),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .center,
+                      mainAxisSize: .max,
                       children: [
                         Text(
                           (widget.wallet?.address ?? "").formatWalletAddress() ?? "",

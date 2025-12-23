@@ -40,21 +40,16 @@ class CustomUnfilledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      padding: EdgeInsetsGeometry.symmetric(
-        horizontal: horizontalPadding ?? 0,
-        vertical: verticalPadding ?? 0,
-      ),
+      width: .infinity,
+      padding: .symmetric(horizontal: horizontalPadding ?? 0, vertical: verticalPadding ?? 0),
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
           splashFactory: NoSplash.splashFactory,
-          backgroundColor: WidgetStateProperty.all(
-            backgroundColor ?? context.appThemes.transparent,
-          ),
-          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+          backgroundColor: .all(backgroundColor ?? context.appThemes.transparent),
+          shape: .all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(borderRadius ?? 6),
+              borderRadius: .circular(borderRadius ?? 6),
               side: BorderSide(
                 width: borderColor != null ? 1 : 0,
                 color: borderColor ?? context.appThemes.transparent,
@@ -63,36 +58,36 @@ class CustomUnfilledButton extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: .symmetric(
             horizontal: horizontalTextPadding ?? 8,
             vertical: verticalTextPadding ?? 8,
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: .start,
+            crossAxisAlignment: .center,
+            mainAxisSize: .min,
             children: [
               Visibility(
                 visible: startIcon != null,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [startIcon ?? SizedBox.shrink(), SizedBox(width: 2)],
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .min,
+                  children: [startIcon ?? const SizedBox.shrink(), const SizedBox(width: 2)],
                 ),
               ),
               Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .min,
                   children: [
                     Text(
                       text ?? "",
                       style: context.appThemes.medium16.copyWith(
                         color: textColor ?? context.appThemes.trueBlue100,
                       ),
-                      textAlign: TextAlign.center,
+                      textAlign: .center,
                     ),
                     Visibility(
                       visible: subText?.isNotEmpty == true,
@@ -107,10 +102,10 @@ class CustomUnfilledButton extends StatelessWidget {
               Visibility(
                 visible: endIcon != null,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [SizedBox(width: 2), endIcon ?? SizedBox.shrink()],
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .min,
+                  children: [const SizedBox(width: 2), endIcon ?? const SizedBox.shrink()],
                 ),
               ),
             ],

@@ -50,11 +50,11 @@ class _OnboardViewState extends State<OnboardView> {
           children: [
             Obx(
               () => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const .symmetric(horizontal: 16),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .max,
                   children: [
                     (controller.currentPage.value == OnboardPageIndex.passwordCreationPageIndex ||
                             controller.currentPage.value ==
@@ -74,26 +74,18 @@ class _OnboardViewState extends State<OnboardView> {
                                       ),
                                     };
                             },
-                            child: Assets.images.icBack.svg(
-                              width: 36,
-                              height: 36,
-                              fit: BoxFit.cover,
-                            ),
+                            child: Assets.images.icBack.svg(width: 36, height: 36, fit: .cover),
                           )
                         : Visibility(
                             visible: false,
                             maintainSize: true,
                             maintainState: true,
                             maintainAnimation: true,
-                            child: Assets.images.icBack.svg(
-                              width: 36,
-                              height: 36,
-                              fit: BoxFit.cover,
-                            ),
+                            child: Assets.images.icBack.svg(width: 36, height: 36, fit: .cover),
                           ),
                     Expanded(
                       child: Center(
-                        child: Assets.images.icZenoTxt.image(width: 105, fit: BoxFit.cover),
+                        child: Assets.images.icZenoTxt.image(width: 105, fit: .cover),
                       ),
                     ),
                     Visibility(
@@ -101,23 +93,23 @@ class _OnboardViewState extends State<OnboardView> {
                       maintainSize: true,
                       maintainState: true,
                       maintainAnimation: true,
-                      child: Assets.images.icBack.svg(width: 36, height: 36, fit: BoxFit.cover),
+                      child: Assets.images.icBack.svg(width: 36, height: 36, fit: .cover),
                     ),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             _createHeaderProgressBar(context),
             Expanded(
               child: PageView(
                 controller: _pageController,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   AnimatedPage(
                     index: OnboardPageIndex.passwordCreationPageIndex,
                     controller: _pageController,
-                    effect: FadeEffect(opacity: 1),
+                    effect: const FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
                       child: OnboardingPasswordCreationView(
                         passwordIsCreated: (data) {
@@ -131,7 +123,7 @@ class _OnboardViewState extends State<OnboardView> {
                   AnimatedPage(
                     index: OnboardPageIndex.secureWalletPageIndex,
                     controller: _pageController,
-                    effect: FadeEffect(opacity: 1),
+                    effect: const FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
                       bindingCreator: () => MnemonicDescriptionBinding(),
                       child: MnemonicDescriptionView(
@@ -144,7 +136,7 @@ class _OnboardViewState extends State<OnboardView> {
                   AnimatedPage(
                     index: OnboardPageIndex.mnemonicDescriptionPageIndex,
                     controller: _pageController,
-                    effect: FadeEffect(opacity: 1),
+                    effect: const FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
                       bindingCreator: () => MnemonicWarningBinding(),
                       child: MnemonicWarningView(
@@ -155,7 +147,7 @@ class _OnboardViewState extends State<OnboardView> {
                   AnimatedPage(
                     index: OnboardPageIndex.mnemonicCreationPageIndex,
                     controller: _pageController,
-                    effect: FadeEffect(opacity: 1),
+                    effect: const FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
                       bindingCreator: () => MnemonicCreationBinding(),
                       child: Obx(
@@ -172,7 +164,7 @@ class _OnboardViewState extends State<OnboardView> {
                   AnimatedPage(
                     index: OnboardPageIndex.mnemonicConfirmationPageIndex,
                     controller: _pageController,
-                    effect: FadeEffect(opacity: 1),
+                    effect: const FadeEffect(opacity: 1),
                     child: KeepAliveWidget(
                       bindingCreator: () => MnemonicConfirmationBinding(),
                       child: Obx(
@@ -219,19 +211,19 @@ class _OnboardViewState extends State<OnboardView> {
 
   _createHeaderProgressBar(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const .symmetric(horizontal: 16),
       child: Stack(
-        alignment: Alignment.topCenter,
+        alignment: .topCenter,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 8),
+            padding: const .only(top: 8),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .center,
+              mainAxisSize: .min,
               children: [
                 Expanded(flex: 1, child: Container()),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   flex: 2,
                   child: Obx(
@@ -243,7 +235,7 @@ class _OnboardViewState extends State<OnboardView> {
                     ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   flex: 2,
                   child: Obx(
@@ -255,35 +247,31 @@ class _OnboardViewState extends State<OnboardView> {
                     ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(flex: 1, child: Container()),
               ],
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: .start,
+            crossAxisAlignment: .start,
+            mainAxisSize: .min,
             children: [
               Expanded(
                 child: Obx(
                   () => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: .center,
+                    crossAxisAlignment: .center,
+                    mainAxisSize: .max,
                     children: [
                       controller.passwordIsCreated.value
-                          ? Assets.images.icStepOneIsDone.svg(
-                              width: 20,
-                              height: 20,
-                              fit: BoxFit.cover,
-                            )
+                          ? Assets.images.icStepOneIsDone.svg(width: 20, height: 20, fit: .cover)
                           : Assets.images.icStepOneIsRunning.svg(
                               width: 20,
                               height: 20,
-                              fit: BoxFit.cover,
+                              fit: .cover,
                             ),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(
                         LocaleKeys.createPassword.tr,
                         style: context.appThemes.regular10.copyWith(
@@ -291,7 +279,7 @@ class _OnboardViewState extends State<OnboardView> {
                               ? context.appThemes.techBlue
                               : context.appThemes.ink60,
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: .center,
                       ),
                     ],
                   ),
@@ -300,16 +288,12 @@ class _OnboardViewState extends State<OnboardView> {
               Expanded(
                 child: Obx(
                   () => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: .center,
+                    crossAxisAlignment: .center,
+                    mainAxisSize: .max,
                     children: [
                       controller.shouldBeConfirmMnemonic.value
-                          ? Assets.images.icStepTwoIsDone.svg(
-                              width: 20,
-                              height: 20,
-                              fit: BoxFit.cover,
-                            )
+                          ? Assets.images.icStepTwoIsDone.svg(width: 20, height: 20, fit: .cover)
                           : ((controller.currentPage.value ==
                                         OnboardPageIndex.secureWalletPageIndex ||
                                     controller.currentPage.value ==
@@ -319,14 +303,14 @@ class _OnboardViewState extends State<OnboardView> {
                                 ? Assets.images.icStepTwoIsRunning.svg(
                                     width: 20,
                                     height: 20,
-                                    fit: BoxFit.cover,
+                                    fit: .cover,
                                   )
                                 : Assets.images.icStepTwoIsWaiting.svg(
                                     width: 20,
                                     height: 20,
-                                    fit: BoxFit.cover,
+                                    fit: .cover,
                                   )),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(
                         LocaleKeys.secureWalletStep.tr,
                         style: context.appThemes.regular10.copyWith(
@@ -334,7 +318,7 @@ class _OnboardViewState extends State<OnboardView> {
                               ? context.appThemes.techBlue
                               : context.appThemes.ink60,
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: .center,
                       ),
                     ],
                   ),
@@ -343,29 +327,25 @@ class _OnboardViewState extends State<OnboardView> {
               Expanded(
                 child: Obx(
                   () => Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: .center,
+                    crossAxisAlignment: .center,
+                    mainAxisSize: .max,
                     children: [
                       controller.mnemonicIsVerified.value
-                          ? Assets.images.icStepThreeIsDone.svg(
-                              width: 20,
-                              height: 20,
-                              fit: BoxFit.cover,
-                            )
+                          ? Assets.images.icStepThreeIsDone.svg(width: 20, height: 20, fit: .cover)
                           : (controller.currentPage.value ==
                                     OnboardPageIndex.mnemonicConfirmationPageIndex
                                 ? Assets.images.icStepThreeIsRunning.svg(
                                     width: 20,
                                     height: 20,
-                                    fit: BoxFit.cover,
+                                    fit: .cover,
                                   )
                                 : Assets.images.icStepThreeIsWaiting.svg(
                                     width: 20,
                                     height: 20,
                                     fit: BoxFit.cover,
                                   )),
-                      SizedBox(height: 4),
+                      const SizedBox(height: 4),
                       Text(
                         LocaleKeys.confirmSRPStep.tr,
                         style: context.appThemes.regular10.copyWith(
@@ -375,7 +355,7 @@ class _OnboardViewState extends State<OnboardView> {
                               ? context.appThemes.techBlue
                               : context.appThemes.ink60,
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: .center,
                       ),
                     ],
                   ),

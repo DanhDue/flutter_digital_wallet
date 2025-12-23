@@ -38,7 +38,7 @@ abstract class BaseBindingNetworkingView<Binding extends Bindings, C extends Bas
   Widget onCreateViews(BuildContext context) {
     _createBinding();
     return GestureDetector(
-      behavior: HitTestBehavior.opaque,
+      behavior: .opaque,
       onTap: () {
         // call this method here to hide soft keyboard
         FocusManager.instance.primaryFocus?.unfocus();

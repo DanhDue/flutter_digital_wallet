@@ -18,7 +18,7 @@ class InputText extends StatelessWidget {
     this.showPrefixIconsDivider,
     this.secondSuffixIcon,
     this.onSecondSuffixIconTap,
-    this.status = InputTextStatus.normal,
+    this.status = .normal,
     this.keyboardType,
     this.obscureText,
     this.minLines,
@@ -57,40 +57,35 @@ class InputText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        horizontal: 12,
-        vertical: status == InputTextStatus.focus ? 4 : 4,
-      ),
+      width: .infinity,
+      padding: .symmetric(horizontal: 12, vertical: status == .focus ? 4 : 4),
       decoration: BoxDecoration(
         border: Border.all(
-          color: status == InputTextStatus.normal
+          color: status == .normal
               ? context.appThemes.ink10
-              : (status == InputTextStatus.focus
-                    ? context.appThemes.blue40
-                    : context.appThemes.red),
+              : (status == .focus ? context.appThemes.blue40 : context.appThemes.red),
         ),
         color: context.appThemes.transparent,
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: .circular(4),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .center,
+        mainAxisSize: .max,
         children: [
           Expanded(
             child: TextFormField(
               focusNode: focusNode,
-              textInputAction: textInputAction ?? TextInputAction.done,
+              textInputAction: textInputAction ?? .done,
               onChanged: onChanged,
               controller: controller,
-              keyboardType: keyboardType ?? TextInputType.text,
+              keyboardType: keyboardType ?? .text,
               obscureText: obscureText ?? false,
               style: context.appThemes.regular14.copyWith(color: context.appThemes.ink100),
               minLines: minLines,
               maxLines: maxLines,
               maxLength: maxLength,
-              textAlign: TextAlign.start,
+              textAlign: .start,
               contextMenuBuilder: enableInteractiveSelection == false
                   ? (context, editableTextState) {
                       final List<ContextMenuButtonItem> buttonItems =
@@ -114,7 +109,7 @@ class InputText extends StatelessWidget {
                   : (context, editableTextState) =>
                         _defaultContextMenuBuilder(context, editableTextState),
               decoration: InputDecoration(
-                border: InputBorder.none,
+                border: .none,
                 filled: true,
                 fillColor: context.appThemes.transparent,
                 labelText: labelText,
@@ -133,7 +128,7 @@ class InputText extends StatelessWidget {
             child: Container(width: 1, height: 26, color: context.appThemes.ink10),
           ),
           Padding(
-            padding: EdgeInsetsGeometry.only(left: 4),
+            padding: const .only(left: 4),
             child: InkWell(onTap: onSecondSuffixIconTap, child: secondSuffixIcon),
           ),
         ],

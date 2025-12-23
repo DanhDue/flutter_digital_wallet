@@ -14,11 +14,11 @@ class NoDataLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: .center,
+      crossAxisAlignment: .center,
+      mainAxisSize: .max,
       children: [
-        Assets.images.icHasNoData.image(width: 96, height: 96, fit: BoxFit.cover),
+        Assets.images.icHasNoData.image(width: 96, height: 96, fit: .cover),
         const SizedBox(height: 12),
         Text(
           LocaleKeys.oops.tr,

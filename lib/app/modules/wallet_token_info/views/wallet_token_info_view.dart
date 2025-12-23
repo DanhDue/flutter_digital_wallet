@@ -49,27 +49,27 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: .start,
+      crossAxisAlignment: .start,
+      mainAxisSize: .max,
       children: <Widget>[
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
+          padding: const .symmetric(horizontal: 4),
           decoration: BoxDecoration(
             border: Border.all(color: context.appThemes.trueBlue, width: 1),
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: .circular(8),
           ),
           child: TabBar(
-            indicatorSize: TabBarIndicatorSize.tab,
-            labelPadding: EdgeInsets.symmetric(vertical: 0),
-            indicatorPadding: EdgeInsetsGeometry.symmetric(vertical: 4),
+            indicatorSize: .tab,
+            labelPadding: const .symmetric(vertical: 0),
+            indicatorPadding: const .symmetric(vertical: 4),
             onTap: (index) {
               setState(() {
                 _selectedTabbar = index;
               });
             },
             splashFactory: NoSplash.splashFactory,
-            overlayColor: WidgetStateProperty.all(Colors.transparent),
+            overlayColor: .all(Colors.transparent),
             dividerColor: Colors.transparent,
             labelColor: Colors.white,
             unselectedLabelColor: context.appThemes.ink40,
@@ -83,7 +83,7 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
               topRightRadius: 6,
               horizontalPadding: 0,
               verticalPadding: 0,
-              paintingStyle: PaintingStyle.fill,
+              paintingStyle: .fill,
             ),
             controller: _tabController,
             tabs: <Widget>[
@@ -123,7 +123,7 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
 
   _buildNFTView(BuildContext context, bool? balanceIsHidden) {
     return Stack(
-      alignment: Alignment.topCenter,
+      alignment: .topCenter,
       children: [
         Visibility(
           visible: false,
@@ -140,9 +140,9 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
   _buildNFTNoDataView(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .start,
+        mainAxisSize: .min,
         children: [const SizedBox(height: 56), _buildEmptyNFTLayouts(context)],
       ),
     );
@@ -151,11 +151,11 @@ class _WalletTokenInfoViewState extends State<WalletTokenInfoView> with TickerPr
   _buildEmptyNFTLayouts(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .center,
+        mainAxisSize: .min,
         children: [
-          Assets.images.icNoFound.svg(width: 86, fit: BoxFit.cover),
+          Assets.images.icNoFound.svg(width: 86, fit: .cover),
           SizedBox(height: 4),
           Text(
             LocaleKeys.nftNotFoundMessage.tr,

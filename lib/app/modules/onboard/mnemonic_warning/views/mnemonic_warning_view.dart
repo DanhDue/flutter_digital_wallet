@@ -27,25 +27,25 @@ class MnemonicWarningView extends BaseView<MnemonicWarningController> {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+                  padding: const .only(left: 16, right: 16, top: 16),
                   child: Column(
                     children: [
-                      SizedBox(height: 16),
-                      Assets.images.icLockBig.svg(fit: BoxFit.cover),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
+                      Assets.images.icLockBig.svg(fit: .cover),
+                      const SizedBox(height: 16),
                       SizedBox(
-                        width: double.infinity,
+                        width: .infinity,
                         child: Text(
                           LocaleKeys.secureYourWallet.tr,
                           style: context.appThemes.bold24.copyWith(
                             color: context.appThemes.ink100,
                           ),
-                          textAlign: TextAlign.center,
+                          textAlign: .center,
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Text.rich(
                         TextSpan(
                           children: [
@@ -69,16 +69,16 @@ class MnemonicWarningView extends BaseView<MnemonicWarningController> {
                             ),
                           ],
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: .center,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: .center,
+                        crossAxisAlignment: .center,
+                        mainAxisSize: .max,
                         children: [
-                          Assets.images.icInformation.svg(fit: BoxFit.cover),
-                          SizedBox(width: 8),
+                          Assets.images.icInformation.svg(fit: .cover),
+                          const SizedBox(width: 8),
                           Text(
                             LocaleKeys.whyIsThisImportant.tr,
                             style: context.appThemes.bold18.copyWith(
@@ -93,24 +93,24 @@ class MnemonicWarningView extends BaseView<MnemonicWarningController> {
                         elevation: 8,
                         borderOnForeground: true,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: .circular(8),
                           side: BorderSide(width: 0.5, color: context.appThemes.blue0),
                         ),
                         shadowColor: context.appThemes.white,
                         surfaceTintColor: context.appThemes.white,
                         child: SizedBox(
-                          width: double.infinity,
+                          width: .infinity,
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: .start,
+                            crossAxisAlignment: .start,
+                            mainAxisSize: .min,
                             children: [
                               Text(
                                 LocaleKeys.manual.tr,
                                 style: context.appThemes.bold20.copyWith(
                                   color: context.appThemes.ink100,
                                 ),
-                                textAlign: TextAlign.left,
+                                textAlign: .left,
                               ),
                               SizedBox(height: 16),
                               Text(
@@ -121,9 +121,9 @@ class MnemonicWarningView extends BaseView<MnemonicWarningController> {
                               ),
                               SizedBox(height: 16),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: .start,
+                                crossAxisAlignment: .start,
+                                mainAxisSize: .max,
                                 children: [
                                   Container(
                                     width: 56,

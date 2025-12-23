@@ -67,34 +67,34 @@ class _WalletImportViewState extends State<WalletImportView> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Stack(
-        alignment: Alignment.center,
+        alignment: .center,
         children: [
           Scaffold(
             body: SafeArea(
               top: true,
               bottom: true,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: .start,
+                crossAxisAlignment: .center,
+                mainAxisSize: .max,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: .start,
+                    crossAxisAlignment: .center,
+                    mainAxisSize: .max,
                     children: [
                       InkWell(
                         onTap: Get.back,
                         child: Assets.images.icArrowLeft.svg(
                           width: 36,
                           height: 36,
-                          fit: BoxFit.cover,
-                          colorFilter: ColorFilter.mode(context.appThemes.ink60, BlendMode.srcIn),
+                          fit: .cover,
+                          colorFilter: .mode(context.appThemes.ink60, .srcIn),
                         ),
                       ),
                       Expanded(
                         child: Center(
-                          child: Assets.images.icZenoTxt.image(width: 105, fit: BoxFit.cover),
+                          child: Assets.images.icZenoTxt.image(width: 105, fit: .cover),
                         ),
                       ),
                       Visibility(
@@ -102,11 +102,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                         maintainSize: true,
                         maintainState: true,
                         maintainAnimation: true,
-                        child: Assets.images.icArrowLeft.svg(
-                          width: 36,
-                          height: 36,
-                          fit: BoxFit.cover,
-                        ),
+                        child: Assets.images.icArrowLeft.svg(width: 36, height: 36, fit: .cover),
                       ),
                     ],
                   ).marginSymmetric(horizontal: 16),
@@ -114,11 +110,11 @@ class _WalletImportViewState extends State<WalletImportView> {
                     child: SingleChildScrollView(
                       physics: AlwaysScrollableScrollPhysics(),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        padding: const .symmetric(horizontal: 16),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: .start,
+                          crossAxisAlignment: .center,
+                          mainAxisSize: .max,
                           children: [
                             SizedBox(height: 26),
                             Text(
@@ -126,7 +122,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                               style: context.appThemes.bold24.copyWith(
                                 color: context.appThemes.ink100,
                               ),
-                              textAlign: TextAlign.center,
+                              textAlign: .center,
                             ),
                             SizedBox(height: 8),
                             Text(
@@ -134,27 +130,27 @@ class _WalletImportViewState extends State<WalletImportView> {
                               style: context.appThemes.regular14.copyWith(
                                 color: context.appThemes.ink60,
                               ),
-                              textAlign: TextAlign.center,
+                              textAlign: .center,
                             ),
                             SizedBox(height: 24),
                             Container(
-                              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                              padding: const .symmetric(vertical: 8, horizontal: 16),
                               decoration: BoxDecoration(
                                 border: Border.all(color: context.appThemes.yellow100),
                                 color: context.appThemes.yellow5,
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: .circular(8),
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: .start,
+                                crossAxisAlignment: .start,
+                                mainAxisSize: .max,
                                 children: [
                                   Text(
                                     LocaleKeys.example.tr,
                                     style: context.appThemes.medium14.copyWith(
                                       color: context.appThemes.ink100,
                                     ),
-                                    textAlign: TextAlign.left,
+                                    textAlign: .left,
                                   ),
                                   SizedBox(height: 2),
                                   Text(
@@ -162,7 +158,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                                     style: context.appThemes.regular12.copyWith(
                                       color: context.appThemes.ink60,
                                     ),
-                                    textAlign: TextAlign.left,
+                                    textAlign: .left,
                                   ),
                                   SizedBox(height: 2),
                                   Text(
@@ -170,7 +166,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                                     style: context.appThemes.regular12.copyWith(
                                       color: context.appThemes.ink60,
                                     ),
-                                    textAlign: TextAlign.left,
+                                    textAlign: .left,
                                   ).paddingOnly(left: 14),
                                   SizedBox(height: 6),
                                   Text(
@@ -178,7 +174,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                                     style: context.appThemes.regular12.copyWith(
                                       color: context.appThemes.ink60,
                                     ),
-                                    textAlign: TextAlign.left,
+                                    textAlign: .left,
                                   ),
                                   SizedBox(height: 2),
                                   Text(
@@ -186,7 +182,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                                     style: context.appThemes.regular12.copyWith(
                                       color: context.appThemes.ink60,
                                     ),
-                                    textAlign: TextAlign.left,
+                                    textAlign: .left,
                                   ).paddingOnly(left: 14),
                                   SizedBox(height: 6),
                                   Text(
@@ -194,7 +190,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                                     style: context.appThemes.regular12.copyWith(
                                       color: context.appThemes.ink60,
                                     ),
-                                    textAlign: TextAlign.left,
+                                    textAlign: .left,
                                   ),
                                   SizedBox(height: 2),
                                   Text(
@@ -202,7 +198,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                                     style: context.appThemes.regular12.copyWith(
                                       color: context.appThemes.ink60,
                                     ),
-                                    textAlign: TextAlign.left,
+                                    textAlign: .left,
                                   ).paddingOnly(left: 14),
                                 ],
                               ),
@@ -240,7 +236,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                                 secondSuffixIcon: Assets.images.icScan.svg(
                                   width: 24,
                                   height: 24,
-                                  fit: BoxFit.cover,
+                                  fit: .cover,
                                 ),
                                 onSecondSuffixIconTap: () async {
                                   Get.delete<ScannerController>();
@@ -269,7 +265,7 @@ class _WalletImportViewState extends State<WalletImportView> {
                                 child: Container(
                                   width: double.infinity,
                                   padding: EdgeInsets.symmetric(horizontal: 12),
-                                  alignment: Alignment.centerLeft,
+                                  alignment: .centerLeft,
                                   child: Text(
                                     LocaleKeys.srpIsWrong.tr,
                                     style: context.appThemes.regular12.copyWith(

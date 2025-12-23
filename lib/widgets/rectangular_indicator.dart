@@ -40,7 +40,7 @@ class RectangularIndicator extends Decoration {
     this.color = Colors.black,
     this.horizontalPadding = 0,
     this.verticalPadding = 0,
-    this.paintingStyle = PaintingStyle.fill,
+    this.paintingStyle = .fill,
     this.strokeWidth = 2,
   });
   @override
@@ -117,10 +117,10 @@ class _CustomPainter extends BoxPainter {
     canvas.drawRRect(
       RRect.fromRectAndCorners(
         rect,
-        bottomRight: Radius.circular(bottomRightRadius),
-        bottomLeft: Radius.circular(bottomLeftRadius),
-        topLeft: Radius.circular(topLeftRadius),
-        topRight: Radius.circular(topRightRadius),
+        bottomRight: .circular(bottomRightRadius),
+        bottomLeft: .circular(bottomLeftRadius),
+        topLeft: .circular(topLeftRadius),
+        topRight: .circular(topRightRadius),
       ),
       paint,
     );

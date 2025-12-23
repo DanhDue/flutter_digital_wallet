@@ -21,6 +21,7 @@ class Constants {
   static const transitionDuration = 250;
   static const transitionBottomUpDuration = 350;
   static const keyboardDismissDuration = 350;
+  static const waitForKeyboardDismissDuration = 600;
   static const spaceCharacter = " ";
   static const ignoreGenNewWallet = "ignoreGenNewWallet";
   static const walletAddressLength = 44;

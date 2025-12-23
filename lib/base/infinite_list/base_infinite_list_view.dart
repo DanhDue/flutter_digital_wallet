@@ -119,16 +119,13 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
                 onTap: () => controller.fetchData(isLoadMore: true),
                 child: controller.loadMoreError == true
                     ? buildErrorItemWhileLoadMore()
-                    : const Padding(
-                        padding: EdgeInsets.all(8),
-                        child: CircularProgressIndicator(),
-                      ),
+                    : const Padding(padding: .all(16), child: CircularProgressIndicator()),
               ),
             );
           } else {
             return controller.items.isNotEmpty
                 ? const Center(
-                    child: Padding(padding: EdgeInsets.all(8), child: CircularProgressIndicator()),
+                    child: Padding(padding: .all(8), child: CircularProgressIndicator()),
                   )
                 : const SizedBox.shrink();
           }
@@ -140,11 +137,11 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
 
   Widget buildHasNoDataLayout(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: .center,
+      crossAxisAlignment: .center,
+      mainAxisSize: .max,
       children: [
-        Assets.images.icHasNoData.image(width: 96, height: 96, fit: BoxFit.cover),
+        Assets.images.icHasNoData.image(width: 96, height: 96, fit: .cover),
         const SizedBox(height: 12),
         Text(
           LocaleKeys.oops.tr,
@@ -163,11 +160,11 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
     return InkWell(
       onTap: () => controller.fetchData(isRefresh: true),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const .all(16),
         child: AutoSizeText(
           LocaleKeys.loadDataErrorMessage.tr,
           style: context.appThemes.paragraphSemiBold.copyWith(color: context.appThemes.textGrey),
-          textAlign: TextAlign.center,
+          textAlign: .center,
         ),
       ),
     );
@@ -183,14 +180,14 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
   Widget buildItemViews(BuildContext context, {dynamic item, int? index});
 
   EdgeInsets _evaluateTopPadding(BuildContext context) {
-    if (appBarIsHidden == true) return const EdgeInsets.only(top: 0);
-    if (Navigator.canPop(context)) return const EdgeInsets.only(top: 146);
-    return const EdgeInsets.only(top: 146);
+    if (appBarIsHidden == true) return const .only(top: 0);
+    if (Navigator.canPop(context)) return const .only(top: 146);
+    return const .only(top: 146);
   }
 
   EdgeInsets _evaluateNoDataPadding(BuildContext context) {
-    if (appBarIsHidden == true) return const EdgeInsets.only(top: 0, bottom: 0);
-    if (Navigator.canPop(context)) return const EdgeInsets.only(top: 96, bottom: 96);
-    return const EdgeInsets.only(top: 96, bottom: 96);
+    if (appBarIsHidden == true) return const .only(top: 0, bottom: 0);
+    if (Navigator.canPop(context)) return const .only(top: 96, bottom: 96);
+    return const .only(top: 96, bottom: 96);
   }
 }

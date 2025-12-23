@@ -49,7 +49,7 @@ class CustomAppBar extends AppBar {
                onPressed: () {
                  Get.offNamedUntil(Routes.HOME, (Route<dynamic> route) => false);
                },
-               icon: Assets.images.icHome.svg(fit: BoxFit.cover, width: 24, height: 24),
+               icon: Assets.images.icHome.svg(fit: .cover, width: 24, height: 24),
              ),
          ],
        );

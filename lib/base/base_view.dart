@@ -22,11 +22,7 @@ abstract class BaseView<C extends BaseController> extends GetView<C> {
           onTap: () {
             onHideKeyboard();
           },
-          child: SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: onCreateViews(context),
-          ),
+          child: SizedBox(width: .infinity, height: .infinity, child: onCreateViews(context)),
         ),
         Obx(() {
           if (controller.isLoading.value == true) {

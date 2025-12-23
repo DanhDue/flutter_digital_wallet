@@ -36,19 +36,16 @@ class CustomFilledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: fullWidth ? double.infinity : null,
-      padding: EdgeInsetsGeometry.symmetric(
-        horizontal: horizontalPadding ?? 0,
-        vertical: verticalPadding ?? 0,
-      ),
+      width: fullWidth ? .infinity : null,
+      padding: .symmetric(horizontal: horizontalPadding ?? 0, vertical: verticalPadding ?? 0),
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
           splashFactory: NoSplash.splashFactory,
-          backgroundColor: WidgetStateProperty.all(backgroundColor ?? context.appThemes.trueBlue),
-          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+          backgroundColor: .all(backgroundColor ?? context.appThemes.trueBlue),
+          shape: .all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(borderRadius ?? 6),
+              borderRadius: .circular(borderRadius ?? 6),
               side: BorderSide(
                 width: borderColor != null ? 1 : 0,
                 color: borderColor ?? context.appThemes.trueBlue,
@@ -57,7 +54,7 @@ class CustomFilledButton extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: .symmetric(
             horizontal: horizontalTextPadding ?? 8,
             vertical: verticalTextPadding ?? 8,
           ),
@@ -66,7 +63,7 @@ class CustomFilledButton extends StatelessWidget {
             style: context.appThemes.medium16.copyWith(
               color: textColor ?? context.appThemes.white,
             ),
-            textAlign: TextAlign.center,
+            textAlign: .center,
           ),
         ),
       ),

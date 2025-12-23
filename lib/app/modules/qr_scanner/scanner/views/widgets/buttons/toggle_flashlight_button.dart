@@ -25,28 +25,28 @@ class ToggleFlashlightButton extends StatelessWidget {
         }
 
         switch (state.torchState) {
-          case TorchState.auto:
+          case .auto:
             return IconButton(
               color: Colors.white,
               iconSize: 32,
               icon: const Icon(Icons.flash_auto),
               onPressed: _onPressed,
             );
-          case TorchState.off:
+          case .off:
             return IconButton(
               color: Colors.white,
               iconSize: 32,
               icon: const Icon(Icons.flash_off),
               onPressed: _onPressed,
             );
-          case TorchState.on:
+          case .on:
             return IconButton(
               color: Colors.white,
               iconSize: 32,
               icon: const Icon(Icons.flash_on),
               onPressed: _onPressed,
             );
-          case TorchState.unavailable:
+          case .unavailable:
             return const SizedBox.square(
               dimension: 48,
               child: Icon(Icons.no_flash, size: 32, color: Colors.grey),

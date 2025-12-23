@@ -36,7 +36,7 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
       child: Assets.lotties.sandyLoading.lottie(
         width: 120,
         height: 120,
-        fit: BoxFit.cover,
+        fit: .cover,
         animate: true,
         repeat: true,
         backgroundLoading: true,
@@ -48,17 +48,17 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
   Widget buildEmpty(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .center,
+        mainAxisSize: .min,
         children: [
-          Assets.images.icNoFound.svg(width: 86, fit: BoxFit.cover),
-          SizedBox(height: 4),
+          Assets.images.icNoFound.svg(width: 86, fit: .cover),
+          const SizedBox(height: 4),
           Text(
             LocaleKeys.tokenNotFoundMessage.tr,
             style: context.appThemes.regular14.copyWith(color: context.appThemes.ink60),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           CustomUnfilledButton(
             text: LocaleKeys.addToken.tr,
             onPressed: () => Fimber.d("Add token"),
@@ -84,7 +84,7 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
 
     return Obx(
       () => ListView.separated(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const .symmetric(vertical: 10),
         separatorBuilder: (context, index) => const SizedBox(height: 8),
         itemCount: controller.tokens.value.length,
         itemBuilder: (context, index) => _buildTokenItem(
@@ -98,26 +98,26 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
 
   _buildTokenItem(BuildContext context, TokenAccountObject? token, bool? balanceIsHidden) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: .start,
+      crossAxisAlignment: .start,
+      mainAxisSize: .max,
       children: [
         _createCoinLogo(token),
-        SizedBox(width: 12),
+        const SizedBox(width: 12),
         Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: .start,
+          crossAxisAlignment: .start,
+          mainAxisSize: .max,
           children: [
             Text(
               token?.mintToken?.name ?? "",
               style: context.appThemes.medium14.copyWith(color: context.appThemes.ink100),
             ),
-            SizedBox(height: 2),
+            const SizedBox(height: 2),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .center,
+              mainAxisSize: .max,
               children: [
                 _retrieveCoinTrendingIcon(context, token),
                 Text(
@@ -129,9 +129,9 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
                         ? context.appThemes.red100
                         : context.appThemes.green100,
                   ),
-                  textAlign: TextAlign.end,
+                  textAlign: .end,
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  overflow: .ellipsis,
                 ),
               ],
             ),
@@ -139,9 +139,9 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
         ),
         Expanded(child: SizedBox.shrink()),
         Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: .start,
+          crossAxisAlignment: .end,
+          mainAxisSize: .min,
           children: [
             Text(
               balanceIsHidden != true
@@ -154,9 +154,9 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
               style: context.appThemes.medium14.copyWith(color: context.appThemes.ink100),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .center,
+              mainAxisSize: .max,
               children: [
                 Text(
                   balanceIsHidden != true
@@ -176,17 +176,17 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 4),
+          padding: const .only(top: 4),
           child: SizedBox(
             width: 36,
             height: 36,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
+              borderRadius: .circular(100),
               child: CachedNetworkImage(
                 width: 27,
                 height: 27,
                 imageUrl: token?.mintToken?.logo ?? "",
-                fit: BoxFit.cover,
+                fit: .cover,
               ),
             ),
           ),
@@ -195,8 +195,8 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
           bottom: 0,
           right: 0,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(14),
-            child: Assets.images.icSolana.svg(width: 12, height: 12, fit: BoxFit.cover),
+            borderRadius: .circular(14),
+            child: Assets.images.icSolana.svg(width: 12, height: 12, fit: .cover),
           ),
         ),
       ],
@@ -208,15 +208,15 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
         ? Transform.rotate(
             angle: 0 * pi / 180,
             child: Assets.images.icArrowAltLdown.svg(
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(context.appThemes.red100, BlendMode.srcATop),
+              fit: .cover,
+              colorFilter: .mode(context.appThemes.red100, .srcATop),
             ),
           )
         : Transform.rotate(
             angle: 180 * pi / 180,
             child: Assets.images.icArrowAltLdown.svg(
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(context.appThemes.green100, BlendMode.srcATop),
+              fit: .cover,
+              colorFilter: .mode(context.appThemes.green100, .srcATop),
             ),
           );
   }

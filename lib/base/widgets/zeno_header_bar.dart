@@ -34,21 +34,21 @@ class ZenoHeaderBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: .start,
+      crossAxisAlignment: .center,
+      mainAxisSize: .max,
       children: [
         InkWell(
           onTap: Get.back,
           child: Assets.images.icArrowLeft.svg(
             width: 36,
             height: 36,
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(context.appThemes.textGrey, BlendMode.srcIn),
+            fit: .cover,
+            colorFilter: .mode(context.appThemes.textGrey, .srcIn),
           ),
         ),
         Expanded(
-          child: Center(child: Assets.images.icZenoTxt.image(width: 105, fit: BoxFit.cover)),
+          child: Center(child: Assets.images.icZenoTxt.image(width: 105, fit: .cover)),
         ),
         Visibility(
           visible: false,

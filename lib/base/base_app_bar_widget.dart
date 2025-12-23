@@ -39,11 +39,11 @@ class BaseAppBarWidget extends StatelessWidget {
       right: safeAreaRight ?? false,
       bottom: safeAreaBottom ?? false,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const .symmetric(horizontal: 20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: .center,
+          crossAxisAlignment: .center,
+          mainAxisSize: .min,
           children: [
             Row(
               children: [
@@ -51,7 +51,7 @@ class BaseAppBarWidget extends StatelessWidget {
                     ? InkWell(
                         onTap: () => Get.back(),
                         child: Container(
-                          padding: const EdgeInsets.only(top: 9, bottom: 9, right: 9),
+                          padding: const .only(top: 9, bottom: 9, right: 9),
                           child: Assets.images.icFingerScan.svg(width: 24, height: 24),
                         ),
                       )
@@ -66,12 +66,12 @@ class BaseAppBarWidget extends StatelessWidget {
             ),
             title?.isNotEmpty == true
                 ? Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: .centerLeft,
                     child: Text(
                       title ?? "",
-                      overflow: TextOverflow.ellipsis,
+                      overflow: .ellipsis,
                       maxLines: 1,
-                      textAlign: TextAlign.start,
+                      textAlign: .start,
                       style: context.appThemes.headline.copyWith(
                         color: context.appThemes.mainGreen,
                       ),

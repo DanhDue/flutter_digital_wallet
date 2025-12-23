@@ -30,23 +30,23 @@ class MnemonicDescriptionView extends BaseView<MnemonicDescriptionController> {
           children: [
             Expanded(
               child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
+                  padding: const .only(left: 16, right: 16, top: 16),
                   child: Column(
                     children: [
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       SizedBox(
-                        width: double.infinity,
+                        width: .infinity,
                         child: Text(
                           LocaleKeys.secureYourWallet.tr,
                           style: context.appThemes.bold24.copyWith(
                             color: context.appThemes.ink100,
                           ),
-                          textAlign: TextAlign.center,
+                          textAlign: .center,
                         ),
                       ),
-                      Assets.images.icVault.svg(fit: BoxFit.cover),
+                      Assets.images.icVault.svg(fit: .cover),
                       Text.rich(
                         TextSpan(
                           text: LocaleKeys.protectYourWalletDescriptionSegment1.tr,
@@ -70,21 +70,21 @@ class MnemonicDescriptionView extends BaseView<MnemonicDescriptionController> {
                             ),
                           ],
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: .center,
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                     ],
                   ),
                 ),
               ),
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .start,
+              mainAxisSize: .max,
               children: [
-                Container(width: double.infinity, height: 1, color: context.appThemes.ink10),
-                SizedBox(height: 12),
+                Container(width: .infinity, height: 1, color: context.appThemes.ink10),
+                const SizedBox(height: 12),
                 IntrinsicHeight(
                   child: CustomUnfilledButton(
                     horizontalPadding: 16,
@@ -93,7 +93,7 @@ class MnemonicDescriptionView extends BaseView<MnemonicDescriptionController> {
                     onPressed: () => skip?.call(),
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 IntrinsicHeight(
                   child: CustomFilledButton(
                     horizontalPadding: 16,
@@ -114,8 +114,8 @@ class MnemonicDescriptionView extends BaseView<MnemonicDescriptionController> {
     //   context: context,
     //   useRootNavigator: true,
     //   backgroundColor: context.appThemes.transparent,
-    //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(8))),
-    //   clipBehavior: Clip.antiAliasWithSaveLayer,
+    //   shape: RoundedRectangleBorder(borderRadius: .vertical(top: .circular(8))),
+    //   clipBehavior: .antiAliasWithSaveLayer,
     //   builder:
     //       (context) => Padding(
     //         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),

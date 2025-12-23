@@ -28,62 +28,62 @@ class CommingSoonModalView
         decoration: BoxDecoration(
           image: DecorationImage(
             image: Assets.images.icCommingSoonBackground.provider(),
-            fit: BoxFit.cover,
+            fit: .cover,
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: .start,
+          crossAxisAlignment: .center,
+          mainAxisSize: .min,
           children: [
             InkWell(
               onTap: () => Get.back(),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const .symmetric(horizontal: 16, vertical: 8),
                 child: Container(
-                  width: double.infinity,
-                  alignment: Alignment.centerLeft,
+                  width: .infinity,
+                  alignment: .centerLeft,
                   child: Container(
                     width: 36,
                     height: 36,
-                    padding: EdgeInsets.all(6),
+                    padding: const .all(6),
                     child: Assets.images.icCloseRound.svg(fit: BoxFit.contain),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const .symmetric(horizontal: 16),
               child: SingleChildScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .min,
                   children: [
-                    SizedBox(height: 36),
-                    Assets.images.icRocketLaunch.svg(width: 153, height: 153, fit: BoxFit.cover),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 36),
+                    Assets.images.icRocketLaunch.svg(width: 153, height: 153, fit: .cover),
+                    const SizedBox(height: 20),
                     Text(
                       LocaleKeys.commingSoon.tr,
                       style: context.appThemes.bold24.copyWith(color: context.appThemes.ink100),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Text(
                       LocaleKeys.commingSoonDescription.tr,
                       style: context.appThemes.regular16.copyWith(color: context.appThemes.ink60),
-                      textAlign: TextAlign.center,
+                      textAlign: .center,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: .spaceAround,
+                      crossAxisAlignment: .center,
                       children: [
                         Flexible(
                           child: Container(
                             decoration: BoxDecoration(
                               color: context.appThemes.white,
-                              borderRadius: BorderRadius.circular(100),
+                              borderRadius: .circular(100),
                               boxShadow: [
                                 BoxShadow(
                                   color: context.appThemes.black.withValues(alpha: 0.05),
@@ -92,16 +92,16 @@ class CommingSoonModalView
                                 ),
                               ],
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 4),
+                            padding: const .symmetric(horizontal: 24, vertical: 4),
                             child: TextField(
                               decoration: InputDecoration(
                                 hintText: LocaleKeys.enterYourEmail.tr,
                                 hintStyle: context.appThemes.regular16.copyWith(
                                   color: context.appThemes.textGrey,
                                 ),
-                                border: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
+                                border: .none,
+                                enabledBorder: .none,
+                                focusedBorder: .none,
                               ),
                               style: context.appThemes.regular16.copyWith(
                                 color: context.appThemes.textColor,
@@ -109,7 +109,7 @@ class CommingSoonModalView
                             ),
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         CustomFilledButton(
                           borderRadius: 100,
                           onPressed: () => showCommingSoon(context),
@@ -118,7 +118,7 @@ class CommingSoonModalView
                         ),
                       ],
                     ),
-                    SizedBox(height: 70),
+                    const SizedBox(height: 70),
                   ],
                 ),
               ),

@@ -21,13 +21,13 @@ class PageIndicator extends StatelessWidget {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const .all(8.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: .center,
         children: <Widget>[
           IconButton(
             splashRadius: 16.0,
-            padding: EdgeInsets.zero,
+            padding: .zero,
             onPressed: () {
               if (currentPageIndex == 0) {
                 return;
@@ -43,7 +43,7 @@ class PageIndicator extends StatelessWidget {
           ),
           IconButton(
             splashRadius: 16.0,
-            padding: EdgeInsets.zero,
+            padding: .zero,
             onPressed: () {
               if (currentPageIndex == 2) {
                 return;

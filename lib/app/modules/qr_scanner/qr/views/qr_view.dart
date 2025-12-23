@@ -44,10 +44,10 @@ class _QRViewState extends State<QRView> {
       image: PrettyQrDecorationImage(
         image: Assets.images.icZeno.provider(),
         opacity: 0.96,
-        position: PrettyQrDecorationImagePosition.embedded,
+        position: .embedded,
       ),
       background: Colors.transparent,
-      quietZone: PrettyQrQuietZone.zero,
+      quietZone: .zero,
     );
     controller.updateSelectedWallet(widget.selectedWallet);
   }
@@ -56,46 +56,47 @@ class _QRViewState extends State<QRView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .center,
+        mainAxisSize: .max,
         children: [
           Obx(
             () => controller.showFullScreen.value == true
-                ? SizedBox(height: 49)
-                : SizedBox(height: 75),
+                ? const SizedBox(height: 49)
+                : const SizedBox(height: 75),
           ), // TOP PADDING => To show view bellow the TabBar.
           Obx(
-            () =>
-                controller.showFullScreen.value == true ? SizedBox.shrink() : SizedBox(height: 30),
+            () => controller.showFullScreen.value == true
+                ? const SizedBox.shrink()
+                : const SizedBox(height: 30),
           ),
           Obx(
             () => controller.showFullScreen.value == true
                 ? Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: .end,
+                    crossAxisAlignment: .center,
+                    mainAxisSize: .max,
                     children: [
                       InkWell(
                         onTap: () => Get.back(),
                         child: Container(
-                          padding: EdgeInsets.only(top: 10, right: 22, bottom: 10, left: 22),
+                          padding: const .only(top: 10, right: 22, bottom: 10, left: 22),
                           child: Icon(size: 24, Icons.close, color: context.appThemes.trueBlue),
                         ),
                       ),
                     ],
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
           ),
           Expanded(
             child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: .start,
+                crossAxisAlignment: .center,
+                mainAxisSize: .min,
                 children: [
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   Center(
                     child: Text(
                       LocaleKeys.receive.tr,
@@ -104,38 +105,38 @@ class _QRViewState extends State<QRView> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 3),
+                  const SizedBox(height: 3),
                   Container(
-                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    padding: const .symmetric(vertical: 8, horizontal: 12),
                     decoration: BoxDecoration(
                       color: context.appThemes.transparent,
                       border: Border.all(color: context.appThemes.greenVogue60),
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: .circular(100),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .center,
+                      mainAxisSize: .min,
                       children: [
-                        Assets.images.icSolana.svg(width: 20, height: 20, fit: BoxFit.cover),
-                        SizedBox(width: 4),
+                        Assets.images.icSolana.svg(width: 20, height: 20, fit: .cover),
+                        const SizedBox(width: 4),
                         Text(
                           "Solana Devnet",
                           style: context.appThemes.regular14.copyWith(
                             color: context.appThemes.greenVogue60,
                           ),
                         ),
-                        SizedBox(width: 2),
-                        Assets.images.icChevronDown.svg(width: 20, height: 20, fit: BoxFit.cover),
+                        const SizedBox(width: 2),
+                        Assets.images.icChevronDown.svg(width: 20, height: 20, fit: .cover),
                       ],
                     ),
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   Obx(
                     () => Container(
                       width: 320,
                       height: 320,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                      decoration: BoxDecoration(borderRadius: .circular(20)),
                       child: PrettyAnimatedQrView(
                         qrImage: QrImage(
                           QrCode.fromData(
@@ -147,28 +148,28 @@ class _QRViewState extends State<QRView> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 69),
+                    padding: const .symmetric(horizontal: 69),
                     child: Text(
                       controller.selectedWallet.value.name ?? "",
                       style: context.appThemes.medium16.copyWith(color: context.appThemes.ink100),
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 69),
+                    padding: const .symmetric(horizontal: 69),
                     child: Obx(
                       () => Text(
                         controller.selectedWallet.value.address ?? "",
                         style: context.appThemes.regular12.copyWith(
                           color: context.appThemes.ink100,
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: .center,
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   InkWell(
                     onTap: () async {
                       Fimber.d("copy address to the clipboard");
@@ -184,26 +185,23 @@ class _QRViewState extends State<QRView> {
                       }
                     },
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: .center,
+                      crossAxisAlignment: .center,
+                      mainAxisSize: .max,
                       children: [
                         Assets.images.icCopyLine.svg(
                           width: 24,
                           height: 24,
-                          fit: BoxFit.cover,
-                          colorFilter: ColorFilter.mode(
-                            context.appThemes.greenVogue60,
-                            BlendMode.srcIn,
-                          ),
+                          fit: .cover,
+                          colorFilter: .mode(context.appThemes.greenVogue60, .srcIn),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Text(
                           LocaleKeys.copyAddress.tr,
                           style: context.appThemes.medium14.copyWith(
                             color: context.appThemes.greenVogue60,
                           ),
-                          textAlign: TextAlign.center,
+                          textAlign: .center,
                         ),
                       ],
                     ),
@@ -213,7 +211,7 @@ class _QRViewState extends State<QRView> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            padding: const .symmetric(horizontal: 24, vertical: 12),
             child: CustomUnfilledButton(
               onPressed: () {
                 Fimber.d("Request Payment");
@@ -228,8 +226,9 @@ class _QRViewState extends State<QRView> {
             ),
           ),
           Obx(
-            () =>
-                controller.showFullScreen.value != true ? SizedBox.shrink() : SizedBox(height: 12),
+            () => controller.showFullScreen.value != true
+                ? const SizedBox.shrink()
+                : const SizedBox(height: 12),
           ),
         ],
       ),

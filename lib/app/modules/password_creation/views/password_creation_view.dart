@@ -77,53 +77,51 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
               Visibility(
                 visible: widget.shouldBeShowHeader == true,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .max,
                   children: [
                     InkWell(
                       onTap: Get.back,
                       child: Assets.images.icArrowLeft.svg(
                         width: 36,
                         height: 36,
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(context.appThemes.textGrey, BlendMode.srcIn),
+                        fit: .cover,
+                        colorFilter: .mode(context.appThemes.textGrey, .srcIn),
                       ),
                     ),
                     Expanded(
-                      child: Center(
-                        child: Assets.images.icZenoTxt.image(width: 105, fit: BoxFit.cover),
-                      ),
+                      child: Center(child: Assets.images.icZenoTxt.image(width: 105, fit: .cover)),
                     ),
                     Visibility(
                       visible: false,
                       maintainSize: true,
                       maintainState: true,
                       maintainAnimation: true,
-                      child: Assets.images.icBack.svg(width: 36, height: 36, fit: BoxFit.cover),
+                      child: Assets.images.icBack.svg(width: 36, height: 36, fit: .cover),
                     ),
                   ],
                 ).paddingSymmetric(horizontal: 16),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: const .all(16),
                   child: SingleChildScrollView(
-                    physics: AlwaysScrollableScrollPhysics(),
+                    physics: const AlwaysScrollableScrollPhysics(),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: .start,
+                      crossAxisAlignment: .start,
+                      mainAxisSize: .max,
                       children: [
                         SizedBox(height: 8),
                         SizedBox(
-                          width: double.infinity,
+                          width: .infinity,
                           child: Text(
                             LocaleKeys.passwordCreationTitle.tr,
                             style: context.appThemes.bold24.copyWith(
                               color: context.appThemes.ink100,
                             ),
-                            textAlign: TextAlign.center,
+                            textAlign: .center,
                           ),
                         ),
                         SizedBox(height: 8),
@@ -132,9 +130,9 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                           style: context.appThemes.regular14.copyWith(
                             color: context.appThemes.ink60,
                           ),
-                          textAlign: TextAlign.center,
+                          textAlign: .center,
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         Obx(
                           () => InputText(
                             key: dataKey,
@@ -142,12 +140,12 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                             focusNode: controller.passwordFocusNode,
                             onChanged: (value) => controller.passwordTextChanged(value),
                             status: controller.passwordIsFocus.value
-                                ? InputTextStatus.focus
+                                ? .focus
                                 : StringExt(controller.passError.value).isNotBlank() == true
-                                ? InputTextStatus.error
-                                : InputTextStatus.normal,
-                            keyboardType: TextInputType.visiblePassword,
-                            textInputAction: TextInputAction.next,
+                                ? .error
+                                : .normal,
+                            keyboardType: .visiblePassword,
+                            textInputAction: .next,
                             obscureText: controller.obscurePassword.value,
                             labelText: LocaleKeys.newPassword.tr,
                             hintText: LocaleKeys.enterTextPlease.tr,
@@ -156,7 +154,7 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                                 ? InkWell(
                                     onTap: () => controller.clearPassword(),
                                     child: Padding(
-                                      padding: const EdgeInsets.only(
+                                      padding: const .only(
                                         left: 24,
                                         top: 12,
                                         bottom: 12,
@@ -172,14 +170,14 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                                       ? Assets.images.icVisibility.svg(
                                           width: 24,
                                           height: 24,
-                                          fit: BoxFit.cover,
+                                          fit: .cover,
                                         )
                                       : Assets.images.icInvisibility.svg(
                                           width: 24,
                                           height: 24,
-                                          fit: BoxFit.cover,
+                                          fit: .cover,
                                         ))
-                                : SizedBox.shrink(),
+                                : const SizedBox.shrink(),
                             onSecondSuffixIconTap: () => controller.obscurePassword.value =
                                 !controller.obscurePassword.value,
                             onFieldSubmitted: (v) {
@@ -190,18 +188,18 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                           ),
                         ),
                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: .start,
+                          crossAxisAlignment: .center,
+                          mainAxisSize: .min,
                           children: [
-                            SizedBox(height: 4),
+                            const SizedBox(height: 4),
                             Obx(
                               () => Visibility(
                                 visible:
                                     StringExt(controller.passError.value).isNotBlank() &&
                                     controller.password.isEmptyOrNull,
                                 child: Padding(
-                                  padding: EdgeInsetsGeometry.symmetric(horizontal: 12),
+                                  padding: const .symmetric(horizontal: 12),
                                   child: Text(
                                     LocaleKeys.passwordIsEmtpyError.tr,
                                     style: context.appThemes.regular12.copyWith(
@@ -215,11 +213,11 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                               () => Visibility(
                                 visible: controller.passStrength.value != PasswordStrength.none,
                                 child: Padding(
-                                  padding: EdgeInsetsGeometry.symmetric(horizontal: 12),
+                                  padding: const .symmetric(horizontal: 12),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: .start,
+                                    crossAxisAlignment: .center,
+                                    mainAxisSize: .max,
                                     children: [
                                       Text(
                                         LocaleKeys.passwordStrength.tr,
@@ -252,18 +250,18 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         Obx(
                           () => InputText(
                             controller: controller.confirmPasswordTextEditingController,
                             focusNode: controller.confirmPasswordFocusNode,
                             onChanged: (value) => controller.confirmPasswordTextChanged(value),
                             status: controller.confirmPasswordIsFocus.value
-                                ? InputTextStatus.focus
+                                ? .focus
                                 : (controller.passwordsAreNotSame.value == true
-                                      ? InputTextStatus.error
-                                      : InputTextStatus.normal),
-                            keyboardType: TextInputType.visiblePassword,
+                                      ? .error
+                                      : .normal),
+                            keyboardType: .visiblePassword,
                             obscureText: controller.obscureConfirmPassword.value,
                             labelText: LocaleKeys.confirmPassword.tr,
                             hintText: LocaleKeys.enterTextPlease.tr,
@@ -272,7 +270,7 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                                 ? InkWell(
                                     onTap: () => controller.clearConfirmPassword(),
                                     child: Padding(
-                                      padding: const EdgeInsets.only(
+                                      padding: const .only(
                                         left: 24,
                                         top: 12,
                                         bottom: 12,
@@ -288,14 +286,14 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                                       ? Assets.images.icVisibility.svg(
                                           width: 24,
                                           height: 24,
-                                          fit: BoxFit.cover,
+                                          fit: .cover,
                                         )
                                       : Assets.images.icInvisibility.svg(
                                           width: 24,
                                           height: 24,
-                                          fit: BoxFit.cover,
+                                          fit: .cover,
                                         ))
-                                : SizedBox.shrink(),
+                                : const SizedBox.shrink(),
                             onSecondSuffixIconTap: () => controller.obscureConfirmPassword.value =
                                 !controller.obscureConfirmPassword.value,
                             onFieldSubmitted: (v) {
@@ -307,33 +305,33 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                           () => Visibility(
                             visible: controller.passwordsAreNotSame.value == true,
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: .start,
+                              crossAxisAlignment: .start,
+                              mainAxisSize: .min,
                               children: [
-                                SizedBox(height: 4),
+                                const SizedBox(height: 4),
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 12),
+                                  padding: const .symmetric(horizontal: 12),
                                   child: Text(
                                     LocaleKeys.passwordsAreNotSameError.tr,
                                     style: context.appThemes.regular12.copyWith(
                                       color: context.appThemes.red100,
                                     ),
-                                    textAlign: TextAlign.left,
+                                    textAlign: .left,
                                   ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         Text(
                           LocaleKeys.passwordsRequests.tr,
                           style: context.appThemes.medium14.copyWith(
                             color: context.appThemes.ink100,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Obx(
                           () => _createPasswordRule(
                             context,
@@ -341,7 +339,7 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                             status: controller.passwordLengthIsError.value,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Obx(
                           () => _createPasswordRule(
                             context,
@@ -349,7 +347,7 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                             status: controller.passwordSimpleCharacterIsError.value,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Obx(
                           () => _createPasswordRule(
                             context,
@@ -357,11 +355,11 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                             status: controller.passwordSpecialCharacterIsError.value,
                           ),
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: .start,
+                          crossAxisAlignment: .center,
+                          mainAxisSize: .max,
                           children: [
                             Expanded(
                               child: Text(
@@ -386,29 +384,29 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 24),
+                        const SizedBox(height: 24),
                         InkWell(
                           onTap: () =>
                               controller.acceptPasswordPolicy(!controller.policyIsAccepted.value),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: .start,
+                            crossAxisAlignment: .start,
+                            mainAxisSize: .max,
                             children: [
                               Obx(
                                 () => controller.policyIsAccepted.value
                                     ? Assets.images.icCheckedBox.svg(
                                         width: 24,
                                         height: 24,
-                                        fit: BoxFit.cover,
+                                        fit: .cover,
                                       )
                                     : Assets.images.icUncheckedBox.svg(
                                         width: 24,
                                         height: 24,
-                                        fit: BoxFit.cover,
+                                        fit: .cover,
                                       ),
                               ),
-                              SizedBox(width: 4),
+                              const SizedBox(width: 4),
                               Expanded(
                                 child: Text.rich(
                                   TextSpan(
@@ -454,14 +452,19 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
                 if (controller.passwordIsFocus.value == true ||
                     controller.confirmPasswordIsFocus.value == true) {
                   WidgetsBinding.instance.addPostFrameCallback((duration) {
-                    Future.delayed(Duration(milliseconds: Constants.keyboardDismissDuration), () {
-                      if (dataKey.currentContext != null) {
-                        Scrollable.ensureVisible(
-                          dataKey.currentContext!,
-                          duration: Duration(milliseconds: 600),
-                        );
-                      }
-                    });
+                    Future.delayed(
+                      const Duration(milliseconds: Constants.keyboardDismissDuration),
+                      () {
+                        if (dataKey.currentContext != null) {
+                          Scrollable.ensureVisible(
+                            dataKey.currentContext!,
+                            duration: const Duration(
+                              milliseconds: Constants.waitForKeyboardDismissDuration,
+                            ),
+                          );
+                        }
+                      },
+                    );
                   });
                 }
                 return const SizedBox.shrink();
@@ -473,22 +476,18 @@ class _PasswordCreationV2ViewState extends State<PasswordCreationView> {
     );
   }
 
-  _createPasswordRule(
-    BuildContext context, {
-    String? text,
-    PasswordStatus? status = PasswordStatus.none,
-  }) {
+  _createPasswordRule(BuildContext context, {String? text, PasswordStatus? status = .none}) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: .start,
+      crossAxisAlignment: .center,
+      mainAxisSize: .max,
       children: [
-        status == PasswordStatus.pass
-            ? Assets.images.icCheckCircle.svg(width: 24, height: 24, fit: BoxFit.cover)
-            : (status == PasswordStatus.fail
-                  ? Assets.images.icErrorCheckCircle.svg(width: 24, height: 24, fit: BoxFit.cover)
-                  : Assets.images.icUncheckCircle.svg(width: 24, height: 24, fit: BoxFit.cover)),
-        SizedBox(width: 8),
+        status == .pass
+            ? Assets.images.icCheckCircle.svg(width: 24, height: 24, fit: .cover)
+            : (status == .fail
+                  ? Assets.images.icErrorCheckCircle.svg(width: 24, height: 24, fit: .cover)
+                  : Assets.images.icUncheckCircle.svg(width: 24, height: 24, fit: .cover)),
+        const SizedBox(width: 8),
         Flexible(
           child: Text(
             text ?? "",

@@ -24,23 +24,23 @@ class SRPDescriptionView
       child: Wrap(
         children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: .start,
+            crossAxisAlignment: .center,
+            mainAxisSize: .min,
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .max,
                   children: [
                     InkWell(
                       onTap: () => Get.back(),
                       child: Container(
                         width: 36,
                         height: 36,
-                        padding: EdgeInsets.all(6),
+                        padding: const EdgeInsets.all(6),
                         child: Assets.images.icCloseRound.svg(fit: BoxFit.contain),
                       ),
                     ),
@@ -50,7 +50,7 @@ class SRPDescriptionView
                         style: context.appThemes.medium16.copyWith(
                           color: context.appThemes.ink100,
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: .center,
                       ),
                     ),
                     Visibility(
@@ -58,24 +58,20 @@ class SRPDescriptionView
                       maintainSize: true,
                       maintainState: true,
                       maintainAnimation: true,
-                      child: Assets.images.icCloseRound.svg(
-                        width: 36,
-                        height: 36,
-                        fit: BoxFit.contain,
-                      ),
+                      child: Assets.images.icCloseRound.svg(width: 36, height: 36, fit: .contain),
                     ),
                   ],
                 ),
               ),
               Divider(height: 1, color: context.appThemes.ink5),
               Padding(
-                padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .min,
                   children: [
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Assets.images.icIllusSeedPhrase.image(
                       width: 178,
                       height: 140,
@@ -83,7 +79,7 @@ class SRPDescriptionView
                     ),
                     SizedBox(height: 16),
                     Text.rich(
-                      textAlign: TextAlign.left,
+                      textAlign: .left,
                       TextSpan(
                         text: LocaleKeys.secretRecoveryPhrase.tr,
                         style: context.appThemes.bold14.copyWith(color: context.appThemes.ink100),
@@ -112,16 +108,16 @@ class SRPDescriptionView
                     SizedBox(height: 16),
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
                         color: context.appThemes.red0,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: .circular(8),
                         border: Border.all(color: context.appThemes.red100),
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: .start,
+                        crossAxisAlignment: .center,
+                        mainAxisSize: .min,
                         children: [
                           Assets.images.icWarning.svg(
                             width: 24,
@@ -132,7 +128,7 @@ class SRPDescriptionView
                               BlendMode.srcATop,
                             ),
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Expanded(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -144,11 +140,11 @@ class SRPDescriptionView
                                   style: context.appThemes.medium14.copyWith(
                                     color: context.appThemes.ink80,
                                   ),
-                                  textAlign: TextAlign.left,
+                                  textAlign: .left,
                                 ),
-                                SizedBox(height: 2),
+                                const SizedBox(height: 2),
                                 Text.rich(
-                                  textAlign: TextAlign.left,
+                                  textAlign: .left,
                                   TextSpan(
                                     text: LocaleKeys.srpWarningPart1.tr,
                                     style: context.appThemes.regular12.copyWith(
@@ -170,7 +166,7 @@ class SRPDescriptionView
                         ],
                       ),
                     ),
-                    SizedBox(height: 34),
+                    const SizedBox(height: 34),
                   ],
                 ),
               ),

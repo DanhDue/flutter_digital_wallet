@@ -42,7 +42,7 @@ mixin DialogMixin {
     Get.dialog(
       AlertDialog(
         contentPadding: const EdgeInsets.all(20),
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+        shape: const RoundedRectangleBorder(borderRadius: .all(.circular(15))),
         title: Text(
           LocaleKeys.titleDialog.tr,
           style: Get.context?.appThemes.h2.copyWith(color: Get.context?.appThemes.mainGreen),
@@ -80,10 +80,8 @@ mixin DialogMixin {
       showDragHandle: false,
       useRootNavigator: true,
       useSafeArea: false,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
-      ),
+      clipBehavior: .antiAliasWithSaveLayer,
+      shape: const RoundedRectangleBorder(borderRadius: .vertical(top: .circular(8))),
       builder: (context) => SingleChildScrollView(
         controller: ModalScrollController.of(context),
         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -111,7 +109,7 @@ mixin DialogMixin {
     Get.dialog(
       AlertDialog(
         contentPadding: const EdgeInsets.all(20),
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+        shape: const RoundedRectangleBorder(borderRadius: .all(.circular(15))),
         title: Text(
           title ?? '',
           style: Get.context?.appThemes.h2.copyWith(color: Get.context?.appThemes.mainGreen),

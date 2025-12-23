@@ -18,29 +18,29 @@ class FirstIntroPage extends StatelessWidget {
     return SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .center,
+        mainAxisSize: .min,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 32),
+            padding: const .symmetric(horizontal: 32),
             child: Text(
               LocaleKeys.welcomeToZenoWallet.tr,
               style: context.appThemes.bold20.copyWith(color: context.appThemes.ink100),
-              textAlign: TextAlign.center,
+              textAlign: .center,
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const .symmetric(horizontal: 30),
             child: Text(
               LocaleKeys.firstIntroDescription.tr,
               style: context.appThemes.regular16.copyWith(color: context.appThemes.ink60),
-              textAlign: TextAlign.center,
+              textAlign: .center,
             ),
           ),
-          SizedBox(height: 46),
-          Assets.images.icFirstIntro.image(fit: BoxFit.cover),
+          const SizedBox(height: 46),
+          Assets.images.icFirstIntro.image(fit: .cover),
         ],
       ),
     );

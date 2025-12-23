@@ -58,34 +58,34 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16).copyWith(top: 16),
                 child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: const AlwaysScrollableScrollPhysics(),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: .start,
+                    crossAxisAlignment: .center,
+                    mainAxisSize: .max,
                     children: [
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       SizedBox(
-                        width: double.infinity,
+                        width: .infinity,
                         child: Text(
                           LocaleKeys.confirmSecretRecoveryPhraseTitle.tr,
                           style: context.appThemes.bold24.copyWith(
                             color: context.appThemes.ink100,
                           ),
-                          textAlign: TextAlign.center,
+                          textAlign: .center,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
                         LocaleKeys.confirmSecretRecoveryPhraseDescription.tr,
                         style: context.appThemes.regular14.copyWith(
                           color: context.appThemes.ink60,
                         ),
-                        textAlign: TextAlign.center,
+                        textAlign: .center,
                       ),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       _buildSecretRecoveryPhrase(context),
-                      SizedBox(height: 24),
+                      const SizedBox(height: 24),
                       Stack(
                         children: [
                           _buildHiddenMnemonicWords(context),
@@ -104,8 +104,8 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
             ),
             Column(
               children: [
-                Container(width: double.infinity, height: 1, color: context.appThemes.ink10),
-                SizedBox(height: 12),
+                Container(width: .infinity, height: 1, color: context.appThemes.ink10),
+                const SizedBox(height: 12),
                 Obx(
                   () => CustomFilledButton(
                     horizontalPadding: 16,
@@ -155,15 +155,15 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const .symmetric(horizontal: 16, vertical: 16),
           decoration: BoxDecoration(
             border: Border.all(color: context.appThemes.ink10),
             color: context.appThemes.white,
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: .circular(4),
           ),
           child: GridView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 24,
@@ -179,12 +179,12 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
                   controller.updateFocussedIndex(index);
                 },
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: .start,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .max,
                   children: [
                     Stack(
-                      alignment: Alignment.centerLeft,
+                      alignment: .centerLeft,
                       children: [
                         Visibility(
                           visible: false,
@@ -197,7 +197,7 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
                               color: context.appThemes.ink100,
                             ),
                             maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                            overflow: .ellipsis,
                           ),
                         ),
                         Text(
@@ -208,20 +208,20 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Expanded(
                       child: Obx(
                         () => Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          alignment: Alignment.centerLeft,
+                          padding: const .symmetric(horizontal: 8, vertical: 4),
+                          alignment: .centerLeft,
                           decoration: controller.allWords[index]?.isHidden != true
                               ? BoxDecoration(
                                   color: context.appThemes.ink5,
-                                  borderRadius: BorderRadius.circular(4),
+                                  borderRadius: .circular(4),
                                 )
                               : DottedDecoration(
-                                  shape: Shape.box,
-                                  borderRadius: BorderRadius.circular(4),
+                                  shape: .box,
+                                  borderRadius: .circular(4),
                                   color: index == controller.focusedIndex.value
                                       ? context.appThemes.trueBlue100
                                       : context.appThemes.ink10,
@@ -251,16 +251,16 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const .symmetric(horizontal: 16, vertical: 16),
           decoration: BoxDecoration(
             border: Border.all(color: context.appThemes.transparent),
             color: context.appThemes.white,
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: .circular(4),
           ),
           child: Obx(
             () => GridView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 8,
@@ -276,18 +276,18 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
                     controller.hiddenWordIsSelected(controller.hiddenWordIndices[index], index);
                   },
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: .start,
+                    crossAxisAlignment: .center,
+                    mainAxisSize: .max,
                     children: [
                       Expanded(
                         child: Obx(
                           () => Container(
-                            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                            alignment: Alignment.centerLeft,
+                            padding: const .symmetric(horizontal: 8, vertical: 4),
+                            alignment: .centerLeft,
                             decoration: BoxDecoration(
                               color: context.appThemes.ink5,
-                              borderRadius: BorderRadius.circular(4),
+                              borderRadius: .circular(4),
                             ),
                             child: Text(
                               controller.filledWords[controller.hiddenWordIndices[index]] ?? "",
@@ -312,39 +312,39 @@ class _MnemonicConfirmationViewState extends State<MnemonicConfirmationView> {
   _buildErrorMessage(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: context.appThemes.red0,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: .circular(8),
         border: Border.all(color: context.appThemes.red100),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .center,
+        mainAxisSize: .min,
         children: [
           Assets.images.icWarning.svg(
             width: 24,
             height: 24,
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(context.appThemes.ink40, BlendMode.srcATop),
+            fit: .cover,
+            colorFilter: ColorFilter.mode(context.appThemes.ink40, .srcATop),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: .start,
+            crossAxisAlignment: .start,
+            mainAxisSize: .min,
             children: [
               Text(
                 LocaleKeys.incorrectSecretRecoveryPhrase.tr,
                 style: context.appThemes.medium14.copyWith(color: context.appThemes.ink80),
-                textAlign: TextAlign.left,
+                textAlign: .left,
               ),
-              SizedBox(height: 2),
+              const SizedBox(height: 2),
               Text(
                 LocaleKeys.incorrectSecretRecoveryPhraseDescription.tr,
                 style: context.appThemes.regular12.copyWith(color: context.appThemes.ink60),
-                textAlign: TextAlign.left,
+                textAlign: .left,
               ),
             ],
           ),

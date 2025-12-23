@@ -59,24 +59,24 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
               child: Wrap(
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: .start,
+                    crossAxisAlignment: .center,
+                    mainAxisSize: .min,
                     children: [
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: .start,
+                          crossAxisAlignment: .center,
+                          mainAxisSize: .max,
                           children: [
                             InkWell(
                               onTap: () => Get.back(),
                               child: Container(
                                 width: 36,
                                 height: 36,
-                                padding: EdgeInsets.all(6),
-                                child: Assets.images.icCloseRound.svg(fit: BoxFit.contain),
+                                padding: const .all(6),
+                                child: Assets.images.icCloseRound.svg(fit: .contain),
                               ),
                             ),
                             Expanded(
@@ -85,7 +85,7 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                                 style: context.appThemes.medium16.copyWith(
                                   color: context.appThemes.ink100,
                                 ),
-                                textAlign: TextAlign.center,
+                                textAlign: .center,
                               ),
                             ),
                             Visibility(
@@ -96,7 +96,7 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                               child: Assets.images.icCloseRound.svg(
                                 width: 36,
                                 height: 36,
-                                fit: BoxFit.contain,
+                                fit: .contain,
                               ),
                             ),
                           ],
@@ -104,11 +104,11 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                       ),
                       Divider(height: 1, color: context.appThemes.ink5),
                       Padding(
-                        padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+                        padding: const .symmetric(horizontal: 16),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: .start,
+                          crossAxisAlignment: .center,
+                          mainAxisSize: .min,
                           children: [
                             SizedBox(height: 16),
                             Obx(
@@ -118,12 +118,12 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                                 },
                                 child: MaterialTextField(
                                   style: context.appThemes.regular14,
-                                  keyboardType: TextInputType.text,
+                                  keyboardType: .text,
                                   hint: LocaleKeys.search.tr,
                                   labelText: LocaleKeys.search.tr,
-                                  textInputAction: TextInputAction.next,
+                                  textInputAction: .next,
                                   prefixIcon: Container(
-                                    padding: EdgeInsetsGeometry.all(10),
+                                    padding: const .all(10),
                                     child: Icon(
                                       Icons.search_outlined,
                                       size: 32,
@@ -136,14 +136,14 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                                       ? InkWell(
                                           onTap: () => controller.clearFilterredText(),
                                           child: Container(
-                                            padding: EdgeInsetsGeometry.all(10),
+                                            padding: const .all(10),
                                             child: Assets.images.icClear.svg(
                                               width: 10,
                                               height: 10,
-                                              fit: BoxFit.cover,
-                                              colorFilter: ColorFilter.mode(
+                                              fit: .cover,
+                                              colorFilter: .mode(
                                                 context.appThemes.ink60,
-                                                BlendMode.srcATop,
+                                                .srcATop,
                                               ),
                                             ),
                                           ),
@@ -210,9 +210,9 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
   _buildNotFoundItem(BuildContext context) {
     return Center(
       child: Container(
-        padding: EdgeInsets.all(16),
-        width: double.infinity,
-        alignment: Alignment.center,
+        padding: const .all(16),
+        width: .infinity,
+        alignment: .center,
         child: Text(
           LocaleKeys.searchingNotFound.tr,
           style: context.appThemes.regular14.copyWith(color: context.appThemes.ink100),
@@ -235,14 +235,14 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
       },
       child: Obx(
         () => Container(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const .symmetric(horizontal: 16, vertical: 8),
           color: controller.selectedNetwork.value.name == network.name
               ? context.appThemes.blue0
               : context.appThemes.white,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: .start,
+            crossAxisAlignment: .center,
+            mainAxisSize: .max,
             children: [
               if (network.id == NetworkIds.ALL)
                 SizedBox(
@@ -258,14 +258,14 @@ class _NetworkSelectionViewState extends State<NetworkSelectionView> {
                 Container(
                   width: 48,
                   height: 48,
-                  padding: EdgeInsets.all(6),
+                  padding: const .all(6),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: .circular(20),
                     child: CachedNetworkImage(
                       imageUrl: network.logo ?? "",
                       width: 36,
                       height: 36,
-                      fit: BoxFit.cover,
+                      fit: .cover,
                     ),
                   ),
                 ),

@@ -35,9 +35,9 @@ class CustomBotNavBar extends StatelessWidget {
       child: SafeArea(
         bottom: false,
         child: Padding(
-          padding: const EdgeInsets.only(bottom: 23, top: 18),
+          padding: const .only(bottom: 23, top: 18),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: .spaceBetween,
             children: [
               _NavItem(
                 icon: Assets.images.icWalletLine,
@@ -117,12 +117,12 @@ class _NavItem extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
-        behavior: HitTestBehavior.opaque,
+        behavior: .opaque,
         child: Stack(
-          alignment: Alignment.bottomCenter,
+          alignment: .bottomCenter,
           children: [
             Column(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: .min,
               children: [
                 _buildIcon(color, icon, activeIcon, isActive),
                 const SizedBox(height: 4),
@@ -132,13 +132,12 @@ class _NavItem extends StatelessWidget {
                       ? context.appThemes.bold12.copyWith(color: color)
                       : context.appThemes.regular12.copyWith(color: color),
                   maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                  overflow: .ellipsis,
                 ),
                 const SizedBox(height: 13),
               ],
             ),
-            if (isActive)
-              Assets.images.icSelectedBotTabIndicator.image(fit: BoxFit.cover, color: color),
+            if (isActive) Assets.images.icSelectedBotTabIndicator.image(fit: .cover, color: color),
           ],
         ),
       ),
@@ -148,11 +147,7 @@ class _NavItem extends StatelessWidget {
   Widget _buildIcon(Color color, dynamic icon, dynamic activeIcon, bool isActive) {
     final asset = isActive ? activeIcon : icon;
     if (asset is SvgGenImage) {
-      return asset.svg(
-        width: 24,
-        height: 24,
-        colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-      );
+      return asset.svg(width: 24, height: 24, colorFilter: .mode(color, .srcIn));
     } else if (asset is AssetGenImage) {
       return asset.image(width: 24, height: 24, color: color);
     } else {
@@ -186,7 +181,7 @@ class _CenterNavItem extends StatelessWidget {
           height: 56,
           decoration: BoxDecoration(
             color: activeColor,
-            shape: BoxShape.circle,
+            shape: .circle,
             boxShadow: [
               BoxShadow(
                 color: activeColor.withValues(alpha: 0.4),

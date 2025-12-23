@@ -57,13 +57,13 @@ abstract class BaseAppBarView<C extends BaseController> extends BaseView<C> with
               const SizedBox(height: 4),
               titleAppBar?.isNotEmpty == true
                   ? Container(
-                      margin: const EdgeInsets.only(left: 20, right: 20),
+                      margin: const .only(left: 20, right: 20),
                       child: Align(
-                        alignment: Alignment.centerLeft,
+                        alignment: .centerLeft,
                         child: Text(
                           titleAppBar!,
                           maxLines: 2,
-                          textAlign: TextAlign.start,
+                          textAlign: .start,
                           style: context.appThemes.headline.copyWith(
                             color: context.appThemes.mainGreen,
                           ),

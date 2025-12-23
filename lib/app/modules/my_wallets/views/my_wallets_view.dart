@@ -43,18 +43,18 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: GetPlatform.isIOS ? 0 : 13),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .start,
+              mainAxisSize: .max,
               children: [
                 _buildTopBar(context),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 _buildWalletInfo(context),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: .spaceBetween,
+                  crossAxisAlignment: .center,
+                  mainAxisSize: .max,
                   children: [
                     TokenActionButton(
                       icon: Assets.images.icSend,
@@ -74,10 +74,10 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                     ),
                   ],
                 ).paddingSymmetric(horizontal: 50),
-                SizedBox(height: 26),
+                const SizedBox(height: 26),
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    padding: const .symmetric(horizontal: 16),
                     child: Obx(
                       () => WalletTokenInfoView(
                         selectedWallet: controller.selectedWallet.value,
@@ -108,9 +108,9 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
 
   _buildTopBar(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: .start,
+      crossAxisAlignment: .center,
+      mainAxisSize: .max,
       children: [
         InkWell(
           onTap: () => showCommingSoon(context),
@@ -118,7 +118,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
             width: 48,
             height: 48,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(48),
+              borderRadius: .circular(48),
               child: AnimatedBoringAvatar(
                 name: "ZenoWallet - Pieter",
                 type: BoringAvatarType.beam,
@@ -127,7 +127,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
             ),
           ),
         ),
-        SizedBox(width: 48),
+        const SizedBox(width: 48),
         Expanded(child: SizedBox.shrink()),
         InkWell(
           onTap: () async {
@@ -136,19 +136,17 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
               context: context,
               useRootNavigator: true,
               backgroundColor: context.appThemes.transparent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
-              ),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
+              shape: RoundedRectangleBorder(borderRadius: .vertical(top: .circular(8))),
+              clipBehavior: .antiAliasWithSaveLayer,
               builder: (context) => Padding(
-                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                padding: .only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: Wrap(
                   children: [
                     NetworkSelectionView(selectedNetwork: controller.selectedNetwork.value),
                   ],
                 ),
               ),
-              routeSettings: RouteSettings(name: Routes.NETWORK_SELECTION),
+              routeSettings: const RouteSettings(name: Routes.NETWORK_SELECTION),
               isScrollControlled: true,
             );
             final selectedNetworkValue = selectedNetwork as NetworkObject?;
@@ -156,61 +154,61 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
             controller.updateSelectedNetwork(selectedNetworkValue);
           },
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const .symmetric(horizontal: 10, vertical: 10),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: .circular(20),
               gradient: LinearGradient(
                 colors: [
                   context.appThemes.middleBlue,
                   context.appThemes.middleBlue,
                   context.appThemes.pinkLady,
                 ],
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                stops: [0.0, 0.2, 1.0],
+                begin: .centerLeft,
+                end: .centerRight,
+                stops: const [0.0, 0.2, 1.0],
               ),
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .center,
+              mainAxisSize: .min,
               children: [
                 Obx(
                   () => SizedBox(
                     width: 24,
                     height: 24,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24),
+                      borderRadius: .circular(24),
                       child: CachedNetworkImage(
                         imageUrl: controller.selectedNetwork.value.logo ?? "",
                         width: 36,
                         height: 36,
-                        fit: BoxFit.cover,
+                        fit: .cover,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(width: 6),
+                const SizedBox(width: 6),
                 Text(
                   controller.selectedNetwork.value.name ?? "",
                   style: context.appThemes.medium14.copyWith(color: context.appThemes.white),
                 ),
-                SizedBox(width: 6),
+                const SizedBox(width: 6),
                 Assets.images.icChevronDown.svg(
                   width: 24,
                   height: 24,
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(context.appThemes.white, BlendMode.srcIn),
+                  fit: .cover,
+                  colorFilter: .mode(context.appThemes.white, .srcIn),
                 ),
               ],
             ),
           ),
         ),
-        Expanded(child: SizedBox.shrink()),
+        const Expanded(child: SizedBox.shrink()),
         InkWell(
           onTap: () => showCommingSoon(context),
           child: Assets.images.icSearch
-              .svg(width: 24, height: 24, fit: BoxFit.cover)
+              .svg(width: 24, height: 24, fit: .cover)
               .paddingSymmetric(horizontal: 12),
         ),
         InkWell(
@@ -219,8 +217,8 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
               .svg(
                 width: 24,
                 height: 24,
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(context.appThemes.trueBlue, BlendMode.srcIn),
+                fit: .cover,
+                colorFilter: .mode(context.appThemes.trueBlue, .srcIn),
               )
               .paddingOnly(left: 12),
         ),
@@ -248,7 +246,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
 
       return Container(
         height: 186,
-        alignment: Alignment.center,
+        alignment: .center,
         child: LayoutBuilder(
           builder: (context, constraints) {
             return Swiper(
@@ -267,7 +265,7 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                 Fimber.d("onIndexChanged - index: $index");
                 controller.updateSelectedWallet(reversedWallets[index]);
               },
-              layout: SwiperLayout.STACK,
+              layout: .STACK,
               itemWidth: controller.wallets.length > 1
                   ? constraints.maxWidth - 40
                   : constraints.maxWidth - 32,
@@ -290,9 +288,9 @@ class TokenActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.bottomCenter,
+      alignment: .bottomCenter,
       children: [
-        icon.image(width: 53, height: 80, fit: BoxFit.cover).paddingOnly(bottom: 6),
+        icon.image(width: 53, height: 80, fit: .cover).paddingOnly(bottom: 6),
         Text(title, style: context.appThemes.bold14.copyWith(color: context.appThemes.greenVogue)),
       ],
     );

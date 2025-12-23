@@ -27,14 +27,14 @@ class ZoomScaleSlider extends StatelessWidget {
         ).textTheme.headlineMedium!.copyWith(color: Colors.white);
 
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const .symmetric(horizontal: 8),
           child: Row(
             children: [
-              Text('0%', overflow: TextOverflow.fade, style: labelStyle),
+              Text('0%', overflow: .fade, style: labelStyle),
               Expanded(
                 child: Slider(value: state.zoomScale, onChanged: controller.setZoomScale),
               ),
-              Text('100%', overflow: TextOverflow.fade, style: labelStyle),
+              Text('100%', overflow: .fade, style: labelStyle),
             ],
           ),
         );

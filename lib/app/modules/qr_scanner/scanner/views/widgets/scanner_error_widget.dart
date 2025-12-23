@@ -19,7 +19,7 @@ class ScannerErrorWidget extends StatelessWidget {
       color: Colors.black,
       child: Center(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: .min,
           children: [
             const Padding(
               padding: EdgeInsets.only(bottom: 16),

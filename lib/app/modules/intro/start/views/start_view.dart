@@ -24,12 +24,12 @@ class StartView extends BaseView<StartController> {
         top: true,
         bottom: true,
         child: Stack(
-          alignment: Alignment.bottomCenter,
+          alignment: .bottomCenter,
           children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .center,
+              mainAxisSize: .max,
               children: [
                 Center(
                   child: Text(
@@ -38,50 +38,50 @@ class StartView extends BaseView<StartController> {
                       color: context.appThemes.black,
                       fontSize: 32,
                     ),
-                    textAlign: TextAlign.center,
+                    textAlign: .center,
                   ),
                 ),
-                SizedBox(height: 14),
+                const SizedBox(height: 14),
                 SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
                   child: Column(
                     children: [
-                      SizedBox(height: 68),
+                      const SizedBox(height: 68),
                       RepaintBoundary(
                         child: Assets.lotties.cryptoAnimation.lottie(
-                          width: double.infinity,
-                          fit: BoxFit.cover,
+                          width: .infinity,
+                          fit: .cover,
                           animate: true,
                           repeat: true,
                           backgroundLoading: true,
                         ),
                       ),
-                      SizedBox(height: 92),
+                      const SizedBox(height: 92),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        width: double.infinity,
+                        padding: const .symmetric(horizontal: 16),
+                        width: .infinity,
                         child: Text(
                           LocaleKeys.secureCryptoWalletTitle.tr,
                           style: context.appThemes.bold24.copyWith(
                             color: context.appThemes.black,
                             fontSize: 38,
                           ),
-                          textAlign: TextAlign.start,
+                          textAlign: .start,
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        width: double.infinity,
+                        padding: const .symmetric(horizontal: 16),
+                        width: .infinity,
                         child: Text(
                           LocaleKeys.manageDigitalAssets.tr,
                           style: context.appThemes.regular20.copyWith(
                             color: context.appThemes.black,
                           ),
-                          textAlign: TextAlign.start,
+                          textAlign: .start,
                         ),
                       ),
-                      SizedBox(height: 50),
+                      const SizedBox(height: 50),
                     ],
                   ),
                 ),
@@ -96,7 +96,9 @@ class StartView extends BaseView<StartController> {
                 LocaleKeys.swipeToGetStarted.tr,
                 style: context.appThemes.bold16.copyWith(color: context.appThemes.red100),
               ),
-              alignLabel: Get.locale == AppLocales.vnVI ? Alignment(0.3, 0) : Alignment(0.6, 0),
+              alignLabel: Get.locale == AppLocales.vnVI
+                  ? const Alignment(0.3, 0)
+                  : const Alignment(0.6, 0),
               icon: Assets.images.icArrowRight.svg(),
               width: 251,
               height: 64,

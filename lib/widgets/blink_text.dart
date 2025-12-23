@@ -147,13 +147,13 @@ class BlinkTextState extends State<BlinkText> with SingleTickerProviderStateMixi
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.linear));
 
     _controller.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
+      if (status == .completed) {
         _counter++;
         _controller.reverse();
         if (_counter >= times && times > 0) {
           _endTween();
         }
-      } else if (status == AnimationStatus.dismissed) {
+      } else if (status == .dismissed) {
         _controller.forward();
       }
       setState(() {});
@@ -198,7 +198,7 @@ class BlinkTextState extends State<BlinkText> with SingleTickerProviderStateMixi
       style = defaultTextStyle.style.merge(widget.style!);
     }
     if (MediaQuery.of(context).boldText) {
-      style = style.merge(const TextStyle(fontWeight: FontWeight.bold));
+      style = style.merge(const TextStyle(fontWeight: .bold));
     }
 
     return AnimatedBuilder(

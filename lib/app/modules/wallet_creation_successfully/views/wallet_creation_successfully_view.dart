@@ -24,22 +24,22 @@ class WalletCreationSuccessfullyView extends BaseView<WalletCreationSuccessfully
         top: true,
         bottom: false,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: .center,
+          crossAxisAlignment: .center,
+          mainAxisSize: .max,
           children: [
-            Assets.images.icHighFiveRafiki.svg(fit: BoxFit.cover),
+            Assets.images.icHighFiveRafiki.svg(fit: .cover),
             const SizedBox(height: 24),
             Text(
               LocaleKeys.secureRecoveryPhraseVerified.tr,
               style: context.appThemes.bold20.copyWith(color: context.appThemes.trueBlue100),
-              textAlign: TextAlign.center,
+              textAlign: .center,
             ),
             const SizedBox(height: 16),
             Text(
               LocaleKeys.walletCreationSuccessMessage.tr,
               style: context.appThemes.regular16.copyWith(color: context.appThemes.trueBlue100),
-              textAlign: TextAlign.center,
+              textAlign: .center,
             ),
             const SizedBox(height: 24),
             CustomFilledButton(

@@ -51,7 +51,7 @@ class _ScannerViewState extends State<ScannerView> {
   int detectionTimeoutMs = 1000;
 
   bool useBarcodeOverlay = true;
-  BoxFit boxFit = BoxFit.fill;
+  BoxFit boxFit = .fill;
   bool enableLifecycle = false;
 
   /// Hides the MobileScanner widget while the MobileScannerController is
@@ -132,15 +132,15 @@ class _ScannerViewState extends State<ScannerView> {
           bottom: false,
           child: Scaffold(
             body: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: .spaceBetween,
+              crossAxisAlignment: .center,
+              mainAxisSize: .max,
               children: [
                 Expanded(
                   child: mobileScannerController == null || hideMobileScannerWidget
                       ? const Placeholder()
                       : Stack(
-                          alignment: Alignment.bottomCenter,
+                          alignment: .bottomCenter,
                           children: [
                             MobileScanner(
                               scanWindow: useScanWindow ? scanWindow : null,
@@ -160,8 +160,8 @@ class _ScannerViewState extends State<ScannerView> {
                             ),
                             if (useScanWindow)
                               Container(
-                                width: double.infinity,
-                                height: double.infinity,
+                                width: .infinity,
+                                height: .infinity,
                                 decoration: ShapeDecoration(
                                   shape: QrScannerOverlayShape(
                                     borderColor: Colors.red,
@@ -175,12 +175,12 @@ class _ScannerViewState extends State<ScannerView> {
                               ),
                             if (returnImage)
                               Align(
-                                alignment: Alignment.topRight,
+                                alignment: .topRight,
                                 child: Card(
-                                  clipBehavior: Clip.hardEdge,
+                                  clipBehavior: .hardEdge,
                                   shape: RoundedRectangleBorder(
                                     side: const BorderSide(color: Colors.white),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: .circular(10),
                                   ),
                                   child: SizedBox(
                                     width: 100,
@@ -193,7 +193,7 @@ class _ScannerViewState extends State<ScannerView> {
                                           return const Center(
                                             child: Text(
                                               'Your scanned barcode will appear here',
-                                              textAlign: TextAlign.center,
+                                              textAlign: .center,
                                             ),
                                           );
                                         }
@@ -208,7 +208,7 @@ class _ScannerViewState extends State<ScannerView> {
 
                                         return Image.memory(
                                           barcodeImage,
-                                          fit: BoxFit.cover,
+                                          fit: .cover,
                                           gaplessPlayback: true,
                                           errorBuilder: (context, error, stackTrace) {
                                             return Center(
@@ -228,23 +228,23 @@ class _ScannerViewState extends State<ScannerView> {
                                         Get.back(result: null);
                                       },
                                       child: Align(
-                                        alignment: Alignment.topRight,
+                                        alignment: .topRight,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(top: 63, right: 16),
+                                          padding: const .only(top: 63, right: 16),
                                           child: Card(
-                                            clipBehavior: Clip.hardEdge,
+                                            clipBehavior: .hardEdge,
                                             shape: RoundedRectangleBorder(
                                               side: const BorderSide(color: Colors.white),
-                                              borderRadius: BorderRadius.circular(30),
+                                              borderRadius: .circular(30),
                                             ),
                                             child: Container(
                                               width: 30,
                                               height: 30,
-                                              alignment: Alignment.center,
+                                              alignment: .center,
                                               child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment: .center,
+                                                crossAxisAlignment: .center,
+                                                mainAxisSize: .max,
                                                 children: [
                                                   Icon(
                                                     size: 24,
@@ -258,17 +258,17 @@ class _ScannerViewState extends State<ScannerView> {
                                         ),
                                       ),
                                     )
-                                  : SizedBox.shrink(),
+                                  : const SizedBox.shrink(),
                             ),
                             Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: .end,
+                              crossAxisAlignment: .center,
                               children: [
                                 if (!kIsWeb && mobileScannerController != null)
                                   ZoomScaleSlider(controller: mobileScannerController!),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment: .spaceEvenly,
+                                  crossAxisAlignment: .end,
                                   children: [
                                     if (mobileScannerController != null) ...[
                                       ToggleFlashlightButton(controller: mobileScannerController!),
@@ -294,7 +294,7 @@ class _ScannerViewState extends State<ScannerView> {
                           ],
                         ),
                 ),
-                Container(width: double.infinity, height: 1, color: context.appThemes.ink5),
+                Container(width: .infinity, height: 1, color: context.appThemes.ink5),
               ],
             ),
           ),

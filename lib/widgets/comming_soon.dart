@@ -12,33 +12,33 @@ class CommingSoonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      width: .infinity,
+      height: .infinity,
+      padding: const .symmetric(horizontal: 16),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .start,
+        mainAxisSize: .max,
         children: [
           Assets.images.icZenoTxt.image(width: 105, height: 100),
-          SizedBox(height: 48),
+          const SizedBox(height: 48),
           Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: .start,
+              crossAxisAlignment: .start,
+              mainAxisSize: .max,
               children: [
                 Text(
                   "LocaleKeys.commingSoon.tr",
                   style: context.appThemes.bold24.copyWith(color: context.appThemes.ink100),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                   "LocaleKeys.commingSoonDescription.tr",
                   style: context.appThemes.regular16.copyWith(color: context.appThemes.ink60),
                 ),
-                SizedBox(height: 48),
-                Assets.images.icRocketLaunch.svg(fit: BoxFit.cover),
+                const SizedBox(height: 48),
+                Assets.images.icRocketLaunch.svg(fit: .cover),
               ],
             ),
           ),
