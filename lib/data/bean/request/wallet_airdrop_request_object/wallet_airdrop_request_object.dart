@@ -10,7 +10,6 @@ part 'wallet_airdrop_request_object.g.dart';
 
 @freezed
 abstract class WalletAirdropRequestObject with _$WalletAirdropRequestObject {
-  @JsonSerializable(includeIfNull: false)
   const factory WalletAirdropRequestObject({
     @JsonKey(name: 'address') String? address,
     @JsonKey(name: 'amount') @Default(5.0) double? amount,

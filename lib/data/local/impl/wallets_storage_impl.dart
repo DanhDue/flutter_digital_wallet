@@ -8,7 +8,7 @@ import 'package:d3_wallet/data/local/wallets_storage.dart';
 import 'package:d3_wallet/data/repositories/secure_keys.dart';
 import 'package:dart_helper_utils/dart_helper_utils.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive_ce.dart';
 
 class WalletsStorageImpl extends WalletsStorage {
   final _secureKeys = Get.find<SecureKeys>();

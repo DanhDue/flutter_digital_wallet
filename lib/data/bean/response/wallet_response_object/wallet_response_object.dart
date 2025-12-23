@@ -5,7 +5,7 @@
 import 'package:d3_wallet/data/local/storage_keys.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive_ce.dart';
 
 part 'wallet_response_object.freezed.dart';
 part 'wallet_response_object.g.dart';
@@ -31,7 +31,6 @@ class NumConverter implements JsonConverter<num?, Object?> {
 @freezed
 @HiveType(typeId: StorageKeys.walletHiveTypeId)
 abstract class WalletResponseObject with _$WalletResponseObject {
-  @JsonSerializable(includeIfNull: false)
   const factory WalletResponseObject({
     @HiveField(0) @JsonKey(name: 'userId') String? userId,
     @HiveField(1) @JsonKey(name: 'emailIsConfirmed') bool? emailIsConfirmed,

@@ -1,0 +1,8 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          # Force including null values to avoid null-aware element syntax (? in map literals)
+          # which is causing "language feature not enabled" errors.
+          include_if_null: true

@@ -5,7 +5,7 @@
 import 'package:d3_wallet/data/local/storage_keys.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive_ce.dart';
 
 part 'app_configurations.freezed.dart';
 part 'app_configurations.g.dart';

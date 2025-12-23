@@ -10,7 +10,6 @@ part 'wallet_creation_request_object.g.dart';
 
 @freezed
 abstract class WalletCreationRequestObject with _$WalletCreationRequestObject {
-  @JsonSerializable(includeIfNull: false)
   const factory WalletCreationRequestObject({
     @JsonKey(name: 'userId') String? userId,
     @JsonKey(name: 'deviceToken') String? deviceToken,

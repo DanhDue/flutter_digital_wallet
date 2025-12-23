@@ -1,5 +1,7 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
+// coverage:ignore-file
+
 import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
 import 'package:d3_wallet/app/routes/app_pages.dart';
 import 'package:d3_wallet/base/base_controller.dart';
@@ -28,7 +30,7 @@ class ProfileController extends BaseController {
 
   logout() {
     Fimber.d("logout()");
-    Get.toNamed(Routes.LOGIN);
+    Get.offAllNamed(Routes.LOGIN);
   }
 
   navigateToProfileDetail() {

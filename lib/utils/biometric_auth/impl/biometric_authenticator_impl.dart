@@ -45,7 +45,7 @@ class BiometricAuthenticatorImpl extends BiometricAuthenticator {
     try {
       authenticated = await auth.authenticate(
         localizedReason: localizedReason ?? '',
-        options: const AuthenticationOptions(stickyAuth: true),
+        persistAcrossBackgrounding: true,
       );
     } on PlatformException catch (exception) {
       exception.printError();
@@ -59,7 +59,8 @@ class BiometricAuthenticatorImpl extends BiometricAuthenticator {
     try {
       authenticated = await auth.authenticate(
         localizedReason: localizedReason ?? '',
-        options: const AuthenticationOptions(stickyAuth: true, biometricOnly: true),
+        persistAcrossBackgrounding: true,
+        biometricOnly: true,
       );
     } on PlatformException catch (exception) {
       exception.printError();

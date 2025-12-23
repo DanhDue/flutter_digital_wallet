@@ -7,7 +7,7 @@ part 'base_response_object.g.dart';
 
 const String successStatus = "0000";
 
-@JsonSerializable(genericArgumentFactories: true, includeIfNull: false)
+@JsonSerializable(genericArgumentFactories: true, includeIfNull: true)
 class BaseResponseObject<T> extends Equatable {
   @JsonKey(name: 'success')
   final bool? success;

@@ -6,7 +6,7 @@ import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
 import 'package:d3_wallet/data/repositories/secure_keys.dart';
 import 'package:fimber/fimber.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive_ce.dart';
 
 class AppConfigurationsRepositoryImpl extends AppConfigsRepository {
   final _secureKeys = Get.find<SecureKeys>();

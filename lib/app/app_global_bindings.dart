@@ -31,7 +31,7 @@ import 'package:d3_wallet/utils/biometric_auth/impl/biometric_authenticator_impl
 import 'package:d3_wallet/utils/extensions/string_ext.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive_ce.dart';
 import 'package:local_auth/local_auth.dart';
 
 class AppGlobalBindings extends Bindings {

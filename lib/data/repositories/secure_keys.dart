@@ -8,7 +8,7 @@ import 'package:d3_wallet/data/repositories/secure_storage_repository.dart';
 import 'package:dart_extensions/dart_extensions.dart';
 import 'package:fimber/fimber.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive_ce.dart';
 
 class SecureKeys {
   final _secureStorage = Get.find<SecureStorageRepository>();
