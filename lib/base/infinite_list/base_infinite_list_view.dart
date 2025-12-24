@@ -44,60 +44,58 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
         Fimber.d("FocusDetector - onForegroundGained: ${DateTime.now()}");
       },
       child: Scaffold(
-        body: Stack(
-          children: [
-            Visibility(
-              visible: controller.hasNoData.value != true,
-              child: Padding(
-                padding: _evaluateTopPadding(context),
-                child: RefreshIndicator(
-                  key: controller.refreshIndicatorKey ?? GlobalKey(),
-                  onRefresh: () => controller.fetchData(isRefresh: true),
-                  child: GetBuilder<C>(
-                    builder: (controller) => controller.items.isEmptyOrNull
-                        ? const SizedBox.shrink()
-                        : buildInfiniteList(),
-                  ),
-                ),
-              ),
-            ),
-            Obx(() {
-              return Visibility(
-                visible: controller.isError.value?.isNotBlank == true,
-                child: Center(child: buildErrorLayout(context)),
-              );
-            }),
-            Obx(() {
-              return Visibility(
-                visible: controller.hasNoData.value == true,
+        body: SafeArea(
+          top: true,
+          child: Stack(
+            children: [
+              Visibility(
+                visible: controller.hasNoData.value != true,
                 child: Padding(
-                  padding: _evaluateNoDataPadding(context),
+                  padding: _evaluateTopPadding(context),
                   child: RefreshIndicator(
-                    key: controller.refreshFromNoData ?? GlobalKey(),
+                    key: controller.refreshIndicatorKey ?? GlobalKey(),
                     onRefresh: () => controller.fetchData(isRefresh: true),
-                    child: Stack(
-                      children: [
-                        Center(child: buildHasNoDataLayout(context)),
-                        ListView(),
-                      ],
+                    child: GetBuilder<C>(
+                      builder: (controller) => controller.items.isEmptyOrNull
+                          ? const SizedBox.shrink()
+                          : buildInfiniteList(),
                     ),
                   ),
                 ),
-              );
-            }),
-            Obx(() {
-              if (controller.isLoading.value) {
-                WidgetsBinding.instance.addPostFrameCallback((duration) {
-                  SmartDialog.showLoading(msg: "");
-                });
-              } else {
-                WidgetsBinding.instance.addPostFrameCallback((duration) {
-                  SmartDialog.dismiss();
-                });
-              }
-              return const SizedBox.shrink();
-            }),
-          ],
+              ),
+              Obx(() {
+                return Visibility(
+                  visible: controller.isError.value?.isNotBlank == true,
+                  child: Center(child: buildErrorLayout(context)),
+                );
+              }),
+              Obx(() {
+                return Visibility(
+                  visible: controller.hasNoData.value == true,
+                  child: Padding(
+                    padding: _evaluateNoDataPadding(context),
+                    child: RefreshIndicator(
+                      key: controller.refreshFromNoData ?? GlobalKey(),
+                      onRefresh: () => controller.fetchData(isRefresh: true),
+                      child: Stack(children: [Center(child: buildHasNoDataLayout(context))]),
+                    ),
+                  ),
+                );
+              }),
+              Obx(() {
+                if (controller.isLoading.value) {
+                  WidgetsBinding.instance.addPostFrameCallback((duration) {
+                    SmartDialog.showLoading(msg: "");
+                  });
+                } else {
+                  WidgetsBinding.instance.addPostFrameCallback((duration) {
+                    SmartDialog.dismiss();
+                  });
+                }
+                return const SizedBox.shrink();
+              }),
+            ],
+          ),
         ),
       ),
     );

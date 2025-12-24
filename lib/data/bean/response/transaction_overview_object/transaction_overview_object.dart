@@ -2,8 +2,10 @@
 
 // coverage:ignore-file
 
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:d3_wallet/utils/json_converter/jiffy_long_json_converter.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jiffy/jiffy.dart';
 
 part 'transaction_overview_object.freezed.dart';
 part 'transaction_overview_object.g.dart';
@@ -13,7 +15,7 @@ abstract class TransactionOverviewObject with _$TransactionOverviewObject {
   const factory TransactionOverviewObject({
     @JsonKey(name: 'signature') List<String>? signature,
     @JsonKey(name: 'result') String? result,
-    @JsonKey(name: 'timestamp') int? timestamp,
+    @JsonKey(name: 'timestamp') @JiffyLongJsonConverter() Jiffy? timestamp,
     @JsonKey(name: 'confirmation_status') String? confirmationStatus,
     @JsonKey(name: 'confirmations') String? confirmations,
     @JsonKey(name: 'slot') int? slot,

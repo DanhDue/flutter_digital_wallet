@@ -175,5 +175,13 @@
   "search": "Search",
   "searchingNotFound": "No search results found",
   "selectNetwork": "Select network",
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "accountNumberPrefix": "Account %s",
+  "transferredPrefix": "Has transfered %s",
+  "recievedPrefix": "Has received %s",
+  "balancePrefix": "Balance: %s",
+  "success": "Success",
+  "failure": "Failure",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

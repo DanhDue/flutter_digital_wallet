@@ -9,6 +9,6 @@ abstract class TransactionRepository {
   Future<Result<BaseResponseObject<TransactionResponseObject?>?, ApiError>>
   getTransactionBySignature(String signature, {bool? parsedJson = true, List<String>? owners});
 
-  Future<Result<BaseResponseObject<List<TransactionResponseObject?>?>?, ApiError>>
+  Future<Result<BaseResponseObject<List<TransactionResponseObject?>?>, ApiError>>
   getTransactionByOwner(String owner, {int? limit = 5, String? before, String? until});
 }

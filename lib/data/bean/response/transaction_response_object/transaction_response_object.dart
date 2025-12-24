@@ -14,6 +14,8 @@ part 'transaction_response_object.g.dart';
 @freezed
 abstract class TransactionResponseObject with _$TransactionResponseObject {
   const factory TransactionResponseObject({
+    @JsonKey(name: 'isLabel') bool? isLabel,
+    @JsonKey(name: 'isLast') bool? isLast,
     @JsonKey(name: 'signature') String? signature,
     @JsonKey(name: 'overview') TransactionOverviewObject? overview,
     @JsonKey(name: 'account_inputs') List<AccountInputObject>? accountInputs,

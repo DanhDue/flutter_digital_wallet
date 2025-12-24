@@ -15,12 +15,17 @@ abstract class BaseInfiniteListViewWithCreator<
     extends BaseInfiniteListView<C> {
   final BindingCreator<Binding>? bindingCreator;
 
-  BaseInfiniteListViewWithCreator({super.key, required this.bindingCreator})
+  BaseInfiniteListViewWithCreator({super.key, this.bindingCreator})
     : super(bindingCreator: bindingCreator);
+
+  bool bindingCreatorIsCreated = false;
 
   @override
   Widget build(BuildContext context) {
-    _createBinding();
+    if (!bindingCreatorIsCreated) {
+      _createBinding();
+      bindingCreatorIsCreated = true;
+    }
     return super.build(context);
   }
 

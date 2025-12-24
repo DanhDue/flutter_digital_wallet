@@ -3,6 +3,7 @@
 import 'package:d3_wallet/base/base_controller.dart';
 import 'package:d3_wallet/base/infinite_list/constant.dart';
 import 'package:d3_wallet/data/base_response_object.dart';
+import 'package:d3_wallet/data/remote/api_error.dart';
 import 'package:d3_wallet/data/result.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
@@ -94,9 +95,7 @@ abstract class BaseInfiniteListController<T> extends BaseController<T> {
   // Example: You need to filter/group/change,.. one or more model items.
   List<T?>? prepareDataBeforeAdding({List<T?>? allItems, List<T?>? newItems}) => null;
 
-  Future<Result<BaseResponseObject<List<T?>?>, Exception>> retrieveDataFromService(
-    int? pageNumber,
-  );
+  Future<Result<BaseResponseObject<List<T?>?>, ApiError>> retrieveDataFromService(int? pageNumber);
   // Future<Result<List<BaseResponseObject<T?>?>, Exception>> retrieveDatasFromService(
   //     int? pageNumber);
 }

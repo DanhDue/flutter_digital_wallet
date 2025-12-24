@@ -13,7 +13,7 @@ abstract class TokenBalanceObject with _$TokenBalanceObject {
   const factory TokenBalanceObject({
     @JsonKey(name: 'address') String? address,
     @JsonKey(name: 'token') String? token,
-    @JsonKey(name: 'changes') int? changes,
+    @JsonKey(name: 'changes') double? changes,
     @JsonKey(name: 'post_balance') String? postBalance,
   }) = _TokenBalanceObject;
 

@@ -13,7 +13,7 @@ class TransactionRepositoryImpl extends TransactionRepository with SafeCallApiMi
   final tranClient = Get.find<TransactionClient>();
 
   @override
-  Future<Result<BaseResponseObject<List<TransactionResponseObject?>?>?, ApiError>>
+  Future<Result<BaseResponseObject<List<TransactionResponseObject?>?>, ApiError>>
   getTransactionByOwner(String owner, {int? limit = 5, String? before, String? until}) =>
       safeApiCall(() => tranClient.getTransactionByOwner(owner, limit, before, until));
 

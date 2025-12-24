@@ -75,9 +75,16 @@ class InfiniteList {
   static const int NEXT_PAGE_THRESHOLD = 10;
 }
 
-class TransactionDirection {
-  static const String RECEIVED = "RECEIVED";
-  static const String SENT = "SENT";
+class TransactionType {
+  static const String SOL_TRANSFER = "SOL_TRANSFER";
+  static const String SPL_TOKEN_TRANSFER = "SPL_TOKEN_TRANSFER";
+  static const String SPL_TOKEN_TRANSFER_WITH_TOKEN_ACCOUNT_CREATION =
+      "SPL_TOKEN_TRANSFER_WITH_TOKEN_ACCOUNT_CREATION";
+  static const String SWAP = "SWAP";
+  static const String SWAP_WITH_TOKEN_ACCOUNT_CREATION = "SWAP_WITH_TOKEN_ACCOUNT_CREATION";
+  static const String STAKE = "STAKE";
+  static const String CREATE_TOKEN_ACCOUNT = "CREATE_TOKEN_ACCOUNT";
+  static const String UNKNOWN = "UNKNOWN";
 }
 
 class TokenType {

@@ -84,9 +84,7 @@ class _OnboardViewState extends State<OnboardView> {
                             child: Assets.images.icBack.svg(width: 36, height: 36, fit: .cover),
                           ),
                     Expanded(
-                      child: Center(
-                        child: Assets.images.icZenoTxt.image(width: 105, fit: .cover),
-                      ),
+                      child: Center(child: Assets.images.icZenoTxt.image(width: 105, fit: .cover)),
                     ),
                     Visibility(
                       visible: false,
