@@ -41,6 +41,18 @@ class HomeController extends BaseController {
     currentTabIndex.value = index;
   }
 
+  void resetTab(int index) {
+    // Switch to the tab (essential for double-tap on unselected tab)
+    currentTabIndex.value = index;
+
+    // Pop all nested routes to return to the root
+    final nestedKey = Get.nestedKey(index);
+    if (nestedKey?.currentState != null && nestedKey!.currentState!.canPop()) {
+      Fimber.d("Resetting navigation stack for tab $index");
+      nestedKey.currentState!.popUntil((route) => route.isFirst);
+    }
+  }
+
   /// Get the current navigator ID
   int get currentNavId => currentTabIndex.value;
 

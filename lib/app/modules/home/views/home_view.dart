@@ -42,6 +42,7 @@ class HomeView extends BaseView<HomeController> {
           () => CustomBotNavBar(
             currentIndex: HomeController.to.currentTabIndex.value,
             onTap: HomeController.to.changeTab,
+            onDoubleTap: HomeController.to.resetTab,
           ),
         ),
       ),

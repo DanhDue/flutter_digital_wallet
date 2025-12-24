@@ -10,10 +10,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class CustomBotNavBar extends StatelessWidget {
-  const CustomBotNavBar({super.key, required this.currentIndex, required this.onTap});
+  const CustomBotNavBar({
+    super.key,
+    required this.currentIndex,
+    required this.onTap,
+    this.onDoubleTap,
+  });
 
   final int currentIndex;
   final void Function(int) onTap;
+  final void Function(int)? onDoubleTap;
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +53,7 @@ class CustomBotNavBar extends StatelessWidget {
                 activeColor: activeColor,
                 inactiveColor: inactiveColor,
                 onTap: () => onTap(NavIds.wallet),
+                onDoubleTap: () => onDoubleTap?.call(NavIds.wallet),
               ),
               _NavItem(
                 icon: Assets.images.icGlobe,
@@ -56,6 +63,7 @@ class CustomBotNavBar extends StatelessWidget {
                 activeColor: activeColor,
                 inactiveColor: inactiveColor,
                 onTap: () => onTap(NavIds.transactions),
+                onDoubleTap: () => onDoubleTap?.call(NavIds.transactions),
               ),
               // Center elevated QR Scanner button
               _CenterNavItem(
@@ -63,6 +71,7 @@ class CustomBotNavBar extends StatelessWidget {
                 isActive: currentIndex == NavIds.qr,
                 activeColor: activeColor,
                 onTap: () => onTap(NavIds.qr),
+                onDoubleTap: () => onDoubleTap?.call(NavIds.qr),
               ),
               _NavItem(
                 icon: Assets.images.icMarket,
@@ -72,6 +81,7 @@ class CustomBotNavBar extends StatelessWidget {
                 activeColor: activeColor,
                 inactiveColor: inactiveColor,
                 onTap: () => onTap(NavIds.trends),
+                onDoubleTap: () => onDoubleTap?.call(NavIds.trends),
               ),
               _NavItem(
                 icon: Assets.images.icSettingsLine,
@@ -81,6 +91,7 @@ class CustomBotNavBar extends StatelessWidget {
                 activeColor: activeColor,
                 inactiveColor: inactiveColor,
                 onTap: () => onTap(NavIds.profile),
+                onDoubleTap: () => onDoubleTap?.call(NavIds.profile),
               ),
             ],
           ),
@@ -100,6 +111,7 @@ class _NavItem extends StatelessWidget {
     required this.activeColor,
     required this.inactiveColor,
     required this.onTap,
+    this.onDoubleTap,
   });
 
   final dynamic icon; // Can be SvgGenImage, AssetGenImage, IconData
@@ -109,6 +121,7 @@ class _NavItem extends StatelessWidget {
   final Color activeColor;
   final Color inactiveColor;
   final VoidCallback onTap;
+  final VoidCallback? onDoubleTap;
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +130,7 @@ class _NavItem extends StatelessWidget {
     return Expanded(
       child: GestureDetector(
         onTap: onTap,
+        onDoubleTap: onDoubleTap,
         behavior: .opaque,
         child: Stack(
           alignment: .bottomCenter,
@@ -163,17 +177,20 @@ class _CenterNavItem extends StatelessWidget {
     required this.isActive,
     required this.activeColor,
     required this.onTap,
+    this.onDoubleTap,
   });
 
   final IconData icon;
   final bool isActive;
   final Color activeColor;
   final VoidCallback onTap;
+  final VoidCallback? onDoubleTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
+      onDoubleTap: onDoubleTap,
       child: Transform.translate(
         offset: const Offset(0, -16), // Elevate the button
         child: Container(
