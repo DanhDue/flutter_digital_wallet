@@ -33,14 +33,14 @@ class HomeView extends BaseView<HomeController> {
           bottom: false,
           child: Obx(
             () => IndexedStack(
-              index: HomeController.to.currentTabIndex.value,
+              index: HomeController.to.currentNavId.value,
               children: const [WalletNav(), TransactionsNav(), QRNav(), TrendsNav(), ProfileNav()],
             ),
           ),
         ),
         bottomNavigationBar: Obx(
           () => CustomBotNavBar(
-            currentIndex: HomeController.to.currentTabIndex.value,
+            currentIndex: HomeController.to.currentNavId.value,
             onTap: HomeController.to.changeTab,
             onDoubleTap: HomeController.to.resetTab,
           ),

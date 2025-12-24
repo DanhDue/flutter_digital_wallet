@@ -7,21 +7,25 @@ import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
+import '../constants/nav_ids.dart';
+
 class HomeController extends BaseController {
   static HomeController get to => Get.find();
 
-  final currentTabIndex = 0.obs;
+  /// Navigator ID [NavIds] is also the index of tab (0, 1, 2, 3, 4).
+  final currentNavId = NavIds.wallet.obs;
 
   // For double-back-to-exit functionality
   DateTime? _lastBackPressTime;
   static const _exitTimeWindow = Duration(seconds: 2);
+  static const _backButtonInterceptorName = 'home';
 
   @override
   void onInit() {
     super.onInit();
     Fimber.d("HomeController onInit()");
     // Register back button interceptor to handle back before nested navigators
-    BackButtonInterceptor.add(_onBackPressed, zIndex: 1, name: 'home');
+    BackButtonInterceptor.add(_onBackPressed, zIndex: 1, name: _backButtonInterceptorName);
   }
 
   @override
@@ -32,29 +36,28 @@ class HomeController extends BaseController {
 
   @override
   void onClose() {
-    BackButtonInterceptor.removeByName('home');
+    BackButtonInterceptor.removeByName(_backButtonInterceptorName);
     super.onClose();
     Fimber.d("HomeController onClose()");
   }
 
-  void changeTab(int index) {
-    currentTabIndex.value = index;
+  /// [navId] is Navigator ID [NavIds]. It is also the index of tab (0, 1, 2, 3, 4).
+  void changeTab(int navId) {
+    currentNavId.value = navId;
   }
 
-  void resetTab(int index) {
+  /// [navId] is Navigator ID [NavIds]. It is also the index of tab (0, 1, 2, 3, 4).
+  void resetTab(int navId) {
     // Switch to the tab (essential for double-tap on unselected tab)
-    currentTabIndex.value = index;
+    currentNavId.value = navId;
 
     // Pop all nested routes to return to the root
-    final nestedKey = Get.nestedKey(index);
+    final nestedKey = Get.nestedKey(navId);
     if (nestedKey?.currentState != null && nestedKey!.currentState!.canPop()) {
-      Fimber.d("Resetting navigation stack for tab $index");
+      Fimber.d("Resetting navigation stack for tab $navId");
       nestedKey.currentState!.popUntil((route) => route.isFirst);
     }
   }
-
-  /// Get the current navigator ID
-  int get currentNavId => currentTabIndex.value;
 
   /// Back button interceptor callback
   /// Returns true to consume the event (handled), false to let system handle it
@@ -70,10 +73,10 @@ class HomeController extends BaseController {
     }
 
     // Try to pop from the current tab's nested navigator using GetX
-    final nestedKey = Get.nestedKey(currentNavId);
+    final nestedKey = Get.nestedKey(currentNavId.value);
     if (nestedKey?.currentState != null && nestedKey!.currentState!.canPop()) {
       Fimber.d("Popping nested navigator");
-      Get.back(id: currentNavId);
+      Get.back(id: currentNavId.value);
       return true; // Consumed
     }
 
@@ -97,10 +100,10 @@ class HomeController extends BaseController {
     Fimber.d("handleBackPress() called");
 
     // Try to pop from nested navigator using GetX
-    final nestedKey = Get.nestedKey(currentNavId);
+    final nestedKey = Get.nestedKey(currentNavId.value);
     if (nestedKey?.currentState != null && nestedKey!.currentState!.canPop()) {
       Fimber.d("Popping from nested navigator");
-      Get.back(id: currentNavId);
+      Get.back(id: currentNavId.value);
       return false; // Handled, don't exit
     }
 
