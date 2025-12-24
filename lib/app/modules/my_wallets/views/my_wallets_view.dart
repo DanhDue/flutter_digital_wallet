@@ -18,6 +18,7 @@ import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:d3_wallet/utils/constants.dart';
 import 'package:dart_helper_utils/dart_helper_utils.dart';
 import 'package:fimber/fimber.dart';
+import 'package:d3_wallet/widgets/token_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_boring_avatars/flutter_boring_avatars.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -56,21 +57,33 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
                   crossAxisAlignment: .center,
                   mainAxisSize: .max,
                   children: [
-                    TokenActionButton(
-                      icon: Assets.images.icSend,
-                      title: LocaleKeys.walletActionSend.tr,
+                    InkWell(
+                      onTap: () => showCommingSoon(context),
+                      child: TokenActionButton(
+                        icon: Assets.images.icSend,
+                        title: LocaleKeys.walletActionSend.tr,
+                      ),
                     ),
-                    TokenActionButton(
-                      icon: Assets.images.icReceive,
-                      title: LocaleKeys.walletActionReceive.tr,
+                    InkWell(
+                      onTap: () => showCommingSoon(context),
+                      child: TokenActionButton(
+                        icon: Assets.images.icReceive,
+                        title: LocaleKeys.walletActionReceive.tr,
+                      ),
                     ),
-                    TokenActionButton(
-                      icon: Assets.images.icBuy,
-                      title: LocaleKeys.walletActionBuy.tr,
+                    InkWell(
+                      onTap: () => showCommingSoon(context),
+                      child: TokenActionButton(
+                        icon: Assets.images.icBuy,
+                        title: LocaleKeys.walletActionBuy.tr,
+                      ),
                     ),
-                    TokenActionButton(
-                      icon: Assets.images.icStaking,
-                      title: LocaleKeys.walletActionStaking.tr,
+                    InkWell(
+                      onTap: () => showCommingSoon(context),
+                      child: TokenActionButton(
+                        icon: Assets.images.icStaking,
+                        title: LocaleKeys.walletActionStaking.tr,
+                      ),
                     ),
                   ],
                 ).paddingSymmetric(horizontal: 50),
@@ -276,23 +289,5 @@ class MyWalletsView extends BaseBindingCreatorView<MyWalletsBinding, MyWalletsCo
         ),
       );
     });
-  }
-}
-
-class TokenActionButton extends StatelessWidget {
-  const TokenActionButton({super.key, required this.icon, required this.title});
-
-  final AssetGenImage icon;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      alignment: .bottomCenter,
-      children: [
-        icon.image(width: 53, height: 80, fit: .cover).paddingOnly(bottom: 6),
-        Text(title, style: context.appThemes.bold14.copyWith(color: context.appThemes.greenVogue)),
-      ],
-    );
   }
 }

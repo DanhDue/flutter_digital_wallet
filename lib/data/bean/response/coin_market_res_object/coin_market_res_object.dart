@@ -4,8 +4,10 @@
 
 import 'package:d3_wallet/data/bean/response/coin_market_platform_object/coin_market_platform_object.dart';
 import 'package:d3_wallet/data/bean/response/coin_market_urls_object/coin_market_urls_object.dart';
+import 'package:d3_wallet/utils/json_converter/jiffy_long_json_converter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jiffy/jiffy.dart';
 
 part 'coin_market_res_object.freezed.dart';
 part 'coin_market_res_object.g.dart';
@@ -60,6 +62,15 @@ abstract class CoinMarketResObject with _$CoinMarketResObject {
     @JsonKey(name: 'is_hidden') int? isHidden,
     @JsonKey(name: 'date_launched') String? dateLaunched,
     @JsonKey(name: 'contract_address') List<String>? contractAddress,
+    @JsonKey(name: 'open_time') @JiffyLongJsonConverter() Jiffy? openTime,
+    @JsonKey(name: 'open') double? open,
+    @JsonKey(name: 'high') double? high,
+    @JsonKey(name: 'low') double? low,
+    @JsonKey(name: 'close') double? close,
+    @JsonKey(name: 'volume') double? volume,
+    @JsonKey(name: 'close_time') @JiffyLongJsonConverter() Jiffy? closeTime,
+    @JsonKey(name: 'quote_asset_volume') double? quoteAssetVolume,
+    @JsonKey(name: 'number_of_trades') int? numberOfTrades,
   }) = _CoinMarketResObject;
 
   factory CoinMarketResObject.fromJson(Map<String, Object?> json) =>

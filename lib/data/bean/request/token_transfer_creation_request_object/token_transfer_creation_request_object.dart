@@ -10,6 +10,7 @@ part 'token_transfer_creation_request_object.g.dart';
 
 @freezed
 abstract class TokenTransferCreationRequestObject with _$TokenTransferCreationRequestObject {
+  @JsonSerializable(includeIfNull: false)
   const factory TokenTransferCreationRequestObject({
     @JsonKey(name: 'owner_bs58_private_key') String? ownerBs58PrivateKey,
     @JsonKey(name: 'payer_bs58_private_key') String? payerBs58PrivateKey,

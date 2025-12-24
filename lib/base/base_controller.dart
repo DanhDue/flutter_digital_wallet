@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class BaseController<T> extends GetxController with StateMixin<T> {
+  final Object? constructorArgs;
+  BaseController({this.constructorArgs});
+
   var isLoading = false.obs;
   Rx<String?> isError = ''.obs;
   var hasNoData = false.obs;
@@ -58,6 +61,41 @@ abstract class BaseController<T> extends GetxController with StateMixin<T> {
   }
 
   A? retrieveArgument<A>(String key) {
-    return (Get.arguments as Map?)?[key] as A?;
+    Fimber.d("retrieveArgument(key: $key)");
+
+    // 1. Try constructor arguments first (most reliable for nested navigation)
+    if (constructorArgs is Map && (constructorArgs as Map).containsKey(key)) {
+      Fimber.d("Found in constructorArgs");
+      return (constructorArgs as Map)[key] as A?;
+    }
+
+    // 2. Try global Get.arguments
+    var args = Get.arguments;
+    if (args is Map && args.containsKey(key)) {
+      Fimber.d("Found in Get.arguments");
+      return args[key] as A?;
+    }
+
+    // 3. Try Get.routing.args
+    try {
+      args = Get.routing.args;
+      if (args is Map && args.containsKey(key)) {
+        Fimber.d("Found in Get.routing.args");
+        return args[key] as A?;
+      }
+    } catch (_) {}
+
+    // 4. Try ModalRoute with Get.context
+    // This handles cases where GetX hasn't updated its global state yet
+    try {
+      args = ModalRoute.of(Get.context!)?.settings.arguments;
+      if (args is Map && args.containsKey(key)) {
+        Fimber.d("Found in ModalRoute.of(Get.context!)");
+        return args[key] as A?;
+      }
+    } catch (_) {}
+
+    Fimber.w("Argument not found for key: $key");
+    return null;
   }
 }

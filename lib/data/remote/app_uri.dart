@@ -17,6 +17,7 @@ class AppUri {
   static const String wallets = 'wallets';
   static const String tokens = 'tokens';
   static const String transactions = 'transactions';
+  static const String markets = 'markets';
   static const String healthz = 'healthz';
 }
 

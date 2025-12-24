@@ -2,13 +2,11 @@
 
 // coverage:ignore-file
 
-import 'package:d3_wallet/app/modules/comming_soon_modal/bindings/comming_soon_modal_binding.dart';
-import 'package:d3_wallet/app/modules/my_wallets/bindings/my_wallets_binding.dart';
-import 'package:d3_wallet/app/modules/onboard/s_r_p_description/bindings/s_r_p_description_binding.dart';
 import 'package:get/get.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 import '../../styles/app_themes.dart';
+import '../modules/comming_soon_modal/bindings/comming_soon_modal_binding.dart';
 import '../modules/comming_soon_modal/views/comming_soon_modal_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -22,6 +20,7 @@ import '../modules/my_qr/bindings/my_qr_binding.dart';
 import '../modules/my_qr/views/my_qr_view.dart';
 import '../modules/my_tokens/bindings/my_tokens_binding.dart';
 import '../modules/my_tokens/views/my_tokens_view.dart';
+import '../modules/my_wallets/bindings/my_wallets_binding.dart';
 import '../modules/my_wallets/views/my_wallets_view.dart';
 import '../modules/my_wallets/wallet_card/bindings/wallet_card_widget_binding.dart';
 import '../modules/my_wallets/wallet_card/views/wallet_card_view.dart';
@@ -36,6 +35,7 @@ import '../modules/onboard/mnemonic_description/bindings/mnemonic_description_bi
 import '../modules/onboard/mnemonic_description/views/mnemonic_description_view.dart';
 import '../modules/onboard/mnemonic_warning/bindings/mnemonic_warning_binding.dart';
 import '../modules/onboard/mnemonic_warning/views/mnemonic_warning_view.dart';
+import '../modules/onboard/s_r_p_description/bindings/s_r_p_description_binding.dart';
 import '../modules/onboard/s_r_p_description/views/s_r_p_description_view.dart';
 import '../modules/onboard/views/onboard_view.dart';
 import '../modules/password_creation/bindings/password_creation_binding.dart';
@@ -67,6 +67,8 @@ import '../modules/transfer/transfer/views/transfer_view.dart';
 import '../modules/transfer/transfer_confirmation/bindings/transfer_confirmation_binding.dart';
 import '../modules/transfer/transfer_confirmation/views/transfer_confirmation_view.dart';
 import '../modules/trends/bindings/trends_binding.dart';
+import '../modules/trends/coin_market_detail/bindings/coin_market_detail_binding.dart';
+import '../modules/trends/coin_market_detail/views/coin_market_detail_view.dart';
 import '../modules/trends/views/trends_view.dart';
 import '../modules/wallet_creation/wallet_creation/bindings/wallet_creation_binding.dart';
 import '../modules/wallet_creation/wallet_creation/views/wallet_creation_view.dart';
@@ -183,6 +185,11 @@ class AppPages {
     ),
     GetPage(name: _Paths.QR_SCANNING, page: () => QRScannerView(), binding: QRScannerBinding()),
     GetPage(name: _Paths.TRENDS, page: () => TrendsView(), binding: TrendsBinding()),
+    GetPage(
+      name: _Paths.COIN_MARKET_DETAIL,
+      page: () => const CoinMarketDetailView(),
+      binding: CoinMarketDetailBinding(),
+    ),
     GetPage(name: _Paths.PROFILE, page: () => ProfileView(), binding: ProfileBinding()),
     GetPage(
       name: _Paths.PROFILE_DETAIL,

@@ -12,11 +12,14 @@ import 'package:d3_wallet/data/local/token_account_storage.dart';
 import 'package:d3_wallet/data/local/wallets_storage.dart';
 import 'package:d3_wallet/data/remote/app_uri.dart';
 import 'package:d3_wallet/data/remote/dio_factory.dart';
+import 'package:d3_wallet/data/remote/market_client/market_client.dart';
 import 'package:d3_wallet/data/remote/token_client/token_client.dart';
 import 'package:d3_wallet/data/remote/transaction_client/transaction_client.dart';
 import 'package:d3_wallet/data/remote/wallet_client/wallet_client.dart';
 import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
+import 'package:d3_wallet/data/repositories/coin_market_repository.dart';
 import 'package:d3_wallet/data/repositories/impl/app_configs_repository_impl.dart';
+import 'package:d3_wallet/data/repositories/impl/coin_market_repository_impl.dart';
 import 'package:d3_wallet/data/repositories/impl/secure_storage_repository_impl.dart';
 import 'package:d3_wallet/data/repositories/impl/token_repository_impl.dart';
 import 'package:d3_wallet/data/repositories/impl/transaction_repository_impl.dart';
@@ -61,5 +64,10 @@ class AppGlobalBindings extends Bindings {
       fenix: true,
     );
     Get.lazyPut<TransactionRepository>(() => TransactionRepositoryImpl(), fenix: true);
+    Get.lazyPut(
+      () => MarketClient(Get.find(), baseUrl: AppUri.markets.buildAppUri()),
+      fenix: true,
+    );
+    Get.lazyPut<CoinMarketRepository>(() => CoinMarketRepositoryImpl(), fenix: true);
   }
 }

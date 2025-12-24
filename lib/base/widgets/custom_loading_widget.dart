@@ -30,13 +30,15 @@ class CustomLoadingWidget extends StatelessWidget {
               crossAxisAlignment: .center,
               mainAxisSize: .min,
               children: [
-                Assets.lotties.sandyLoading.lottie(
-                  width: 120,
-                  height: 120,
-                  fit: .cover,
-                  animate: true,
-                  repeat: true,
-                  backgroundLoading: true,
+                RepaintBoundary(
+                  child: Assets.lotties.sandyLoading.lottie(
+                    width: 120,
+                    height: 120,
+                    fit: .cover,
+                    animate: true,
+                    repeat: true,
+                    backgroundLoading: true,
+                  ),
                 ),
                 Visibility(
                   visible: msg != null && msg!.isNotEmpty,

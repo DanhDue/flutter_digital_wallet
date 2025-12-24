@@ -44,6 +44,7 @@ abstract class Routes {
   static const REQUEST_PAYMENT = _Paths.REQUEST_PAYMENT;
   static const REQUEST_PAYMENT_RESULTS = _Paths.REQUEST_PAYMENT_RESULTS;
   static const MY_TOKENS = _Paths.MY_TOKENS;
+  static const COIN_MARKET_DETAIL = _Paths.TRENDS + _Paths.COIN_MARKET_DETAIL;
 }
 
 abstract class _Paths {
@@ -85,4 +86,5 @@ abstract class _Paths {
   static const REQUEST_PAYMENT = '/request-payment';
   static const REQUEST_PAYMENT_RESULTS = '/request-payment-results';
   static const MY_TOKENS = '/my-tokens';
+  static const COIN_MARKET_DETAIL = '/coin-market-detail';
 }

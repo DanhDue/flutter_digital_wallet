@@ -20,9 +20,6 @@ class TransactionsView
   TransactionsView({super.key});
 
   @override
-  bool? get appBarIsHidden => true;
-
-  @override
   Widget buildItemViews(BuildContext context, {item, int? index}) {
     if (item is TransactionResponseObject) {
       return _buildItem(context, item, index: index);

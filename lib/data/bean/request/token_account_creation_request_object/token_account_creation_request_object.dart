@@ -10,6 +10,7 @@ part 'token_account_creation_request_object.g.dart';
 
 @freezed
 abstract class TokenAccountCreationRequestObject with _$TokenAccountCreationRequestObject {
+  @JsonSerializable(includeIfNull: false)
   const factory TokenAccountCreationRequestObject({
     @JsonKey(name: 'owner_bs58_private_key') String? ownerBs58PrivateKey,
     @JsonKey(name: 'payer_bs58_private_key') String? payerBs58PrivateKey,

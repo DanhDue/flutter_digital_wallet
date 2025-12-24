@@ -12,14 +12,25 @@ import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:dart_extensions/dart_extensions.dart';
 import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:get/get.dart';
 
 abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extends BaseView<C> {
-  BaseInfiniteListView({super.key, BindingCreator? bindingCreator});
+  const BaseInfiniteListView({
+    super.key,
+    BindingCreator? bindingCreator,
+    this.appBarIsHidden = true,
+    this.topSafeArea = true,
+    this.bottomSafeArea = false,
+    this.leftSafeArea = false,
+    this.rightSafeArea = false,
+  });
 
-  bool? appBarIsHidden = false;
+  final bool appBarIsHidden;
+  final bool topSafeArea;
+  final bool bottomSafeArea;
+  final bool leftSafeArea;
+  final bool rightSafeArea;
 
   @override
   Widget? onCreateViews(BuildContext context) {
@@ -45,7 +56,10 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
       },
       child: Scaffold(
         body: SafeArea(
-          top: true,
+          top: topSafeArea,
+          bottom: bottomSafeArea,
+          left: leftSafeArea,
+          right: rightSafeArea,
           child: Stack(
             children: [
               Visibility(
@@ -83,16 +97,21 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
                 );
               }),
               Obx(() {
-                if (controller.isLoading.value) {
-                  WidgetsBinding.instance.addPostFrameCallback((duration) {
-                    SmartDialog.showLoading(msg: "");
-                  });
-                } else {
-                  WidgetsBinding.instance.addPostFrameCallback((duration) {
-                    SmartDialog.dismiss();
-                  });
-                }
-                return const SizedBox.shrink();
+                return Visibility(
+                  visible: controller.isLoading.value == true,
+                  child: Center(
+                    child: RepaintBoundary(
+                      child: Assets.lotties.sandyLoading.lottie(
+                        width: 120,
+                        height: 120,
+                        fit: BoxFit.cover,
+                        animate: true,
+                        repeat: true,
+                        backgroundLoading: true,
+                      ),
+                    ),
+                  ),
+                );
               }),
             ],
           ),

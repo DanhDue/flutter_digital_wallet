@@ -34,8 +34,8 @@ class CommonHeaderBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: .infinity,
-      padding: const .only(left: 12, top: 50, right: 12),
+      width: double.infinity,
+      padding: const EdgeInsets.only(left: 12, top: 40, right: 12),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: showShadow == true
@@ -50,14 +50,14 @@ class CommonHeaderBar extends StatelessWidget {
             : [],
       ),
       child: Padding(
-        padding: const .symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
-          mainAxisAlignment: .center,
-          crossAxisAlignment: .center,
-          mainAxisSize: .max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Stack(
-              alignment: .centerLeft,
+              alignment: Alignment.centerLeft,
               children: [
                 Visibility(
                   visible: enableBackPress == true,
@@ -72,7 +72,8 @@ class CommonHeaderBar extends StatelessWidget {
                       backPress?.call();
                     },
                     child:
-                        backIcon ?? Assets.images.icBack.svg(width: 36, height: 36, fit: .cover),
+                        backIcon ??
+                        Assets.images.icBack.svg(width: 36, height: 36, fit: BoxFit.cover),
                   ),
                 ),
                 (actions != null && actions!.isNotEmpty)
@@ -82,8 +83,8 @@ class CommonHeaderBar extends StatelessWidget {
                         maintainState: true,
                         maintainAnimation: true,
                         child: Row(
-                          mainAxisSize: .min,
-                          crossAxisAlignment: .center,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: actions!,
                         ),
                       )
@@ -92,9 +93,9 @@ class CommonHeaderBar extends StatelessWidget {
             ),
             Expanded(
               child: Column(
-                mainAxisAlignment: .center,
-                crossAxisAlignment: .center,
-                mainAxisSize: .max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
                     title ?? "",
@@ -111,7 +112,7 @@ class CommonHeaderBar extends StatelessWidget {
               ),
             ),
             Stack(
-              alignment: .centerRight,
+              alignment: Alignment.centerRight,
               children: [
                 Visibility(
                   visible: closePress != null,
@@ -123,13 +124,17 @@ class CommonHeaderBar extends StatelessWidget {
                     child: Container(
                       width: 36,
                       height: 36,
-                      padding: const .all(6),
-                      child: Assets.images.icCloseRound.svg(fit: .cover),
+                      padding: const EdgeInsets.all(6),
+                      child: Assets.images.icCloseRound.svg(fit: BoxFit.cover),
                     ),
                   ),
                 ),
                 (actions != null && actions!.isNotEmpty)
-                    ? Row(mainAxisSize: .min, crossAxisAlignment: .center, children: actions!)
+                    ? Row(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: actions!,
+                      )
                     : const SizedBox.shrink(),
               ],
             ),

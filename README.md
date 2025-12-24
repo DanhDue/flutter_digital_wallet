@@ -154,13 +154,64 @@ Get.toNamed(Routes.PROFILE_SETTINGS, id: NavIds.profile);
 - **`lib/app/routes/app_routes.dart`** - Route name definitions
 - **`lib/app/routes/app_pages.dart`** - Route configuration
 
-### 7. Best Practices
+### 7. Robust Argument Retrieval
+
+When using nested navigation, the global `Get.arguments` singleton may return `null` because it primarily tracks the root navigator. To handle arguments reliably across all navigator types, follow this standardized pattern:
+
+#### 7.1. Pass Arguments via Binding (in the Nav widget)
+In your tab's navigator widget (e.g., `trends_nav.dart`), pass `settings.arguments` to the binding:
+
+```dart
+if (settings.name == Routes.DETAIL) {
+  return GetPageRoute(
+    settings: settings,
+    page: () => DetailView(),
+    binding: DetailBinding(arguments: settings.arguments), // Pass here
+  );
+}
+```
+
+#### 7.2. Receive in Binding and Inject to Controller
+Update your `Binding` to accept the arguments and inject them into the `Controller` constructor:
+
+```dart
+class DetailBinding extends Bindings {
+  final Object? arguments;
+  DetailBinding({this.arguments});
+
+  @override
+  void dependencies() {
+    Get.lazyPut(() => DetailController(
+      arguments: arguments,
+    ));
+  }
+}
+```
+
+#### 7.3. Use Standardized Retrieval in Controller
+Update your `Controller` to pass arguments to `super` and use `retrieveArgument`:
+
+```dart
+class DetailController extends BaseController {
+  DetailController({Object? arguments}) : super(constructorArgs: arguments);
+
+  @override
+  void onReady() {
+    super.onReady();
+    // This method prioritizes constructorArgs, then falls back to global Get.arguments
+    final data = retrieveArgument<MyDataType>(NavigationArguments.key);
+  }
+}
+```
+
+### 8. Best Practices
 
 1. **Use global navigation** for screens that should replace the entire view (login, splash, etc.)
 2. **Use nested navigation** for screens within a tab that should keep the bottom nav visible
 3. **Always specify the `id` parameter** when navigating within a tab
 4. **Use `Get.back(id: navId)`** to go back within a specific tab
 5. **Use `Get.back()`** (without id) to go back on the global navigator
+6. **Prefer Constructor Injection** (Section 7) for all nested routes to ensure arguments are never null.
 
 </details>
 

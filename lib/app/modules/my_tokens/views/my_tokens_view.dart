@@ -33,13 +33,15 @@ class MyTokensView extends BaseBindingStatefulNetworkingView<MyTokensBinding, My
   @override
   Widget? buildLoading(BuildContext context) {
     return Center(
-      child: Assets.lotties.sandyLoading.lottie(
-        width: 120,
-        height: 120,
-        fit: .cover,
-        animate: true,
-        repeat: true,
-        backgroundLoading: true,
+      child: RepaintBoundary(
+        child: Assets.lotties.sandyLoading.lottie(
+          width: 120,
+          height: 120,
+          fit: .cover,
+          animate: true,
+          repeat: true,
+          backgroundLoading: true,
+        ),
       ),
     );
   }
