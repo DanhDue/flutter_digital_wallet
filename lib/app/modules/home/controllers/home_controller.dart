@@ -15,6 +15,10 @@ class HomeController extends BaseController {
   /// Navigator ID [NavIds] is also the index of tab (0, 1, 2, 3, 4).
   final currentNavId = NavIds.wallet.obs;
 
+  /// Event triggered when a root tab is tapped while already active.
+  /// Listeners can use this to scroll to top or perform other root-level actions.
+  final rootTabTapEvent = RxnInt(null);
+
   // For double-back-to-exit functionality
   DateTime? _lastBackPressTime;
   static const _exitTimeWindow = Duration(seconds: 2);
@@ -43,20 +47,36 @@ class HomeController extends BaseController {
 
   /// [navId] is Navigator ID [NavIds]. It is also the index of tab (0, 1, 2, 3, 4).
   void changeTab(int navId) {
+    if (currentNavId.value == navId) {
+      _notifyRootTabTap(navId);
+      return;
+    }
     currentNavId.value = navId;
   }
 
   /// [navId] is Navigator ID [NavIds]. It is also the index of tab (0, 1, 2, 3, 4).
   void resetTab(int navId) {
     // Switch to the tab (essential for double-tap on unselected tab)
-    currentNavId.value = navId;
+    if (currentNavId.value != navId) {
+      currentNavId.value = navId;
+    }
 
     // Pop all nested routes to return to the root
     final nestedKey = Get.nestedKey(navId);
     if (nestedKey?.currentState != null && nestedKey!.currentState!.canPop()) {
       Fimber.d("Resetting navigation stack for tab $navId");
       nestedKey.currentState!.popUntil((route) => route.isFirst);
+    } else {
+      // Already at root, notify for actions like scroll to top
+      _notifyRootTabTap(navId);
     }
+  }
+
+  /// Notify listeners that an active root tab was tapped
+  void _notifyRootTabTap(int navId) {
+    Fimber.d("Notifying root tab tap for $navId");
+    rootTabTapEvent.value = navId;
+    rootTabTapEvent.refresh();
   }
 
   /// Back button interceptor callback

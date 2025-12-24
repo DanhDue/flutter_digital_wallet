@@ -15,9 +15,9 @@ abstract class BaseInfiniteListController<T> extends BaseController<T> {
   int nextPageThreshold = InfiniteList.NEXT_PAGE_THRESHOLD;
   var items = List<T?>.empty(growable: true);
   bool? loadMoreError = false;
-  bool? isFirstLoad = true;
   GlobalKey? refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
   GlobalKey? refreshFromNoData = GlobalKey<RefreshIndicatorState>();
+  final scrollController = ScrollController();
 
   @override
   void onReady() {
@@ -26,19 +26,30 @@ abstract class BaseInfiniteListController<T> extends BaseController<T> {
 
   @override
   void onClose() {
+    scrollController.dispose();
     super.onClose();
     Fimber.d("onClose()");
   }
 
+  /// Scrolls the list back to the top with a smooth animation
+  void scrollToTop() {
+    if (scrollController.hasClients) {
+      scrollController.animateTo(
+        0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    }
+  }
+
   Future<void> fetchData({bool? isLoadMore = false, bool? isRefresh = false}) async {
-    if (isFirstLoad == true) isLoading.value = true;
+    if (isRefresh == true) {
+      pageNumber = 1;
+    }
+    if (pageNumber == 1) isLoading.value = true;
     if (isLoadMore == true) {
       loadMoreError = false;
       update();
-    }
-    if (isRefresh == true) {
-      isFirstLoad = true;
-      pageNumber = 1;
     }
     Fimber.d(
       "fetchData({isLoadMore = $isLoadMore, isRefresh = $isRefresh, pageNumber: $pageNumber})",
@@ -58,7 +69,6 @@ abstract class BaseInfiniteListController<T> extends BaseController<T> {
         if ((newItems == null || newItems.isEmpty) && pageNumber == 1) {
           hasNoData.value = true;
           isLoading.value = false;
-          isFirstLoad = false;
           update();
           return;
         }
@@ -68,18 +78,17 @@ abstract class BaseInfiniteListController<T> extends BaseController<T> {
             ? {items.clear(), items.addAll(optimizedItems ?? [])}
             : {items.addAll(newItems ?? [])};
 
-        pageNumber = pageNumber + 1;
-        if (isFirstLoad == true) isError.value = '';
-        if (isFirstLoad == true) {
-          isFirstLoad = false;
+        if (pageNumber == 1) {
+          isError.value = '';
           isLoading.value = false;
         }
+        pageNumber = pageNumber + 1;
         if (items.isEmpty == true) hasNoData.value = true;
         update();
         break;
       case Failure(:final error):
         Fimber.e(error.toString());
-        if (isFirstLoad == true) {
+        if (pageNumber == 1) {
           items.clear();
           update();
           isError.value = 'true';

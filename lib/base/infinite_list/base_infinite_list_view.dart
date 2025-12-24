@@ -122,6 +122,7 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
 
   Widget buildInfiniteList() {
     return ListView.builder(
+      controller: controller.scrollController,
       physics: const AlwaysScrollableScrollPhysics(),
       itemCount: controller.items.length + (controller.hasMore == true ? 1 : 0),
       itemBuilder: (context, index) {

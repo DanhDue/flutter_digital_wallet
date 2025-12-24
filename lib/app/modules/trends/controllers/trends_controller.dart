@@ -8,14 +8,22 @@ import 'package:d3_wallet/data/remote/api_error.dart';
 import 'package:d3_wallet/data/repositories/coin_market_repository.dart';
 import 'package:d3_wallet/data/result.dart';
 import 'package:fimber/fimber.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get.dart';
+
+import '../../home/constants/nav_ids.dart';
+import '../../home/controllers/home_controller.dart';
 
 class TrendsController extends BaseInfiniteListController<CoinMarketResObject> {
   @override
   void onInit() {
     super.onInit();
     Fimber.d("onInit()");
+    ever(HomeController.to.rootTabTapEvent, (navId) {
+      if (navId == NavIds.trends) {
+        scrollToTop();
+        fetchData(isRefresh: true);
+      }
+    });
   }
 
   @override
