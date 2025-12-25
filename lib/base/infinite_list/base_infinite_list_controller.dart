@@ -42,11 +42,15 @@ abstract class BaseInfiniteListController<T> extends BaseController<T> {
     }
   }
 
-  Future<void> fetchData({bool? isLoadMore = false, bool? isRefresh = false}) async {
+  Future<void> fetchData({
+    bool? isLoadMore = false,
+    bool? isRefresh = false,
+    bool? ignoreShowLoading = false,
+  }) async {
     if (isRefresh == true) {
       pageNumber = 1;
     }
-    if (pageNumber == 1) isLoading.value = true;
+    if (pageNumber == 1 && ignoreShowLoading != true) isLoading.value = true;
     if (isLoadMore == true) {
       loadMoreError = false;
       update();
@@ -83,7 +87,7 @@ abstract class BaseInfiniteListController<T> extends BaseController<T> {
           isLoading.value = false;
         }
         pageNumber = pageNumber + 1;
-        if (items.isEmpty == true) hasNoData.value = true;
+        hasNoData.value = items.isEmpty == true;
         update();
         break;
       case Failure(:final error):

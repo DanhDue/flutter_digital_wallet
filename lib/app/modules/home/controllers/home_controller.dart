@@ -47,10 +47,10 @@ class HomeController extends BaseController {
 
   /// [navId] is Navigator ID [NavIds]. It is also the index of tab (0, 1, 2, 3, 4).
   void changeTab(int navId) {
-    if (currentNavId.value == navId) {
-      _notifyRootTabTap(navId);
-      return;
-    }
+    // if (currentNavId.value == navId) {
+    //   _notifyRootTabTap(navId);
+    //   return;
+    // }
     currentNavId.value = navId;
   }
 

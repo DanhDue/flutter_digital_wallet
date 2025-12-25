@@ -1,6 +1,8 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
 import 'package:collection/collection.dart';
+import 'package:d3_wallet/app/modules/home/constants/nav_ids.dart';
+import 'package:d3_wallet/app/modules/home/controllers/home_controller.dart';
 import 'package:d3_wallet/base/infinite_list/base_infinite_list_controller.dart';
 import 'package:d3_wallet/data/base_response_object.dart';
 import 'package:d3_wallet/data/bean/response/transaction_response_object/transaction_response_object.dart';
@@ -21,6 +23,12 @@ class TransactionsController extends BaseInfiniteListController<TransactionRespo
   void onInit() {
     super.onInit();
     Fimber.d("onInit()");
+    ever(HomeController.to.rootTabTapEvent, (event) {
+      if (event == NavIds.transactions) {
+        scrollToTop();
+        fetchData(isRefresh: true);
+      }
+    });
   }
 
   @override

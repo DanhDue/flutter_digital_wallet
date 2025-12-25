@@ -62,17 +62,20 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
           right: rightSafeArea,
           child: Stack(
             children: [
-              Visibility(
-                visible: controller.hasNoData.value != true,
-                child: Padding(
-                  padding: _evaluateTopPadding(context),
-                  child: RefreshIndicator(
-                    key: controller.refreshIndicatorKey ?? GlobalKey(),
-                    onRefresh: () => controller.fetchData(isRefresh: true),
-                    child: GetBuilder<C>(
-                      builder: (controller) => controller.items.isEmptyOrNull
-                          ? const SizedBox.shrink()
-                          : buildInfiniteList(),
+              Obx(
+                () => Visibility(
+                  visible: controller.hasNoData.value != true,
+                  child: Padding(
+                    padding: _evaluateTopPadding(context),
+                    child: RefreshIndicator(
+                      key: controller.refreshIndicatorKey,
+                      onRefresh: () =>
+                          controller.fetchData(isRefresh: true, ignoreShowLoading: true),
+                      child: GetBuilder<C>(
+                        builder: (controller) => controller.items.isEmptyOrNull
+                            ? const SizedBox.shrink()
+                            : buildInfiniteList(),
+                      ),
                     ),
                   ),
                 ),
@@ -80,18 +83,39 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
               Obx(() {
                 return Visibility(
                   visible: controller.isError.value?.isNotBlank == true,
-                  child: Center(child: buildErrorLayout(context)),
+                  child: RefreshIndicator(
+                    onRefresh: () =>
+                        controller.fetchData(isRefresh: true, ignoreShowLoading: true),
+                    child: SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        height:
+                            MediaQuery.of(context).size.height -
+                            _evaluateNoDataPadding(context).vertical,
+                        child: buildErrorLayout(context),
+                      ),
+                    ),
+                  ),
                 );
               }),
               Obx(() {
                 return Visibility(
                   visible: controller.hasNoData.value == true,
-                  child: Padding(
-                    padding: _evaluateNoDataPadding(context),
-                    child: RefreshIndicator(
-                      key: controller.refreshFromNoData ?? GlobalKey(),
-                      onRefresh: () => controller.fetchData(isRefresh: true),
-                      child: Stack(children: [Center(child: buildHasNoDataLayout(context))]),
+                  child: RefreshIndicator(
+                    key: controller.refreshFromNoData,
+                    onRefresh: () =>
+                        controller.fetchData(isRefresh: true, ignoreShowLoading: true),
+                    child: SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        height:
+                            MediaQuery.of(context).size.height -
+                            _evaluateNoDataPadding(context).vertical,
+                        child: Padding(
+                          padding: _evaluateNoDataPadding(context),
+                          child: Stack(children: [Center(child: buildHasNoDataLayout(context))]),
+                        ),
+                      ),
                     ),
                   ),
                 );
@@ -154,35 +178,48 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
   }
 
   Widget buildHasNoDataLayout(BuildContext context) {
-    return Column(
-      mainAxisAlignment: .center,
-      crossAxisAlignment: .center,
-      mainAxisSize: .max,
-      children: [
-        Assets.images.icHasNoData.image(width: 96, height: 96, fit: .cover),
-        const SizedBox(height: 12),
-        Text(
-          LocaleKeys.oops.tr,
-          style: context.appThemes.h1.copyWith(color: context.appThemes.black),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          LocaleKeys.noDataMessage.tr,
-          style: context.appThemes.h3.copyWith(color: context.appThemes.textGrey),
-        ),
-      ],
+    return InkWell(
+      onTap: () => controller.fetchData(isRefresh: true),
+      child: Column(
+        mainAxisAlignment: .center,
+        crossAxisAlignment: .center,
+        mainAxisSize: .max,
+        children: [
+          Assets.images.icHasNoData.image(width: 96, height: 96, fit: .cover),
+          const SizedBox(height: 12),
+          Text(
+            LocaleKeys.oops.tr,
+            style: context.appThemes.h1.copyWith(color: context.appThemes.black),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            LocaleKeys.noDataMessage.tr,
+            style: context.appThemes.h3.copyWith(color: context.appThemes.textGrey),
+          ),
+          const SizedBox(height: 96),
+        ],
+      ),
     );
   }
 
   Widget buildErrorLayout(BuildContext context) {
     return InkWell(
       onTap: () => controller.fetchData(isRefresh: true),
-      child: Container(
-        padding: const .all(16),
-        child: AutoSizeText(
-          LocaleKeys.loadDataErrorMessage.tr,
-          style: context.appThemes.paragraphSemiBold.copyWith(color: context.appThemes.textGrey),
-          textAlign: .center,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: .center,
+          crossAxisAlignment: .center,
+          mainAxisSize: .min,
+          children: [
+            AutoSizeText(
+              LocaleKeys.loadDataErrorMessage.tr,
+              style: context.appThemes.paragraphSemiBold.copyWith(
+                color: context.appThemes.textGrey,
+              ),
+              textAlign: .center,
+            ),
+            const SizedBox(height: 96),
+          ],
         ),
       ),
     );
