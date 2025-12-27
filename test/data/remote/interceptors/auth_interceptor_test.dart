@@ -1,8 +1,8 @@
 // Copyright (c) 2025, one of the DanhDue ExOICTIF projects. All rights reserved.
 
-import 'package:d3_wallet/data/local/storage_keys.dart';
+import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
 import 'package:d3_wallet/data/remote/interceptors/auth_interceptor.dart';
-import 'package:d3_wallet/data/repositories/secure_storage_repository.dart';
+import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart' hide Response;
@@ -12,18 +12,19 @@ import 'package:mockito/mockito.dart';
 
 import 'auth_interceptor_test.mocks.dart';
 
-@GenerateMocks([SecureStorageRepository])
+@GenerateMocks([AppConfigsRepository])
 void main() {
   late Dio dio;
   late DioAdapter dioAdapter;
-  late MockSecureStorageRepository mockSecureStorage;
+  late MockAppConfigsRepository mockAppConfigsRepo;
   late AuthInterceptor authInterceptor;
 
   setUp(() {
     dio = Dio(BaseOptions(baseUrl: 'https://api.example.com'));
     dioAdapter = DioAdapter(dio: dio);
-    mockSecureStorage = MockSecureStorageRepository();
-    Get.put<SecureStorageRepository>(mockSecureStorage);
+    dio.httpClientAdapter = dioAdapter;
+    mockAppConfigsRepo = MockAppConfigsRepository();
+    Get.put<AppConfigsRepository>(mockAppConfigsRepo);
     authInterceptor = AuthInterceptor(dio);
     dio.interceptors.add(authInterceptor);
   });
@@ -36,7 +37,9 @@ void main() {
     test('should add Authorization header if token exists', () async {
       // Arrange
       const token = 'test-token';
-      when(mockSecureStorage.get(StorageKeys.accessTokenKey)).thenAnswer((_) async => token);
+      when(
+        mockAppConfigsRepo.retrieveAppConfigurations(),
+      ).thenAnswer((_) async => const AppConfigurations(accessToken: token));
 
       dioAdapter.onGet('/test', (server) => server.reply(200, {'message': 'success'}));
 
@@ -50,7 +53,7 @@ void main() {
 
     test('should not add Authorization header if token does not exist', () async {
       // Arrange
-      when(mockSecureStorage.get(StorageKeys.accessTokenKey)).thenAnswer((_) async => null);
+      when(mockAppConfigsRepo.retrieveAppConfigurations()).thenAnswer((_) async => null);
 
       dioAdapter.onGet('/test', (server) => server.reply(200, {'message': 'success'}));
 

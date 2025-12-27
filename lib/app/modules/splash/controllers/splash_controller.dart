@@ -8,6 +8,7 @@ import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
 import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
 import 'package:d3_wallet/data/repositories/service_checking_repository.dart';
 import 'package:d3_wallet/data/repositories/wallet_repository.dart';
+import 'package:d3_wallet/data/remote/api_error.dart';
 import 'package:d3_wallet/data/result.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/utils/biometric_auth/biometric_authenticator.dart';
@@ -136,7 +137,8 @@ class SplashController extends BaseController {
         case Failure(:final error):
           error.printError();
           showRestartServiceWarning.value = true;
-          if (isLoop) {
+          // If the handshake fails (SSL Pinning), stop the retry loop immediately.
+          if (isLoop && error.errorType != ApiExceptionType.badCertificate) {
             healthz(isLoop: true);
           }
           return false;

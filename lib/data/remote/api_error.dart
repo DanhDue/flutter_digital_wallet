@@ -73,6 +73,13 @@ class ApiError extends DioException {
           data: BaseResponseObject<dynamic>.fromJson(dioError.response?.data, (json) => json),
           message: message,
         );
+      case DioExceptionType.badCertificate:
+        return ApiError(
+          requestOptions: dioError.requestOptions,
+          errorType: ApiExceptionType.badCertificate,
+          message:
+              'SSL Certificate validation failed. Secure connection could not be established.',
+        );
       case DioExceptionType.cancel:
         return ApiError(
           requestOptions: dioError.requestOptions,
@@ -86,7 +93,6 @@ class ApiError extends DioException {
           message: 'No internet connection. Please check your connection and try again.',
         );
       case DioExceptionType.unknown:
-      default:
         return ApiError(
           requestOptions: dioError.requestOptions,
           errorType: ApiExceptionType.unknown,

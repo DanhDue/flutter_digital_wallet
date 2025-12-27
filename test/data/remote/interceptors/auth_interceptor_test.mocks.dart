@@ -5,8 +5,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:d3_wallet/data/repositories/secure_storage_repository.dart'
-    as _i2;
+import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart'
+    as _i4;
+import 'package:d3_wallet/data/repositories/app_configs_repository.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -24,47 +25,46 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: subtype_of_sealed_class
 // ignore_for_file: invalid_use_of_internal_member
 
-/// A class which mocks [SecureStorageRepository].
+/// A class which mocks [AppConfigsRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSecureStorageRepository extends _i1.Mock
-    implements _i2.SecureStorageRepository {
-  MockSecureStorageRepository() {
+class MockAppConfigsRepository extends _i1.Mock
+    implements _i2.AppConfigsRepository {
+  MockAppConfigsRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<String?> get(String? key) =>
+  _i3.Future<dynamic> saveLocalPassword(String? password) =>
       (super.noSuchMethod(
-            Invocation.method(#get, [key]),
-            returnValue: _i3.Future<String?>.value(),
+            Invocation.method(#saveLocalPassword, [password]),
+            returnValue: _i3.Future<dynamic>.value(),
           )
-          as _i3.Future<String?>);
+          as _i3.Future<dynamic>);
 
   @override
-  _i3.Future<void> set(String? key, String? value) =>
+  _i3.Future<dynamic> saveAppConfigurations(
+    _i4.AppConfigurations? appConfigurations,
+  ) =>
       (super.noSuchMethod(
-            Invocation.method(#set, [key, value]),
-            returnValue: _i3.Future<void>.value(),
-            returnValueForMissingStub: _i3.Future<void>.value(),
+            Invocation.method(#saveAppConfigurations, [appConfigurations]),
+            returnValue: _i3.Future<dynamic>.value(),
           )
-          as _i3.Future<void>);
+          as _i3.Future<dynamic>);
 
   @override
-  _i3.Future<void> remove(String? key) =>
+  _i3.Future<_i4.AppConfigurations?> retrieveAppConfigurations() =>
       (super.noSuchMethod(
-            Invocation.method(#remove, [key]),
-            returnValue: _i3.Future<void>.value(),
-            returnValueForMissingStub: _i3.Future<void>.value(),
+            Invocation.method(#retrieveAppConfigurations, []),
+            returnValue: _i3.Future<_i4.AppConfigurations?>.value(),
           )
-          as _i3.Future<void>);
+          as _i3.Future<_i4.AppConfigurations?>);
 
   @override
-  _i3.Future<void> clear() =>
+  _i3.Future<dynamic> clearAppData() =>
       (super.noSuchMethod(
-            Invocation.method(#clear, []),
-            returnValue: _i3.Future<void>.value(),
-            returnValueForMissingStub: _i3.Future<void>.value(),
+            Invocation.method(#clearAppData, []),
+            returnValue: _i3.Future<dynamic>.value(),
           )
-          as _i3.Future<void>);
+          as _i3.Future<dynamic>);
 }

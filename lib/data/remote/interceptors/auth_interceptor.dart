@@ -1,20 +1,20 @@
 // Copyright (c) 2025, one of the DanhDue ExOICTIF projects. All rights reserved.
 
-import 'package:d3_wallet/data/local/storage_keys.dart';
-import 'package:d3_wallet/data/repositories/secure_storage_repository.dart';
+import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
 import 'package:dio/dio.dart';
+import 'package:fimber/fimber.dart';
 import 'package:get/get.dart' hide Response;
 
-class AuthInterceptor extends Interceptor {
+class AuthInterceptor extends QueuedInterceptor {
   final Dio _dio;
-  final SecureStorageRepository _secureStorage = Get.find<SecureStorageRepository>();
-  Future<bool>? _refreshFuture;
+  final AppConfigsRepository _appConfigsRepo = Get.find<AppConfigsRepository>();
 
   AuthInterceptor(this._dio);
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    final token = await _secureStorage.get(StorageKeys.accessTokenKey);
+    final appConfigs = await _appConfigsRepo.retrieveAppConfigurations();
+    final token = appConfigs?.accessToken;
     if (token != null) {
       options.headers['Authorization'] = 'Bearer $token';
     }
@@ -23,35 +23,37 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
+    Fimber.d(
+      'AuthInterceptor onError: ${err.error?.runtimeType.toString()} - ${err.error?.toString()}',
+    );
     if (err.response?.statusCode == 401) {
       final requestToken = err.requestOptions.headers['Authorization']?.toString().replaceAll(
         'Bearer ',
         '',
       );
-      final currentToken = await _secureStorage.get(StorageKeys.accessTokenKey);
 
-      // 1. Staleness Check: If token in storage is different from the one that failed,
-      // it means someone else already refreshed it.
+      final appConfigs = await _appConfigsRepo.retrieveAppConfigurations();
+      final currentToken = appConfigs?.accessToken;
+
+      // 1. Staleness Check
       if (requestToken != currentToken && currentToken != null) {
         return _retryRequest(err.requestOptions, currentToken, handler);
       }
 
-      // 2. Synchronized Refresh
-      final refreshToken = await _secureStorage.get(StorageKeys.refreshTokenKey);
+      // 2. Refresh Token
+      final refreshToken = appConfigs?.refreshToken;
       if (refreshToken != null) {
-        _refreshFuture ??= _performRefresh(refreshToken);
-
         try {
-          final success = await _refreshFuture;
+          final success = await _refreshToken(refreshToken);
           if (success == true) {
-            final newToken = await _secureStorage.get(StorageKeys.accessTokenKey);
+            final updatedConfigs = await _appConfigsRepo.retrieveAppConfigurations();
+            final newToken = updatedConfigs?.accessToken;
             if (newToken != null) {
               return _retryRequest(err.requestOptions, newToken, handler);
             }
           }
         } catch (e) {
-          // Handle refresh token failure (e.g., logout user)
-          // Get.find<AuthService>().logout();
+          Fimber.d('Token refresh failed: ${e.toString()}');
         }
       }
     }
@@ -72,15 +74,6 @@ class AuthInterceptor extends Interceptor {
     }
   }
 
-  Future<bool> _performRefresh(String refreshToken) async {
-    try {
-      final success = await _refreshToken(refreshToken);
-      return success;
-    } finally {
-      _refreshFuture = null;
-    }
-  }
-
   Future<bool> _refreshToken(String refreshToken) async {
     try {
       // Placeholder: Implement actual refresh token API call
@@ -88,8 +81,12 @@ class AuthInterceptor extends Interceptor {
       // if (response.statusCode == 200) {
       //   final newAccessToken = response.data['access_token'];
       //   final newRefreshToken = response.data['refresh_token'];
-      //   await _secureStorage.set(StorageKeys.accessTokenKey, newAccessToken);
-      //   await _secureStorage.set(StorageKeys.refreshTokenKey, newRefreshToken);
+      //
+      //   final currentConfigs = await _appConfigsRepo.retrieveAppConfigurations() ?? const AppConfigurations();
+      //   await _appConfigsRepo.saveAppConfigurations(currentConfigs.copyWith(
+      //     accessToken: newAccessToken,
+      //     refreshToken: newRefreshToken,
+      //   ));
       //   return true;
       // }
       return false;

@@ -10,8 +10,11 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:fimber/fimber.dart';
 import 'package:talker_dio_logger/talker_dio_logger.dart';
 import 'package:talker_flutter/talker_flutter.dart';
+import 'package:crypto/crypto.dart';
+import 'dart:convert';
 import 'dart:io';
 
 class DioFactory {
@@ -74,16 +77,38 @@ class DioFactory {
       ),
     );
 
-    // SSL Pinning implementation
+    // True SSL Pinning implementation
     if (!kIsWeb) {
       (dioInstance.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
-        final client = HttpClient(context: SecurityContext(withTrustedRoots: true));
+        // withTrustedRoots: false ensures that NO system-trusted CAs are used.
+        // This forces badCertificateCallback to be called for ALL certificates,
+        // allowing us to manually validate even "valid" CA-signed certificates.
+        final client = HttpClient(context: SecurityContext(withTrustedRoots: false));
         client.badCertificateCallback = (X509Certificate cert, String host, int port) {
-          // In production, you should validate the certificate fingerprint
-          // This is a placeholder for SSL Pinning logic
-          // final allowedFingerprints = ["SHA-256-FINGERPRINT-HERE"];
-          // return allowedFingerprints.contains(sha256.convert(cert.der).toString());
-          return false; // Reject by default if pinning fails
+          // In production, update this list with the SHA-256 fingerprints of your server's certificate.
+          // Note: This implementation uses Certificate Pinning (hashing the entire DER certificate).
+
+          // To get the correct fingerprint:
+          // Build-time fingerprints from --dart-define=SSL_FINGERPRINTS="pin1,pin2"
+          final allowedFingerprints = EnvironmentConfig.SSL_FINGERPRINTS
+              .split(',')
+              .map((e) => e.trim())
+              .where((e) => e.isNotEmpty)
+              .toList();
+
+          // Calculate the SHA-256 digest of the DER-encoded certificate
+          final hash = sha256.convert(cert.der);
+
+          // Encode to Base64 to match standard fingerprint formats
+          final fingerprint = base64.encode(hash.bytes);
+
+          Fimber.d('Handshake fingerprint: $fingerprint');
+
+          final isValid = allowedFingerprints.contains(fingerprint);
+          if (!isValid) {
+            Fimber.w('SSL Pinning failed for $host. Fingerprint mismatch.');
+          }
+          return isValid;
         };
         return client;
       };

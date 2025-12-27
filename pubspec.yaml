@@ -85,6 +85,7 @@ dependencies:
   card_swiper: ^3.0.1
   jiffy: ^6.3.2
   collection: ^1.19.1
+  crypto: ^3.0.6
 
 dependency_overrides: 
   retrofit:
