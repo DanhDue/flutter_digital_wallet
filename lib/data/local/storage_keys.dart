@@ -22,4 +22,7 @@ class StorageKeys {
 
   static const selectedWalletBoxName = 'selectedWalletBoxName';
   static const selectedWalletKey = 'selectedWalletKey';
+
+  static const accessTokenKey = 'accessTokenKey';
+  static const refreshTokenKey = 'refreshTokenKey';
 }
