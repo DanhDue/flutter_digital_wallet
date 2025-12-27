@@ -14,6 +14,7 @@ import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extends BaseView<C> {
   const BaseInfiniteListView({
@@ -161,13 +162,25 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
                 onTap: () => controller.fetchData(isLoadMore: true),
                 child: controller.loadMoreError == true
                     ? buildErrorItemWhileLoadMore()
-                    : const Padding(padding: .all(16), child: CircularProgressIndicator()),
+                    : Padding(
+                        padding: const .symmetric(vertical: 20),
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: context.appThemes.trueBlue,
+                          size: 36,
+                        ),
+                      ),
               ),
             );
           } else {
             return controller.items.isNotEmpty
-                ? const Center(
-                    child: Padding(padding: .all(8), child: CircularProgressIndicator()),
+                ? Center(
+                    child: Padding(
+                      padding: const .symmetric(vertical: 20),
+                      child: LoadingAnimationWidget.staggeredDotsWave(
+                        color: context.appThemes.trueBlue,
+                        size: 36,
+                      ),
+                    ),
                   )
                 : const SizedBox.shrink();
           }
