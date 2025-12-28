@@ -5,6 +5,7 @@
 import 'package:d3_wallet/base/environment_configurations.dart';
 import 'package:d3_wallet/data/remote/api_error.dart';
 import 'package:d3_wallet/data/remote/app_uri.dart';
+import 'package:native_security/native_security.dart';
 import 'package:d3_wallet/data/remote/interceptors/auth_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
@@ -90,11 +91,27 @@ class DioFactory {
 
           // To get the correct fingerprint:
           // Build-time fingerprints from --dart-define=SSL_FINGERPRINTS="pin1,pin2"
-          final allowedFingerprints = EnvironmentConfig.SSL_FINGERPRINTS
+          final envFingerprints = EnvironmentConfig.SSL_FINGERPRINTS
               .split(',')
               .map((e) => e.trim())
               .where((e) => e.isNotEmpty)
               .toList();
+
+          Fimber.d('Env fingerprints: $envFingerprints');
+
+          // Hardened fingerprints from C++ via FFI package
+          List<String> hardenedFingerprints = [];
+          try {
+            hardenedFingerprints = NativeSecurity.getAllowedFingerprints();
+            Fimber.d('Hardened fingerprints loaded: $hardenedFingerprints');
+          } catch (e) {
+            Fimber.e('Failed to load hardened fingerprints via FFI: $e');
+            // Fail-safe: continue with empty list or however you prefer.
+            // Since we have envFingerprints, the app will still function.
+          }
+
+          // Merge both lists (prioritizing hardened ones)
+          final allowedFingerprints = {...hardenedFingerprints, ...envFingerprints}.toList();
 
           // Calculate the SHA-256 digest of the DER-encoded certificate
           final hash = sha256.convert(cert.der);

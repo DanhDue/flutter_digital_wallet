@@ -86,6 +86,8 @@ dependencies:
   jiffy: ^6.3.2
   collection: ^1.19.1
   crypto: ^3.0.6
+  native_security:
+    path: packages/native_security
 
 dependency_overrides: 
   retrofit:
@@ -93,6 +95,7 @@ dependency_overrides:
       url: https://github.com/DanhDue/retrofit.dart.git
       ref: analyzer
       path: retrofit
+  vibration: ^3.1.5  # Fix Android v1 embedding issue
 
 dev_dependencies:
   flutter_test:

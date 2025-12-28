@@ -1,0 +1,47 @@
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+// coverage:ignore-file
+
+#include "native_security.h"
+#include <stdlib.h>
+
+// Simple XOR key for obfuscation
+#define XOR_KEY 0xAA
+
+FFI_EXPORT void unscramble(const uint8_t *input, int len, char *output) {
+  for (int i = 0; i < len; i++) {
+    output[i] = (char)(input[i] ^ XOR_KEY);
+  }
+  output[len] = '\0';
+}
+
+FFI_EXPORT const char *get_secure_value(const uint8_t *scrambled, int len) {
+  static char buffer[256];
+  unscramble(scrambled, len, buffer);
+  return buffer;
+}
+
+// Example specific getters if needed, but we can also make it generic
+FFI_EXPORT const char *get_ssl_pin_1() {
+  // Exact XORed bytes for "wrtCD96dJ/MLKPWe1zdDgVC7BPKqiUE6KF/vGAaSYLg="
+  static const uint8_t pin1_scrambled[] = {
+      0xdd, 0xd8, 0xde, 0xe9, 0xee, 0x93, 0x9c, 0xce, 0xe0, 0x85, 0xe7,
+      0xe6, 0xe1, 0xfa, 0xfd, 0xcf, 0x9b, 0xd0, 0xce, 0xee, 0xcd, 0xfc,
+      0xe9, 0x9d, 0xe8, 0xfa, 0xe1, 0xdb, 0xc3, 0xff, 0xef, 0x9c, 0xe1,
+      0xec, 0x85, 0xdc, 0xed, 0xeb, 0xcb, 0xf9, 0xf3, 0xe6, 0xcd, 0x97};
+  static char buffer1[64];
+  unscramble(pin1_scrambled, sizeof(pin1_scrambled), buffer1);
+  return buffer1;
+}
+
+FFI_EXPORT const char *get_ssl_pin_2() {
+  // Exact XORed bytes for "drJ7gKWAJ9w88dpo2sFwEO2TmX0LYD4vrb6FASSTtac="
+  static const uint8_t pin2_scrambled[] = {
+      0xce, 0xd8, 0xe0, 0x9d, 0xcd, 0xe1, 0xfd, 0xeb, 0xe0, 0x93, 0xdd,
+      0x92, 0x92, 0xce, 0xda, 0xc5, 0x98, 0xd9, 0xec, 0xdd, 0xef, 0xe5,
+      0x98, 0xfe, 0xc7, 0xf2, 0x9a, 0xe6, 0xf3, 0xee, 0x9e, 0xdc, 0xd8,
+      0xc8, 0x9c, 0xec, 0xeb, 0xf9, 0xf9, 0xfe, 0xde, 0xcb, 0xc9, 0x97};
+  static char buffer2[64];
+  unscramble(pin2_scrambled, sizeof(pin2_scrambled), buffer2);
+  return buffer2;
+}
