@@ -28,11 +28,9 @@ abstract class BaseView<C extends BaseController> extends GetView<C> {
           if (controller.isLoading.value == true) {
             WidgetsBinding.instance.addPostFrameCallback((duration) {
               SmartDialog.showLoading(msg: "");
-              // EasyLoading.show();
             });
           } else {
             WidgetsBinding.instance.addPostFrameCallback((duration) {
-              // EasyLoading.dismiss();
               SmartDialog.dismiss();
             });
           }
