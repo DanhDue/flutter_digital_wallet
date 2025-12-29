@@ -5,6 +5,7 @@
 import 'package:d3_wallet/app/modules/transaction_detail/controllers/transaction_detail_controller.dart';
 import 'package:d3_wallet/data/bean/response/transaction_overview_object/transaction_overview_object.dart';
 import 'package:d3_wallet/generated/colors.gen.dart';
+import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -95,7 +96,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
 
           Expanded(
             child: Text(
-              'transactionDetails'.tr,
+              LocaleKeys.transactionDetails.tr,
               textAlign: .center,
               style: TextStyle(color: context.appThemes.zenoText, fontSize: 18, fontWeight: FontWeight.bold),
             ),
@@ -176,7 +177,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
               ),
               const SizedBox(width: 6),
               Text(
-                'confirmed'.tr.toUpperCase(),
+                LocaleKeys.confirmed.tr.toUpperCase(),
                 style: TextStyle(
                   color: context.appThemes.zenoSuccess,
                   fontSize: 12,
@@ -234,7 +235,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
       child: Column(
         children: [
           // Date
-          _buildInfoRow(context, icon: Icons.calendar_today, label: 'date'.tr, value: dateStr),
+          _buildInfoRow(context, icon: Icons.calendar_today, label: LocaleKeys.date.tr, value: dateStr),
 
           _buildDivider(context),
 
@@ -242,7 +243,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
           _buildAddressRow(
             context,
             icon: Icons.logout,
-            label: 'from'.tr,
+            label: LocaleKeys.from.tr,
             address: overview?.payerAddress ?? '',
             gradientColors: const [Color(0xFF9C27B0), Color(0xFF2196F3)],
           ),
@@ -251,7 +252,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
           _buildAddressRow(
             context,
             icon: Icons.login,
-            label: 'to'.tr,
+            label: LocaleKeys.to.tr,
             address: overview?.payerAddress ?? '',
             gradientColors: const [Color(0xFFFF9800), Color(0xFFE91E63)],
           ),
@@ -262,7 +263,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
           _buildInfoRow(
             context,
             icon: Icons.local_gas_station,
-            label: 'networkFee'.tr,
+            label: LocaleKeys.networkFee.tr,
             value: '0.000005 SOL',
             subtitle: '(< \$0.01)',
           ),
@@ -403,7 +404,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
         crossAxisAlignment: .start,
         children: [
           Text(
-            'tokenTransfers'.tr.toUpperCase(),
+            LocaleKeys.tokenTransfers.tr.toUpperCase(),
             style: TextStyle(
               color: context.appThemes.zenoTextMuted,
               fontSize: 12,
@@ -477,7 +478,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                       ),
                     ),
                     Text(
-                      'splToken'.tr,
+                      LocaleKeys.splToken.tr,
                       style: TextStyle(
                         color: context.appThemes.zenoTextMuted,
                         fontSize: 12,
@@ -537,7 +538,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             mainAxisAlignment: .spaceBetween,
             children: [
               Text(
-                'slot'.tr,
+                LocaleKeys.slot.tr,
                 style: TextStyle(
                   color: context.appThemes.zenoTextMuted,
                   fontSize: 12,
@@ -559,7 +560,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             mainAxisAlignment: .spaceBetween,
             children: [
               Text(
-                'signature'.tr,
+                LocaleKeys.signature.tr,
                 style: TextStyle(
                   color: context.appThemes.zenoTextMuted,
                   fontSize: 12,
@@ -634,7 +635,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                       Icon(Icons.explore, color: context.appThemes.zenoText, size: 20),
                       const SizedBox(width: 8),
                       Text(
-                        'explorer'.tr,
+                        LocaleKeys.explorer.tr,
                         style: TextStyle(
                           color: context.appThemes.zenoText,
                           fontSize: 14,
@@ -673,7 +674,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                       const Icon(Icons.ios_share, color: Colors.white, size: 20),
                       const SizedBox(width: 8),
                       Text(
-                        'shareReceipt'.tr,
+                        LocaleKeys.shareReceipt.tr,
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14,
