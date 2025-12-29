@@ -1,10 +1,10 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
 // coverage:ignore-file
+// ignore_for_file: deprecated_member_use
 
 import 'package:d3_wallet/app/modules/transaction_detail/controllers/transaction_detail_controller.dart';
 import 'package:d3_wallet/data/bean/response/transaction_overview_object/transaction_overview_object.dart';
-import 'package:d3_wallet/generated/colors.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -259,7 +259,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             icon: Icons.logout,
             label: LocaleKeys.from.tr,
             address: overview?.payerAddress ?? '',
-            gradientColors: const [Color(0xFF9C27B0), Color(0xFF2196F3)],
+            gradientColors: [Color(0xFF9C27B0), Color(0xFF2196F3)],
           ),
 
           // To
@@ -268,7 +268,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             icon: Icons.login,
             label: LocaleKeys.to.tr,
             address: overview?.payerAddress ?? '',
-            gradientColors: const [Color(0xFFFF9800), Color(0xFFE91E63)],
+            gradientColors: [Color(0xFFFF9800), Color(0xFFE91E63)],
           ),
 
           _buildDivider(context),
@@ -317,7 +317,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             children: [
               Text(
                 value,
-                style: const TextStyle(
+                style: TextStyle(
                   color: context.appThemes.zenoText,
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
