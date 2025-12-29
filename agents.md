@@ -183,17 +183,13 @@ This section explains how to manage UI elements and localization in the project.
 After making changes to the codebase, especially to `colors.xml`, `locales.json`, or any files that require code generation, follow these steps to ensure consistency and code quality.
 
 1. **Synchronize Generated Files**
-Run `melos run genAlls` to trigger all necessary code generation (locales, colors, models, themes, etc.). This ensures that all generated constants and classes are up to date.
-
-    ```bash
-    melos genAlls
-    ```
+   Run the following command to verify localization texts, colors, and other generated content:
+   ```bash
+   melos genAlls
+   ```
 
 2. **Static Analysis**
-Verify your changes by running static analysis. This helps catch syntax errors, type mismatches, and lint warnings.
-
-    For a faster check on only the files you've edited, you can run the analyzer on specific paths:
-
-    ```bash
-    fvm flutter analyze lib/path/to/your_file.dart
-    ```
+   Verify your changes by running static analysis on the files you edited:
+   ```bash
+   fvm flutter analyze lib/path/to/your_file.dart
+   ```
