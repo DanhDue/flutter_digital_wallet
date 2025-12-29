@@ -161,7 +161,7 @@ This section explains how to manage UI elements and localization in the project.
 4. **Apply to UI via context**:
    Access the color in your widgets using:
    ```dart
-   context.theme.yourColorName
+   context.appThemes.yourColorName
    ```
 
 ## 2. Flow to add localization texts
@@ -176,7 +176,7 @@ This section explains how to manage UI elements and localization in the project.
    ```
 
 3. **Apply to UI Text**:
-   Use the `.tr` extension to translate the key in your code:
+   Import `package:d3_wallet/generated/locales.g.dart` and use the `LocaleKeys` constant with the `.tr` extension:
    ```dart
-   'yourKey'.tr
+   LocaleKeys.yourKey.tr
    ```
