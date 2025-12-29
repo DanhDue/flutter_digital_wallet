@@ -25,7 +25,6 @@ Homebrew is used to manage several tools in this project.
 Use Homebrew to install FVM:
 
 ```bash
-brew install gcc
 brew tap leoafarias/fvm
 brew install fvm
 ```
@@ -35,14 +34,8 @@ brew install fvm
 Install the stable version of Flutter and make it global:
 
 ```bash
-fvm install stable
-fvm global stable
-```
-
-**Note:** Ensure the `default` link is created:
-
-```bash
-ln -sfFn ~/fvm/versions/stable ~/fvm/default
+fvm install 3.38.5
+fvm global 3.38.5
 ```
 
 ### Step 4: Install Go and Tools
@@ -65,8 +58,8 @@ cat << 'EOF' >> ~/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Flutter & FVM
-export PATH="$HOME/fvm/default/bin:$PATH"
-export FLUTTER_ROOT="$HOME/fvm/default"
+export PATH="$HOME/fvm/versions/3.38.5/bin:$PATH"
+export FLUTTER_ROOT="$HOME/fvm/versions/3.38.5"
 export PATH="$FLUTTER_ROOT/bin:$PATH"
 export PATH="$PATH:$HOME/.pub-cache/bin"
 
@@ -142,6 +135,8 @@ melos genAlls
 # III. UI & Localization Guide
 
 This section explains how to manage UI elements and localization in the project.
+
+**Note**: this project uses `theme_tailor` and `flutter_gen` to generate some UI elements. So you don't need to update generated files that I marked in gitignore such as: `lib/generated` folder, `*.freezed.dart`, `*.tailor.dart`, `/secureFiles`, `*/fastlane/report.xml`, `/lib/generated/`,... .
 
 ## 1. Flow to add colors
 

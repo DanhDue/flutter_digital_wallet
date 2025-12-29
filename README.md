@@ -44,8 +44,8 @@ Follow these steps in order to set up the core development tools:
    Use FVM to install the latest stable Flutter SDK:
 
    ```bash
-   fvm install stable
-   fvm use stable --global
+   fvm install 3.38.5
+   fvm use 3.38.5 --global
    ```
 
 4. **Environment Variables**:
@@ -53,8 +53,8 @@ Follow these steps in order to set up the core development tools:
 
    ```bash
    # Flutter & FVM
-   export PATH="$HOME/fvm/default/bin:$PATH"
-   export FLUTTER_ROOT="$HOME/fvm/default"
+   export PATH="$HOME/fvm/versions/3.38.5/bin:$PATH"
+   export FLUTTER_ROOT="$HOME/fvm/versions/3.38.5"
 
    # Dart Pub Cache
    export PATH="$PATH":"$HOME/.pub-cache/bin"
