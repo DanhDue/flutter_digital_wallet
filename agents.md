@@ -92,21 +92,28 @@ source ~/.bashrc
 ```
 
 ### Step 6: Activate Global Dart Packages
-Activate essential tools:
+Activate essential tools. Note that `melos` must be version `2.9.0`.
 
 ```bash
-dart pub global activate melos
+dart pub global activate melos 2.9.0
 dart pub global activate flutter_gen
 dart pub global activate get_cli
 dart pub global activate flutterfire_cli
 ```
 
 ### Step 7: Project Setup
-Install project dependencies and git tools:
+Install project dependencies.
+Also verify `melos` configuration by running `genAlls`.
 
 ```bash
+# Fix Melos SDK path issue if needed
+mkdir -p .fvm
+ln -sf $FLUTTER_ROOT .fvm/flutter_sdk
+
 fvm flutter pub get
-bash ./scripts/install_git_tools.sh
+
+# Verify setup
+melos run genAlls
 ```
 
 ## 3. Toolchain Checklist
