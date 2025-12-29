@@ -19,12 +19,6 @@ Homebrew is used to manage several tools in this project.
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Add Homebrew to your PATH (adjust for your shell if not using bash)
-test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-echo "eval \"\$($(test -d ~/.linuxbrew && echo ~/.linuxbrew/bin/brew || echo /home/linuxbrew/.linuxbrew/bin/brew) shellenv)\"" >> ~/.bashrc
-source ~/.bashrc
 ```
 
 ### Step 2: Install FVM (Flutter Version Management)
@@ -62,37 +56,46 @@ go install github.com/google/addlicense@latest
 
 ### Step 5: Environment Variables
 
-Add the following to your `~/.bashrc` (or `~/.zshrc`):
+Run the following command to add all necessary environment variables to your `~/.bashrc`. This command handles Homebrew, FVM/Flutter, Go, and Android SDK settings in one block.
 
 ```bash
-# Homebrew
+cat << 'EOF' >> ~/.bashrc
+
+# Wallet Environment Setup
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# Flutter Settings
-export PATH=$HOME/fvm/default/bin:$PATH
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-export FLUTTER_ROOT=$HOME/fvm/default
-export PATH=$FLUTTER_ROOT/bin:$PATH
-export PATH=$PATH:$HOME/.pub-cache/bin
+# Flutter & FVM
+export PATH="$HOME/fvm/default/bin:$PATH"
+export FLUTTER_ROOT="$HOME/fvm/default"
+export PATH="$FLUTTER_ROOT/bin:$PATH"
+export PATH="$PATH:$HOME/.pub-cache/bin"
 
-export GEM_HOME=$HOME/.gem
-export PATH=$GEM_HOME/bin:$PATH
+# Ruby/Gem
+export GEM_HOME="$HOME/.gem"
+export PATH="$GEM_HOME/bin:$PATH"
 
 # Go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 
-# Android SDK (adjust path if your SDK is installed elsewhere)
+# Android SDK
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$ANDROID_HOME/emulator"
+EOF
 ```
 
 Apply changes:
 
 ```bash
 source ~/.bashrc
+```
+
+#### Verification
+To confirm your environment is set up correctly, run:
+```bash
+which brew && which fvm
 ```
 
 ### Step 6: Activate Global Dart Packages
@@ -119,7 +122,7 @@ ln -sf $FLUTTER_ROOT .fvm/flutter_sdk
 fvm flutter pub get
 
 # Verify setup
-melos run genAlls
+melos genAlls
 ```
 
 ---
@@ -154,7 +157,7 @@ This section explains how to manage UI elements and localization in the project.
 3. **Generate essential contents**:
    Run the following command to trigger `flutter_gen` and `theme_tailor` generation:
    ```bash
-   melos run genAlls
+   melos genAlls
    ```
 
 4. **Apply to UI via context**:
@@ -171,7 +174,7 @@ This section explains how to manage UI elements and localization in the project.
 2. **Generate with melos**:
    Run the following command to update the localization strings:
    ```bash
-   melos run genAlls
+   melos genAlls
    ```
 
 3. **Apply to UI Text**:
