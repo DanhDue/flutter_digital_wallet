@@ -38,6 +38,7 @@ brew install fvm
 ```
 
 ### Step 3: Install Flutter SDK via FVM
+
 Install the stable version of Flutter and make it global:
 
 ```bash
@@ -46,11 +47,13 @@ fvm global stable
 ```
 
 **Note:** Ensure the `default` link is created:
+
 ```bash
 ln -sfFn ~/fvm/versions/stable ~/fvm/default
 ```
 
 ### Step 4: Install Go and Tools
+
 Install Go and the license tool:
 
 ```bash
@@ -59,13 +62,14 @@ go install github.com/google/addlicense@latest
 ```
 
 ### Step 5: Environment Variables
+
 Add the following to your `~/.bashrc` (or `~/.zshrc`):
 
 ```bash
 # Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-#Flutter Settings
+# Flutter Settings
 export PATH=$HOME/fvm/default/bin:$PATH
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export FLUTTER_ROOT=$HOME/fvm/default
@@ -87,11 +91,13 @@ export PATH="$PATH:$ANDROID_HOME/emulator"
 ```
 
 Apply changes:
+
 ```bash
 source ~/.bashrc
 ```
 
 ### Step 6: Activate Global Dart Packages
+
 Activate essential tools. Note that `melos` must be version `2.9.0`.
 
 ```bash
@@ -102,8 +108,9 @@ dart pub global activate flutterfire_cli
 ```
 
 ### Step 7: Project Setup
-Install project dependencies.
-Also verify `melos` configuration by running `genAlls`.
+
+Install project dependencies. Also verify `melos` configuration by running
+`genAlls`.
 
 ```bash
 # Fix Melos SDK path issue if needed
@@ -116,10 +123,60 @@ fvm flutter pub get
 melos run genAlls
 ```
 
-## 3. Toolchain Checklist
+---
 
-- **Android Studio**: Download from the official website and install the Android SDK and Command-line Tools.
-- **Flutter Doctor**: Run `fvm flutter doctor` to verify your setup.
+# II. Toolchain Checklist
+
+1. **Android Studio**: Download from the official website and install the
+   Android SDK and Command-line Tools.
+2. **Flutter Doctor**: Run `fvm flutter doctor` to verify your setup.
 
 > [!NOTE]
-> iOS development and builds are not supported on Linux. This setup is primarily for Android and Web/Desktop development.
+> iOS development and builds are not supported on Linux. This setup is
+> primarily for Android and Web/Desktop development.
+
+---
+
+# III. UI & Localization Guide
+
+This section explains how to manage UI elements and localization in the project.
+
+## 1. Flow to add colors
+
+1. **Add colors to colors.xml**:
+   Open `assets/colors/colors.xml` and add your new color:
+   ```xml
+   <color name="your_color_name">#HEX_CODE</color>
+   ```
+
+2. **Add colors to app_theme**:
+   Open `lib/styles/app_themes.dart`, add the field to `AppThemes` class, and provide values for all themes(`lightAppThemes`, `darkAppThemes`,...). Note: this project uses `theme_tailor`.
+
+3. **Generate essential contents**:
+   Run the following command to trigger `flutter_gen` and `theme_tailor` generation:
+   ```bash
+   melos run genAlls
+   ```
+
+4. **Apply to UI via context**:
+   Access the color in your widgets using:
+   ```dart
+   context.theme.yourColorName
+   ```
+
+## 2. Flow to add localization texts
+
+1. **Add to JSON files**:
+   Add your key-value pair to `assets/locales/en_US.json` and `assets/locales/vn_VI.json` (ensure it's above the `eof` key).
+
+2. **Generate with melos**:
+   Run the following command to update the localization strings:
+   ```bash
+   melos run genAlls
+   ```
+
+3. **Apply to UI Text**:
+   Use the `.tr` extension to translate the key in your code:
+   ```dart
+   'yourKey'.tr
+   ```
