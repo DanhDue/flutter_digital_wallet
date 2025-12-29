@@ -103,6 +103,14 @@
     <color name="tech_blue">#2F80ED</color>
     <color name="middle_blue">#0084E3</color>
 
+    <!-- Zeno Dark Theme Colors -->
+    <color name="zeno_bg">#0D0E12</color>
+    <color name="zeno_surface">#1A1D24</color>
+    <color name="zeno_border">#2D3342</color>
+    <color name="zeno_text_muted">#9CA3AF</color>
+    <color name="zeno_success">#4ADE80</color>
+    <color name="zeno_accent_light">#4DA3FF</color>
+
     <!-- Pink Series -->
     <color name="pink_lady">#EDA5AC</color>
 

@@ -62,6 +62,8 @@ import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/transactions/bindings/transactions_binding.dart';
 import '../modules/transactions/views/transactions_view.dart';
+import '../modules/transaction_detail/bindings/transaction_detail_binding.dart';
+import '../modules/transaction_detail/views/transaction_detail_view.dart';
 import '../modules/transfer/transfer/bindings/transfer_binding.dart';
 import '../modules/transfer/transfer/views/transfer_view.dart';
 import '../modules/transfer/transfer_confirmation/bindings/transfer_confirmation_binding.dart';
@@ -182,6 +184,11 @@ class AppPages {
       name: _Paths.TRANSACTIONS,
       page: () => TransactionsView(),
       binding: TransactionsBinding(),
+    ),
+    GetPage(
+      name: _Paths.TRANSACTION_DETAIL,
+      page: () => const TransactionDetailView(),
+      binding: TransactionDetailBinding(),
     ),
     GetPage(name: _Paths.QR_SCANNING, page: () => QRScannerView(), binding: QRScannerBinding()),
     GetPage(name: _Paths.TRENDS, page: () => TrendsView(), binding: TrendsBinding()),

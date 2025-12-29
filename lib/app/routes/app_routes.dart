@@ -32,6 +32,7 @@ abstract class Routes {
   static const NETWORK_SELECTION = _Paths.NETWORK_SELECTION;
   static const MY_QR = _Paths.MY_QR;
   static const TRANSACTIONS = _Paths.TRANSACTIONS;
+  static const TRANSACTION_DETAIL = _Paths.TRANSACTION_DETAIL;
   static const QR_SCANNING = _Paths.QR_SCANNING;
   static const TRENDS = _Paths.TRENDS;
   static const PROFILE = _Paths.PROFILE;
@@ -74,6 +75,7 @@ abstract class _Paths {
   static const NETWORK_SELECTION = '/network-selection';
   static const MY_QR = '/my-qr';
   static const TRANSACTIONS = '/transactions';
+  static const TRANSACTION_DETAIL = '/transaction-detail';
   static const QR_SCANNING = '/qr-scanning';
   static const TRENDS = '/trends';
   static const PROFILE = '/profile';

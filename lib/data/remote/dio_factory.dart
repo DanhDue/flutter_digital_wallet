@@ -4,6 +4,7 @@
 
 import 'package:d3_wallet/base/environment_configurations.dart';
 import 'package:d3_wallet/data/remote/api_error.dart';
+import 'package:d3_wallet/data/repositories/app_configs_repository.dart';
 import 'package:d3_wallet/data/remote/app_uri.dart';
 import 'package:native_security/native_security.dart';
 import 'package:d3_wallet/data/remote/interceptors/auth_interceptor.dart';
@@ -42,9 +43,13 @@ class DioFactory {
   DioFactory();
 
   Dio _createDio() {
+    final appConfigsRepo = Get.find<AppConfigsRepository>();
+    final appConfigs = appConfigsRepo.appConfigurations;
+    final baseUrl = appConfigs?.baseUrl ?? EnvironmentConfig.BASE_URL;
+
     final dioInstance = Dio(
       BaseOptions(
-        baseUrl: EnvironmentConfig.BASE_URL,
+        baseUrl: baseUrl,
         connectTimeout: _connectTimeout,
         receiveTimeout: _receiveTimeout,
         contentType: Headers.jsonContentType,

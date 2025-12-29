@@ -10,6 +10,7 @@ import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:d3_wallet/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:jiffy/jiffy.dart';
 
@@ -29,67 +30,74 @@ class TransactionsView
 
   _buildItem(BuildContext context, TransactionResponseObject transaction, {int? index}) {
     if (transaction.isLabel == true) return _buildLabel(context, transaction, isFirst: index == 0);
-    return Column(
-      mainAxisAlignment: .start,
-      crossAxisAlignment: .start,
-      mainAxisSize: .min,
-      children: [
-        Text(
-          "${transaction.overview?.timestamp?.hour}:${transaction.overview?.timestamp?.minute}",
-          style: context.appThemes.regular10.copyWith(color: context.appThemes.ink100),
-        ),
-        const SizedBox(height: 12),
-        Row(
-          mainAxisAlignment: .start,
-          crossAxisAlignment: .center,
-          mainAxisSize: .max,
-          children: [
-            _retrieveTransactionIcon(transaction),
-            const SizedBox(width: 12),
-            Column(
-              mainAxisAlignment: .start,
-              crossAxisAlignment: .start,
-              mainAxisSize: .max,
-              children: [
-                Text(
-                  retrieveTransactionMessage(transaction),
-                  style: context.appThemes.regular14.copyWith(color: context.appThemes.ink100),
-                ),
-                const SizedBox(height: 2),
-                Container(
-                  padding: const .symmetric(horizontal: 6, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: context.appThemes.green10,
-                    borderRadius: .circular(100),
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed('/transaction-detail', arguments: transaction);
+      },
+      child: Column(
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .start,
+        mainAxisSize: .min,
+        children: [
+          Text(
+            "${transaction.overview?.timestamp?.hour}:${transaction.overview?.timestamp?.minute}",
+            style: context.appThemes.regular10.copyWith(color: context.appThemes.ink100),
+          ),
+          const SizedBox(height: 12),
+          Row(
+            mainAxisAlignment: .start,
+            crossAxisAlignment: .center,
+            mainAxisSize: .max,
+            children: [
+              _retrieveTransactionIcon(transaction),
+              const SizedBox(width: 12),
+              Column(
+                mainAxisAlignment: .start,
+                crossAxisAlignment: .start,
+                mainAxisSize: .max,
+                children: [
+                  Text(
+                    retrieveTransactionMessage(transaction),
+                    style: context.appThemes.regular14.copyWith(color: context.appThemes.ink100),
                   ),
-                  child: Text(
-                    LocaleKeys.success.tr,
-                    style: context.appThemes.regular10.copyWith(color: context.appThemes.green100),
+                  const SizedBox(height: 2),
+                  Container(
+                    padding: const .symmetric(horizontal: 6, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: context.appThemes.green10,
+                      borderRadius: .circular(100),
+                    ),
+                    child: Text(
+                      LocaleKeys.success.tr,
+                      style: context.appThemes.regular10.copyWith(
+                        color: context.appThemes.green100,
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            const Expanded(child: SizedBox.shrink()),
-            Column(
-              mainAxisAlignment: .end,
-              crossAxisAlignment: .end,
-              mainAxisSize: .max,
-              children: [
-                Text(
-                  "${transaction.overview?.signature?.firstOrNull?.substring(0, 7)}...${transaction.overview?.signature?.firstOrNull?.substring(transaction.overview?.signature?.firstOrNull?.length ?? 0 - 4)}",
-                  style: context.appThemes.medium14.copyWith(color: context.appThemes.ink100),
-                ),
-                Text(
-                  "${transaction.overview?.payerAddress?.substring(0, 7)}...${transaction.overview?.payerAddress?.substring(transaction.overview?.payerAddress?.length ?? 0 - 4)}",
-                  style: context.appThemes.regular10.copyWith(color: context.appThemes.ink60),
-                ),
-              ],
-            ),
-          ],
-        ),
-        const SizedBox(height: 12),
-      ],
-    ).marginSymmetric(horizontal: 20);
+                ],
+              ),
+              const Expanded(child: SizedBox.shrink()),
+              Column(
+                mainAxisAlignment: .end,
+                crossAxisAlignment: .end,
+                mainAxisSize: .max,
+                children: [
+                  Text(
+                    "${transaction.overview?.signature?.firstOrNull?.substring(0, 7)}...${transaction.overview?.signature?.firstOrNull?.substring(transaction.overview?.signature?.firstOrNull?.length ?? 0 - 4)}",
+                    style: context.appThemes.medium14.copyWith(color: context.appThemes.ink100),
+                  ),
+                  Text(
+                    "${transaction.overview?.payerAddress?.substring(0, 7)}...${transaction.overview?.payerAddress?.substring(transaction.overview?.payerAddress?.length ?? 0 - 4)}",
+                    style: context.appThemes.regular10.copyWith(color: context.appThemes.ink60),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+        ],
+      ).marginSymmetric(horizontal: 20),
+    );
   }
 
   String retrieveTransactionMessage(TransactionResponseObject transaction) {

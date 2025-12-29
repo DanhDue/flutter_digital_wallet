@@ -3,6 +3,8 @@
 import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart';
 
 abstract class AppConfigsRepository {
+  AppConfigurations? get appConfigurations;
+
   Future saveLocalPassword(String? password);
 
   Future saveAppConfigurations(AppConfigurations? appConfigurations);

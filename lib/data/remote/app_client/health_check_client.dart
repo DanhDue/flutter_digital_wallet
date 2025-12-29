@@ -3,7 +3,9 @@
 // coverage:ignore-file
 
 import 'package:d3_wallet/data/base_response_object.dart';
+import 'package:d3_wallet/data/bean/response/base_url_response_object/base_url_response_object.dart';
 import 'package:d3_wallet/data/bean/response/health_check_response_object/health_check_response_object.dart';
+import 'package:d3_wallet/data/remote/app_uri.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -16,4 +18,7 @@ abstract class HealthCheckClient {
 
   @GET("")
   Future<BaseResponseObject<HealthCheckResponseObject?>?> healthz();
+
+  @GET(AppUri.healthz)
+  Future<BaseResponseObject<BaseUrlResponseObject?>?> getBaseUrl();
 }
