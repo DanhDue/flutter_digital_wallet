@@ -4,13 +4,15 @@ This guide explains how to set up the development environment on a Linux machine
 
 ## 1. System Dependencies
 
-Before installing Flutter, ensure you have the necessary system tools and libraries:
+Before installing Flutter, ensure you have the necessary system tools and libraries.
+You must enable 32-bit architecture and install specific libraries:
 
 ```bash
+sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get install -y curl git unzip xz-utils libglu1-mesa \
-    libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386 \
-    ninja-build build-essential libgtk-3-dev
+    libc6:i386 libncurses6:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386 \
+    ninja-build build-essential libgtk-3-dev openjdk-17-jdk
 ```
 
 ## 2. Installation Steps
@@ -36,26 +38,46 @@ brew install fvm
 ```
 
 ### Step 3: Install Flutter SDK via FVM
-Install the stable version of Flutter:
+Install the stable version of Flutter and make it global:
 
 ```bash
 fvm install stable
-fvm use stable --global
+fvm global stable
 ```
 
-### Step 4: Environment Variables
+**Note:** Ensure the `default` link is created:
+```bash
+ln -sfFn ~/fvm/versions/stable ~/fvm/default
+```
+
+### Step 4: Install Go and Tools
+Install Go and the license tool:
+
+```bash
+brew install go
+go install github.com/google/addlicense@latest
+```
+
+### Step 5: Environment Variables
 Add the following to your `~/.bashrc` (or `~/.zshrc`):
 
 ```bash
 # Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# Flutter & FVM
-export PATH="$HOME/fvm/default/bin:$PATH"
-export FLUTTER_ROOT="$HOME/fvm/default"
-
-# Dart Pub Cache
+#Flutter Settings
+export PATH=$HOME/fvm/default/bin:$PATH
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export FLUTTER_ROOT=$HOME/fvm/default
+export PATH=$FLUTTER_ROOT/bin:$PATH
+export PATH=$PATH:$HOME/.pub-cache/bin
+
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 # Android SDK (adjust path if your SDK is installed elsewhere)
 export ANDROID_HOME="$HOME/Android/Sdk"
@@ -69,20 +91,34 @@ Apply changes:
 source ~/.bashrc
 ```
 
-### Step 5: Activate Global Dart Packages
-Activate essential tools:
+### Step 6: Activate Global Dart Packages
+Activate essential tools. Note that `melos` must be version `2.9.0`.
 
 ```bash
-dart pub global activate melos
+dart pub global activate melos 2.9.0
 dart pub global activate flutter_gen
 dart pub global activate get_cli
 dart pub global activate flutterfire_cli
 ```
 
+### Step 7: Project Setup
+Install project dependencies.
+Also verify `melos` configuration by running `genAlls`.
+
+```bash
+# Fix Melos SDK path issue if needed
+mkdir -p .fvm
+ln -sf $FLUTTER_ROOT .fvm/flutter_sdk
+
+fvm flutter pub get
+
+# Verify setup
+melos run genAlls
+```
+
 ## 3. Toolchain Checklist
 
 - **Android Studio**: Download from the official website and install the Android SDK and Command-line Tools.
-- **Java (JDK)**: `sudo apt install openjdk-17-jdk`
 - **Flutter Doctor**: Run `fvm flutter doctor` to verify your setup.
 
 > [!NOTE]

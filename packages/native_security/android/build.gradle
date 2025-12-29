@@ -1,3 +1,7 @@
+// Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+// coverage:ignore-file
+
 group 'com.danhdue.native_security'
 version '1.0-SNAPSHOT'
 
