@@ -54,6 +54,7 @@ app.*.map.json
 # Generated files.
 *.g.dart
 *.freezed.dart
+*.tailor.dart
 /secureFiles
 */fastlane/report.xml
 /lib/generated/
