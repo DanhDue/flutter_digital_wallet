@@ -158,7 +158,7 @@ This section explains how to manage UI elements and localization in the project.
 4. **Apply to UI via context**:
    Access the color in your widgets using:
    ```dart
-   context.theme.yourColorName
+   context.appThemes.yourColorName
    ```
 
 ## 2. Flow to add localization texts

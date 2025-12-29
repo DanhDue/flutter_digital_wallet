@@ -207,5 +207,17 @@
   "coinMarketDetailNoComments": "No comments yet!",
   "yourBalance": "Your balance",
   "past7Days": " • Last 7 days",
+  "transactionDetails": "Transaction Details",
+  "confirmed": "Confirmed",
+  "date": "Date",
+  "from": "From",
+  "to": "To",
+  "networkFee": "Network Fee",
+  "tokenTransfers": "Token Transfers",
+  "splToken": "SPL Token",
+  "slot": "Slot",
+  "signature": "Signature",
+  "explorer": "Explorer",
+  "shareReceipt": "Share Receipt",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

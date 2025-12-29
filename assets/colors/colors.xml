@@ -111,6 +111,13 @@
     <color name="zeno_success">#4ADE80</color>
     <color name="zeno_accent_light">#4DA3FF</color>
 
+    <!-- Zeno Light Theme Colors -->
+    <color name="zeno_bg_light">#F2F4F7</color>
+    <color name="zeno_text_light">#111827</color>
+    <color name="zeno_text_muted_light">#6B7280</color>
+    <color name="zeno_border_light">#E5E7EB</color>
+    <color name="zeno_success_light">#16A34A</color>
+
     <!-- Pink Series -->
     <color name="pink_lady">#EDA5AC</color>
 
