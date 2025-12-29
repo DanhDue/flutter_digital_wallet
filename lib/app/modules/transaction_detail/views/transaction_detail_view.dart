@@ -75,7 +75,9 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: context.appThemes.zenoBg.withOpacity(0.9),
-        border: Border(bottom: BorderSide(color: context.appThemes.zenoBorder.withOpacity(0.3), width: 1)),
+        border: Border(
+          bottom: BorderSide(color: context.appThemes.zenoBorder.withOpacity(0.3), width: 1),
+        ),
       ),
       child: Row(
         children: [
@@ -98,7 +100,11 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             child: Text(
               LocaleKeys.transactionDetails.tr,
               textAlign: TextAlign.center,
-              style: TextStyle(color: context.appThemes.zenoText, fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: context.appThemes.zenoText,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
 
@@ -197,7 +203,10 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
       children: [
         Text(
           '- 2.5 SOL',
-          style: context.appThemes.bold24.copyWith(color: context.appThemes.zenoText, fontSize: 36),
+          style: context.appThemes.bold24.copyWith(
+            color: context.appThemes.zenoText,
+            fontSize: 36,
+          ),
         ),
         const SizedBox(height: 8),
         Text(
@@ -235,7 +244,12 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
       child: Column(
         children: [
           // Date
-          _buildInfoRow(context, icon: Icons.calendar_today, label: LocaleKeys.date.tr, value: dateStr),
+          _buildInfoRow(
+            context,
+            icon: Icons.calendar_today,
+            label: LocaleKeys.date.tr,
+            value: dateStr,
+          ),
 
           _buildDivider(context),
 
@@ -310,7 +324,10 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                 ),
               ),
               if (subtitle != null)
-                Text(subtitle, style: TextStyle(color: context.appThemes.zenoTextMuted, fontSize: 12)),
+                Text(
+                  subtitle,
+                  style: TextStyle(color: context.appThemes.zenoTextMuted, fontSize: 12),
+                ),
             ],
           ),
         ],

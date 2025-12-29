@@ -18,8 +18,7 @@ class LocaleKeys {
   static const skip = 'skip';
   static const bimometricTitle = 'bimometricTitle';
   static const bimometricDescription = 'bimometricDescription';
-  static const biometricAuthIsNotSupportedMessage =
-      'biometricAuthIsNotSupportedMessage';
+  static const biometricAuthIsNotSupportedMessage = 'biometricAuthIsNotSupportedMessage';
   static const oops = 'oops';
   static const noDataMessage = 'noDataMessage';
   static const loadDataErrorMessage = 'loadDataErrorMessage';
@@ -73,8 +72,7 @@ class LocaleKeys {
   static const passwordsRequests = 'passwordsRequests';
   static const passwordLengthRequest = 'passwordLengthRequest';
   static const passwordCharactersRequest = 'passwordCharactersRequest';
-  static const passwordSpecialCharacterRequest =
-      'passwordSpecialCharacterRequest';
+  static const passwordSpecialCharacterRequest = 'passwordSpecialCharacterRequest';
   static const biometricSuggestion = 'biometricSuggestion';
   static const createPassword = 'createPassword';
   static const passwordIsEmtpyError = 'passwordIsEmtpyError';
@@ -83,14 +81,11 @@ class LocaleKeys {
   static const learnMore = 'learnMore';
   static const reEnterPass = 'reEnterPass';
   static const secureYourWallet = 'secureYourWallet';
-  static const secureYourWalletDescriptionSegment1 =
-      'secureYourWalletDescriptionSegment1';
+  static const secureYourWalletDescriptionSegment1 = 'secureYourWalletDescriptionSegment1';
   static const secretRecoveryPhrase = 'secretRecoveryPhrase';
-  static const secureYourWalletDescriptionSegment2 =
-      'secureYourWalletDescriptionSegment2';
+  static const secureYourWalletDescriptionSegment2 = 'secureYourWalletDescriptionSegment2';
   static const theOnlyWay = 'theOnlyWay';
-  static const secureYourWalletDescriptionSegment3 =
-      'secureYourWalletDescriptionSegment3';
+  static const secureYourWalletDescriptionSegment3 = 'secureYourWalletDescriptionSegment3';
   static const whyIsThisImportant = 'whyIsThisImportant';
   static const securityRecommendations = 'securityRecommendations';
   static const saveYourSRPDescription = 'saveYourSRPDescription';
@@ -106,11 +101,9 @@ class LocaleKeys {
   static const secureWalletStep = 'secureWalletStep';
   static const confirmSRPStep = 'confirmSRPStep';
   static const txtContinue = 'txtContinue';
-  static const protectYourWalletDescriptionSegment1 =
-      'protectYourWalletDescriptionSegment1';
+  static const protectYourWalletDescriptionSegment1 = 'protectYourWalletDescriptionSegment1';
   static const srp = 'srp';
-  static const protectYourWalletDescriptionSegment2 =
-      'protectYourWalletDescriptionSegment2';
+  static const protectYourWalletDescriptionSegment2 = 'protectYourWalletDescriptionSegment2';
   static const secureYourWalletsPart1 = 'secureYourWalletsPart1';
   static const secureYourWalletsPart2 = 'secureYourWalletsPart2';
   static const manual = 'manual';
@@ -123,17 +116,13 @@ class LocaleKeys {
   static const storeInMultipleSecretPlaces = 'storeInMultipleSecretPlaces';
   static const copiedToClipboard = 'copiedToClipboard';
   static const writeDownSecretRecoveryPhrase = 'writeDownSecretRecoveryPhrase';
-  static const secretRecoveryPhraseDescription =
-      'secretRecoveryPhraseDescription';
-  static const tapToRevealSecretRecoveryPhrase =
-      'tapToRevealSecretRecoveryPhrase';
+  static const secretRecoveryPhraseDescription = 'secretRecoveryPhraseDescription';
+  static const tapToRevealSecretRecoveryPhrase = 'tapToRevealSecretRecoveryPhrase';
   static const securityAlertMessage = 'securityAlertMessage';
   static const viewPhrase = 'viewPhrase';
   static const copyToClipboardAction = 'copyToClipboardAction';
-  static const confirmSecretRecoveryPhraseTitle =
-      'confirmSecretRecoveryPhraseTitle';
-  static const confirmSecretRecoveryPhraseDescription =
-      'confirmSecretRecoveryPhraseDescription';
+  static const confirmSecretRecoveryPhraseTitle = 'confirmSecretRecoveryPhraseTitle';
+  static const confirmSecretRecoveryPhraseDescription = 'confirmSecretRecoveryPhraseDescription';
   static const finish = 'finish';
   static const incorrectSecretRecoveryPhrase = 'incorrectSecretRecoveryPhrase';
   static const incorrectSecretRecoveryPhraseDescription =
@@ -177,8 +166,7 @@ class LocaleKeys {
   static const walletActionStaking = 'walletActionStaking';
   static const noWalletsAvailable = 'noWalletsAvailable';
   static const qrCodeIsSaveToGallery = 'qrCodeIsSaveToGallery';
-  static const walletAddressCopiedAndWillBeCleared =
-      'walletAddressCopiedAndWillBeCleared';
+  static const walletAddressCopiedAndWillBeCleared = 'walletAddressCopiedAndWillBeCleared';
   static const copyAddress = 'copyAddress';
   static const requestPayment = 'requestPayment';
   static const scanQrCode = 'scanQrCode';
@@ -190,8 +178,7 @@ class LocaleKeys {
   static const importWalletDescription = 'importWalletDescription';
   static const example = 'example';
   static const exampleSecretRecoveryPhrase = 'exampleSecretRecoveryPhrase';
-  static const exampleSecretRecoveryPhraseValue =
-      'exampleSecretRecoveryPhraseValue';
+  static const exampleSecretRecoveryPhraseValue = 'exampleSecretRecoveryPhraseValue';
   static const examplePrivateKey = 'examplePrivateKey';
   static const examplePrivateKeyValue = 'examplePrivateKeyValue';
   static const exampleBase58PrivateKey = 'exampleBase58PrivateKey';
@@ -259,21 +246,18 @@ class Locales {
     'skip': 'Skip',
     'bimometricTitle': 'Verify your identity',
     'bimometricDescription': 'Use biometrics to verify your identity',
-    'biometricAuthIsNotSupportedMessage':
-        'This device does not support biometric authentication.',
+    'biometricAuthIsNotSupportedMessage': 'This device does not support biometric authentication.',
     'oops': 'Oops',
     'noDataMessage': 'There is no data to display.',
     'loadDataErrorMessage': 'Error while loading data, tap to try again',
     'processing': 'Processing...',
     'digitalWallet': 'Digital Wallet',
     'serviceHealthChecking': 'Zeno Service health checking...',
-    'restartServiceWarning':
-        'Please wait just a minutes for restart Zeno service! @@',
+    'restartServiceWarning': 'Please wait just a minutes for restart Zeno service! @@',
     'zenoWallet': 'Zeno Wallet',
     'swipeToGetStarted': 'Swipe to get started',
     'secureCryptoWalletTitle': 'The Most\nSecure & Easiest\nCrypto Wallet',
-    'manageDigitalAssets':
-        'Manage all your digital assets in one secure place.',
+    'manageDigitalAssets': 'Manage all your digital assets in one secure place.',
     'gettingStarted': 'Let\'s go',
     'createANewWallet': 'Create a new wallet',
     'alreadyHaveAWallet': 'I already have a wallet',
@@ -295,15 +279,13 @@ class Locales {
     'cannotLoginGuide':
         'Wallet can\'t be unlocked? You can remove the current wallet and restore it again.',
     'reimportWallets': 'Re-import wallets',
-    'reimportWalletWarningTitle':
-        'Are you sure you want to re-import all wallets?',
+    'reimportWalletWarningTitle': 'Are you sure you want to re-import all wallets?',
     'reimportDesOne': 'Your current wallets, accounts and assets will be ',
     'reimportDesTwoFirstSegment': 'permanently removed from this application',
     'reimportDesTwoSecondSegment': '. This action cannot be undone.',
     'reimportDesTwoThirdSegment': 'You can ONLY recover this wallet using ',
     'reimportDesTwoFourthSegment': 'your Secret Recovery Phrase',
-    'reimportDesTwoFifthSegment':
-        '. ZenoWallet does not store your Secret Recovery Phrase.',
+    'reimportDesTwoFifthSegment': '. ZenoWallet does not store your Secret Recovery Phrase.',
     'continueRemoving': 'I understand, continue',
     'cancel': 'Cancel',
     'passwordCreationTitle': 'Create password',
@@ -314,8 +296,7 @@ class Locales {
     'passwordsAreNotSame': 'Passwords are not same',
     'show': 'show',
     'biometricSignInQuestion': 'Sign in with Biometrics?',
-    'passwordPolicy':
-        'I understand that ZenoWallet cannot recover this password for me.',
+    'passwordPolicy': 'I understand that ZenoWallet cannot recover this password for me.',
     'passwordStrength': 'Password strength: ',
     'passwordIsWeak': 'Weak',
     'passwordIsFair': 'Fair',
@@ -341,8 +322,7 @@ class Locales {
         ' to recover your wallet if you cannot access the app or use a new device',
     'whyIsThisImportant': 'Why is this important?',
     'securityRecommendations': 'Security recommendations',
-    'saveYourSRPDescription':
-        'Save your Secret Recovery Phrase and store it in a safe place.',
+    'saveYourSRPDescription': 'Save your Secret Recovery Phrase and store it in a safe place.',
     'potentialRisks': 'Potential risks:',
     'youLoseIt': 'You lose it',
     'youForgetWhereYouPutIt': 'You forget where you put it',
@@ -376,8 +356,7 @@ class Locales {
     'writeDownSecretRecoveryPhrase': 'Write down your Secret Recovery Phrase',
     'secretRecoveryPhraseDescription':
         'This is your Secret Recovery Phrase. Write it down on a paper and keep it in a safe place. You’ll be asked to re-enter this phrase (in order) on the next step.',
-    'tapToRevealSecretRecoveryPhrase':
-        'Tap to reveal your Secret Recovery Phrase',
+    'tapToRevealSecretRecoveryPhrase': 'Tap to reveal your Secret Recovery Phrase',
     'securityAlertMessage': 'Make sure no one is watching your screen.',
     'viewPhrase': 'View Phrase',
     'copyToClipboardAction': 'Copy to Clipboard',
@@ -386,8 +365,7 @@ class Locales {
         'Please select the words in order to match the phrase provided previously.',
     'finish': 'Finish',
     'incorrectSecretRecoveryPhrase': 'Incorrect Secret Recovery Phrase!',
-    'incorrectSecretRecoveryPhraseDescription':
-        'Please re-arrange the order of the phrase.',
+    'incorrectSecretRecoveryPhraseDescription': 'Please re-arrange the order of the phrase.',
     'secureRecoveryPhraseVerified': 'Secure Recovery Phrase Verified',
     'walletCreationSuccessMessage':
         'You have successfully created and secured your wallet. Please keep your Passphrase safe at all times.',
@@ -503,8 +481,7 @@ class Locales {
     'signature': 'Signature',
     'explorer': 'Explorer',
     'shareReceipt': 'Share Receipt',
-    'eof':
-        'End of File. Please add a new text above this item to avoid conflicts. Thanks!',
+    'eof': 'End of File. Please add a new text above this item to avoid conflicts. Thanks!',
   };
   static const vn_VI = {
     'appName': 'Wallet',
@@ -513,23 +490,19 @@ class Locales {
     'commonErrorMessage': 'Đã có lỗi xảy ra. Vui lòng thử lại sau!',
     'skip': 'Bỏ qua',
     'bimometricTitle': 'Xác thực danh tính của bạn',
-    'bimometricDescription':
-        'Sử dụng sinh trắc học để xác thực danh tính của bạn',
-    'biometricAuthIsNotSupportedMessage':
-        'Thiết bị này không hỗ trợ xác thực sinh trắc học.',
+    'bimometricDescription': 'Sử dụng sinh trắc học để xác thực danh tính của bạn',
+    'biometricAuthIsNotSupportedMessage': 'Thiết bị này không hỗ trợ xác thực sinh trắc học.',
     'oops': 'Oops',
     'noDataMessage': 'Chưa có dữ liệu để hiển thị.',
     'loadDataErrorMessage': 'Có lỗi trong khi tải dữ liệu, chạm để thử lại.',
     'processing': 'Đang xử lý...',
     'digitalWallet': 'Digital Wallet',
     'serviceHealthChecking': 'Đang kiểm tra Zeno Service...',
-    'restartServiceWarning':
-        'Đang khởi động lại Zeno service. Vui lòng đợi trong giây lát! @@',
+    'restartServiceWarning': 'Đang khởi động lại Zeno service. Vui lòng đợi trong giây lát! @@',
     'zenoWallet': 'Zeno Wallet',
     'swipeToGetStarted': 'Vuốt để bắt đầu',
     'secureCryptoWalletTitle': 'Ví Tiền Điện Tử\nAn Toàn &\nDễ Sử Dụng nhất',
-    'manageDigitalAssets':
-        'Quản lý tất cả tài sản kỹ thuật số của bạn ở một nơi an toàn.',
+    'manageDigitalAssets': 'Quản lý tất cả tài sản kỹ thuật số của bạn ở một nơi an toàn.',
     'gettingStarted': 'Bắt đầu ngay',
     'createANewWallet': 'Tạo một ví mới',
     'alreadyHaveAWallet': 'Tôi đã có sẵn một ví',
@@ -557,8 +530,7 @@ class Locales {
     'reimportDesTwoSecondSegment': '. Thao tác này không thể đảo ngược.',
     'reimportDesTwoThirdSegment': 'Bạn CHỈ có thể khôi phục ví này bằng ',
     'reimportDesTwoFourthSegment': 'Cụm từ khôi phục bí mật của mình',
-    'reimportDesTwoFifthSegment':
-        ' ZenoWallet không giữ Cụm từ khôi phục bí mật của bạn.',
+    'reimportDesTwoFifthSegment': ' ZenoWallet không giữ Cụm từ khôi phục bí mật của bạn.',
     'understandAndContinue': 'Tôi hiểu, tiếp tục',
     'cancel': 'Hủy',
     'passwordCreationTitle': 'Tạo mật khẩu',
@@ -569,10 +541,8 @@ class Locales {
     'passwordsAreNotSame': 'Mật khẩu không giống nhau',
     'show': 'Hiển thị',
     'biometricSignInQuestion': 'Đăng nhập bằng sinh trắc học?',
-    'passwordPolicy':
-        'Tôi hiểu rằng ZenoWallet không thể khôi phục mật khẩu này cho tôi.',
-    'passwordDesc':
-        'Mật khẩu này sẽ chỉ mở khóa ví Zeno của bạn trên thiết bị này.',
+    'passwordPolicy': 'Tôi hiểu rằng ZenoWallet không thể khôi phục mật khẩu này cho tôi.',
+    'passwordDesc': 'Mật khẩu này sẽ chỉ mở khóa ví Zeno của bạn trên thiết bị này.',
     'passwordStrength': 'Độ mạnh của mật khẩu: ',
     'passwordIsWeak': 'Yếu',
     'passwordIsFair': 'Trung bình',
@@ -622,8 +592,7 @@ class Locales {
     'secureYourWalletsPart2': ' của ví bạn.',
     'manual': 'Thủ công',
     'securityLevelVeryStrong': 'Mức độ bảo mật: Rất mạnh',
-    'writeSRPOnPaperDescription':
-        'Viết Cụm từ khôi phục bí mật ra giấy và cất ở nơi an toàn.',
+    'writeSRPOnPaperDescription': 'Viết Cụm từ khôi phục bí mật ra giấy và cất ở nơi an toàn.',
     'riskAre': 'Các rủi ro:',
     'otherOptionsNoPaper': 'Các tùy chọn khác: Không nhất thiết phải là giấy!',
     'storeInBankVault': 'Cất trong két sắt ngân hàng.',
@@ -643,8 +612,7 @@ class Locales {
         'Vui lòng chọn từ khớp thứ tự với cụm từ đã cung cấp trước đó',
     'finish': 'Hoàn thành',
     'incorrectSecretRecoveryPhrase': 'Cụm từ không chính xác!',
-    'incorrectSecretRecoveryPhraseDescription':
-        'Vui lòng sắp xếp lại thứ tự của cụm từ',
+    'incorrectSecretRecoveryPhraseDescription': 'Vui lòng sắp xếp lại thứ tự của cụm từ',
     'secureRecoveryPhraseVerified': 'Đã xác minh cụm từ khôi phục bảo mật',
     'walletCreationSuccessMessage':
         'Bạn đã tạo và bảo mật ví thành công. Vui lòng giữ cụm từ bí mật của bạn an toàn mọi lúc.',
@@ -710,8 +678,7 @@ class Locales {
     'exampleBase58PrivateKey': '3. Khóa riêng tư Base58:',
     'exampleBase58PrivateKeyValue':
         'bqoPDmymK4nn7tJWeFRoVt78v7s1t2NnUUsQobMfv1jLGaYYnZF1sVrusz3djjt415GooSFaVHpGAWXDC5Mpq9V',
-    'cannotCreateWalletError':
-        'Không thể tạo ví ngay lúc này. Vui lòng thử lại sau ít phút.',
+    'cannotCreateWalletError': 'Không thể tạo ví ngay lúc này. Vui lòng thử lại sau ít phút.',
     'allNetworks': 'Tất cả mạng',
     'search': 'Tìm kiếm',
     'selectNetwork': 'Chọn mạng',
