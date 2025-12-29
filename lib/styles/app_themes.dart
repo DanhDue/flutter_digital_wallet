@@ -59,6 +59,15 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
     required this.gentleGray,
     required this.boldGrey,
 
+    // Zeno Theme Colors
+    required this.zenoBg,
+    required this.zenoSurface,
+    required this.zenoBorder,
+    required this.zenoText,
+    required this.zenoTextMuted,
+    required this.zenoSuccess,
+    required this.zenoAccent,
+
     // Gold Series
     required this.rusticRoseGold,
 
@@ -465,6 +474,22 @@ class AppThemes extends ThemeExtension<AppThemes> with _$AppThemesTailorMixin {
   @override
   final Color boldGrey;
 
+  // Zeno Theme Colors
+  @override
+  final Color zenoBg;
+  @override
+  final Color zenoSurface;
+  @override
+  final Color zenoBorder;
+  @override
+  final Color zenoText;
+  @override
+  final Color zenoTextMuted;
+  @override
+  final Color zenoSuccess;
+  @override
+  final Color zenoAccent;
+
   // Gold Series
   @override
   final Color rusticRoseGold;
@@ -731,6 +756,15 @@ final lightAppThemes = AppThemes(
   gentleGray: AppColors.gentleGray,
   boldGrey: AppColors.boldGrey,
 
+  // Zeno Theme Colors
+  zenoBg: AppColors.zenoBgLight,
+  zenoSurface: AppColors.white,
+  zenoBorder: AppColors.zenoBorderLight,
+  zenoText: AppColors.zenoTextLight,
+  zenoTextMuted: AppColors.zenoTextMutedLight,
+  zenoSuccess: AppColors.zenoSuccessLight,
+  zenoAccent: AppColors.trueBlue,
+
   // Gold Series
   rusticRoseGold: AppColors.rusticRoseGold,
 
@@ -894,6 +928,15 @@ final darkAppThemes = AppThemes(
   silver: AppColors.silver,
   gentleGray: AppColors.gentleGray,
   boldGrey: AppColors.boldGrey,
+
+  // Zeno Theme Colors
+  zenoBg: AppColors.zenoBg,
+  zenoSurface: AppColors.zenoSurface,
+  zenoBorder: AppColors.zenoBorder,
+  zenoText: AppColors.white,
+  zenoTextMuted: AppColors.zenoTextMuted,
+  zenoSuccess: AppColors.zenoSuccess,
+  zenoAccent: AppColors.zenoAccentLight,
 
   // Gold Series
   rusticRoseGold: AppColors.rusticRoseGold,

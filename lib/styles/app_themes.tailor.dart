@@ -49,6 +49,13 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
   Color get silver;
   Color get gentleGray;
   Color get boldGrey;
+  Color get zenoBg;
+  Color get zenoSurface;
+  Color get zenoBorder;
+  Color get zenoText;
+  Color get zenoTextMuted;
+  Color get zenoSuccess;
+  Color get zenoAccent;
   Color get rusticRoseGold;
   Color get ink0;
   Color get ink5;
@@ -193,6 +200,13 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
     Color? silver,
     Color? gentleGray,
     Color? boldGrey,
+    Color? zenoBg,
+    Color? zenoSurface,
+    Color? zenoBorder,
+    Color? zenoText,
+    Color? zenoTextMuted,
+    Color? zenoSuccess,
+    Color? zenoAccent,
     Color? rusticRoseGold,
     Color? ink0,
     Color? ink5,
@@ -336,6 +350,13 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       silver: silver ?? this.silver,
       gentleGray: gentleGray ?? this.gentleGray,
       boldGrey: boldGrey ?? this.boldGrey,
+      zenoBg: zenoBg ?? this.zenoBg,
+      zenoSurface: zenoSurface ?? this.zenoSurface,
+      zenoBorder: zenoBorder ?? this.zenoBorder,
+      zenoText: zenoText ?? this.zenoText,
+      zenoTextMuted: zenoTextMuted ?? this.zenoTextMuted,
+      zenoSuccess: zenoSuccess ?? this.zenoSuccess,
+      zenoAccent: zenoAccent ?? this.zenoAccent,
       rusticRoseGold: rusticRoseGold ?? this.rusticRoseGold,
       ink0: ink0 ?? this.ink0,
       ink5: ink5 ?? this.ink5,
@@ -484,6 +505,13 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       silver: Color.lerp(silver, other.silver, t)!,
       gentleGray: Color.lerp(gentleGray, other.gentleGray, t)!,
       boldGrey: Color.lerp(boldGrey, other.boldGrey, t)!,
+      zenoBg: Color.lerp(zenoBg, other.zenoBg, t)!,
+      zenoSurface: Color.lerp(zenoSurface, other.zenoSurface, t)!,
+      zenoBorder: Color.lerp(zenoBorder, other.zenoBorder, t)!,
+      zenoText: Color.lerp(zenoText, other.zenoText, t)!,
+      zenoTextMuted: Color.lerp(zenoTextMuted, other.zenoTextMuted, t)!,
+      zenoSuccess: Color.lerp(zenoSuccess, other.zenoSuccess, t)!,
+      zenoAccent: Color.lerp(zenoAccent, other.zenoAccent, t)!,
       rusticRoseGold: Color.lerp(rusticRoseGold, other.rusticRoseGold, t)!,
       ink0: Color.lerp(ink0, other.ink0, t)!,
       ink5: Color.lerp(ink5, other.ink5, t)!,
@@ -780,6 +808,13 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       const DeepCollectionEquality().hash(silver),
       const DeepCollectionEquality().hash(gentleGray),
       const DeepCollectionEquality().hash(boldGrey),
+      const DeepCollectionEquality().hash(zenoBg),
+      const DeepCollectionEquality().hash(zenoSurface),
+      const DeepCollectionEquality().hash(zenoBorder),
+      const DeepCollectionEquality().hash(zenoText),
+      const DeepCollectionEquality().hash(zenoTextMuted),
+      const DeepCollectionEquality().hash(zenoSuccess),
+      const DeepCollectionEquality().hash(zenoAccent),
       const DeepCollectionEquality().hash(rusticRoseGold),
       const DeepCollectionEquality().hash(ink0),
       const DeepCollectionEquality().hash(ink5),

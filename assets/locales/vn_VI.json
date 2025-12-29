@@ -208,5 +208,17 @@
     "coinMarketDetailNoComments": "Chưa có bình luận nào!",
     "yourBalance": "Số dư của bạn",
     "past7Days": " • 7 ngày qua",
+  "transactionDetails": "Chi tiết giao dịch",
+  "confirmed": "Đã xác nhận",
+  "date": "Ngày",
+  "from": "Từ",
+  "to": "Đến",
+  "networkFee": "Phí mạng",
+  "tokenTransfers": "Chuyển mã thông báo",
+  "splToken": "Mã thông báo SPL",
+  "slot": "Slot",
+  "signature": "Chữ ký",
+  "explorer": "Trình khám phá",
+  "shareReceipt": "Chia sẻ biên lai",
     "eof": "Kết thúc tập tin. Vui lòng thêm văn bản mới phía trên mục này để tránh xung đột. Cảm ơn!"
 }
