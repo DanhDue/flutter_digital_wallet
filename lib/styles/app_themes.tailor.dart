@@ -471,7 +471,8 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       h2: TextStyle.lerp(h2, other.h2, t)!,
       h3: TextStyle.lerp(h3, other.h3, t)!,
       paragraph: TextStyle.lerp(paragraph, other.paragraph, t)!,
-      paragraphSemiBold: TextStyle.lerp(paragraphSemiBold, other.paragraphSemiBold, t)!,
+      paragraphSemiBold:
+          TextStyle.lerp(paragraphSemiBold, other.paragraphSemiBold, t)!,
       subText: TextStyle.lerp(subText, other.subText, t)!,
       subTexMedium: TextStyle.lerp(subTexMedium, other.subTexMedium, t)!,
       smallTex: TextStyle.lerp(smallTex, other.smallTex, t)!,
@@ -598,22 +599,27 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
       materialRed: Color.lerp(materialRed, other.materialRed, t)!,
       materialPink: Color.lerp(materialPink, other.materialPink, t)!,
       materialPurple: Color.lerp(materialPurple, other.materialPurple, t)!,
-      materialDeepPurple: Color.lerp(materialDeepPurple, other.materialDeepPurple, t)!,
+      materialDeepPurple:
+          Color.lerp(materialDeepPurple, other.materialDeepPurple, t)!,
       materialIndigo: Color.lerp(materialIndigo, other.materialIndigo, t)!,
       materialBlue: Color.lerp(materialBlue, other.materialBlue, t)!,
-      materialLightBlue: Color.lerp(materialLightBlue, other.materialLightBlue, t)!,
+      materialLightBlue:
+          Color.lerp(materialLightBlue, other.materialLightBlue, t)!,
       materialCyan: Color.lerp(materialCyan, other.materialCyan, t)!,
       materialTeal: Color.lerp(materialTeal, other.materialTeal, t)!,
       materialGreen: Color.lerp(materialGreen, other.materialGreen, t)!,
-      materialLightGreen: Color.lerp(materialLightGreen, other.materialLightGreen, t)!,
+      materialLightGreen:
+          Color.lerp(materialLightGreen, other.materialLightGreen, t)!,
       materialLime: Color.lerp(materialLime, other.materialLime, t)!,
       materialYellow: Color.lerp(materialYellow, other.materialYellow, t)!,
       materialAmber: Color.lerp(materialAmber, other.materialAmber, t)!,
       materialOrange: Color.lerp(materialOrange, other.materialOrange, t)!,
-      materialDeepOrange: Color.lerp(materialDeepOrange, other.materialDeepOrange, t)!,
+      materialDeepOrange:
+          Color.lerp(materialDeepOrange, other.materialDeepOrange, t)!,
       materialBrown: Color.lerp(materialBrown, other.materialBrown, t)!,
       materialGrey: Color.lerp(materialGrey, other.materialGrey, t)!,
-      materialBlueGrey: Color.lerp(materialBlueGrey, other.materialBlueGrey, t)!,
+      materialBlueGrey:
+          Color.lerp(materialBlueGrey, other.materialBlueGrey, t)!,
     );
   }
 
@@ -627,9 +633,11 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(h2, other.h2) &&
             const DeepCollectionEquality().equals(h3, other.h3) &&
             const DeepCollectionEquality().equals(paragraph, other.paragraph) &&
-            const DeepCollectionEquality().equals(paragraphSemiBold, other.paragraphSemiBold) &&
+            const DeepCollectionEquality()
+                .equals(paragraphSemiBold, other.paragraphSemiBold) &&
             const DeepCollectionEquality().equals(subText, other.subText) &&
-            const DeepCollectionEquality().equals(subTexMedium, other.subTexMedium) &&
+            const DeepCollectionEquality()
+                .equals(subTexMedium, other.subTexMedium) &&
             const DeepCollectionEquality().equals(smallTex, other.smallTex) &&
             const DeepCollectionEquality().equals(bold24, other.bold24) &&
             const DeepCollectionEquality().equals(bold20, other.bold20) &&
@@ -648,20 +656,38 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(regular14, other.regular14) &&
             const DeepCollectionEquality().equals(regular12, other.regular12) &&
             const DeepCollectionEquality().equals(regular10, other.regular10) &&
-            const DeepCollectionEquality().equals(background, other.background) &&
+            const DeepCollectionEquality()
+                .equals(background, other.background) &&
             const DeepCollectionEquality().equals(appBar, other.appBar) &&
             const DeepCollectionEquality().equals(white, other.white) &&
             const DeepCollectionEquality().equals(black, other.black) &&
-            const DeepCollectionEquality().equals(transparent, other.transparent) &&
+            const DeepCollectionEquality()
+                .equals(transparent, other.transparent) &&
             const DeepCollectionEquality().equals(textColor, other.textColor) &&
             const DeepCollectionEquality().equals(textGrey, other.textGrey) &&
-            const DeepCollectionEquality().equals(textLightGrey, other.textLightGrey) &&
-            const DeepCollectionEquality().equals(smokyBlack, other.smokyBlack) &&
+            const DeepCollectionEquality()
+                .equals(textLightGrey, other.textLightGrey) &&
+            const DeepCollectionEquality()
+                .equals(smokyBlack, other.smokyBlack) &&
             const DeepCollectionEquality().equals(cultured, other.cultured) &&
             const DeepCollectionEquality().equals(silver, other.silver) &&
-            const DeepCollectionEquality().equals(gentleGray, other.gentleGray) &&
+            const DeepCollectionEquality()
+                .equals(gentleGray, other.gentleGray) &&
             const DeepCollectionEquality().equals(boldGrey, other.boldGrey) &&
-            const DeepCollectionEquality().equals(rusticRoseGold, other.rusticRoseGold) &&
+            const DeepCollectionEquality().equals(zenoBg, other.zenoBg) &&
+            const DeepCollectionEquality()
+                .equals(zenoSurface, other.zenoSurface) &&
+            const DeepCollectionEquality()
+                .equals(zenoBorder, other.zenoBorder) &&
+            const DeepCollectionEquality().equals(zenoText, other.zenoText) &&
+            const DeepCollectionEquality()
+                .equals(zenoTextMuted, other.zenoTextMuted) &&
+            const DeepCollectionEquality()
+                .equals(zenoSuccess, other.zenoSuccess) &&
+            const DeepCollectionEquality()
+                .equals(zenoAccent, other.zenoAccent) &&
+            const DeepCollectionEquality()
+                .equals(rusticRoseGold, other.rusticRoseGold) &&
             const DeepCollectionEquality().equals(ink0, other.ink0) &&
             const DeepCollectionEquality().equals(ink5, other.ink5) &&
             const DeepCollectionEquality().equals(ink10, other.ink10) &&
@@ -681,35 +707,61 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(green100, other.green100) &&
             const DeepCollectionEquality().equals(mainGreen, other.mainGreen) &&
             const DeepCollectionEquality().equals(darkGreen, other.darkGreen) &&
-            const DeepCollectionEquality().equals(secondGreen, other.secondGreen) &&
+            const DeepCollectionEquality()
+                .equals(secondGreen, other.secondGreen) &&
             const DeepCollectionEquality().equals(palmLeaf, other.palmLeaf) &&
-            const DeepCollectionEquality().equals(dartmouthGreen, other.dartmouthGreen) &&
+            const DeepCollectionEquality()
+                .equals(dartmouthGreen, other.dartmouthGreen) &&
             const DeepCollectionEquality().equals(apple, other.apple) &&
-            const DeepCollectionEquality().equals(shinyShamrock, other.shinyShamrock) &&
+            const DeepCollectionEquality()
+                .equals(shinyShamrock, other.shinyShamrock) &&
             const DeepCollectionEquality().equals(honeydew, other.honeydew) &&
-            const DeepCollectionEquality().equals(antiFlashWhite, other.antiFlashWhite) &&
-            const DeepCollectionEquality().equals(greenVogue0, other.greenVogue0) &&
-            const DeepCollectionEquality().equals(greenVogue5, other.greenVogue5) &&
-            const DeepCollectionEquality().equals(greenVogue10, other.greenVogue10) &&
-            const DeepCollectionEquality().equals(greenVogue15, other.greenVogue15) &&
-            const DeepCollectionEquality().equals(greenVogue20, other.greenVogue20) &&
-            const DeepCollectionEquality().equals(greenVogue25, other.greenVogue25) &&
-            const DeepCollectionEquality().equals(greenVogue30, other.greenVogue30) &&
-            const DeepCollectionEquality().equals(greenVogue35, other.greenVogue35) &&
-            const DeepCollectionEquality().equals(greenVogue40, other.greenVogue40) &&
-            const DeepCollectionEquality().equals(greenVogue45, other.greenVogue45) &&
-            const DeepCollectionEquality().equals(greenVogue50, other.greenVogue50) &&
-            const DeepCollectionEquality().equals(greenVogue55, other.greenVogue55) &&
-            const DeepCollectionEquality().equals(greenVogue60, other.greenVogue60) &&
-            const DeepCollectionEquality().equals(greenVogue65, other.greenVogue65) &&
-            const DeepCollectionEquality().equals(greenVogue70, other.greenVogue70) &&
-            const DeepCollectionEquality().equals(greenVogue75, other.greenVogue75) &&
-            const DeepCollectionEquality().equals(greenVogue80, other.greenVogue80) &&
-            const DeepCollectionEquality().equals(greenVogue85, other.greenVogue85) &&
-            const DeepCollectionEquality().equals(greenVogue90, other.greenVogue90) &&
-            const DeepCollectionEquality().equals(greenVogue95, other.greenVogue95) &&
-            const DeepCollectionEquality().equals(greenVogue100, other.greenVogue100) &&
-            const DeepCollectionEquality().equals(greenVogue, other.greenVogue) &&
+            const DeepCollectionEquality()
+                .equals(antiFlashWhite, other.antiFlashWhite) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue0, other.greenVogue0) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue5, other.greenVogue5) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue10, other.greenVogue10) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue15, other.greenVogue15) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue20, other.greenVogue20) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue25, other.greenVogue25) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue30, other.greenVogue30) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue35, other.greenVogue35) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue40, other.greenVogue40) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue45, other.greenVogue45) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue50, other.greenVogue50) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue55, other.greenVogue55) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue60, other.greenVogue60) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue65, other.greenVogue65) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue70, other.greenVogue70) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue75, other.greenVogue75) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue80, other.greenVogue80) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue85, other.greenVogue85) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue90, other.greenVogue90) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue95, other.greenVogue95) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue100, other.greenVogue100) &&
+            const DeepCollectionEquality()
+                .equals(greenVogue, other.greenVogue) &&
             const DeepCollectionEquality().equals(blue0, other.blue0) &&
             const DeepCollectionEquality().equals(blue5, other.blue5) &&
             const DeepCollectionEquality().equals(blue10, other.blue10) &&
@@ -721,11 +773,16 @@ mixin _$AppThemesTailorMixin on ThemeExtension<AppThemes> {
             const DeepCollectionEquality().equals(blue100, other.blue100) &&
             const DeepCollectionEquality().equals(trueBlue0, other.trueBlue0) &&
             const DeepCollectionEquality().equals(trueBlue5, other.trueBlue5) &&
-            const DeepCollectionEquality().equals(trueBlue10, other.trueBlue10) &&
-            const DeepCollectionEquality().equals(trueBlue15, other.trueBlue15) &&
-            const DeepCollectionEquality().equals(trueBlue20, other.trueBlue20) &&
-            const DeepCollectionEquality().equals(trueBlue40, other.trueBlue40) &&
-            const DeepCollectionEquality().equals(trueBlue60, other.trueBlue60) &&
+            const DeepCollectionEquality()
+                .equals(trueBlue10, other.trueBlue10) &&
+            const DeepCollectionEquality()
+                .equals(trueBlue15, other.trueBlue15) &&
+            const DeepCollectionEquality()
+                .equals(trueBlue20, other.trueBlue20) &&
+            const DeepCollectionEquality()
+                .equals(trueBlue40, other.trueBlue40) &&
+            const DeepCollectionEquality()
+                .equals(trueBlue60, other.trueBlue60) &&
             const DeepCollectionEquality().equals(trueBlue80, other.trueBlue80) &&
             const DeepCollectionEquality().equals(trueBlue100, other.trueBlue100) &&
             const DeepCollectionEquality().equals(trueBlue, other.trueBlue) &&

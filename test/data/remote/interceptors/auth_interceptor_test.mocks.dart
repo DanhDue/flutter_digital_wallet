@@ -5,7 +5,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart' as _i4;
+import 'package:d3_wallet/data/bean/app_configurations/app_configurations.dart'
+    as _i4;
 import 'package:d3_wallet/data/repositories/app_configs_repository.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -27,7 +28,8 @@ import 'package:mockito/mockito.dart' as _i1;
 /// A class which mocks [AppConfigsRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAppConfigsRepository extends _i1.Mock implements _i2.AppConfigsRepository {
+class MockAppConfigsRepository extends _i1.Mock
+    implements _i2.AppConfigsRepository {
   MockAppConfigsRepository() {
     _i1.throwOnMissingStub(this);
   }
@@ -35,32 +37,40 @@ class MockAppConfigsRepository extends _i1.Mock implements _i2.AppConfigsReposit
   @override
   _i3.Future<dynamic> saveLocalPassword(String? password) =>
       (super.noSuchMethod(
-            Invocation.method(#saveLocalPassword, [password]),
-            returnValue: _i3.Future<dynamic>.value(),
-          )
-          as _i3.Future<dynamic>);
+        Invocation.method(
+          #saveLocalPassword,
+          [password],
+        ),
+        returnValue: _i3.Future<dynamic>.value(),
+      ) as _i3.Future<dynamic>);
 
   @override
-  _i3.Future<dynamic> saveAppConfigurations(_i4.AppConfigurations? appConfigurations) =>
+  _i3.Future<dynamic> saveAppConfigurations(
+          _i4.AppConfigurations? appConfigurations) =>
       (super.noSuchMethod(
-            Invocation.method(#saveAppConfigurations, [appConfigurations]),
-            returnValue: _i3.Future<dynamic>.value(),
-          )
-          as _i3.Future<dynamic>);
+        Invocation.method(
+          #saveAppConfigurations,
+          [appConfigurations],
+        ),
+        returnValue: _i3.Future<dynamic>.value(),
+      ) as _i3.Future<dynamic>);
 
   @override
   _i3.Future<_i4.AppConfigurations?> retrieveAppConfigurations() =>
       (super.noSuchMethod(
-            Invocation.method(#retrieveAppConfigurations, []),
-            returnValue: _i3.Future<_i4.AppConfigurations?>.value(),
-          )
-          as _i3.Future<_i4.AppConfigurations?>);
+        Invocation.method(
+          #retrieveAppConfigurations,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.AppConfigurations?>.value(),
+      ) as _i3.Future<_i4.AppConfigurations?>);
 
   @override
-  _i3.Future<dynamic> clearAppData() =>
-      (super.noSuchMethod(
-            Invocation.method(#clearAppData, []),
-            returnValue: _i3.Future<dynamic>.value(),
-          )
-          as _i3.Future<dynamic>);
+  _i3.Future<dynamic> clearAppData() => (super.noSuchMethod(
+        Invocation.method(
+          #clearAppData,
+          [],
+        ),
+        returnValue: _i3.Future<dynamic>.value(),
+      ) as _i3.Future<dynamic>);
 }
