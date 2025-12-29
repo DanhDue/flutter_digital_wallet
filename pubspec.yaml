@@ -1,6 +1,7 @@
 name: d3_wallet
 description: "D3 Wallet project."
 version: 1.0.0+1
+publish_to: none
 
 environment:
   sdk: ">=3.10.0 <4.0.0"

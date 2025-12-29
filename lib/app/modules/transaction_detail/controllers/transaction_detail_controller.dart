@@ -39,7 +39,7 @@ Slot: $slot
 Status: Confirmed
     ''';
 
-    await Share.share(text, subject: 'Transaction Receipt');
+    await SharePlus.instance.share(ShareParams(text: text));
   }
 
   Future<void> openExplorer() async {

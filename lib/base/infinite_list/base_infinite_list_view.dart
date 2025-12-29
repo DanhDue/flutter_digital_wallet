@@ -34,6 +34,9 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
   final bool rightSafeArea;
 
   @override
+  bool get preventShowLoading => true;
+
+  @override
   Widget? onCreateViews(BuildContext context) {
     return FocusDetector(
       onFocusLost: () {

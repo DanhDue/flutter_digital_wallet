@@ -11,6 +11,7 @@ import 'package:hive_ce/hive_ce.dart';
 class AppConfigurationsRepositoryImpl extends AppConfigsRepository {
   final _secureKeys = Get.find<SecureKeys>();
   // Need to update this variable whenever read/write any changes.
+  @override
   AppConfigurations? appConfigurations;
 
   @override

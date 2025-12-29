@@ -11,7 +11,6 @@ import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:d3_wallet/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:jiffy/jiffy.dart';
 
 import '../controllers/transactions_controller.dart';

@@ -4,36 +4,38 @@ A Digital Wallet project.
 
 ## Table of Contents
 
-I. [Development Environment Setup](#i-development-environment-setup)
-II. [Navigation Architecture](#ii-navigation-architecture)
-   1. [Navigation Types](#1-navigation-types)
-   2. [Navigator IDs](#2-navigator-ids)
-   3. [Navigation Structure](#3-navigation-structure)
-   4. [Back Button Behavior](#4-back-button-behavior)
-   5. [Adding New Nested Routes](#5-adding-new-nested-routes)
-   6. [Key Files](#6-key-files)
-   7. [Best Practices](#7-best-practices)
+- [I. Development Environment Setup](#i-development-environment-setup)
+- [II. Navigation Architecture](#ii-navigation-architecture)
+  1. [Navigation Types](#1-navigation-types)
+  2. [Navigator IDs](#2-navigator-ids)
+  3. [Navigation Structure](#3-navigation-structure)
+  4. [Back Button Behavior](#4-back-button-behavior)
+  5. [Adding New Nested Routes](#5-adding-new-nested-routes)
+  6. [Key Files](#6-key-files)
+  7. [Robust Argument Retrieval](#7-robust-argument-retrieval)
+  8. [Best Practices](#8-best-practices)
+- [III. Animated Visibility](#iii-animated-visibility)
 
-III. [Animated Visibility](#iii-animated-visibility)
+## I. Development Environment Setup
 
-<details>
-<summary><h2>I. Development Environment Setup</h2></summary>
-
-This guide explains how to set up your development environment for macOS on Apple Silicon.
+This guide explains how to set up your development environment for macOS on
+Apple Silicon.
 
 ### 1. Installation Steps
 
 Follow these steps in order to set up the core development tools:
 
 1. **Install Homebrew**:
-   If you haven't already, install [Homebrew](https://brew.sh/), the missing package manager for macOS:
+   If you haven't already, install [Homebrew](https://brew.sh/), the missing
+   package manager for macOS:
 
    ```bash
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
 
 2. **Install FVM (Flutter Version Management)**:
-   Use Homebrew to install [FVM](https://fvm.app/) to manage different Flutter SDK versions easily:
+   Use Homebrew to install [FVM](https://fvm.app/) to manage different Flutter
+   SDK versions easily:
 
    ```bash
    brew tap leoafarias/fvm
@@ -82,13 +84,16 @@ Follow these steps in order to set up the core development tools:
 
 ### 2. Install Other Essential Tools
 
-To build and run the application on Android and iOS, you need to set up the following:
+To build and run the application on Android and iOS, you need to set up the
+following:
 
 #### 2.1. Java Development Kit (JDK)
 
 Install the JDK required for Android builds:
 
-- **Recommended**: [Azul Zulu JDK](https://www.azul.com/downloads/?package=jdk#zulu) (ARM64 version).
+- **Recommended**: [Azul Zulu JDK](https://www.azul.com/downloads/?package=jdk#zulu)
+  (ARM64 version).
+
 - Alternatively, via Homebrew:
 
    ```bash
@@ -99,13 +104,15 @@ Install the JDK required for Android builds:
 
 1. Download and install [Android Studio](https://developer.android.com/studio).
 2. Open **Settings** > **Languages & Frameworks** > **Android SDK**.
-3. Install the latest **SDK Platforms** and **SDK Tools** (including **Android SDK Command-line Tools**).
+3. Install the latest **SDK Platforms** and **SDK Tools** (including
+   **Android SDK Command-line Tools**).
 4. Configure the `ANDROID_HOME` environment variable (see above).
 
 #### 2.3. Xcode
 
 1. Install **Xcode** from the Mac App Store.
-2. Open Xcode, go to **Settings** > **Locations**, and ensure the **Command Line Tools** are selected.
+2. Open Xcode, go to **Settings** > **Locations**, and ensure the
+   **Command Line Tools** are selected.
 3. Run the following to agree to the license:
 
    ```bash
@@ -120,26 +127,29 @@ Install the JDK required for Android builds:
 
 ### 3. Automation Script
 
-A script is provided to automate parts of the setup (Go, Ruby, Git settings, and package activation):
+A script is provided to automate parts of the setup (Go, Ruby, Git settings,
+and package activation):
 
 ```bash
 chmod +x scripts/install_dev_tools.sh
 ./scripts/install_dev_tools.sh
 ```
 
-</details>
+## II. Navigation Architecture
 
-<details>
-<summary><h2>II. Navigation Architecture</h2></summary>
-
-This project uses **GetX** for state management and navigation with a custom nested navigation implementation that supports both global and tab-level navigation.
+This project uses **GetX** for state management and navigation with a custom
+nested navigation implementation that supports both global and tab-level
+navigation.
 
 ### 1. Navigation Types
 
 #### 1.1. Global Navigation (Root Navigator)
-Global navigation replaces the entire screen and hides the bottom navigation bar. Use this for app-level flows like splash → login → home.
+
+Global navigation replaces the entire screen and hides the bottom navigation
+bar. Use this for app-level flows like splash → login → home.
 
 **Usage:**
+
 ```dart
 // Navigate to a new screen (pushes on stack)
 Get.toNamed(Routes.LOGIN);
@@ -152,6 +162,7 @@ Get.offAllNamed(Routes.LOGIN);
 ```
 
 **Example:**
+
 ```dart
 // From Profile screen, navigate to Login globally
 void _navigateToLogin() {
@@ -160,9 +171,12 @@ void _navigateToLogin() {
 ```
 
 #### 1.2. Nested Navigation (Tab Navigator)
-Nested navigation keeps you within a specific tab and maintains the bottom navigation bar visibility. Each tab has its own navigation stack.
+
+Nested navigation keeps you within a specific tab and maintains the bottom
+navigation bar visibility. Each tab has its own navigation stack.
 
 **Usage:**
+
 ```dart
 // Navigate within a specific tab
 Get.toNamed('/profile/details', id: NavIds.profile);
@@ -172,6 +186,7 @@ Get.back(id: NavIds.profile);
 ```
 
 **Example:**
+
 ```dart
 // From Profile screen, navigate to Profile Detail (nested)
 void _navigateToProfileDetail() {
@@ -196,7 +211,7 @@ class NavIds {
 
 ### 3. Navigation Structure
 
-```
+```text
 Root Navigator (Global)
 ├── Splash Screen
 ├── Login Screen
@@ -222,7 +237,8 @@ Root Navigator (Global)
 
 ### 4. Back Button Behavior
 
-The app implements a smart back button handling system with the following priority:
+The app implements a smart back button handling system with the following
+priority:
 
 1. **Global screens** (e.g., Login) → Pop back to previous screen
 2. **Nested screens** (e.g., Profile Detail) → Pop back within tab
@@ -230,6 +246,7 @@ The app implements a smart back button handling system with the following priori
 4. **Second back press** (within 2 seconds) → Exit app
 
 **Implementation:**
+
 - `HomeController._onBackPressed()` handles back button logic
 - `PopScope` wrappers in nav widgets handle tab-level back presses
 - `BackButtonInterceptor` intercepts system back button events
@@ -238,12 +255,14 @@ The app implements a smart back button handling system with the following priori
 
 To add a new nested route within a tab:
 
-#### 5.1. **Define the route** in `app_routes.dart`:
+#### 5.1. Define the route in `app_routes.dart`
+
 ```dart
 static const PROFILE_SETTINGS = _Paths.PROFILE + _Paths.PROFILE_SETTINGS;
 ```
 
-#### 5.2. **Add route to the nav widget** (e.g., `profile_nav.dart`):
+#### 5.2. Add route to the nav widget (e.g., `profile_nav.dart`)
+
 ```dart
 if (settings.name == Routes.PROFILE_SETTINGS) {
   return GetPageRoute(
@@ -254,26 +273,32 @@ if (settings.name == Routes.PROFILE_SETTINGS) {
 }
 ```
 
-#### 5.3. **Navigate using the navigator ID**:
+#### 5.3. Navigate using the navigator ID
+
 ```dart
 Get.toNamed(Routes.PROFILE_SETTINGS, id: NavIds.profile);
 ```
 
 ### 6. Key Files
 
-- **`lib/app/modules/home/constants/nav_ids.dart`** - Navigator ID definitions
-- **`lib/app/modules/home/controllers/home_controller.dart`** - Back button handling logic
+- **`lib/app/modules/home/constants/nav_ids.dart`** - Navigator IDs
+- **`lib/app/modules/home/controllers/home_controller.dart`**
+  - Back button logic
 - **`lib/app/modules/home/navs/`** - Tab navigator widgets (one per tab)
-- **`lib/app/modules/home/views/home_view.dart`** - Home screen with bottom navigation
+- **`lib/app/modules/home/views/home_view.dart`** - Home screen with bottom nav
 - **`lib/app/routes/app_routes.dart`** - Route name definitions
 - **`lib/app/routes/app_pages.dart`** - Route configuration
 
 ### 7. Robust Argument Retrieval
 
-When using nested navigation, the global `Get.arguments` singleton may return `null` because it primarily tracks the root navigator. To handle arguments reliably across all navigator types, follow this standardized pattern:
+When using nested navigation, the global `Get.arguments` singleton may return
+`null` because it primarily tracks the root navigator. To handle arguments
+reliably across all navigator types, follow this standardized pattern:
 
 #### 7.1. Pass Arguments via Binding (in the Nav widget)
-In your tab's navigator widget (e.g., `trends_nav.dart`), pass `settings.arguments` to the binding:
+
+In your tab's navigator widget (e.g., `trends_nav.dart`), pass
+`settings.arguments` to the binding:
 
 ```dart
 if (settings.name == Routes.DETAIL) {
@@ -286,7 +311,9 @@ if (settings.name == Routes.DETAIL) {
 ```
 
 #### 7.2. Receive in Binding and Inject to Controller
-Update your `Binding` to accept the arguments and inject them into the `Controller` constructor:
+
+Update your `Binding` to accept the arguments and inject them into the
+`Controller` constructor:
 
 ```dart
 class DetailBinding extends Bindings {
@@ -303,7 +330,9 @@ class DetailBinding extends Bindings {
 ```
 
 #### 7.3. Use Standardized Retrieval in Controller
-Update your `Controller` to pass arguments to `super` and use `retrieveArgument`:
+
+Update your `Controller` to pass arguments to `super` and use
+`retrieveArgument`:
 
 ```dart
 class DetailController extends BaseController {
@@ -312,7 +341,7 @@ class DetailController extends BaseController {
   @override
   void onReady() {
     super.onReady();
-    // This method prioritizes constructorArgs, then falls back to global Get.arguments
+    // Prioritizes constructorArgs, then falls back to global Get.arguments
     final data = retrieveArgument<MyDataType>(NavigationArguments.key);
   }
 }
@@ -320,20 +349,20 @@ class DetailController extends BaseController {
 
 ### 8. Best Practices
 
-1. **Use global navigation** for screens that should replace the entire view (login, splash, etc.)
-2. **Use nested navigation** for screens within a tab that should keep the bottom nav visible
+1. **Use global navigation** for screens that should replace the entire view
+   (login, splash, etc.)
+2. **Use nested navigation** for screens within a tab that should keep the
+   bottom nav visible
 3. **Always specify the `id` parameter** when navigating within a tab
 4. **Use `Get.back(id: navId)`** to go back within a specific tab
 5. **Use `Get.back()`** (without id) to go back on the global navigator
-6. **Prefer Constructor Injection** (Section 7) for all nested routes to ensure arguments are never null.
+6. **Prefer Constructor Injection** (Section 7) for all nested routes to
+   ensure arguments are never null.
 
-</details>
+## III. Animated Visibility
 
-<details>
-<summary><h2>III. Animated Visibility</h2></summary>
+Animate appearance and disappearance using pre-built effects with the
+AnimatedVisibility widget.
 
-Animate appearance and disappearance using pre-built effects with the AnimatedVisibility widget.
-
-<img src="screenshots/animated_visibility_01.gif" height="480" /> <img src="screenshots/animated_visibility_02.gif" height="480" />
-
-</details>
+![Animated Visibility 1](screenshots/animated_visibility_01.gif)
+![Animated Visibility 2](screenshots/animated_visibility_02.gif)

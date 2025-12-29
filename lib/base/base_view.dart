@@ -11,6 +11,8 @@ import 'base_controller.dart';
 abstract class BaseView<C extends BaseController> extends GetView<C> {
   const BaseView({super.key});
 
+  bool get preventShowLoading => false;
+
   @protected
   Widget? onCreateViews(BuildContext context);
 
@@ -25,7 +27,7 @@ abstract class BaseView<C extends BaseController> extends GetView<C> {
           child: SizedBox(width: .infinity, height: .infinity, child: onCreateViews(context)),
         ),
         Obx(() {
-          if (controller.isLoading.value == true) {
+          if (controller.isLoading.value == true && preventShowLoading != true) {
             WidgetsBinding.instance.addPostFrameCallback((duration) {
               SmartDialog.showLoading(msg: "");
             });

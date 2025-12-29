@@ -4,7 +4,6 @@
 
 import 'package:d3_wallet/app/modules/transaction_detail/controllers/transaction_detail_controller.dart';
 import 'package:d3_wallet/data/bean/response/transaction_overview_object/transaction_overview_object.dart';
-import 'package:d3_wallet/generated/colors.gen.dart';
 import 'package:d3_wallet/generated/locales.g.dart';
 import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -74,9 +73,9 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: context.appThemes.zenoBg.withOpacity(0.9),
+        color: context.appThemes.zenoBg.withValues(alpha: 0.9),
         border: Border(
-          bottom: BorderSide(color: context.appThemes.zenoBorder.withOpacity(0.3), width: 1),
+          bottom: BorderSide(color: context.appThemes.zenoBorder.withValues(alpha: 0.3), width: 1),
         ),
       ),
       child: Row(
@@ -89,7 +88,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: context.appThemes.zenoText.withOpacity(0.1),
+                color: context.appThemes.zenoText.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(24),
               ),
               child: Icon(Icons.arrow_back, color: context.appThemes.zenoText, size: 20),
@@ -116,7 +115,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: context.appThemes.zenoText.withOpacity(0.1),
+                color: context.appThemes.zenoText.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(24),
               ),
               child: Icon(Icons.share, color: context.appThemes.zenoText, size: 20),
@@ -143,7 +142,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             borderRadius: BorderRadius.circular(40),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF037DD6).withOpacity(0.5),
+                color: const Color(0xFF037DD6).withValues(alpha: 0.5),
                 blurRadius: 40,
                 spreadRadius: -10,
               ),
@@ -164,7 +163,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             border: Border.all(color: context.appThemes.zenoBorder),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withValues(alpha: 0.2),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -232,10 +231,10 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
       decoration: BoxDecoration(
         color: context.appThemes.zenoSurface,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: context.appThemes.zenoBorder.withOpacity(0.5)),
+        border: Border.all(color: context.appThemes.zenoBorder.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withValues(alpha: 0.2),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -317,7 +316,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             children: [
               Text(
                 value,
-                style: const TextStyle(
+                style: TextStyle(
                   color: context.appThemes.zenoText,
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -368,9 +367,9 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: context.appThemes.zenoBg.withOpacity(0.5),
+              color: context.appThemes.zenoBg.withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: context.appThemes.zenoBorder.withOpacity(0.3)),
+              border: Border.all(color: context.appThemes.zenoBorder.withValues(alpha: 0.3)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -411,7 +410,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
   }
 
   Widget _buildDivider(BuildContext context) {
-    return Container(height: 1, color: context.appThemes.zenoBorder.withOpacity(0.5));
+    return Container(height: 1, color: context.appThemes.zenoBorder.withValues(alpha: 0.5));
   }
 
   Widget _buildTokenTransfers(BuildContext context, transaction) {
@@ -435,7 +434,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             decoration: BoxDecoration(
               color: context.appThemes.zenoSurface,
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: context.appThemes.zenoBorder.withOpacity(0.5)),
+              border: Border.all(color: context.appThemes.zenoBorder.withValues(alpha: 0.5)),
             ),
             child: Row(
               children: [
@@ -545,9 +544,9 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
       margin: const EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: context.appThemes.zenoSurface.withOpacity(0.5),
+        color: context.appThemes.zenoSurface.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: context.appThemes.zenoBorder.withOpacity(0.3)),
+        border: Border.all(color: context.appThemes.zenoBorder.withValues(alpha: 0.3)),
       ),
       child: Column(
         children: [
@@ -617,8 +616,8 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            context.appThemes.zenoBg.withOpacity(0),
-            context.appThemes.zenoBg.withOpacity(0.95),
+            context.appThemes.zenoBg.withValues(alpha: 0),
+            context.appThemes.zenoBg.withValues(alpha: 0.95),
             context.appThemes.zenoBg,
           ],
         ),
@@ -640,7 +639,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                     border: Border.all(color: context.appThemes.zenoBorder),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
+                        color: Colors.black.withValues(alpha: 0.2),
                         blurRadius: 8,
                         offset: const Offset(0, 2),
                       ),
@@ -679,7 +678,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF037DD6).withOpacity(0.5),
+                        color: const Color(0xFF037DD6).withValues(alpha: 0.5),
                         blurRadius: 20,
                         spreadRadius: -5,
                       ),
