@@ -8,11 +8,8 @@ Before installing Flutter, ensure you have the necessary system tools and librar
 You must enable 32-bit architecture and install specific libraries:
 
 ```bash
-sudo dpkg --add-architecture i386
-sudo apt-get update
-sudo apt-get install -y curl git unzip xz-utils libglu1-mesa \
-    libc6:i386 libncurses6:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386 \
-    ninja-build build-essential libgtk-3-dev
+sudo apt-get upgrade
+sudo apt-get install build-essential procps curl file git
 ```
 
 ## 2. Installation Steps
@@ -27,12 +24,14 @@ Homebrew is used to manage several tools in this project.
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 echo "eval \"\$($(test -d ~/.linuxbrew && echo ~/.linuxbrew/bin/brew || echo /home/linuxbrew/.linuxbrew/bin/brew) shellenv)\"" >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ### Step 2: Install FVM (Flutter Version Management)
 Use Homebrew to install FVM:
 
 ```bash
+brew install gcc
 brew tap leoafarias/fvm
 brew install fvm
 ```
