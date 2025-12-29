@@ -12,7 +12,7 @@ sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get install -y curl git unzip xz-utils libglu1-mesa \
     libc6:i386 libncurses6:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386 \
-    ninja-build build-essential libgtk-3-dev openjdk-17-jdk
+    ninja-build build-essential libgtk-3-dev
 ```
 
 ## 2. Installation Steps
@@ -176,7 +176,27 @@ This section explains how to manage UI elements and localization in the project.
    ```
 
 3. **Apply to UI Text**:
-   Use the `.tr` extension to translate the key in your code:
+   Import `package:d3_wallet/generated/locales.g.dart` and use the `LocaleKeys` constant with the `.tr` extension:
    ```dart
-   'yourKey'.tr
+   LocaleKeys.yourKey.tr
    ```
+
+
+## 3. Post-edit Workflow
+After making changes to the codebase, especially to `colors.xml`, `locales.json`, or any files that require code generation, follow these steps to ensure consistency and code quality.
+
+1. **Synchronize Generated Files**
+Run `melos run genAlls` to trigger all necessary code generation (locales, colors, models, themes, etc.). This ensures that all generated constants and classes are up to date.
+
+    ```bash
+    melos genAlls
+    ```
+
+2. **Static Analysis**
+Verify your changes by running static analysis. This helps catch syntax errors, type mismatches, and lint warnings.
+
+    For a faster check on only the files you've edited, you can run the analyzer on specific paths:
+
+    ```bash
+    fvm flutter analyze lib/path/to/your_file.dart
+    ```
