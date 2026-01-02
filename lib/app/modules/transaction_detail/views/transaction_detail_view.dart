@@ -71,7 +71,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
 
   Widget _buildHeader(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const .all(16),
       decoration: BoxDecoration(
         color: context.appThemes.zenoBg.withValues(alpha: 0.9),
         border: Border(
@@ -83,40 +83,34 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
           // Back Button
           InkWell(
             onTap: () => Get.back(),
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: .circular(24),
             child: Container(
               width: 40,
               height: 40,
               decoration: BoxDecoration(
                 color: context.appThemes.zenoText.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: .circular(24),
               ),
               child: Icon(Icons.arrow_back, color: context.appThemes.zenoText, size: 20),
             ),
           ),
-
           Expanded(
             child: Text(
               LocaleKeys.transactionDetails.tr,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: context.appThemes.zenoText,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              textAlign: .center,
+              style: TextStyle(color: context.appThemes.zenoText, fontSize: 18, fontWeight: .bold),
             ),
           ),
-
           // Share Button
           InkWell(
             onTap: controller.shareReceipt,
-            borderRadius: BorderRadius.circular(24),
+            borderRadius: .circular(24),
             child: Container(
               width: 40,
               height: 40,
               decoration: BoxDecoration(
                 color: context.appThemes.zenoText.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(24),
+                borderRadius: .circular(24),
               ),
               child: Icon(Icons.share, color: context.appThemes.zenoText, size: 20),
             ),
@@ -136,10 +130,10 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
           decoration: BoxDecoration(
             gradient: const LinearGradient(
               colors: [Color(0xFF037DD6), Color(0xFF1976D2)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+              begin: .topLeft,
+              end: .bottomRight,
             ),
-            borderRadius: BorderRadius.circular(40),
+            borderRadius: .circular(40),
             boxShadow: [
               BoxShadow(
                 color: const Color(0xFF037DD6).withValues(alpha: 0.5),
@@ -156,10 +150,10 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
 
         // Status Badge
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          padding: const .symmetric(horizontal: 12, vertical: 6),
           decoration: BoxDecoration(
             color: context.appThemes.zenoSurface,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: .circular(20),
             border: Border.all(color: context.appThemes.zenoBorder),
             boxShadow: [
               BoxShadow(
@@ -170,14 +164,14 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             ],
           ),
           child: Row(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisSize: .min,
             children: [
               Container(
                 width: 8,
                 height: 8,
                 decoration: BoxDecoration(
                   color: context.appThemes.zenoSuccess,
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: .circular(4),
                 ),
               ),
               const SizedBox(width: 6),
@@ -186,7 +180,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                 style: TextStyle(
                   color: context.appThemes.zenoSuccess,
                   fontSize: 12,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: .w600,
                   letterSpacing: 0.5,
                 ),
               ),
@@ -226,11 +220,11 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
         : 'N/A';
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.all(20),
+      margin: const .symmetric(horizontal: 20),
+      padding: const .all(20),
       decoration: BoxDecoration(
         color: context.appThemes.zenoSurface,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: .circular(24),
         border: Border.all(color: context.appThemes.zenoBorder.withValues(alpha: 0.5)),
         boxShadow: [
           BoxShadow(
@@ -293,7 +287,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
     String? subtitle,
   }) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: const .symmetric(vertical: 12),
       child: Row(
         children: [
           Row(
@@ -305,21 +299,21 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                 style: TextStyle(
                   color: context.appThemes.zenoTextMuted,
                   fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: .w500,
                 ),
               ),
             ],
           ),
           const Spacer(),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: .end,
             children: [
               Text(
                 value,
                 style: TextStyle(
                   color: context.appThemes.zenoText,
                   fontSize: 14,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: .w600,
                 ),
               ),
               if (subtitle != null)
@@ -346,7 +340,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
         : address;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: const .symmetric(vertical: 12),
       child: Row(
         children: [
           Row(
@@ -358,21 +352,21 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                 style: TextStyle(
                   color: context.appThemes.zenoTextMuted,
                   fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: .w500,
                 ),
               ),
             ],
           ),
           const Spacer(),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            padding: const .symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
               color: context.appThemes.zenoBg.withValues(alpha: 0.5),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: .circular(8),
               border: Border.all(color: context.appThemes.zenoBorder.withValues(alpha: 0.3)),
             ),
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: .min,
               children: [
                 Container(
                   width: 20,
@@ -380,10 +374,10 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: gradientColors,
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
+                      begin: .topLeft,
+                      end: .bottomRight,
                     ),
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: .circular(10),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -392,7 +386,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                   style: TextStyle(
                     color: context.appThemes.zenoText,
                     fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: .w500,
                     fontFamily: 'monospace',
                   ),
                 ),
@@ -415,25 +409,25 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
 
   Widget _buildTokenTransfers(BuildContext context, transaction) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const .symmetric(horizontal: 20),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: .start,
         children: [
           Text(
             LocaleKeys.tokenTransfers.tr.toUpperCase(),
             style: TextStyle(
               color: context.appThemes.zenoTextMuted,
               fontSize: 12,
-              fontWeight: FontWeight.bold,
+              fontWeight: .bold,
               letterSpacing: 1.2,
             ),
           ),
           const SizedBox(height: 12),
           Container(
-            padding: const EdgeInsets.all(16),
+            padding: const .all(16),
             decoration: BoxDecoration(
               color: context.appThemes.zenoSurface,
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: .circular(24),
               border: Border.all(color: context.appThemes.zenoBorder.withValues(alpha: 0.5)),
             ),
             child: Row(
@@ -446,16 +440,12 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                       height: 48,
                       decoration: BoxDecoration(
                         color: const Color(0xFF2775CA),
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: .circular(16),
                       ),
                       child: const Center(
                         child: Text(
                           '\$',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: .bold),
                         ),
                       ),
                     ),
@@ -467,13 +457,13 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                         height: 20,
                         decoration: BoxDecoration(
                           color: context.appThemes.zenoSurface,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: .circular(10),
                           border: Border.all(color: context.appThemes.zenoSurface, width: 2),
                         ),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.black,
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: .circular(8),
                           ),
                           child: const Icon(Icons.circle, size: 12, color: Color(0xFF00D4AA)),
                         ),
@@ -483,14 +473,14 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                 ),
                 const SizedBox(width: 16),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: .start,
                   children: [
                     Text(
                       'USDC',
                       style: TextStyle(
                         color: context.appThemes.zenoText,
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: .bold,
                       ),
                     ),
                     Text(
@@ -498,21 +488,21 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                       style: TextStyle(
                         color: context.appThemes.zenoTextMuted,
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: .w500,
                       ),
                     ),
                   ],
                 ),
                 const Spacer(),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: .end,
                   children: [
                     Text(
                       '- 500.00',
                       style: TextStyle(
                         color: context.appThemes.zenoText,
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: .bold,
                       ),
                     ),
                     Text(
@@ -520,7 +510,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                       style: TextStyle(
                         color: context.appThemes.zenoTextMuted,
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: .w500,
                       ),
                     ),
                   ],
@@ -541,24 +531,24 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
         : signature;
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.all(16),
+      margin: const .symmetric(horizontal: 20),
+      padding: const .all(16),
       decoration: BoxDecoration(
         color: context.appThemes.zenoSurface.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: .circular(16),
         border: Border.all(color: context.appThemes.zenoBorder.withValues(alpha: 0.3)),
       ),
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: .spaceBetween,
             children: [
               Text(
                 LocaleKeys.slot.tr,
                 style: TextStyle(
                   color: context.appThemes.zenoTextMuted,
                   fontSize: 12,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: .w500,
                 ),
               ),
               Text(
@@ -573,14 +563,14 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
           ),
           const SizedBox(height: 12),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: .spaceBetween,
             children: [
               Text(
                 LocaleKeys.signature.tr,
                 style: TextStyle(
                   color: context.appThemes.zenoTextMuted,
                   fontSize: 12,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: .w500,
                 ),
               ),
               InkWell(
@@ -592,7 +582,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                       style: const TextStyle(
                         color: Color(0xFF4DA3FF),
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: .w500,
                         fontFamily: 'monospace',
                       ),
                     ),
@@ -610,11 +600,11 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
 
   Widget _buildBottomActions(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const .all(20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+          begin: .topCenter,
+          end: .bottomCenter,
           colors: [
             context.appThemes.zenoBg.withValues(alpha: 0),
             context.appThemes.zenoBg.withValues(alpha: 0.95),
@@ -630,12 +620,12 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             Expanded(
               child: InkWell(
                 onTap: controller.openExplorer,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: .circular(16),
                 child: Container(
                   height: 56,
                   decoration: BoxDecoration(
                     color: context.appThemes.zenoSurface,
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: .circular(16),
                     border: Border.all(color: context.appThemes.zenoBorder),
                     boxShadow: [
                       BoxShadow(
@@ -646,7 +636,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                     ],
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: .center,
                     children: [
                       Icon(Icons.explore, color: context.appThemes.zenoText, size: 20),
                       const SizedBox(width: 8),
@@ -655,7 +645,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                         style: TextStyle(
                           color: context.appThemes.zenoText,
                           fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                          fontWeight: .w600,
                         ),
                       ),
                     ],
@@ -670,12 +660,12 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
             Expanded(
               child: InkWell(
                 onTap: controller.shareReceipt,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: .circular(16),
                 child: Container(
                   height: 56,
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(colors: [Color(0xFF037DD6), Color(0xFF4DA3FF)]),
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: .circular(16),
                     boxShadow: [
                       BoxShadow(
                         color: const Color(0xFF037DD6).withValues(alpha: 0.5),
@@ -685,7 +675,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                     ],
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: .center,
                     children: [
                       const Icon(Icons.ios_share, color: Colors.white, size: 20),
                       const SizedBox(width: 8),
@@ -694,7 +684,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: .bold,
                         ),
                       ),
                     ],
