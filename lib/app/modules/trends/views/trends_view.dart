@@ -17,16 +17,41 @@ import 'package:d3_wallet/styles/app_themes.dart';
 import 'package:d3_wallet/utils/extensions/double_extension.dart';
 import 'package:d3_wallet/utils/extensions/string_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get.dart';
 
 import '../controllers/trends_controller.dart';
+import 'widgets/trends_search_bar.dart';
 
 class TrendsView extends BaseInfiniteListViewWithCreator<TrendsBinding, TrendsController> {
   TrendsView({super.key});
 
   @override
   bool get appBarIsHidden => true;
+
+  @override
+  Widget buildMainViews(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        // call this method here to hide soft keyboard
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Column(
+        children: [
+          Obx(
+            () => TrendsSearchBar(
+              onChanged: controller.onSearchChanged,
+              history: controller.searchHistory.toList(),
+              onFocusChanged: (focused) => controller.isSearchFocused.value = focused,
+              onMicTap: controller.onMicTap,
+              onHistoryTap: controller.onHistoryTap,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Expanded(child: super.buildMainViews(context)),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget buildItemViews(BuildContext context, {item, int? index}) {

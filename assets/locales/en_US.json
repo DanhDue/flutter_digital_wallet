@@ -219,5 +219,13 @@
   "signature": "Signature",
   "explorer": "Explorer",
   "shareReceipt": "Share Receipt",
+  "trendsSearchHint": "Search...",
+  "trendsNoRecentSearches": "No recent searches",
+  "trendsRecentSearches": "Recent Searches",
+  "btcWallet": "BTC Wallet",
+  "transactionsReceived": "Received",
+  "transactionsSent": "Sent",
+  "transactionsReceivedWithToken": "Received %s",
+  "transactionsSentWithToken": "Sent %s",
   "eof": "End of File. Please add a new text above this item to avoid conflicts. Thanks!"
 }

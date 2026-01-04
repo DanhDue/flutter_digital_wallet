@@ -18,6 +18,13 @@ class TransactionsController extends BaseInfiniteListController<TransactionRespo
   final transactionRepo = Get.find<TransactionRepository>();
 
   String? lastDayInTheList;
+  final selectedFilterIndex = 0.obs;
+
+  void changeFilter(int index) {
+    if (selectedFilterIndex.value == index) return;
+    selectedFilterIndex.value = index;
+    fetchData(isRefresh: true);
+  }
 
   @override
   void onInit() {

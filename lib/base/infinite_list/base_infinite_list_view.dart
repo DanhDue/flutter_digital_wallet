@@ -59,92 +59,90 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
         Fimber.d("FocusDetector - onForegroundGained: ${DateTime.now()}");
       },
       child: Scaffold(
-        body: SafeArea(
-          top: topSafeArea,
-          bottom: bottomSafeArea,
-          left: leftSafeArea,
-          right: rightSafeArea,
-          child: Stack(
-            children: [
-              Obx(
-                () => Visibility(
-                  visible: controller.hasNoData.value != true,
-                  child: Padding(
-                    padding: _evaluateTopPadding(context),
-                    child: RefreshIndicator(
-                      key: controller.refreshIndicatorKey,
-                      onRefresh: () =>
-                          controller.fetchData(isRefresh: true, ignoreShowLoading: true),
-                      child: GetBuilder<C>(
-                        builder: (controller) => controller.items.isEmptyOrNull
-                            ? const SizedBox.shrink()
-                            : buildInfiniteList(),
-                      ),
+        backgroundColor: context.appThemes.white,
+        body: topSafeArea ? SafeArea(child: buildMainViews(context)) : buildMainViews(context),
+      ),
+    );
+  }
+
+  Widget buildMainViews(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final availableHeight = constraints.maxHeight;
+        return Stack(
+          children: [
+            Obx(
+              () => Visibility(
+                visible: controller.hasNoData.value != true,
+                child: Padding(
+                  padding: evaluateTopPadding(context),
+                  child: RefreshIndicator(
+                    key: controller.refreshIndicatorKey,
+                    onRefresh: () =>
+                        controller.fetchData(isRefresh: true, ignoreShowLoading: true),
+                    child: GetBuilder<C>(
+                      builder: (controller) => controller.items.isEmptyOrNull
+                          ? const SizedBox.shrink()
+                          : buildInfiniteList(),
                     ),
                   ),
                 ),
               ),
-              Obx(() {
-                return Visibility(
-                  visible: controller.isError.value?.isNotBlank == true,
-                  child: RefreshIndicator(
-                    onRefresh: () =>
-                        controller.fetchData(isRefresh: true, ignoreShowLoading: true),
-                    child: SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: SizedBox(
-                        height:
-                            MediaQuery.of(context).size.height -
-                            _evaluateNoDataPadding(context).vertical,
-                        child: buildErrorLayout(context),
+            ),
+            Obx(() {
+              return Visibility(
+                visible: controller.isError.value?.isNotBlank == true,
+                child: RefreshIndicator(
+                  onRefresh: () => controller.fetchData(isRefresh: true, ignoreShowLoading: true),
+                  child: SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: SizedBox(
+                      height: availableHeight - evaluateNoDataPadding(context).vertical,
+                      child: buildErrorLayout(context),
+                    ),
+                  ),
+                ),
+              );
+            }),
+            Obx(() {
+              return Visibility(
+                visible: controller.hasNoData.value == true,
+                child: RefreshIndicator(
+                  key: controller.refreshFromNoData,
+                  onRefresh: () => controller.fetchData(isRefresh: true, ignoreShowLoading: true),
+                  child: SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: SizedBox(
+                      height: availableHeight - evaluateNoDataPadding(context).vertical,
+                      child: Padding(
+                        padding: evaluateNoDataPadding(context),
+                        child: Stack(children: [Center(child: buildHasNoDataLayout(context))]),
                       ),
                     ),
                   ),
-                );
-              }),
-              Obx(() {
-                return Visibility(
-                  visible: controller.hasNoData.value == true,
-                  child: RefreshIndicator(
-                    key: controller.refreshFromNoData,
-                    onRefresh: () =>
-                        controller.fetchData(isRefresh: true, ignoreShowLoading: true),
-                    child: SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: SizedBox(
-                        height:
-                            MediaQuery.of(context).size.height -
-                            _evaluateNoDataPadding(context).vertical,
-                        child: Padding(
-                          padding: _evaluateNoDataPadding(context),
-                          child: Stack(children: [Center(child: buildHasNoDataLayout(context))]),
-                        ),
-                      ),
+                ),
+              );
+            }),
+            Obx(() {
+              return Visibility(
+                visible: controller.isLoading.value == true,
+                child: Center(
+                  child: RepaintBoundary(
+                    child: Assets.lotties.sandyLoading.lottie(
+                      width: 120,
+                      height: 120,
+                      fit: BoxFit.cover,
+                      animate: true,
+                      repeat: true,
+                      backgroundLoading: true,
                     ),
                   ),
-                );
-              }),
-              Obx(() {
-                return Visibility(
-                  visible: controller.isLoading.value == true,
-                  child: Center(
-                    child: RepaintBoundary(
-                      child: Assets.lotties.sandyLoading.lottie(
-                        width: 120,
-                        height: 120,
-                        fit: BoxFit.cover,
-                        animate: true,
-                        repeat: true,
-                        backgroundLoading: true,
-                      ),
-                    ),
-                  ),
-                );
-              }),
-            ],
-          ),
-        ),
-      ),
+                ),
+              );
+            }),
+          ],
+        );
+      },
     );
   }
 
@@ -250,15 +248,17 @@ abstract class BaseInfiniteListView<C extends BaseInfiniteListController> extend
 
   Widget buildItemViews(BuildContext context, {dynamic item, int? index});
 
-  EdgeInsets _evaluateTopPadding(BuildContext context) {
-    if (appBarIsHidden == true) return const .only(top: 0);
-    if (Navigator.canPop(context)) return const .only(top: 146);
-    return const .only(top: 146);
+  @protected
+  EdgeInsets evaluateTopPadding(BuildContext context) {
+    if (appBarIsHidden == true) return const EdgeInsets.only(top: 0);
+    if (Navigator.canPop(context)) return const EdgeInsets.only(top: 146);
+    return const EdgeInsets.only(top: 146);
   }
 
-  EdgeInsets _evaluateNoDataPadding(BuildContext context) {
-    if (appBarIsHidden == true) return const .only(top: 0, bottom: 0);
-    if (Navigator.canPop(context)) return const .only(top: 96, bottom: 96);
-    return const .only(top: 96, bottom: 96);
+  @protected
+  EdgeInsets evaluateNoDataPadding(BuildContext context) {
+    if (appBarIsHidden == true) return const EdgeInsets.only(top: 0, bottom: 0);
+    if (Navigator.canPop(context)) return const EdgeInsets.only(top: 96, bottom: 96);
+    return const EdgeInsets.only(top: 96, bottom: 96);
   }
 }

@@ -14,6 +14,11 @@ import '../../home/constants/nav_ids.dart';
 import '../../home/controllers/home_controller.dart';
 
 class TrendsController extends BaseInfiniteListController<CoinMarketResObject> {
+  final _allLoadedItems = <CoinMarketResObject?>[];
+  final searchKeyword = "".obs;
+  final isSearchFocused = false.obs;
+  final searchHistory = <String>["Bitcoin", "Ethereum", "Solana"].obs; // Mock history
+
   @override
   void onInit() {
     super.onInit();
@@ -36,6 +41,49 @@ class TrendsController extends BaseInfiniteListController<CoinMarketResObject> {
   void onClose() {
     super.onClose();
     Fimber.d("onClose()");
+  }
+
+  @override
+  List<CoinMarketResObject?>? prepareDataBeforeAdding({
+    List<CoinMarketResObject?>? allItems,
+    List<CoinMarketResObject?>? newItems,
+  }) {
+    if (pageNumber == 1) {
+      _allLoadedItems.clear();
+    }
+    _allLoadedItems.addAll(newItems ?? []);
+
+    return _filterItemsLocally(_allLoadedItems);
+  }
+
+  void onSearchChanged(String value) {
+    searchKeyword.value = value;
+    items.clear();
+    items.addAll(_filterItemsLocally(_allLoadedItems));
+    hasNoData.value = items.isEmpty;
+    update();
+  }
+
+  void onMicTap() {
+    Fimber.d("onMicTap()");
+    // future: trigger voice search
+  }
+
+  void onHistoryTap(String value) {
+    Fimber.d("onHistoryTap(value: $value)");
+    onSearchChanged(value);
+  }
+
+  List<CoinMarketResObject?> _filterItemsLocally(List<CoinMarketResObject?> source) {
+    if (searchKeyword.isEmpty) {
+      return source;
+    }
+    final query = searchKeyword.value.toLowerCase();
+    return source.where((coin) {
+      final symbol = coin?.symbol?.toLowerCase() ?? "";
+      final name = coin?.name?.toLowerCase() ?? "";
+      return symbol.contains(query) || name.contains(query);
+    }).toList();
   }
 
   @override

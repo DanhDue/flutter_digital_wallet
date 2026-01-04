@@ -227,3 +227,28 @@ steps to ensure consistency and code quality.
       ```bash
       fvm flutter analyze lib/path/to/your_file.dart
       ```
+
+3. **Finalize Plans and Tasks**
+
+   Ensure that all items in the `task.md`, `implementation_plan.md`, or other
+   tracking artifacts are marked as completed or addressed before concluding
+   the task.
+
+### 4. Coding Standards
+
+#### 4.1 Color Transparency
+
+Always use `withValues(alpha: ...)` instead of `withOpacity(...)` for setting
+color transparency to stay up-to-date with Flutter recommendations.
+
+#### 4.2 Localization Generation
+
+Remember to always run `melos genAlls` after adding or updating localization
+strings in `.json` files to generate the corresponding Dart keys in
+`LocaleKeys`.
+
+#### 4.3 Static Analysis
+
+Always run `flutter analyze` on all edited Dart files and ensure all problems
+are fixed before finalizing changes. This maintains code quality and prevents
+regressions.
