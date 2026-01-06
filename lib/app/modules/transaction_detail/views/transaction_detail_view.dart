@@ -75,7 +75,7 @@ class TransactionDetailView extends GetView<TransactionDetailController> {
       decoration: BoxDecoration(
         color: context.appThemes.zenoBg.withValues(alpha: 0.9),
         border: Border(
-          bottom: BorderSide(color: context.appThemes.zenoBorder.withValues(alpha: 0.3), width: 1),
+          bottom: BorderSide(color: context.appThemes.zenoBorder.withValues(alpha: 0.3)),
         ),
       ),
       child: Row(
