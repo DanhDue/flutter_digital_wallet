@@ -2,7 +2,7 @@
 set -e
 
 # After install: Oh my zsh, JDK, Android Studio, XCode, FVM then add settings to .zshrc
-:'
+: '
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
@@ -49,7 +49,7 @@ GREEN_BOLD="\033[1;32m"
 RESET_FORMATING="\033[0m"
 
 # Install home brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install go
 brew install go
@@ -84,6 +84,9 @@ dart pub global activate get_cli
 
 # Install ruby gems
 gem install bundler
+
+# Install cocoapods
+gem install cocoapods
 
 # Run this one before running pod install.
 fvm flutter precache --ios
