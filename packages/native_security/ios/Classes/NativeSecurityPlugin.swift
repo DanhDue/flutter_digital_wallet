@@ -11,5 +11,6 @@ public class NativeSecurityPlugin: NSObject, FlutterPlugin {
     // The functions are declared in native_security.h
     _ = get_ssl_pin_1()
     _ = get_ssl_pin_2()
+    _ = get_ssl_pin_3()
   }
 }

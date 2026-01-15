@@ -87,8 +87,18 @@ class NativeSecurity {
     }
   }
 
+  static String getSslPin3() {
+    try {
+      final getPin = _nativeLib.lookupFunction<GetSslPinC, GetSslPinDart>('get_ssl_pin_3');
+      final ptr = getPin();
+      return ptr.toDartString();
+    } catch (e) {
+      throw UnsupportedError('FFI lookup failed for get_ssl_pin_3: $e');
+    }
+  }
+
   /// Returns both hardened fingerprints.
   static List<String> getAllowedFingerprints() {
-    return [getSslPin1(), getSslPin2()];
+    return [getSslPin1(), getSslPin2(), getSslPin3()];
   }
 }

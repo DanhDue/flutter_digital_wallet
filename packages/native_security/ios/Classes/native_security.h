@@ -23,6 +23,7 @@ extern "C" {
 
 FFI_EXPORT const char *get_ssl_pin_1();
 FFI_EXPORT const char *get_ssl_pin_2();
+FFI_EXPORT const char *get_ssl_pin_3();
 FFI_EXPORT void unscramble(const uint8_t *input, int len, char *output);
 
 #ifdef __cplusplus

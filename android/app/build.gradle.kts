@@ -65,10 +65,24 @@ android {
 
     signingConfigs {
         create("development") {
-            storeFile = rootProject.file("./../secureFiles/signing/debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
+            val debugKeystore = rootProject.file("./../secureFiles/signing/debug.keystore")
+            if (debugKeystore.exists()) {
+                storeFile = debugKeystore
+                storePassword = "android"
+                keyAlias = "androiddebugkey"
+                keyPassword = "android"
+            } else {
+                 val defaultKeystore = file("${System.getProperty("user.home")}/.android/debug.keystore")
+                 if (defaultKeystore.exists()) {
+                     storeFile = defaultKeystore
+                     storePassword = "android"
+                     keyAlias = "androiddebugkey"
+                     keyPassword = "android"
+                     println("Using default debug keystore: ${defaultKeystore.absolutePath}")
+                 } else {
+                     println("Warning: Custom debug keystore not found at ${debugKeystore.absolutePath} and default debug keystore not found.")
+                 }
+            }
         }
         create("production") {
             val keystorePropertiesFile = rootProject.file("./../secureFiles/signing/keystore.properties")
@@ -81,7 +95,7 @@ android {
                 keyAlias = keystoreProperties["keyAlias"] as String
                 keyPassword = keystoreProperties["keyPassword"] as String
             } else {
-                throw RuntimeException("Keystore properties file not found")
+                println("Warning: Keystore properties file not found at ${keystorePropertiesFile.absolutePath}. Production signing config will be incomplete.")
             }
         }
     }

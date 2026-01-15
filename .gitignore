@@ -62,3 +62,6 @@ app.*.map.json
 # ignore public folder contained Figma's exported images.
 public/
 .continue/
+
+# Security
+*.pem

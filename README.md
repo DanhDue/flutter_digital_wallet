@@ -15,6 +15,7 @@ A Digital Wallet project.
   7. [Robust Argument Retrieval](#7-robust-argument-retrieval)
   8. [Best Practices](#8-best-practices)
 - [III. Animated Visibility](#iii-animated-visibility)
+- [IV. Backend API Documentation](#iv-backend-api-documentation)
 
 ## I. Development Environment Setup
 
@@ -366,3 +367,8 @@ AnimatedVisibility widget.
 
 ![Animated Visibility 1](screenshots/animated_visibility_01.gif)
 ![Animated Visibility 2](screenshots/animated_visibility_02.gif)
+
+## IV. Backend API Documentation
+
+The backend API documentation is available at:
+[https://digital-wallet-93c4ba68a41d.herokuapp.com/api/v1/docs](https://digital-wallet-93c4ba68a41d.herokuapp.com/api/v1/docs)
