@@ -323,15 +323,14 @@ class _WalletCardViewState extends State<WalletCardView> with AutomaticKeepAlive
               color: context.appThemes.white,
               width: 96,
               height: 96,
-              child: PrettyAnimatedQrView(
-                qrImage: QrImage(
-                  QrCode.fromData(
-                    data: controller.qrData.value,
-                    errorCorrectLevel: QrErrorCorrectLevel.H,
-                  ),
-                ),
-                decoration: decoration,
-              ).paddingAll(3),
+              child: Obx(
+                () => controller.qrImage.value == null
+                    ? const SizedBox.shrink()
+                    : PrettyAnimatedQrView(
+                        qrImage: controller.qrImage.value!,
+                        decoration: decoration,
+                      ).paddingAll(3),
+              ),
             ).marginOnly(right: 16, bottom: 16),
           ),
         ),

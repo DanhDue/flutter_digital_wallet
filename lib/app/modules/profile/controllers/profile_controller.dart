@@ -37,4 +37,9 @@ class ProfileController extends BaseController {
     Fimber.d("navigateToProfileDetail()");
     Get.toNamed(Routes.PROFILE_DETAIL, id: NavIds.profile);
   }
+
+  navigateToTalker() {
+    Fimber.d("navigateToTalker()");
+    Get.toNamed(Routes.TALKER);
+  }
 }

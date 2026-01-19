@@ -1,6 +1,7 @@
 // Copyright (c) 2025, one of DanhDue ExOICTIF projects. All rights reserved.
 
 import 'dart:async';
+import 'dart:isolate';
 
 import 'package:d3_wallet/app/routes/navigation_arguments.dart';
 import 'package:d3_wallet/base/base_controller.dart';
@@ -16,6 +17,7 @@ import 'package:fimber/fimber.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 class WalletCardController extends BaseController {
   dynamic arguments = Get.arguments;
@@ -24,7 +26,7 @@ class WalletCardController extends BaseController {
   final balanceIsHidden = false.obs;
   late int walletIndex;
   final fullBalance = 0.0.obs;
-  final qrData = "".obs;
+  final qrImage = Rxn<QrImage>();
   final showQRCode = false.obs;
   Timer? showRQCodeTimer;
 
@@ -47,10 +49,20 @@ class WalletCardController extends BaseController {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
     Fimber.d("WalletCardController onReady");
-    qrData.value = QrUtils.instance.retrieveTransferQRData(wallet.value.address ?? "");
+    final address = wallet.value.address ?? "";
+    try {
+      final result = await Isolate.run(() {
+        final data = QrUtils.instance.retrieveTransferQRData(address);
+        final qrCode = QrCode.fromData(data: data, errorCorrectLevel: QrErrorCorrectLevel.H);
+        return QrImage(qrCode);
+      });
+      qrImage.value = result;
+    } catch (e, s) {
+      Fimber.e("Error in Isolate.run", ex: e, stacktrace: s);
+    }
   }
 
   @override

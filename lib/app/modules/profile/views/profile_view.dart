@@ -39,6 +39,16 @@ class ProfileView extends BaseView<ProfileController> {
               ),
               child: const Text('Logout'),
             ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () => controller.navigateToTalker(),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: context.appThemes.trueBlue,
+                foregroundColor: context.appThemes.white,
+                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+              ),
+              child: const Text('Talker'),
+            ),
           ],
         ),
       ),
