@@ -14,8 +14,8 @@ A Digital Wallet project.
   6. [Key Files](#6-key-files)
   7. [Robust Argument Retrieval](#7-robust-argument-retrieval)
   8. [Best Practices](#8-best-practices)
-- [III. Animated Visibility](#iii-animated-visibility)
-- [IV. Backend API Documentation](#iv-backend-api-documentation)
+- [III. Demos](#iii-demos)
+- [IV. References](#iv-references)
 
 ## I. Development Environment Setup
 
@@ -360,15 +360,38 @@ class DetailController extends BaseController {
 6. **Prefer Constructor Injection** (Section 7) for all nested routes to
    ensure arguments are never null.
 
-## III. Animated Visibility
+## III. Demos
 
-Animate appearance and disappearance using pre-built effects with the
-AnimatedVisibility widget.
+<table>
+  <tr>
+    <td align="center"><b>Splash & Onboard</b></td>
+    <td align="center"><b>Wallet List</b></td>
+    <td align="center"><b>Token Details</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/demo_01.gif" width="250"/></td>
+    <td><img src="screenshots/demo_02.gif" width="250"/></td>
+    <td><img src="screenshots/demo_03.gif" width="250"/></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/demo_04.gif" width="250"/></td>
+    <td><img src="screenshots/demo_05.gif" width="250"/></td>
+    <td><img src="screenshots/demo_06.gif" width="250"/></td>
+  </tr>
+</table>
 
-![Animated Visibility 1](screenshots/animated_visibility_01.gif)
-![Animated Visibility 2](screenshots/animated_visibility_02.gif)
+## IV. References
 
-## IV. Backend API Documentation
+### 1. UI/UX Design
+-   [MetaMask Redesign on Figma](https://www.figma.com/design/uy4hISX1JFBu02QMpBKBql/Case-Study--Web-3.0---MetaMask-Redesign--Community-?m=auto&t=i8dTyUCu7EZFdKiT-6) - Web 3.0 wallet redesign case study used as design inspiration.
 
-The backend API documentation is available at:
-[https://digital-wallet-93c4ba68a41d.herokuapp.com/api/v1/docs](https://digital-wallet-93c4ba68a41d.herokuapp.com/api/v1/docs)
+### 2. API Documents
+-   [Swagger Docs](https://digital-wallet-93c4ba68a41d.herokuapp.com/api/v1/docs) - Interactive API documentation for backend endpoints.
+
+## V. License
+
+Copyright © 2025, one of DanhDue ExOICTIF projects. All rights reserved.
+
+---
+
+Built with ❤️ using GetX, Melos and more....
