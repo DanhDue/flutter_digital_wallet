@@ -387,6 +387,7 @@ class DetailController extends BaseController {
 
 ### 2. API Documents
 -   [Swagger Docs](https://digital-wallet-93c4ba68a41d.herokuapp.com/api/v1/docs) - Interactive API documentation for backend endpoints.
+-   [API Repository](https://github.com/DanhDue/django_digital_wallet) - Backend API source code on GitHub that based on the Django Ninja Rest Framework.
 
 ## V. License
 
